@@ -12,6 +12,11 @@
     "autoload": {
       "psr-4": {
         "POGOProtos\\": "src/POGOProtos/"
-      }
+      },
+      "files": [
+        "src/protocolbuffers.inc.php",
+        "src/POGOProtos/Networking/Envelopes/RequestEnvelope.php",
+        "src/POGOProtos/Networking/Envelopes/ResponseEnvelope.php"
+      ]
     }
 }
