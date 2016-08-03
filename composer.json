@@ -1,0 +1,17 @@
+{
+    "name": "nicklasw/pogoprotos-php",
+    "authors": [
+        {
+            "name": "Nicklas Wallgren",
+            "email": "nicklas.wallgren@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+      "psr-4": {
+        "POGOProtos\\": "src/POGOProtos/"
+      }
+    }
+}
