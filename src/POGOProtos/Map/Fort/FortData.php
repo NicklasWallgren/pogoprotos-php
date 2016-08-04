@@ -27,7 +27,7 @@ namespace POGOProtos\Map\Fort {
     private $gymPoints = 0; // optional int64 gym_points = 10
     private $isInBattle = false; // optional bool is_in_battle = 11
     private $cooldownCompleteTimestampMs = 0; // optional int64 cooldown_complete_timestamp_ms = 14
-    private $sponsor = \POGOProtos\Map\Fort\FortSponsor::UNSET_SPONSOR; // optional .POGOProtos.Map.Fort.FortSponsor sponsor = 15
+    private $sponsor = \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR; // optional .POGOProtos.Map.Fort.FortSponsor sponsor = 15
     private $renderingType = \POGOProtos\Map\Fort\FortRenderingType::DEFAULT; // optional .POGOProtos.Map.Fort.FortRenderingType rendering_type = 16
     private $activeFortModifier = ""; // optional bytes active_fort_modifier = 12
     private $lureInfo = null; // optional .POGOProtos.Map.Fort.FortLureInfo lure_info = 13
@@ -250,7 +250,7 @@ namespace POGOProtos\Map\Fort {
         fwrite($fp, "p", 1);
         Protobuf::write_varint($fp, $this->cooldownCompleteTimestampMs);
       }
-      if ($this->sponsor !== \POGOProtos\Map\Fort\FortSponsor::UNSET_SPONSOR) {
+      if ($this->sponsor !== \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR) {
         fwrite($fp, "x", 1);
         Protobuf::write_varint($fp, $this->sponsor);
       }
@@ -309,7 +309,7 @@ namespace POGOProtos\Map\Fort {
       if ($this->cooldownCompleteTimestampMs !== 0) {
         $size += 1 + Protobuf::size_varint($this->cooldownCompleteTimestampMs);
       }
-      if ($this->sponsor !== \POGOProtos\Map\Fort\FortSponsor::UNSET_SPONSOR) {
+      if ($this->sponsor !== \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR) {
         $size += 1 + Protobuf::size_varint($this->sponsor);
       }
       if ($this->renderingType !== \POGOProtos\Map\Fort\FortRenderingType::DEFAULT) {
@@ -374,7 +374,7 @@ namespace POGOProtos\Map\Fort {
     public function getCooldownCompleteTimestampMs() { return $this->cooldownCompleteTimestampMs;}
     public function setCooldownCompleteTimestampMs($value) { $this->cooldownCompleteTimestampMs = $value; }
 
-    public function clearSponsor() { $this->sponsor = \POGOProtos\Map\Fort\FortSponsor::UNSET_SPONSOR; }
+    public function clearSponsor() { $this->sponsor = \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR; }
     public function getSponsor() { return $this->sponsor;}
     public function setSponsor($value) { $this->sponsor = $value; }
 
@@ -404,7 +404,7 @@ namespace POGOProtos\Map\Fort {
            . Protobuf::toString('gym_points', $this->gymPoints, 0)
            . Protobuf::toString('is_in_battle', $this->isInBattle, false)
            . Protobuf::toString('cooldown_complete_timestamp_ms', $this->cooldownCompleteTimestampMs, 0)
-           . Protobuf::toString('sponsor', $this->sponsor, \POGOProtos\Map\Fort\FortSponsor::UNSET_SPONSOR)
+           . Protobuf::toString('sponsor', $this->sponsor, \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR)
            . Protobuf::toString('rendering_type', $this->renderingType, \POGOProtos\Map\Fort\FortRenderingType::DEFAULT)
            . Protobuf::toString('active_fort_modifier', $this->activeFortModifier, "")
            . Protobuf::toString('lure_info', $this->lureInfo, null);

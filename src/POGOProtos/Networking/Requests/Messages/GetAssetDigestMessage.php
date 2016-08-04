@@ -15,7 +15,7 @@ namespace POGOProtos\Networking\Requests\Messages {
   final class GetAssetDigestMessage extends ProtobufMessage {
 
     private $_unknown;
-    private $platform = \POGOProtos\Enums\Platform::UNSET; // optional .POGOProtos.Enums.Platform platform = 1
+    private $platform = \POGOProtos\Enums\Platform::NONE; // optional .POGOProtos.Enums.Platform platform = 1
     private $deviceManufacturer = ""; // optional string device_manufacturer = 2
     private $deviceModel = ""; // optional string device_model = 3
     private $locale = ""; // optional string locale = 4
@@ -91,7 +91,7 @@ namespace POGOProtos\Networking\Requests\Messages {
     }
 
     public function write($fp) {
-      if ($this->platform !== \POGOProtos\Enums\Platform::UNSET) {
+      if ($this->platform !== \POGOProtos\Enums\Platform::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->platform);
       }
@@ -118,7 +118,7 @@ namespace POGOProtos\Networking\Requests\Messages {
 
     public function size() {
       $size = 0;
-      if ($this->platform !== \POGOProtos\Enums\Platform::UNSET) {
+      if ($this->platform !== \POGOProtos\Enums\Platform::NONE) {
         $size += 1 + Protobuf::size_varint($this->platform);
       }
       if ($this->deviceManufacturer !== "") {
@@ -139,7 +139,7 @@ namespace POGOProtos\Networking\Requests\Messages {
       return $size;
     }
 
-    public function clearPlatform() { $this->platform = \POGOProtos\Enums\Platform::UNSET; }
+    public function clearPlatform() { $this->platform = \POGOProtos\Enums\Platform::NONE; }
     public function getPlatform() { return $this->platform;}
     public function setPlatform($value) { $this->platform = $value; }
 
@@ -161,7 +161,7 @@ namespace POGOProtos\Networking\Requests\Messages {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('platform', $this->platform, \POGOProtos\Enums\Platform::UNSET)
+           . Protobuf::toString('platform', $this->platform, \POGOProtos\Enums\Platform::NONE)
            . Protobuf::toString('device_manufacturer', $this->deviceManufacturer, "")
            . Protobuf::toString('device_model', $this->deviceModel, "")
            . Protobuf::toString('locale', $this->locale, "")

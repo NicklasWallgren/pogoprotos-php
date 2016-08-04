@@ -12,7 +12,7 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.NicknamePokemonResponse.Result
   abstract class NicknamePokemonResponse_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
     const ERROR_INVALID_NICKNAME = 2;
     const ERROR_POKEMON_NOT_FOUND = 3;
@@ -42,7 +42,7 @@ namespace POGOProtos\Networking\Responses {
   final class NicknamePokemonResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.NicknamePokemonResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.NicknamePokemonResponse.Result result = 1
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -72,7 +72,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -80,19 +80,19 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::UNSET);
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\NicknamePokemonResponse_Result::NONE);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.NicknamePokemonResponse)

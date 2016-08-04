@@ -12,7 +12,7 @@ namespace POGOProtos\Map {
 
   // enum POGOProtos.Map.MapObjectsStatus
   abstract class MapObjectsStatus extends ProtobufEnum {
-    const UNSET_STATUS = 0;
+    const NONE_STATUS = 0;
     const SUCCESS = 1;
     const LOCATION_UNSET = 2;
 

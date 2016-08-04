@@ -12,7 +12,7 @@ namespace POGOProtos\Enums {
 
   // enum POGOProtos.Enums.Platform
   abstract class Platform extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const IOS = 1;
     const ANDROID = 2;
     const OSX = 3;

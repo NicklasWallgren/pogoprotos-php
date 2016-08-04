@@ -13,7 +13,7 @@ namespace POGOProtos\Data\Logs {
 
   // enum POGOProtos.Data.Logs.FortSearchLogEntry.Result
   abstract class FortSearchLogEntry_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
 
     public static $_values = array(
@@ -37,7 +37,7 @@ namespace POGOProtos\Data\Logs {
   final class FortSearchLogEntry extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Data\Logs\FortSearchLogEntry_Result::UNSET; // optional .POGOProtos.Data.Logs.FortSearchLogEntry.Result result = 1
+    private $result = \POGOProtos\Data\Logs\FortSearchLogEntry_Result::NONE; // optional .POGOProtos.Data.Logs.FortSearchLogEntry.Result result = 1
     private $fortId = ""; // optional string fort_id = 2
     private $items = array(); // repeated .POGOProtos.Inventory.Item.ItemData items = 3
     private $eggs = 0; // optional int32 eggs = 4
@@ -101,7 +101,7 @@ namespace POGOProtos\Data\Logs {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Data\Logs\FortSearchLogEntry_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Data\Logs\FortSearchLogEntry_Result::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -123,7 +123,7 @@ namespace POGOProtos\Data\Logs {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Data\Logs\FortSearchLogEntry_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Data\Logs\FortSearchLogEntry_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       if ($this->fortId !== "") {
@@ -140,7 +140,7 @@ namespace POGOProtos\Data\Logs {
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Data\Logs\FortSearchLogEntry_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Data\Logs\FortSearchLogEntry_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -162,7 +162,7 @@ namespace POGOProtos\Data\Logs {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Data\Logs\FortSearchLogEntry_Result::UNSET)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Data\Logs\FortSearchLogEntry_Result::NONE)
            . Protobuf::toString('fort_id', $this->fortId, "")
            . Protobuf::toString('items', $this->items, null)
            . Protobuf::toString('eggs', $this->eggs, 0);
