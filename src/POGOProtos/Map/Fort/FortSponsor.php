@@ -12,7 +12,7 @@ namespace POGOProtos\Map\Fort {
 
   // enum POGOProtos.Map.Fort.FortSponsor
   abstract class FortSponsor extends ProtobufEnum {
-    const NONE_SPONSOR = 0;
+    const UNSET_SPONSOR = 0;
     const MCDONALDS = 1;
     const POKEMON_STORE = 2;
 

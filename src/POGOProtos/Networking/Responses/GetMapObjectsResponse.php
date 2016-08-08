@@ -16,7 +16,7 @@ namespace POGOProtos\Networking\Responses {
 
     private $_unknown;
     private $mapCells = array(); // repeated .POGOProtos.Map.MapCell map_cells = 1
-    private $status = \POGOProtos\Map\MapObjectsStatus::NONE_STATUS; // optional .POGOProtos.Map.MapObjectsStatus status = 2
+    private $status = \POGOProtos\Map\MapObjectsStatus::UNSET_STATUS; // optional .POGOProtos.Map.MapObjectsStatus status = 2
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -62,7 +62,7 @@ namespace POGOProtos\Networking\Responses {
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
       }
-      if ($this->status !== \POGOProtos\Map\MapObjectsStatus::NONE_STATUS) {
+      if ($this->status !== \POGOProtos\Map\MapObjectsStatus::UNSET_STATUS) {
         fwrite($fp, "\x10", 1);
         Protobuf::write_varint($fp, $this->status);
       }
@@ -74,7 +74,7 @@ namespace POGOProtos\Networking\Responses {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->status !== \POGOProtos\Map\MapObjectsStatus::NONE_STATUS) {
+      if ($this->status !== \POGOProtos\Map\MapObjectsStatus::UNSET_STATUS) {
         $size += 1 + Protobuf::size_varint($this->status);
       }
       return $size;
@@ -88,14 +88,14 @@ namespace POGOProtos\Networking\Responses {
     public function addMapCells(array $value) { $this->mapCells[] = $value; }
     public function addAllMapCells(array $values) { foreach($values as $value) {$this->mapCells[] = $value; }}
 
-    public function clearStatus() { $this->status = \POGOProtos\Map\MapObjectsStatus::NONE_STATUS; }
+    public function clearStatus() { $this->status = \POGOProtos\Map\MapObjectsStatus::UNSET_STATUS; }
     public function getStatus() { return $this->status;}
     public function setStatus($value) { $this->status = $value; }
 
     public function __toString() {
       return ''
            . Protobuf::toString('map_cells', $this->mapCells, null)
-           . Protobuf::toString('status', $this->status, \POGOProtos\Map\MapObjectsStatus::NONE_STATUS);
+           . Protobuf::toString('status', $this->status, \POGOProtos\Map\MapObjectsStatus::UNSET_STATUS);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.GetMapObjectsResponse)

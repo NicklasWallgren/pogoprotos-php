@@ -13,7 +13,7 @@ namespace POGOProtos\Data\Logs {
 
   // enum POGOProtos.Data.Logs.CatchPokemonLogEntry.Result
   abstract class CatchPokemonLogEntry_Result extends ProtobufEnum {
-    const NONE = 0;
+    const UNSET = 0;
     const POKEMON_CAPTURED = 1;
     const POKEMON_FLED = 2;
 

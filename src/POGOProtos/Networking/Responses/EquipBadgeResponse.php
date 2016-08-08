@@ -13,7 +13,7 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.EquipBadgeResponse.Result
   abstract class EquipBadgeResponse_Result extends ProtobufEnum {
-    const NONE = 0;
+    const UNSET = 0;
     const SUCCESS = 1;
     const COOLDOWN_ACTIVE = 2;
     const NOT_QUALIFIED = 3;
@@ -41,7 +41,7 @@ namespace POGOProtos\Networking\Responses {
   final class EquipBadgeResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.EquipBadgeResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.EquipBadgeResponse.Result result = 1
     private $equipped = null; // optional .POGOProtos.Data.Player.EquippedBadge equipped = 2
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -83,7 +83,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::NONE) {
+      if ($this->result !== \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::UNSET) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -96,7 +96,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::NONE) {
+      if ($this->result !== \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::UNSET) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       if ($this->equipped !== null) {
@@ -106,7 +106,7 @@ namespace POGOProtos\Networking\Responses {
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::NONE; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::UNSET; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -116,7 +116,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::NONE)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\EquipBadgeResponse_Result::UNSET)
            . Protobuf::toString('equipped', $this->equipped, null);
     }
 

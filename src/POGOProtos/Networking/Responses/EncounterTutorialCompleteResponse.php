@@ -13,7 +13,7 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.EncounterTutorialCompleteResponse.Result
   abstract class EncounterTutorialCompleteResponse_Result extends ProtobufEnum {
-    const NONE = 0;
+    const UNSET = 0;
     const SUCCESS = 1;
     const ERROR_INVALID_POKEMON = 2;
 
@@ -39,7 +39,7 @@ namespace POGOProtos\Networking\Responses {
   final class EncounterTutorialCompleteResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.EncounterTutorialCompleteResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.EncounterTutorialCompleteResponse.Result result = 1
     private $pokemonData = null; // optional .POGOProtos.Data.PokemonData pokemon_data = 2
     private $captureAward = null; // optional .POGOProtos.Data.Capture.CaptureAward capture_award = 3
 
@@ -93,7 +93,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::NONE) {
+      if ($this->result !== \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::UNSET) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -111,7 +111,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::NONE) {
+      if ($this->result !== \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::UNSET) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       if ($this->pokemonData !== null) {
@@ -125,7 +125,7 @@ namespace POGOProtos\Networking\Responses {
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::NONE; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::UNSET; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -139,7 +139,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::NONE)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::UNSET)
            . Protobuf::toString('pokemon_data', $this->pokemonData, null)
            . Protobuf::toString('capture_award', $this->captureAward, null);
     }

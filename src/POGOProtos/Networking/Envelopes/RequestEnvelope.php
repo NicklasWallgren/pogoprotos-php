@@ -196,7 +196,7 @@ namespace POGOProtos\Networking\Envelopes {
     private $statusCode = 0; // optional int32 status_code = 1
     private $requestId = 0; // optional uint64 request_id = 3
     private $requests = array(); // repeated .POGOProtos.Networking.Requests.Request requests = 4
-    private $unknown6 = array(); // repeated .POGOProtos.Networking.Envelopes.Unknown6 unknown6 = 6
+    private $unknown6 = null; // optional .POGOProtos.Networking.Envelopes.Unknown6 unknown6 = 6
     private $latitude = 0; // optional double latitude = 7
     private $longitude = 0; // optional double longitude = 8
     private $altitude = 0; // optional double altitude = 9
@@ -245,14 +245,14 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Requests\Request did not read the full length');
 
             break;
-          case 6: // repeated .POGOProtos.Networking.Envelopes.Unknown6 unknown6 = 6
+          case 6: // optional .POGOProtos.Networking.Envelopes.Unknown6 unknown6 = 6
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
             $len = Protobuf::read_varint($fp, $limit);
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $limit -= $len;
-            $this->unknown6[] = new \POGOProtos\Networking\Envelopes\Unknown6($fp, $len);
+            $this->unknown6 = new \POGOProtos\Networking\Envelopes\Unknown6($fp, $len);
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Unknown6 did not read the full length');
 
             break;
@@ -334,10 +334,10 @@ namespace POGOProtos\Networking\Envelopes {
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
       }
-      foreach($this->unknown6 as $v) {
+      if ($this->unknown6 !== null) {
         fwrite($fp, "2", 1);
-        Protobuf::write_varint($fp, $v->size());
-        $v->write($fp);
+        Protobuf::write_varint($fp, $this->unknown6->size());
+        $this->unknown6->write($fp);
       }
       if ($this->latitude !== 0) {
         fwrite($fp, "9", 1);
@@ -379,8 +379,8 @@ namespace POGOProtos\Networking\Envelopes {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      foreach($this->unknown6 as $v) {
-        $l = $v->size();
+      if ($this->unknown6 !== null) {
+        $l = $this->unknown6->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       if ($this->latitude !== 0) {
@@ -422,13 +422,9 @@ namespace POGOProtos\Networking\Envelopes {
     public function addRequests(array $value) { $this->requests[] = $value; }
     public function addAllRequests(array $values) { foreach($values as $value) {$this->requests[] = $value; }}
 
-    public function clearUnknown6() { $this->unknown6 = array(); }
-    public function getUnknown6Count() { return count($this->unknown6); }
-    public function getUnknown6($index) { return $this->unknown6[$index]; }
-    public function getUnknown6Array() { return $this->unknown6; }
-    public function setUnknown6($index, array $value) {$this->unknown6[$index] = $value; }
-    public function addUnknown6(array $value) { $this->unknown6[] = $value; }
-    public function addAllUnknown6(array $values) { foreach($values as $value) {$this->unknown6[] = $value; }}
+    public function clearUnknown6() { $this->unknown6 = null; }
+    public function getUnknown6() { return $this->unknown6;}
+    public function setUnknown6(\POGOProtos\Networking\Envelopes\Unknown6 $value) { $this->unknown6 = $value; }
 
     public function clearLatitude() { $this->latitude = 0; }
     public function getLatitude() { return $this->latitude;}

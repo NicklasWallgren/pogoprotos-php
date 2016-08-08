@@ -15,7 +15,7 @@ namespace POGOProtos\Networking\Envelopes {
   final class Unknown6_Unknown2 extends ProtobufMessage {
 
     private $_unknown;
-    private $unknown1 = ""; // optional bytes unknown1 = 1
+    private $encryptedSignature = ""; // optional bytes encrypted_signature = 1
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -29,7 +29,7 @@ namespace POGOProtos\Networking\Envelopes {
         $wire  = $tag & 0x07;
         $field = $tag >> 3;
         switch($field) {
-          case 1: // optional bytes unknown1 = 1
+          case 1: // optional bytes encrypted_signature = 1
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
@@ -37,7 +37,7 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $tmp = Protobuf::read_bytes($fp, $len, $limit);
             if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
-            $this->unknown1 = $tmp;
+            $this->encryptedSignature = $tmp;
 
             break;
           default:
@@ -47,29 +47,29 @@ namespace POGOProtos\Networking\Envelopes {
     }
 
     public function write($fp) {
-      if ($this->unknown1 !== "") {
+      if ($this->encryptedSignature !== "") {
         fwrite($fp, "\x0a", 1);
-        Protobuf::write_varint($fp, strlen($this->unknown1));
-        fwrite($fp, $this->unknown1);
+        Protobuf::write_varint($fp, strlen($this->encryptedSignature));
+        fwrite($fp, $this->encryptedSignature);
       }
     }
 
     public function size() {
       $size = 0;
-      if ($this->unknown1 !== "") {
-        $l = strlen($this->unknown1);
+      if ($this->encryptedSignature !== "") {
+        $l = strlen($this->encryptedSignature);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
     }
 
-    public function clearUnknown1() { $this->unknown1 = ""; }
-    public function getUnknown1() { return $this->unknown1;}
-    public function setUnknown1($value) { $this->unknown1 = $value; }
+    public function clearEncryptedSignature() { $this->encryptedSignature = ""; }
+    public function getEncryptedSignature() { return $this->encryptedSignature;}
+    public function setEncryptedSignature($value) { $this->encryptedSignature = $value; }
 
     public function __toString() {
       return ''
-           . Protobuf::toString('unknown1', $this->unknown1, "");
+           . Protobuf::toString('encrypted_signature', $this->encryptedSignature, "");
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.Unknown6.Unknown2)

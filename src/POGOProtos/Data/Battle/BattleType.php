@@ -13,13 +13,13 @@ namespace POGOProtos\Data\Battle {
   // enum POGOProtos.Data.Battle.BattleType
   abstract class BattleType extends ProtobufEnum {
     const BATTLE_TYPE_UNSET = 0;
-    const NORMAL = 1;
-    const TRAINING = 2;
+    const BATTLE_TYPE_NORMAL = 1;
+    const BATTLE_TYPE_TRAINING = 2;
 
     public static $_values = array(
       0 => "BATTLE_TYPE_UNSET",
-      1 => "NORMAL",
-      2 => "TRAINING",
+      1 => "BATTLE_TYPE_NORMAL",
+      2 => "BATTLE_TYPE_TRAINING",
     );
 
     public static function isValid($value) {

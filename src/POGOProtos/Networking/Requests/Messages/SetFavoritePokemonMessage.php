@@ -14,7 +14,7 @@ namespace POGOProtos\Networking\Requests\Messages {
   final class SetFavoritePokemonMessage extends ProtobufMessage {
 
     private $_unknown;
-    private $pokemonId = 0; // optional uint64 pokemon_id = 1
+    private $pokemonId = 0; // optional int64 pokemon_id = 1
     private $isFavorite = false; // optional bool is_favorite = 2
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -29,13 +29,13 @@ namespace POGOProtos\Networking\Requests\Messages {
         $wire  = $tag & 0x07;
         $field = $tag >> 3;
         switch($field) {
-          case 1: // optional uint64 pokemon_id = 1
+          case 1: // optional int64 pokemon_id = 1
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
-            $tmp = Protobuf::read_varint($fp, $limit);
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->pokemonId = $tmp;
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->pokemonId = $tmp;
 
             break;
           case 2: // optional bool is_favorite = 2

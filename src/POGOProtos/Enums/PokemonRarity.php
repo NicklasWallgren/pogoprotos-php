@@ -12,14 +12,14 @@ namespace POGOProtos\Enums {
 
   // enum POGOProtos.Enums.PokemonRarity
   abstract class PokemonRarity extends ProtobufEnum {
-    const NORMAL = 0;
-    const LEGENDARY = 1;
-    const MYTHIC = 2;
+    const POKEMON_RARITY_NORMAL = 0;
+    const POKEMON_RARITY_LEGENDARY = 1;
+    const POKEMON_RARITY_MYTHIC = 2;
 
     public static $_values = array(
-      0 => "NORMAL",
-      1 => "LEGENDARY",
-      2 => "MYTHIC",
+      0 => "POKEMON_RARITY_NORMAL",
+      1 => "POKEMON_RARITY_LEGENDARY",
+      2 => "POKEMON_RARITY_MYTHIC",
     );
 
     public static function isValid($value) {

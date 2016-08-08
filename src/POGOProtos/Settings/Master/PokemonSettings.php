@@ -27,7 +27,7 @@ namespace POGOProtos\Settings\Master {
     private $animationTime = array(); // repeated float animation_time = 11
     private $evolutionIds = array(); // repeated .POGOProtos.Enums.PokemonId evolution_ids = 12
     private $evolutionPips = 0; // optional int32 evolution_pips = 13
-    private $rarity = \POGOProtos\Enums\PokemonRarity::NORMAL; // optional .POGOProtos.Enums.PokemonRarity rarity = 14
+    private $rarity = \POGOProtos\Enums\PokemonRarity::POKEMON_RARITY_NORMAL; // optional .POGOProtos.Enums.PokemonRarity rarity = 14
     private $pokedexHeightM = 0; // optional float pokedex_height_m = 15
     private $pokedexWeightKg = 0; // optional float pokedex_weight_kg = 16
     private $parentPokemonId = \POGOProtos\Enums\PokemonId::MISSINGNO; // optional .POGOProtos.Enums.PokemonId parent_pokemon_id = 17
@@ -338,7 +338,7 @@ namespace POGOProtos\Settings\Master {
         fwrite($fp, "h", 1);
         Protobuf::write_varint($fp, $this->evolutionPips);
       }
-      if ($this->rarity !== \POGOProtos\Enums\PokemonRarity::NORMAL) {
+      if ($this->rarity !== \POGOProtos\Enums\PokemonRarity::POKEMON_RARITY_NORMAL) {
         fwrite($fp, "p", 1);
         Protobuf::write_varint($fp, $this->rarity);
       }
@@ -421,7 +421,7 @@ namespace POGOProtos\Settings\Master {
       if ($this->evolutionPips !== 0) {
         $size += 1 + Protobuf::size_varint($this->evolutionPips);
       }
-      if ($this->rarity !== \POGOProtos\Enums\PokemonRarity::NORMAL) {
+      if ($this->rarity !== \POGOProtos\Enums\PokemonRarity::POKEMON_RARITY_NORMAL) {
         $size += 1 + Protobuf::size_varint($this->rarity);
       }
       if ($this->pokedexHeightM !== 0) {
@@ -515,7 +515,7 @@ namespace POGOProtos\Settings\Master {
     public function getEvolutionPips() { return $this->evolutionPips;}
     public function setEvolutionPips($value) { $this->evolutionPips = $value; }
 
-    public function clearRarity() { $this->rarity = \POGOProtos\Enums\PokemonRarity::NORMAL; }
+    public function clearRarity() { $this->rarity = \POGOProtos\Enums\PokemonRarity::POKEMON_RARITY_NORMAL; }
     public function getRarity() { return $this->rarity;}
     public function setRarity($value) { $this->rarity = $value; }
 
@@ -565,7 +565,7 @@ namespace POGOProtos\Settings\Master {
            . Protobuf::toString('animation_time', $this->animationTime, 0)
            . Protobuf::toString('evolution_ids', $this->evolutionIds, \POGOProtos\Enums\PokemonId::MISSINGNO)
            . Protobuf::toString('evolution_pips', $this->evolutionPips, 0)
-           . Protobuf::toString('rarity', $this->rarity, \POGOProtos\Enums\PokemonRarity::NORMAL)
+           . Protobuf::toString('rarity', $this->rarity, \POGOProtos\Enums\PokemonRarity::POKEMON_RARITY_NORMAL)
            . Protobuf::toString('pokedex_height_m', $this->pokedexHeightM, 0)
            . Protobuf::toString('pokedex_weight_kg', $this->pokedexWeightKg, 0)
            . Protobuf::toString('parent_pokemon_id', $this->parentPokemonId, \POGOProtos\Enums\PokemonId::MISSINGNO)
