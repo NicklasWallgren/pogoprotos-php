@@ -159,6 +159,15 @@ namespace POGOProtos\Data {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Player\Currency did not read the full length');
 
             break;
+          case 15:
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');
+            break;
+
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
