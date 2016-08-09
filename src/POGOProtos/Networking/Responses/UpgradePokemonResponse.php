@@ -13,7 +13,7 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.UpgradePokemonResponse.Result
   abstract class UpgradePokemonResponse_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
     const ERROR_POKEMON_NOT_FOUND = 2;
     const ERROR_INSUFFICIENT_RESOURCES = 3;
@@ -21,7 +21,7 @@ namespace POGOProtos\Networking\Responses {
     const ERROR_POKEMON_IS_DEPLOYED = 5;
 
     public static $_values = array(
-      0 => "UNSET",
+      0 => "NONE",
       1 => "SUCCESS",
       2 => "ERROR_POKEMON_NOT_FOUND",
       3 => "ERROR_INSUFFICIENT_RESOURCES",
@@ -45,7 +45,7 @@ namespace POGOProtos\Networking\Responses {
   final class UpgradePokemonResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.UpgradePokemonResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.UpgradePokemonResponse.Result result = 1
     private $upgradedPokemon = null; // optional .POGOProtos.Data.PokemonData upgraded_pokemon = 2
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -87,7 +87,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -100,7 +100,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       if ($this->upgradedPokemon !== null) {
@@ -110,7 +110,7 @@ namespace POGOProtos\Networking\Responses {
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -120,7 +120,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::UNSET)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\UpgradePokemonResponse_Result::NONE)
            . Protobuf::toString('upgraded_pokemon', $this->upgradedPokemon, null);
     }
 

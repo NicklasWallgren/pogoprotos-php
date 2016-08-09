@@ -13,7 +13,7 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.StartGymBattleResponse.Result
   abstract class StartGymBattleResponse_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
     const ERROR_GYM_NOT_FOUND = 2;
     const ERROR_GYM_NEUTRAL = 3;
@@ -29,7 +29,7 @@ namespace POGOProtos\Networking\Responses {
     const ERROR_NOT_IN_RANGE = 13;
 
     public static $_values = array(
-      0 => "UNSET",
+      0 => "NONE",
       1 => "SUCCESS",
       2 => "ERROR_GYM_NOT_FOUND",
       3 => "ERROR_GYM_NEUTRAL",
@@ -61,7 +61,7 @@ namespace POGOProtos\Networking\Responses {
   final class StartGymBattleResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.StartGymBattleResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.StartGymBattleResponse.Result result = 1
     private $battleStartTimestampMs = 0; // optional int64 battle_start_timestamp_ms = 2
     private $battleEndTimestampMs = 0; // optional int64 battle_end_timestamp_ms = 3
     private $battleId = ""; // optional string battle_id = 4
@@ -147,7 +147,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -178,7 +178,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       if ($this->battleStartTimestampMs !== 0) {
@@ -202,7 +202,7 @@ namespace POGOProtos\Networking\Responses {
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -228,7 +228,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::UNSET)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::NONE)
            . Protobuf::toString('battle_start_timestamp_ms', $this->battleStartTimestampMs, 0)
            . Protobuf::toString('battle_end_timestamp_ms', $this->battleEndTimestampMs, 0)
            . Protobuf::toString('battle_id', $this->battleId, "")

@@ -12,13 +12,13 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.CollectDailyBonusResponse.Result
   abstract class CollectDailyBonusResponse_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
     const FAILURE = 2;
     const TOO_SOON = 3;
 
     public static $_values = array(
-      0 => "UNSET",
+      0 => "NONE",
       1 => "SUCCESS",
       2 => "FAILURE",
       3 => "TOO_SOON",
@@ -40,7 +40,7 @@ namespace POGOProtos\Networking\Responses {
   final class CollectDailyBonusResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.CollectDailyBonusResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.CollectDailyBonusResponse.Result result = 1
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -70,7 +70,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -78,19 +78,19 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::UNSET);
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\CollectDailyBonusResponse_Result::NONE);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.CollectDailyBonusResponse)
