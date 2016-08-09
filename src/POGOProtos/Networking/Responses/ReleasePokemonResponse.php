@@ -12,14 +12,14 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.ReleasePokemonResponse.Result
   abstract class ReleasePokemonResponse_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
     const POKEMON_DEPLOYED = 2;
     const FAILED = 3;
     const ERROR_POKEMON_IS_EGG = 4;
 
     public static $_values = array(
-      0 => "UNSET",
+      0 => "NONE",
       1 => "SUCCESS",
       2 => "POKEMON_DEPLOYED",
       3 => "FAILED",
@@ -42,7 +42,7 @@ namespace POGOProtos\Networking\Responses {
   final class ReleasePokemonResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.ReleasePokemonResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.ReleasePokemonResponse.Result result = 1
     private $candyAwarded = 0; // optional int32 candy_awarded = 2
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -82,7 +82,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -94,7 +94,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       if ($this->candyAwarded !== 0) {
@@ -103,7 +103,7 @@ namespace POGOProtos\Networking\Responses {
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -113,7 +113,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::UNSET)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\ReleasePokemonResponse_Result::NONE)
            . Protobuf::toString('candy_awarded', $this->candyAwarded, 0);
     }
 

@@ -13,11 +13,11 @@ namespace POGOProtos\Data\Logs {
 
   // enum POGOProtos.Data.Logs.FortSearchLogEntry.Result
   abstract class FortSearchLogEntry_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
 
     public static $_values = array(
-      0 => "UNSET",
+      0 => "NONE",
       1 => "SUCCESS",
     );
 

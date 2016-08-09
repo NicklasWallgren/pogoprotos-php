@@ -13,12 +13,12 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.LevelUpRewardsResponse.Result
   abstract class LevelUpRewardsResponse_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
     const AWARDED_ALREADY = 2;
 
     public static $_values = array(
-      0 => "UNSET",
+      0 => "NONE",
       1 => "SUCCESS",
       2 => "AWARDED_ALREADY",
     );
@@ -39,7 +39,7 @@ namespace POGOProtos\Networking\Responses {
   final class LevelUpRewardsResponse extends ProtobufMessage {
 
     private $_unknown;
-    private $result = \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.LevelUpRewardsResponse.Result result = 1
+    private $result = \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.LevelUpRewardsResponse.Result result = 1
     private $itemsAwarded = array(); // repeated .POGOProtos.Inventory.Item.ItemAward items_awarded = 2
     private $itemsUnlocked = array(); // repeated .POGOProtos.Inventory.Item.ItemId items_unlocked = 4
 
@@ -100,7 +100,7 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
-      if ($this->result !== \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -117,7 +117,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function size() {
       $size = 0;
-      if ($this->result !== \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       foreach($this->itemsAwarded as $v) {
@@ -131,7 +131,7 @@ namespace POGOProtos\Networking\Responses {
       return $size;
     }
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -153,7 +153,7 @@ namespace POGOProtos\Networking\Responses {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::UNSET)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::NONE)
            . Protobuf::toString('items_awarded', $this->itemsAwarded, null)
            . Protobuf::toString('items_unlocked', $this->itemsUnlocked, \POGOProtos\Inventory\Item\ItemId::ITEM_UNKNOWN);
     }

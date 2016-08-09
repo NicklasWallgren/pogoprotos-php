@@ -13,12 +13,12 @@ namespace POGOProtos\Networking\Responses {
 
   // enum POGOProtos.Networking.Responses.GetGymDetailsResponse.Result
   abstract class GetGymDetailsResponse_Result extends ProtobufEnum {
-    const UNSET = 0;
+    const NONE = 0;
     const SUCCESS = 1;
     const ERROR_NOT_IN_RANGE = 2;
 
     public static $_values = array(
-      0 => "UNSET",
+      0 => "NONE",
       1 => "SUCCESS",
       2 => "ERROR_NOT_IN_RANGE",
     );
@@ -42,7 +42,7 @@ namespace POGOProtos\Networking\Responses {
     private $gymState = null; // optional .POGOProtos.Data.Gym.GymState gym_state = 1
     private $name = ""; // optional string name = 2
     private $urls = array(); // repeated string urls = 3
-    private $result = \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::UNSET; // optional .POGOProtos.Networking.Responses.GetGymDetailsResponse.Result result = 4
+    private $result = \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::NONE; // optional .POGOProtos.Networking.Responses.GetGymDetailsResponse.Result result = 4
     private $description = ""; // optional string description = 5
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -132,7 +132,7 @@ namespace POGOProtos\Networking\Responses {
         Protobuf::write_varint($fp, strlen($v));
         fwrite($fp, $v);
       }
-      if ($this->result !== \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::NONE) {
         fwrite($fp, " ", 1);
         Protobuf::write_varint($fp, $this->result);
       }
@@ -157,7 +157,7 @@ namespace POGOProtos\Networking\Responses {
         $l = strlen($v);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->result !== \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::UNSET) {
+      if ($this->result !== \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::NONE) {
         $size += 1 + Protobuf::size_varint($this->result);
       }
       if ($this->description !== "") {
@@ -183,7 +183,7 @@ namespace POGOProtos\Networking\Responses {
     public function addUrls(array $value) { $this->urls[] = $value; }
     public function addAllUrls(array $values) { foreach($values as $value) {$this->urls[] = $value; }}
 
-    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::UNSET; }
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::NONE; }
     public function getResult() { return $this->result;}
     public function setResult($value) { $this->result = $value; }
 
@@ -196,7 +196,7 @@ namespace POGOProtos\Networking\Responses {
            . Protobuf::toString('gym_state', $this->gymState, null)
            . Protobuf::toString('name', $this->name, "")
            . Protobuf::toString('urls', $this->urls, "")
-           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::UNSET)
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::NONE)
            . Protobuf::toString('description', $this->description, "");
     }
 
