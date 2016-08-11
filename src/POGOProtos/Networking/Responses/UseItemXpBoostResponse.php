@@ -18,7 +18,7 @@ namespace POGOProtos\Networking\Responses {
     const ERROR_INVALID_ITEM_TYPE = 2;
     const ERROR_XP_BOOST_ALREADY_ACTIVE = 3;
     const ERROR_NO_ITEMS_REMAINING = 4;
-    const ERROR_LOCATION_UNSET = 5;
+    const ERROR_LOCATION_NONE = 5;
 
     public static $_values = array(
       0 => "NONE",
@@ -26,7 +26,7 @@ namespace POGOProtos\Networking\Responses {
       2 => "ERROR_INVALID_ITEM_TYPE",
       3 => "ERROR_XP_BOOST_ALREADY_ACTIVE",
       4 => "ERROR_NO_ITEMS_REMAINING",
-      5 => "ERROR_LOCATION_UNSET",
+      5 => "ERROR_LOCATION_NONE",
     );
 
     public static function isValid($value) {

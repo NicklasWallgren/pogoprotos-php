@@ -15,7 +15,7 @@ namespace POGOProtos\Settings\Master {
   final class MoveSettings extends ProtobufMessage {
 
     private $_unknown;
-    private $movementId = \POGOProtos\Enums\PokemonMove::MOVE_UNSET; // optional .POGOProtos.Enums.PokemonMove movement_id = 1
+    private $movementId = \POGOProtos\Enums\PokemonMove::MOVE_NONE; // optional .POGOProtos.Enums.PokemonMove movement_id = 1
     private $animationId = 0; // optional int32 animation_id = 2
     private $pokemonType = \POGOProtos\Enums\PokemonType::POKEMON_TYPE_NONE; // optional .POGOProtos.Enums.PokemonType pokemon_type = 3
     private $power = 0; // optional float power = 4
@@ -187,7 +187,7 @@ namespace POGOProtos\Settings\Master {
     }
 
     public function write($fp) {
-      if ($this->movementId !== \POGOProtos\Enums\PokemonMove::MOVE_UNSET) {
+      if ($this->movementId !== \POGOProtos\Enums\PokemonMove::MOVE_NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->movementId);
       }
@@ -252,7 +252,7 @@ namespace POGOProtos\Settings\Master {
 
     public function size() {
       $size = 0;
-      if ($this->movementId !== \POGOProtos\Enums\PokemonMove::MOVE_UNSET) {
+      if ($this->movementId !== \POGOProtos\Enums\PokemonMove::MOVE_NONE) {
         $size += 1 + Protobuf::size_varint($this->movementId);
       }
       if ($this->animationId !== 0) {
@@ -301,7 +301,7 @@ namespace POGOProtos\Settings\Master {
       return $size;
     }
 
-    public function clearMovementId() { $this->movementId = \POGOProtos\Enums\PokemonMove::MOVE_UNSET; }
+    public function clearMovementId() { $this->movementId = \POGOProtos\Enums\PokemonMove::MOVE_NONE; }
     public function getMovementId() { return $this->movementId;}
     public function setMovementId($value) { $this->movementId = $value; }
 
@@ -363,7 +363,7 @@ namespace POGOProtos\Settings\Master {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('movement_id', $this->movementId, \POGOProtos\Enums\PokemonMove::MOVE_UNSET)
+           . Protobuf::toString('movement_id', $this->movementId, \POGOProtos\Enums\PokemonMove::MOVE_NONE)
            . Protobuf::toString('animation_id', $this->animationId, 0)
            . Protobuf::toString('pokemon_type', $this->pokemonType, \POGOProtos\Enums\PokemonType::POKEMON_TYPE_NONE)
            . Protobuf::toString('power', $this->power, 0)

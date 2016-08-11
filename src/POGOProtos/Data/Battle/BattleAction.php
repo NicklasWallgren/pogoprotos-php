@@ -15,7 +15,7 @@ namespace POGOProtos\Data\Battle {
   final class BattleAction extends ProtobufMessage {
 
     private $_unknown;
-    private $type = \POGOProtos\Data\Battle\BattleActionType::ACTION_UNSET; // optional .POGOProtos.Data.Battle.BattleActionType Type = 1
+    private $type = \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE; // optional .POGOProtos.Data.Battle.BattleActionType Type = 1
     private $actionStartMs = 0; // optional int64 action_start_ms = 2
     private $durationMs = 0; // optional int32 duration_ms = 3
     private $energyDelta = 0; // optional int32 energy_delta = 5
@@ -171,7 +171,7 @@ namespace POGOProtos\Data\Battle {
     }
 
     public function write($fp) {
-      if ($this->type !== \POGOProtos\Data\Battle\BattleActionType::ACTION_UNSET) {
+      if ($this->type !== \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->type);
       }
@@ -230,7 +230,7 @@ namespace POGOProtos\Data\Battle {
 
     public function size() {
       $size = 0;
-      if ($this->type !== \POGOProtos\Data\Battle\BattleActionType::ACTION_UNSET) {
+      if ($this->type !== \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE) {
         $size += 1 + Protobuf::size_varint($this->type);
       }
       if ($this->actionStartMs !== 0) {
@@ -275,7 +275,7 @@ namespace POGOProtos\Data\Battle {
       return $size;
     }
 
-    public function clearType() { $this->type = \POGOProtos\Data\Battle\BattleActionType::ACTION_UNSET; }
+    public function clearType() { $this->type = \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE; }
     public function getType() { return $this->type;}
     public function setType($value) { $this->type = $value; }
 
@@ -329,7 +329,7 @@ namespace POGOProtos\Data\Battle {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('Type', $this->type, \POGOProtos\Data\Battle\BattleActionType::ACTION_UNSET)
+           . Protobuf::toString('Type', $this->type, \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE)
            . Protobuf::toString('action_start_ms', $this->actionStartMs, 0)
            . Protobuf::toString('duration_ms', $this->durationMs, 0)
            . Protobuf::toString('energy_delta', $this->energyDelta, 0)

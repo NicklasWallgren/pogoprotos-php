@@ -12,12 +12,12 @@ namespace POGOProtos\Inventory {
 
   // enum POGOProtos.Inventory.InventoryUpgradeType
   abstract class InventoryUpgradeType extends ProtobufEnum {
-    const UPGRADE_UNSET = 0;
+    const UPGRADE_NONE = 0;
     const INCREASE_ITEM_STORAGE = 1;
     const INCREASE_POKEMON_STORAGE = 2;
 
     public static $_values = array(
-      0 => "UPGRADE_UNSET",
+      0 => "UPGRADE_NONE",
       1 => "INCREASE_ITEM_STORAGE",
       2 => "INCREASE_POKEMON_STORAGE",
     );

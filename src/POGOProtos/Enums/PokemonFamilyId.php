@@ -12,7 +12,7 @@ namespace POGOProtos\Enums {
 
   // enum POGOProtos.Enums.PokemonFamilyId
   abstract class PokemonFamilyId extends ProtobufEnum {
-    const FAMILY_UNSET = 0;
+    const FAMILY_NONE = 0;
     const FAMILY_BULBASAUR = 1;
     const FAMILY_CHARMANDER = 4;
     const FAMILY_SQUIRTLE = 7;
@@ -95,7 +95,7 @@ namespace POGOProtos\Enums {
     const FAMILY_MEW = 151;
 
     public static $_values = array(
-      0 => "FAMILY_UNSET",
+      0 => "FAMILY_NONE",
       1 => "FAMILY_BULBASAUR",
       4 => "FAMILY_CHARMANDER",
       7 => "FAMILY_SQUIRTLE",

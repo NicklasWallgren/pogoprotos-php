@@ -12,14 +12,14 @@ namespace POGOProtos\Data\Battle {
 
   // enum POGOProtos.Data.Battle.BattleState
   abstract class BattleState extends ProtobufEnum {
-    const STATE_UNSET = 0;
+    const STATE_NONE = 0;
     const ACTIVE = 1;
     const VICTORY = 2;
     const DEFEATED = 3;
     const TIMED_OUT = 4;
 
     public static $_values = array(
-      0 => "STATE_UNSET",
+      0 => "STATE_NONE",
       1 => "ACTIVE",
       2 => "VICTORY",
       3 => "DEFEATED",

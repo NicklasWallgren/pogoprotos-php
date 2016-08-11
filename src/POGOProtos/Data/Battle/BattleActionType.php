@@ -12,7 +12,7 @@ namespace POGOProtos\Data\Battle {
 
   // enum POGOProtos.Data.Battle.BattleActionType
   abstract class BattleActionType extends ProtobufEnum {
-    const ACTION_UNSET = 0;
+    const ACTION_NONE = 0;
     const ACTION_ATTACK = 1;
     const ACTION_DODGE = 2;
     const ACTION_SPECIAL_ATTACK = 3;
@@ -25,7 +25,7 @@ namespace POGOProtos\Data\Battle {
     const ACTION_TIMED_OUT = 10;
 
     public static $_values = array(
-      0 => "ACTION_UNSET",
+      0 => "ACTION_NONE",
       1 => "ACTION_ATTACK",
       2 => "ACTION_DODGE",
       3 => "ACTION_SPECIAL_ATTACK",

@@ -15,7 +15,7 @@ namespace POGOProtos\Networking\Requests\Messages {
   final class EquipBadgeMessage extends ProtobufMessage {
 
     private $_unknown;
-    private $badgeType = \POGOProtos\Enums\BadgeType::BADGE_UNSET; // optional .POGOProtos.Enums.BadgeType badge_type = 1
+    private $badgeType = \POGOProtos\Enums\BadgeType::BADGE_NONE; // optional .POGOProtos.Enums.BadgeType badge_type = 1
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -45,7 +45,7 @@ namespace POGOProtos\Networking\Requests\Messages {
     }
 
     public function write($fp) {
-      if ($this->badgeType !== \POGOProtos\Enums\BadgeType::BADGE_UNSET) {
+      if ($this->badgeType !== \POGOProtos\Enums\BadgeType::BADGE_NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->badgeType);
       }
@@ -53,19 +53,19 @@ namespace POGOProtos\Networking\Requests\Messages {
 
     public function size() {
       $size = 0;
-      if ($this->badgeType !== \POGOProtos\Enums\BadgeType::BADGE_UNSET) {
+      if ($this->badgeType !== \POGOProtos\Enums\BadgeType::BADGE_NONE) {
         $size += 1 + Protobuf::size_varint($this->badgeType);
       }
       return $size;
     }
 
-    public function clearBadgeType() { $this->badgeType = \POGOProtos\Enums\BadgeType::BADGE_UNSET; }
+    public function clearBadgeType() { $this->badgeType = \POGOProtos\Enums\BadgeType::BADGE_NONE; }
     public function getBadgeType() { return $this->badgeType;}
     public function setBadgeType($value) { $this->badgeType = $value; }
 
     public function __toString() {
       return ''
-           . Protobuf::toString('badge_type', $this->badgeType, \POGOProtos\Enums\BadgeType::BADGE_UNSET);
+           . Protobuf::toString('badge_type', $this->badgeType, \POGOProtos\Enums\BadgeType::BADGE_NONE);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Requests.Messages.EquipBadgeMessage)

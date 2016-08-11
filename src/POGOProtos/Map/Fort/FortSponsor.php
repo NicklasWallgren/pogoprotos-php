@@ -17,7 +17,7 @@ namespace POGOProtos\Map\Fort {
     const POKEMON_STORE = 2;
 
     public static $_values = array(
-      0 => "UNSET_SPONSOR",
+      0 => "NONE_SPONSOR",
       1 => "MCDONALDS",
       2 => "POKEMON_STORE",
     );

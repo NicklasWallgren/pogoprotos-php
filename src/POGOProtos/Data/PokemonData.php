@@ -20,8 +20,8 @@ namespace POGOProtos\Data {
     private $cp = 0; // optional int32 cp = 3
     private $stamina = 0; // optional int32 stamina = 4
     private $staminaMax = 0; // optional int32 stamina_max = 5
-    private $move1 = \POGOProtos\Enums\PokemonMove::MOVE_UNSET; // optional .POGOProtos.Enums.PokemonMove move_1 = 6
-    private $move2 = \POGOProtos\Enums\PokemonMove::MOVE_UNSET; // optional .POGOProtos.Enums.PokemonMove move_2 = 7
+    private $move1 = \POGOProtos\Enums\PokemonMove::MOVE_NONE; // optional .POGOProtos.Enums.PokemonMove move_1 = 6
+    private $move2 = \POGOProtos\Enums\PokemonMove::MOVE_NONE; // optional .POGOProtos.Enums.PokemonMove move_2 = 7
     private $deployedFortId = ""; // optional string deployed_fort_id = 8
     private $ownerName = ""; // optional string owner_name = 9
     private $isEgg = false; // optional bool is_egg = 10
@@ -363,11 +363,11 @@ namespace POGOProtos\Data {
         fwrite($fp, "(", 1);
         Protobuf::write_varint($fp, $this->staminaMax);
       }
-      if ($this->move1 !== \POGOProtos\Enums\PokemonMove::MOVE_UNSET) {
+      if ($this->move1 !== \POGOProtos\Enums\PokemonMove::MOVE_NONE) {
         fwrite($fp, "0", 1);
         Protobuf::write_varint($fp, $this->move1);
       }
-      if ($this->move2 !== \POGOProtos\Enums\PokemonMove::MOVE_UNSET) {
+      if ($this->move2 !== \POGOProtos\Enums\PokemonMove::MOVE_NONE) {
         fwrite($fp, "8", 1);
         Protobuf::write_varint($fp, $this->move2);
       }
@@ -486,10 +486,10 @@ namespace POGOProtos\Data {
       if ($this->staminaMax !== 0) {
         $size += 1 + Protobuf::size_varint($this->staminaMax);
       }
-      if ($this->move1 !== \POGOProtos\Enums\PokemonMove::MOVE_UNSET) {
+      if ($this->move1 !== \POGOProtos\Enums\PokemonMove::MOVE_NONE) {
         $size += 1 + Protobuf::size_varint($this->move1);
       }
-      if ($this->move2 !== \POGOProtos\Enums\PokemonMove::MOVE_UNSET) {
+      if ($this->move2 !== \POGOProtos\Enums\PokemonMove::MOVE_NONE) {
         $size += 1 + Protobuf::size_varint($this->move2);
       }
       if ($this->deployedFortId !== "") {
@@ -588,11 +588,11 @@ namespace POGOProtos\Data {
     public function getStaminaMax() { return $this->staminaMax;}
     public function setStaminaMax($value) { $this->staminaMax = $value; }
 
-    public function clearMove1() { $this->move1 = \POGOProtos\Enums\PokemonMove::MOVE_UNSET; }
+    public function clearMove1() { $this->move1 = \POGOProtos\Enums\PokemonMove::MOVE_NONE; }
     public function getMove1() { return $this->move1;}
     public function setMove1($value) { $this->move1 = $value; }
 
-    public function clearMove2() { $this->move2 = \POGOProtos\Enums\PokemonMove::MOVE_UNSET; }
+    public function clearMove2() { $this->move2 = \POGOProtos\Enums\PokemonMove::MOVE_NONE; }
     public function getMove2() { return $this->move2;}
     public function setMove2($value) { $this->move2 = $value; }
 
@@ -695,8 +695,8 @@ namespace POGOProtos\Data {
            . Protobuf::toString('cp', $this->cp, 0)
            . Protobuf::toString('stamina', $this->stamina, 0)
            . Protobuf::toString('stamina_max', $this->staminaMax, 0)
-           . Protobuf::toString('move_1', $this->move1, \POGOProtos\Enums\PokemonMove::MOVE_UNSET)
-           . Protobuf::toString('move_2', $this->move2, \POGOProtos\Enums\PokemonMove::MOVE_UNSET)
+           . Protobuf::toString('move_1', $this->move1, \POGOProtos\Enums\PokemonMove::MOVE_NONE)
+           . Protobuf::toString('move_2', $this->move2, \POGOProtos\Enums\PokemonMove::MOVE_NONE)
            . Protobuf::toString('deployed_fort_id', $this->deployedFortId, "")
            . Protobuf::toString('owner_name', $this->ownerName, "")
            . Protobuf::toString('is_egg', $this->isEgg, false)

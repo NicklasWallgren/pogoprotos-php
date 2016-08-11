@@ -15,7 +15,7 @@ namespace POGOProtos\Networking\Requests {
   final class Request extends ProtobufMessage {
 
     private $_unknown;
-    private $requestType = \POGOProtos\Networking\Requests\RequestType::METHOD_UNSET; // optional .POGOProtos.Networking.Requests.RequestType request_type = 1
+    private $requestType = \POGOProtos\Networking\Requests\RequestType::METHOD_NONE; // optional .POGOProtos.Networking.Requests.RequestType request_type = 1
     private $requestMessage = ""; // optional bytes request_message = 2
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -57,7 +57,7 @@ namespace POGOProtos\Networking\Requests {
     }
 
     public function write($fp) {
-      if ($this->requestType !== \POGOProtos\Networking\Requests\RequestType::METHOD_UNSET) {
+      if ($this->requestType !== \POGOProtos\Networking\Requests\RequestType::METHOD_NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->requestType);
       }
@@ -70,7 +70,7 @@ namespace POGOProtos\Networking\Requests {
 
     public function size() {
       $size = 0;
-      if ($this->requestType !== \POGOProtos\Networking\Requests\RequestType::METHOD_UNSET) {
+      if ($this->requestType !== \POGOProtos\Networking\Requests\RequestType::METHOD_NONE) {
         $size += 1 + Protobuf::size_varint($this->requestType);
       }
       if ($this->requestMessage !== "") {
@@ -80,7 +80,7 @@ namespace POGOProtos\Networking\Requests {
       return $size;
     }
 
-    public function clearRequestType() { $this->requestType = \POGOProtos\Networking\Requests\RequestType::METHOD_UNSET; }
+    public function clearRequestType() { $this->requestType = \POGOProtos\Networking\Requests\RequestType::METHOD_NONE; }
     public function getRequestType() { return $this->requestType;}
     public function setRequestType($value) { $this->requestType = $value; }
 
@@ -90,7 +90,7 @@ namespace POGOProtos\Networking\Requests {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('request_type', $this->requestType, \POGOProtos\Networking\Requests\RequestType::METHOD_UNSET)
+           . Protobuf::toString('request_type', $this->requestType, \POGOProtos\Networking\Requests\RequestType::METHOD_NONE)
            . Protobuf::toString('request_message', $this->requestMessage, "");
     }
 

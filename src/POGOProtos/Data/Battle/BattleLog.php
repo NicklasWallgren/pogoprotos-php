@@ -15,8 +15,8 @@ namespace POGOProtos\Data\Battle {
   final class BattleLog extends ProtobufMessage {
 
     private $_unknown;
-    private $state = \POGOProtos\Data\Battle\BattleState::STATE_UNSET; // optional .POGOProtos.Data.Battle.BattleState state = 1
-    private $battleType = \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_UNSET; // optional .POGOProtos.Data.Battle.BattleType battle_type = 2
+    private $state = \POGOProtos\Data\Battle\BattleState::STATE_NONE; // optional .POGOProtos.Data.Battle.BattleState state = 1
+    private $battleType = \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_NONE; // optional .POGOProtos.Data.Battle.BattleType battle_type = 2
     private $serverMs = 0; // optional int64 server_ms = 3
     private $battleActions = array(); // repeated .POGOProtos.Data.Battle.BattleAction battle_actions = 4
     private $battleStartTimestampMs = 0; // optional int64 battle_start_timestamp_ms = 5
@@ -97,11 +97,11 @@ namespace POGOProtos\Data\Battle {
     }
 
     public function write($fp) {
-      if ($this->state !== \POGOProtos\Data\Battle\BattleState::STATE_UNSET) {
+      if ($this->state !== \POGOProtos\Data\Battle\BattleState::STATE_NONE) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->state);
       }
-      if ($this->battleType !== \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_UNSET) {
+      if ($this->battleType !== \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_NONE) {
         fwrite($fp, "\x10", 1);
         Protobuf::write_varint($fp, $this->battleType);
       }
@@ -126,10 +126,10 @@ namespace POGOProtos\Data\Battle {
 
     public function size() {
       $size = 0;
-      if ($this->state !== \POGOProtos\Data\Battle\BattleState::STATE_UNSET) {
+      if ($this->state !== \POGOProtos\Data\Battle\BattleState::STATE_NONE) {
         $size += 1 + Protobuf::size_varint($this->state);
       }
-      if ($this->battleType !== \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_UNSET) {
+      if ($this->battleType !== \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_NONE) {
         $size += 1 + Protobuf::size_varint($this->battleType);
       }
       if ($this->serverMs !== 0) {
@@ -148,11 +148,11 @@ namespace POGOProtos\Data\Battle {
       return $size;
     }
 
-    public function clearState() { $this->state = \POGOProtos\Data\Battle\BattleState::STATE_UNSET; }
+    public function clearState() { $this->state = \POGOProtos\Data\Battle\BattleState::STATE_NONE; }
     public function getState() { return $this->state;}
     public function setState($value) { $this->state = $value; }
 
-    public function clearBattleType() { $this->battleType = \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_UNSET; }
+    public function clearBattleType() { $this->battleType = \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_NONE; }
     public function getBattleType() { return $this->battleType;}
     public function setBattleType($value) { $this->battleType = $value; }
 
@@ -178,8 +178,8 @@ namespace POGOProtos\Data\Battle {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('state', $this->state, \POGOProtos\Data\Battle\BattleState::STATE_UNSET)
-           . Protobuf::toString('battle_type', $this->battleType, \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_UNSET)
+           . Protobuf::toString('state', $this->state, \POGOProtos\Data\Battle\BattleState::STATE_NONE)
+           . Protobuf::toString('battle_type', $this->battleType, \POGOProtos\Data\Battle\BattleType::BATTLE_TYPE_NONE)
            . Protobuf::toString('server_ms', $this->serverMs, 0)
            . Protobuf::toString('battle_actions', $this->battleActions, null)
            . Protobuf::toString('battle_start_timestamp_ms', $this->battleStartTimestampMs, 0)

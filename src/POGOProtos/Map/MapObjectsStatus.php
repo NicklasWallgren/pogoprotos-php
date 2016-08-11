@@ -14,12 +14,12 @@ namespace POGOProtos\Map {
   abstract class MapObjectsStatus extends ProtobufEnum {
     const NONE_STATUS = 0;
     const SUCCESS = 1;
-    const LOCATION_UNSET = 2;
+    const LOCATION_NONE = 2;
 
     public static $_values = array(
-      0 => "UNSET_STATUS",
+      0 => "NONE_STATUS",
       1 => "SUCCESS",
-      2 => "LOCATION_UNSET",
+      2 => "LOCATION_NONE",
     );
 
     public static function isValid($value) {

@@ -18,6 +18,8 @@ namespace POGOProtos\Map\Pokemon {
     private $pokemonId = \POGOProtos\Enums\PokemonId::MISSINGNO; // optional .POGOProtos.Enums.PokemonId pokemon_id = 1
     private $distanceInMeters = 0; // optional float distance_in_meters = 2
     private $encounterId = 0; // optional fixed64 encounter_id = 3
+    private $fortId = ""; // optional string fort_id = 4
+    private $fortImageUrl = ""; // optional string fort_image_url = 5
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -58,6 +60,28 @@ namespace POGOProtos\Map\Pokemon {
             $this->encounterId = $tmp;
 
             break;
+          case 4: // optional string fort_id = 4
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->fortId = $tmp;
+
+            break;
+          case 5: // optional string fort_image_url = 5
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->fortImageUrl = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -77,6 +101,16 @@ namespace POGOProtos\Map\Pokemon {
         fwrite($fp, "\x19", 1);
         Protobuf::write_uint64($fp, $this->encounterId);
       }
+      if ($this->fortId !== "") {
+        fwrite($fp, "\"", 1);
+        Protobuf::write_varint($fp, strlen($this->fortId));
+        fwrite($fp, $this->fortId);
+      }
+      if ($this->fortImageUrl !== "") {
+        fwrite($fp, "*", 1);
+        Protobuf::write_varint($fp, strlen($this->fortImageUrl));
+        fwrite($fp, $this->fortImageUrl);
+      }
     }
 
     public function size() {
@@ -89,6 +123,14 @@ namespace POGOProtos\Map\Pokemon {
       }
       if ($this->encounterId !== 0) {
         $size += 9;
+      }
+      if ($this->fortId !== "") {
+        $l = strlen($this->fortId);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->fortImageUrl !== "") {
+        $l = strlen($this->fortImageUrl);
+        $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
     }
@@ -105,11 +147,21 @@ namespace POGOProtos\Map\Pokemon {
     public function getEncounterId() { return $this->encounterId;}
     public function setEncounterId($value) { $this->encounterId = $value; }
 
+    public function clearFortId() { $this->fortId = ""; }
+    public function getFortId() { return $this->fortId;}
+    public function setFortId($value) { $this->fortId = $value; }
+
+    public function clearFortImageUrl() { $this->fortImageUrl = ""; }
+    public function getFortImageUrl() { return $this->fortImageUrl;}
+    public function setFortImageUrl($value) { $this->fortImageUrl = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('pokemon_id', $this->pokemonId, \POGOProtos\Enums\PokemonId::MISSINGNO)
            . Protobuf::toString('distance_in_meters', $this->distanceInMeters, 0)
-           . Protobuf::toString('encounter_id', $this->encounterId, 0);
+           . Protobuf::toString('encounter_id', $this->encounterId, 0)
+           . Protobuf::toString('fort_id', $this->fortId, "")
+           . Protobuf::toString('fort_image_url', $this->fortImageUrl, "");
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Map.Pokemon.NearbyPokemon)

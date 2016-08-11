@@ -12,7 +12,7 @@ namespace POGOProtos\Enums {
 
   // enum POGOProtos.Enums.BadgeType
   abstract class BadgeType extends ProtobufEnum {
-    const BADGE_UNSET = 0;
+    const BADGE_NONE = 0;
     const BADGE_TRAVEL_KM = 1;
     const BADGE_POKEDEX_ENTRIES = 2;
     const BADGE_CAPTURE_TOTAL = 3;
@@ -52,7 +52,7 @@ namespace POGOProtos\Enums {
     const BADGE_PIKACHU = 37;
 
     public static $_values = array(
-      0 => "BADGE_UNSET",
+      0 => "BADGE_NONE",
       1 => "BADGE_TRAVEL_KM",
       2 => "BADGE_POKEDEX_ENTRIES",
       3 => "BADGE_CAPTURE_TOTAL",

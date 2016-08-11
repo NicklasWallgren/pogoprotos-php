@@ -12,7 +12,7 @@ namespace POGOProtos\Enums {
 
   // enum POGOProtos.Enums.PokemonMove
   abstract class PokemonMove extends ProtobufEnum {
-    const MOVE_UNSET = 0;
+    const MOVE_NONE = 0;
     const THUNDER_SHOCK = 1;
     const QUICK_ATTACK = 2;
     const SCRATCH = 3;
@@ -194,7 +194,7 @@ namespace POGOProtos\Enums {
     const ROCK_SMASH_FAST = 241;
 
     public static $_values = array(
-      0 => "MOVE_UNSET",
+      0 => "MOVE_NONE",
       1 => "THUNDER_SHOCK",
       2 => "QUICK_ATTACK",
       3 => "SCRATCH",

@@ -12,11 +12,11 @@ namespace POGOProtos\Inventory {
 
   // enum POGOProtos.Inventory.EggIncubatorType
   abstract class EggIncubatorType extends ProtobufEnum {
-    const INCUBATOR_UNSET = 0;
+    const INCUBATOR_NONE = 0;
     const INCUBATOR_DISTANCE = 1;
 
     public static $_values = array(
-      0 => "INCUBATOR_UNSET",
+      0 => "INCUBATOR_NONE",
       1 => "INCUBATOR_DISTANCE",
     );
 

@@ -17,14 +17,14 @@ namespace POGOProtos\Networking\Responses {
     const SUCCESS = 1;
     const INCENSE_ALREADY_ACTIVE = 2;
     const NONE_IN_INVENTORY = 3;
-    const LOCATION_UNSET = 4;
+    const LOCATION_NONE = 4;
 
     public static $_values = array(
       0 => "UNKNOWN",
       1 => "SUCCESS",
       2 => "INCENSE_ALREADY_ACTIVE",
       3 => "NONE_IN_INVENTORY",
-      4 => "LOCATION_UNSET",
+      4 => "LOCATION_NONE",
     );
 
     public static function isValid($value) {

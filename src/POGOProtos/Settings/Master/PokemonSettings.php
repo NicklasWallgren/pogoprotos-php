@@ -34,7 +34,7 @@ namespace POGOProtos\Settings\Master {
     private $heightStdDev = 0; // optional float height_std_dev = 18
     private $weightStdDev = 0; // optional float weight_std_dev = 19
     private $kmDistanceToHatch = 0; // optional float km_distance_to_hatch = 20
-    private $familyId = \POGOProtos\Enums\PokemonFamilyId::FAMILY_UNSET; // optional .POGOProtos.Enums.PokemonFamilyId family_id = 21
+    private $familyId = \POGOProtos\Enums\PokemonFamilyId::FAMILY_NONE; // optional .POGOProtos.Enums.PokemonFamilyId family_id = 21
     private $candyToEvolve = 0; // optional int32 candy_to_evolve = 22
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -366,7 +366,7 @@ namespace POGOProtos\Settings\Master {
         fwrite($fp, "\xa5\x01", 2);
         Protobuf::write_float($fp, $this->kmDistanceToHatch);
       }
-      if ($this->familyId !== \POGOProtos\Enums\PokemonFamilyId::FAMILY_UNSET) {
+      if ($this->familyId !== \POGOProtos\Enums\PokemonFamilyId::FAMILY_NONE) {
         fwrite($fp, "\xa8\x01", 2);
         Protobuf::write_varint($fp, $this->familyId);
       }
@@ -442,7 +442,7 @@ namespace POGOProtos\Settings\Master {
       if ($this->kmDistanceToHatch !== 0) {
         $size += 6;
       }
-      if ($this->familyId !== \POGOProtos\Enums\PokemonFamilyId::FAMILY_UNSET) {
+      if ($this->familyId !== \POGOProtos\Enums\PokemonFamilyId::FAMILY_NONE) {
         $size += 2 + Protobuf::size_varint($this->familyId);
       }
       if ($this->candyToEvolve !== 0) {
@@ -543,7 +543,7 @@ namespace POGOProtos\Settings\Master {
     public function getKmDistanceToHatch() { return $this->kmDistanceToHatch;}
     public function setKmDistanceToHatch($value) { $this->kmDistanceToHatch = $value; }
 
-    public function clearFamilyId() { $this->familyId = \POGOProtos\Enums\PokemonFamilyId::FAMILY_UNSET; }
+    public function clearFamilyId() { $this->familyId = \POGOProtos\Enums\PokemonFamilyId::FAMILY_NONE; }
     public function getFamilyId() { return $this->familyId;}
     public function setFamilyId($value) { $this->familyId = $value; }
 
@@ -560,8 +560,8 @@ namespace POGOProtos\Settings\Master {
            . Protobuf::toString('camera', $this->camera, null)
            . Protobuf::toString('encounter', $this->encounter, null)
            . Protobuf::toString('stats', $this->stats, null)
-           . Protobuf::toString('quick_moves', $this->quickMoves, \POGOProtos\Enums\PokemonMove::MOVE_UNSET)
-           . Protobuf::toString('cinematic_moves', $this->cinematicMoves, \POGOProtos\Enums\PokemonMove::MOVE_UNSET)
+           . Protobuf::toString('quick_moves', $this->quickMoves, \POGOProtos\Enums\PokemonMove::MOVE_NONE)
+           . Protobuf::toString('cinematic_moves', $this->cinematicMoves, \POGOProtos\Enums\PokemonMove::MOVE_NONE)
            . Protobuf::toString('animation_time', $this->animationTime, 0)
            . Protobuf::toString('evolution_ids', $this->evolutionIds, \POGOProtos\Enums\PokemonId::MISSINGNO)
            . Protobuf::toString('evolution_pips', $this->evolutionPips, 0)
@@ -572,7 +572,7 @@ namespace POGOProtos\Settings\Master {
            . Protobuf::toString('height_std_dev', $this->heightStdDev, 0)
            . Protobuf::toString('weight_std_dev', $this->weightStdDev, 0)
            . Protobuf::toString('km_distance_to_hatch', $this->kmDistanceToHatch, 0)
-           . Protobuf::toString('family_id', $this->familyId, \POGOProtos\Enums\PokemonFamilyId::FAMILY_UNSET)
+           . Protobuf::toString('family_id', $this->familyId, \POGOProtos\Enums\PokemonFamilyId::FAMILY_NONE)
            . Protobuf::toString('candy_to_evolve', $this->candyToEvolve, 0);
     }
 

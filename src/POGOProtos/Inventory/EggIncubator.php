@@ -17,7 +17,7 @@ namespace POGOProtos\Inventory {
     private $_unknown;
     private $id = ""; // optional string id = 1
     private $itemId = \POGOProtos\Inventory\Item\ItemId::ITEM_UNKNOWN; // optional .POGOProtos.Inventory.Item.ItemId item_id = 2
-    private $incubatorType = \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_UNSET; // optional .POGOProtos.Inventory.EggIncubatorType incubator_type = 3
+    private $incubatorType = \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_NONE; // optional .POGOProtos.Inventory.EggIncubatorType incubator_type = 3
     private $usesRemaining = 0; // optional int32 uses_remaining = 4
     private $pokemonId = 0; // optional uint64 pokemon_id = 5
     private $startKmWalked = 0; // optional double start_km_walked = 6
@@ -116,7 +116,7 @@ namespace POGOProtos\Inventory {
         fwrite($fp, "\x10", 1);
         Protobuf::write_varint($fp, $this->itemId);
       }
-      if ($this->incubatorType !== \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_UNSET) {
+      if ($this->incubatorType !== \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_NONE) {
         fwrite($fp, "\x18", 1);
         Protobuf::write_varint($fp, $this->incubatorType);
       }
@@ -147,7 +147,7 @@ namespace POGOProtos\Inventory {
       if ($this->itemId !== \POGOProtos\Inventory\Item\ItemId::ITEM_UNKNOWN) {
         $size += 1 + Protobuf::size_varint($this->itemId);
       }
-      if ($this->incubatorType !== \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_UNSET) {
+      if ($this->incubatorType !== \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_NONE) {
         $size += 1 + Protobuf::size_varint($this->incubatorType);
       }
       if ($this->usesRemaining !== 0) {
@@ -173,7 +173,7 @@ namespace POGOProtos\Inventory {
     public function getItemId() { return $this->itemId;}
     public function setItemId($value) { $this->itemId = $value; }
 
-    public function clearIncubatorType() { $this->incubatorType = \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_UNSET; }
+    public function clearIncubatorType() { $this->incubatorType = \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_NONE; }
     public function getIncubatorType() { return $this->incubatorType;}
     public function setIncubatorType($value) { $this->incubatorType = $value; }
 
@@ -197,7 +197,7 @@ namespace POGOProtos\Inventory {
       return ''
            . Protobuf::toString('id', $this->id, "")
            . Protobuf::toString('item_id', $this->itemId, \POGOProtos\Inventory\Item\ItemId::ITEM_UNKNOWN)
-           . Protobuf::toString('incubator_type', $this->incubatorType, \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_UNSET)
+           . Protobuf::toString('incubator_type', $this->incubatorType, \POGOProtos\Inventory\EggIncubatorType::INCUBATOR_NONE)
            . Protobuf::toString('uses_remaining', $this->usesRemaining, 0)
            . Protobuf::toString('pokemon_id', $this->pokemonId, 0)
            . Protobuf::toString('start_km_walked', $this->startKmWalked, 0)

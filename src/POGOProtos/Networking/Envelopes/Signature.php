@@ -16,7 +16,7 @@ namespace POGOProtos\Networking\Envelopes {
 
     private $_unknown;
     private $provider = ""; // optional string provider = 1
-    private $timestampSinceStart = 0; // optional uint64 timestamp_since_start = 2
+    private $timestampSnapshot = 0; // optional uint64 timestamp_snapshot = 2
     private $latitude = 0; // optional float latitude = 13
     private $longitude = 0; // optional float longitude = 14
     private $horizontalAccuracy = 0; // optional float horizontal_accuracy = 20
@@ -49,13 +49,13 @@ namespace POGOProtos\Networking\Envelopes {
             $this->provider = $tmp;
 
             break;
-          case 2: // optional uint64 timestamp_since_start = 2
+          case 2: // optional uint64 timestamp_snapshot = 2
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->timestampSinceStart = $tmp;
+            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->timestampSnapshot = $tmp;
 
             break;
           case 13: // optional float latitude = 13
@@ -142,9 +142,9 @@ namespace POGOProtos\Networking\Envelopes {
         Protobuf::write_varint($fp, strlen($this->provider));
         fwrite($fp, $this->provider);
       }
-      if ($this->timestampSinceStart !== 0) {
+      if ($this->timestampSnapshot !== 0) {
         fwrite($fp, "\x10", 1);
-        Protobuf::write_varint($fp, $this->timestampSinceStart);
+        Protobuf::write_varint($fp, $this->timestampSnapshot);
       }
       if ($this->latitude !== 0) {
         fwrite($fp, "m", 1);
@@ -186,8 +186,8 @@ namespace POGOProtos\Networking\Envelopes {
         $l = strlen($this->provider);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->timestampSinceStart !== 0) {
-        $size += 1 + Protobuf::size_varint($this->timestampSinceStart);
+      if ($this->timestampSnapshot !== 0) {
+        $size += 1 + Protobuf::size_varint($this->timestampSnapshot);
       }
       if ($this->latitude !== 0) {
         $size += 5;
@@ -220,9 +220,9 @@ namespace POGOProtos\Networking\Envelopes {
     public function getProvider() { return $this->provider;}
     public function setProvider($value) { $this->provider = $value; }
 
-    public function clearTimestampSinceStart() { $this->timestampSinceStart = 0; }
-    public function getTimestampSinceStart() { return $this->timestampSinceStart;}
-    public function setTimestampSinceStart($value) { $this->timestampSinceStart = $value; }
+    public function clearTimestampSnapshot() { $this->timestampSnapshot = 0; }
+    public function getTimestampSnapshot() { return $this->timestampSnapshot;}
+    public function setTimestampSnapshot($value) { $this->timestampSnapshot = $value; }
 
     public function clearLatitude() { $this->latitude = 0; }
     public function getLatitude() { return $this->latitude;}
@@ -259,7 +259,7 @@ namespace POGOProtos\Networking\Envelopes {
     public function __toString() {
       return ''
            . Protobuf::toString('provider', $this->provider, "")
-           . Protobuf::toString('timestamp_since_start', $this->timestampSinceStart, 0)
+           . Protobuf::toString('timestamp_snapshot', $this->timestampSnapshot, 0)
            . Protobuf::toString('latitude', $this->latitude, 0)
            . Protobuf::toString('longitude', $this->longitude, 0)
            . Protobuf::toString('horizontal_accuracy', $this->horizontalAccuracy, 0)
@@ -1627,11 +1627,12 @@ namespace POGOProtos\Networking\Envelopes {
     private $sensorInfo = null; // optional .POGOProtos.Networking.Envelopes.Signature.SensorInfo sensor_info = 7
     private $deviceInfo = null; // optional .POGOProtos.Networking.Envelopes.Signature.DeviceInfo device_info = 8
     private $activityStatus = null; // optional .POGOProtos.Networking.Envelopes.Signature.ActivityStatus activity_status = 9
-    private $locationHash1 = 0; // optional uint32 location_hash1 = 10
-    private $locationHash2 = 0; // optional uint32 location_hash2 = 20
-    private $unknown22 = ""; // optional bytes unknown22 = 22
+    private $locationHash1 = 0; // optional uint64 location_hash1 = 10
+    private $locationHash2 = 0; // optional uint64 location_hash2 = 20
+    private $sessionHash = ""; // optional bytes session_hash = 22
     private $timestamp = 0; // optional uint64 timestamp = 23
-    private $requestHash = array(); // repeated uint64 request_hash = 24
+    private $requestHash = array(); // repeated int64 request_hash = 24
+    private $unknown25 = 0; // optional int64 unknown25 = 25
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -1709,25 +1710,25 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Signature_ActivityStatus did not read the full length');
 
             break;
-          case 10: // optional uint32 location_hash1 = 10
+          case 10: // optional uint64 location_hash1 = 10
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT32 || $tmp > Protobuf::MAX_UINT32) throw new \Exception('uint32 out of range');$this->locationHash1 = $tmp;
+            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->locationHash1 = $tmp;
 
             break;
-          case 20: // optional uint32 location_hash2 = 20
+          case 20: // optional uint64 location_hash2 = 20
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT32 || $tmp > Protobuf::MAX_UINT32) throw new \Exception('uint32 out of range');$this->locationHash2 = $tmp;
+            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->locationHash2 = $tmp;
 
             break;
-          case 22: // optional bytes unknown22 = 22
+          case 22: // optional bytes session_hash = 22
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
@@ -1735,7 +1736,7 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $tmp = Protobuf::read_bytes($fp, $len, $limit);
             if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
-            $this->unknown22 = $tmp;
+            $this->sessionHash = $tmp;
 
             break;
           case 23: // optional uint64 timestamp = 23
@@ -1747,22 +1748,31 @@ namespace POGOProtos\Networking\Envelopes {
             if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->timestamp = $tmp;
 
             break;
-          case 24: // repeated uint64 request_hash = 24
+          case 24: // repeated int64 request_hash = 24
             if($wire !== 2 && $wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 or 0 got: $wire");
             }
             if ($wire === 0) {
-              $tmp = Protobuf::read_varint($fp, $limit);
+              $tmp = Protobuf::read_signed_varint($fp, $limit);
               if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-              if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->requestHash[] = $tmp;
+              if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->requestHash[] = $tmp;
             } elseif ($wire === 2) {
               $len = Protobuf::read_varint($fp, $limit);
               while ($len > 0) {
-                $tmp = Protobuf::read_varint($fp, $len);
+                $tmp = Protobuf::read_signed_varint($fp, $len);
                 if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-                if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->requestHash[] = $tmp;
+                if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->requestHash[] = $tmp;
               }
             }
+
+            break;
+          case 25: // optional int64 unknown25 = 25
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->unknown25 = $tmp;
 
             break;
           default:
@@ -1809,10 +1819,10 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "\xa0\x01", 2);
         Protobuf::write_varint($fp, $this->locationHash2);
       }
-      if ($this->unknown22 !== "") {
+      if ($this->sessionHash !== "") {
         fwrite($fp, "\xb2\x01", 2);
-        Protobuf::write_varint($fp, strlen($this->unknown22));
-        fwrite($fp, $this->unknown22);
+        Protobuf::write_varint($fp, strlen($this->sessionHash));
+        fwrite($fp, $this->sessionHash);
       }
       if ($this->timestamp !== 0) {
         fwrite($fp, "\xb8\x01", 2);
@@ -1821,6 +1831,10 @@ namespace POGOProtos\Networking\Envelopes {
       foreach($this->requestHash as $v) {
         fwrite($fp, "\xc0\x01", 2);
         Protobuf::write_varint($fp, $v);
+      }
+      if ($this->unknown25 !== 0) {
+        fwrite($fp, "\xc8\x01", 2);
+        Protobuf::write_varint($fp, $this->unknown25);
       }
     }
 
@@ -1855,8 +1869,8 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->locationHash2 !== 0) {
         $size += 2 + Protobuf::size_varint($this->locationHash2);
       }
-      if ($this->unknown22 !== "") {
-        $l = strlen($this->unknown22);
+      if ($this->sessionHash !== "") {
+        $l = strlen($this->sessionHash);
         $size += 2 + Protobuf::size_varint($l) + $l;
       }
       if ($this->timestamp !== 0) {
@@ -1865,6 +1879,9 @@ namespace POGOProtos\Networking\Envelopes {
       foreach($this->requestHash as $v) {
         $l = strlen($v);
         $size += 2 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->unknown25 !== 0) {
+        $size += 2 + Protobuf::size_varint($this->unknown25);
       }
       return $size;
     }
@@ -1905,9 +1922,9 @@ namespace POGOProtos\Networking\Envelopes {
     public function getLocationHash2() { return $this->locationHash2;}
     public function setLocationHash2($value) { $this->locationHash2 = $value; }
 
-    public function clearUnknown22() { $this->unknown22 = ""; }
-    public function getUnknown22() { return $this->unknown22;}
-    public function setUnknown22($value) { $this->unknown22 = $value; }
+    public function clearSessionHash() { $this->sessionHash = ""; }
+    public function getSessionHash() { return $this->sessionHash;}
+    public function setSessionHash($value) { $this->sessionHash = $value; }
 
     public function clearTimestamp() { $this->timestamp = 0; }
     public function getTimestamp() { return $this->timestamp;}
@@ -1921,6 +1938,10 @@ namespace POGOProtos\Networking\Envelopes {
     public function addRequestHash(array $value) { $this->requestHash[] = $value; }
     public function addAllRequestHash(array $values) { foreach($values as $value) {$this->requestHash[] = $value; }}
 
+    public function clearUnknown25() { $this->unknown25 = 0; }
+    public function getUnknown25() { return $this->unknown25;}
+    public function setUnknown25($value) { $this->unknown25 = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('timestamp_since_start', $this->timestampSinceStart, 0)
@@ -1931,9 +1952,10 @@ namespace POGOProtos\Networking\Envelopes {
            . Protobuf::toString('activity_status', $this->activityStatus, null)
            . Protobuf::toString('location_hash1', $this->locationHash1, 0)
            . Protobuf::toString('location_hash2', $this->locationHash2, 0)
-           . Protobuf::toString('unknown22', $this->unknown22, "")
+           . Protobuf::toString('session_hash', $this->sessionHash, "")
            . Protobuf::toString('timestamp', $this->timestamp, 0)
-           . Protobuf::toString('request_hash', $this->requestHash, 0);
+           . Protobuf::toString('request_hash', $this->requestHash, 0)
+           . Protobuf::toString('unknown25', $this->unknown25, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.Signature)

@@ -12,7 +12,7 @@ namespace POGOProtos\Networking\Requests {
 
   // enum POGOProtos.Networking.Requests.RequestType
   abstract class RequestType extends ProtobufEnum {
-    const METHOD_UNSET = 0;
+    const METHOD_NONE = 0;
     const PLAYER_UPDATE = 1;
     const GET_PLAYER = 2;
     const GET_INVENTORY = 4;
@@ -73,7 +73,7 @@ namespace POGOProtos\Networking\Requests {
     const SET_PLAYER_TEAM = 405;
     const MARK_TUTORIAL_COMPLETE = 406;
     const LOAD_SPAWN_POINTS = 500;
-    const PING = 666;
+    const ECHO = 666;
     const DEBUG_UPDATE_INVENTORY = 700;
     const DEBUG_DELETE_PLAYER = 701;
     const SFIDA_REGISTRATION = 800;
@@ -85,7 +85,7 @@ namespace POGOProtos\Networking\Requests {
     const SFIDA_CAPTURE = 806;
 
     public static $_values = array(
-      0 => "METHOD_UNSET",
+      0 => "METHOD_NONE",
       1 => "PLAYER_UPDATE",
       2 => "GET_PLAYER",
       4 => "GET_INVENTORY",
