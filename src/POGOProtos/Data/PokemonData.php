@@ -45,6 +45,7 @@ namespace POGOProtos\Data {
     private $favorite = 0; // optional int32 favorite = 29
     private $nickname = ""; // optional string nickname = 30
     private $fromFort = 0; // optional int32 from_fort = 31
+    private $name = ""; // custom
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -74,6 +75,7 @@ namespace POGOProtos\Data {
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
             $this->pokemonId = $tmp;
+            $this->name = \POGOProtos\Enums\PokemonId::toString($tmp);
 
             break;
           case 3: // optional int32 cp = 3
@@ -688,10 +690,16 @@ namespace POGOProtos\Data {
     public function getFromFort() { return $this->fromFort;}
     public function setFromFort($value) { $this->fromFort = $value; }
 
+    public function getIvRatio() { return ($this->individualAttack + $this->individualDefense + $this->individualStamina) / 45.0; }
+
+    public function getName() { return $this->name; }
+    public function setName($value) { $this->name = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('id', $this->id, 0)
            . Protobuf::toString('pokemon_id', $this->pokemonId, \POGOProtos\Enums\PokemonId::MISSINGNO)
+           . Protobuf::toString('name', $this->name, "")
            . Protobuf::toString('cp', $this->cp, 0)
            . Protobuf::toString('stamina', $this->stamina, 0)
            . Protobuf::toString('stamina_max', $this->staminaMax, 0)
