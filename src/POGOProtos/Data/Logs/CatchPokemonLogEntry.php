@@ -84,12 +84,12 @@ namespace POGOProtos\Data\Logs {
 
             break;
           case 4: // optional uint64 pokemon_data_id = 4
-            if($wire !== 0) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            if($wire !== 1) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
-            $tmp = Protobuf::read_varint($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->pokemonDataId = $tmp;
+            $tmp = Protobuf::read_double($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
+            $this->pokemonDataId = $tmp;
 
             break;
           default:
