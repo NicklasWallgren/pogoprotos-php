@@ -16,7 +16,9 @@
       "files": [
         "src/protocolbuffers.inc.php",
         "src/POGOProtos/Networking/Envelopes/RequestEnvelope.php",
-        "src/POGOProtos/Networking/Envelopes/ResponseEnvelope.php"
+        "src/POGOProtos/Networking/Envelopes/ResponseEnvelope.php",
+        "src/POGOProtos/Networking/Responses/EvolvePokemonResponse.php",
+        "src/POGOProtos/Networking/Responses/UpgradePokemonResponse.php"
       ]
     }
 }
