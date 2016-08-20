@@ -10,6 +10,7 @@ namespace POGOProtos\Networking\Responses {
   use ProtobufIO;
   use ProtobufMessage;
 
+
   // enum POGOProtos.Networking.Responses.ClaimCodenameResponse.Status
   abstract class ClaimCodenameResponse_Status extends ProtobufEnum {
     const NONE = 0;
@@ -48,6 +49,7 @@ namespace POGOProtos\Networking\Responses {
     private $userMessage = ""; // optional string user_message = 2
     private $isAssignable = false; // optional bool is_assignable = 3
     private $status = \POGOProtos\Networking\Responses\ClaimCodenameResponse_Status::NONE; // optional .POGOProtos.Networking.Responses.ClaimCodenameResponse.Status status = 4
+    private $updatedPlayer = null; // optional .POGOProtos.Data.PlayerData updated_player = 5
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -101,6 +103,17 @@ namespace POGOProtos\Networking\Responses {
             $this->status = $tmp;
 
             break;
+          case 5: // optional .POGOProtos.Data.PlayerData updated_player = 5
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->updatedPlayer = new \POGOProtos\Data\PlayerData($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Data\PlayerData did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -126,6 +139,11 @@ namespace POGOProtos\Networking\Responses {
         fwrite($fp, " ", 1);
         Protobuf::write_varint($fp, $this->status);
       }
+      if ($this->updatedPlayer !== null) {
+        fwrite($fp, "*", 1);
+        Protobuf::write_varint($fp, $this->updatedPlayer->size());
+        $this->updatedPlayer->write($fp);
+      }
     }
 
     public function size() {
@@ -143,6 +161,10 @@ namespace POGOProtos\Networking\Responses {
       }
       if ($this->status !== \POGOProtos\Networking\Responses\ClaimCodenameResponse_Status::NONE) {
         $size += 1 + Protobuf::size_varint($this->status);
+      }
+      if ($this->updatedPlayer !== null) {
+        $l = $this->updatedPlayer->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
     }
@@ -163,12 +185,17 @@ namespace POGOProtos\Networking\Responses {
     public function getStatus() { return $this->status;}
     public function setStatus($value) { $this->status = $value; }
 
+    public function clearUpdatedPlayer() { $this->updatedPlayer = null; }
+    public function getUpdatedPlayer() { return $this->updatedPlayer;}
+    public function setUpdatedPlayer(\POGOProtos\Data\PlayerData $value) { $this->updatedPlayer = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('codename', $this->codename, "")
            . Protobuf::toString('user_message', $this->userMessage, "")
            . Protobuf::toString('is_assignable', $this->isAssignable, false)
-           . Protobuf::toString('status', $this->status, \POGOProtos\Networking\Responses\ClaimCodenameResponse_Status::NONE);
+           . Protobuf::toString('status', $this->status, \POGOProtos\Networking\Responses\ClaimCodenameResponse_Status::NONE)
+           . Protobuf::toString('updated_player', $this->updatedPlayer, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.ClaimCodenameResponse)

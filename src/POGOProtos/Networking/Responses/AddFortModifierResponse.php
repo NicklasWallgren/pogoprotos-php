@@ -10,10 +10,41 @@ namespace POGOProtos\Networking\Responses {
   use ProtobufIO;
   use ProtobufMessage;
 
+
+  // enum POGOProtos.Networking.Responses.AddFortModifierResponse.Result
+  abstract class AddFortModifierResponse_Result extends ProtobufEnum {
+    const NO_RESULT_SET = 0;
+    const SUCCESS = 1;
+    const FORT_ALREADY_HAS_MODIFIER = 2;
+    const TOO_FAR_AWAY = 3;
+    const NO_ITEM_IN_INVENTORY = 4;
+
+    public static $_values = array(
+      0 => "NO_RESULT_SET",
+      1 => "SUCCESS",
+      2 => "FORT_ALREADY_HAS_MODIFIER",
+      3 => "TOO_FAR_AWAY",
+      4 => "NO_ITEM_IN_INVENTORY",
+    );
+
+    public static function isValid($value) {
+      return array_key_exists($value, self::$_values);
+    }
+
+    public static function toString($value) {
+      checkArgument(is_int($value), 'value must be a integer');
+      if (array_key_exists($value, self::$_values))
+        return self::$_values[$value];
+      return 'UNKNOWN';
+    }
+  }
+
   // message POGOProtos.Networking.Responses.AddFortModifierResponse
   final class AddFortModifierResponse extends ProtobufMessage {
 
     private $_unknown;
+    private $result = \POGOProtos\Networking\Responses\AddFortModifierResponse_Result::NO_RESULT_SET; // optional .POGOProtos.Networking.Responses.AddFortModifierResponse.Result result = 1
+    private $fortDetails = null; // optional .POGOProtos.Networking.Responses.FortDetailsResponse fort_details = 2
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -27,6 +58,26 @@ namespace POGOProtos\Networking\Responses {
         $wire  = $tag & 0x07;
         $field = $tag >> 3;
         switch($field) {
+          case 1: // optional .POGOProtos.Networking.Responses.AddFortModifierResponse.Result result = 1
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->result = $tmp;
+
+            break;
+          case 2: // optional .POGOProtos.Networking.Responses.FortDetailsResponse fort_details = 2
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->fortDetails = new \POGOProtos\Networking\Responses\FortDetailsResponse($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Responses\FortDetailsResponse did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -34,15 +85,41 @@ namespace POGOProtos\Networking\Responses {
     }
 
     public function write($fp) {
+      if ($this->result !== \POGOProtos\Networking\Responses\AddFortModifierResponse_Result::NO_RESULT_SET) {
+        fwrite($fp, "\x08", 1);
+        Protobuf::write_varint($fp, $this->result);
+      }
+      if ($this->fortDetails !== null) {
+        fwrite($fp, "\x12", 1);
+        Protobuf::write_varint($fp, $this->fortDetails->size());
+        $this->fortDetails->write($fp);
+      }
     }
 
     public function size() {
       $size = 0;
+      if ($this->result !== \POGOProtos\Networking\Responses\AddFortModifierResponse_Result::NO_RESULT_SET) {
+        $size += 1 + Protobuf::size_varint($this->result);
+      }
+      if ($this->fortDetails !== null) {
+        $l = $this->fortDetails->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
       return $size;
     }
 
+    public function clearResult() { $this->result = \POGOProtos\Networking\Responses\AddFortModifierResponse_Result::NO_RESULT_SET; }
+    public function getResult() { return $this->result;}
+    public function setResult($value) { $this->result = $value; }
+
+    public function clearFortDetails() { $this->fortDetails = null; }
+    public function getFortDetails() { return $this->fortDetails;}
+    public function setFortDetails(\POGOProtos\Networking\Responses\FortDetailsResponse $value) { $this->fortDetails = $value; }
+
     public function __toString() {
-      return '';
+      return ''
+           . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\AddFortModifierResponse_Result::NO_RESULT_SET)
+           . Protobuf::toString('fort_details', $this->fortDetails, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.AddFortModifierResponse)

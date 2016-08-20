@@ -19,6 +19,7 @@ namespace POGOProtos\Networking\Requests\Messages {
     private $playerLongitude = 0; // optional double player_longitude = 3
     private $gymLatitude = 0; // optional double gym_latitude = 4
     private $gymLongitude = 0; // optional double gym_longitude = 5
+    private $clientVersion = ""; // optional string client_version = 6
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -79,6 +80,17 @@ namespace POGOProtos\Networking\Requests\Messages {
             $this->gymLongitude = $tmp;
 
             break;
+          case 6: // optional string client_version = 6
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->clientVersion = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -107,6 +119,11 @@ namespace POGOProtos\Networking\Requests\Messages {
         fwrite($fp, ")", 1);
         Protobuf::write_double($fp, $this->gymLongitude);
       }
+      if ($this->clientVersion !== "") {
+        fwrite($fp, "2", 1);
+        Protobuf::write_varint($fp, strlen($this->clientVersion));
+        fwrite($fp, $this->clientVersion);
+      }
     }
 
     public function size() {
@@ -126,6 +143,10 @@ namespace POGOProtos\Networking\Requests\Messages {
       }
       if ($this->gymLongitude !== 0) {
         $size += 9;
+      }
+      if ($this->clientVersion !== "") {
+        $l = strlen($this->clientVersion);
+        $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
     }
@@ -150,13 +171,18 @@ namespace POGOProtos\Networking\Requests\Messages {
     public function getGymLongitude() { return $this->gymLongitude;}
     public function setGymLongitude($value) { $this->gymLongitude = $value; }
 
+    public function clearClientVersion() { $this->clientVersion = ""; }
+    public function getClientVersion() { return $this->clientVersion;}
+    public function setClientVersion($value) { $this->clientVersion = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('gym_id', $this->gymId, "")
            . Protobuf::toString('player_latitude', $this->playerLatitude, 0)
            . Protobuf::toString('player_longitude', $this->playerLongitude, 0)
            . Protobuf::toString('gym_latitude', $this->gymLatitude, 0)
-           . Protobuf::toString('gym_longitude', $this->gymLongitude, 0);
+           . Protobuf::toString('gym_longitude', $this->gymLongitude, 0)
+           . Protobuf::toString('client_version', $this->clientVersion, "");
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Requests.Messages.GetGymDetailsMessage)

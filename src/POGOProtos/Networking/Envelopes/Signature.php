@@ -1631,7 +1631,7 @@ namespace POGOProtos\Networking\Envelopes {
     private $locationHash2 = 0; // optional uint64 location_hash2 = 20
     private $sessionHash = ""; // optional bytes session_hash = 22
     private $timestamp = 0; // optional uint64 timestamp = 23
-    private $requestHash = array(); // repeated int64 request_hash = 24
+    private $requestHash = array(); // repeated uint64 request_hash = 24
     private $unknown25 = 0; // optional int64 unknown25 = 25
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -1748,20 +1748,20 @@ namespace POGOProtos\Networking\Envelopes {
             if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->timestamp = $tmp;
 
             break;
-          case 24: // repeated int64 request_hash = 24
+          case 24: // repeated uint64 request_hash = 24
             if($wire !== 2 && $wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 or 0 got: $wire");
             }
             if ($wire === 0) {
-              $tmp = Protobuf::read_signed_varint($fp, $limit);
+              $tmp = Protobuf::read_varint($fp, $limit);
               if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-              if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->requestHash[] = $tmp;
+              if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->requestHash[] = $tmp;
             } elseif ($wire === 2) {
               $len = Protobuf::read_varint($fp, $limit);
               while ($len > 0) {
-                $tmp = Protobuf::read_signed_varint($fp, $len);
+                $tmp = Protobuf::read_varint($fp, $len);
                 if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-                if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->requestHash[] = $tmp;
+                if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->requestHash[] = $tmp;
               }
             }
 

@@ -16,11 +16,13 @@ namespace POGOProtos\Data\Logs {
     const NONE = 0;
     const POKEMON_CAPTURED = 1;
     const POKEMON_FLED = 2;
+    const POKEMON_HATCHED = 3;
 
     public static $_values = array(
       0 => "NONE",
       1 => "POKEMON_CAPTURED",
       2 => "POKEMON_FLED",
+      3 => "POKEMON_HATCHED",
     );
 
     public static function isValid($value) {
@@ -42,7 +44,7 @@ namespace POGOProtos\Data\Logs {
     private $result = \POGOProtos\Data\Logs\CatchPokemonLogEntry_Result::NONE; // optional .POGOProtos.Data.Logs.CatchPokemonLogEntry.Result result = 1
     private $pokemonId = \POGOProtos\Enums\PokemonId::MISSINGNO; // optional .POGOProtos.Enums.PokemonId pokemon_id = 2
     private $combatPoints = 0; // optional int32 combat_points = 3
-    private $pokemonDataId = 0; // optional uint64 pokemon_data_id = 4
+    private $pokemonDataId = 0; // optional fixed64 pokemon_data_id = 4
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -83,12 +85,12 @@ namespace POGOProtos\Data\Logs {
             if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->combatPoints = $tmp;
 
             break;
-          case 4: // optional uint64 pokemon_data_id = 4
+          case 4: // optional fixed64 pokemon_data_id = 4
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
-            $tmp = Protobuf::read_double($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
+            $tmp = Protobuf::read_uint64($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_unint64 returned false');
             $this->pokemonDataId = $tmp;
 
             break;
@@ -112,8 +114,8 @@ namespace POGOProtos\Data\Logs {
         Protobuf::write_varint($fp, $this->combatPoints);
       }
       if ($this->pokemonDataId !== 0) {
-        fwrite($fp, " ", 1);
-        Protobuf::write_varint($fp, $this->pokemonDataId);
+        fwrite($fp, "!", 1);
+        Protobuf::write_uint64($fp, $this->pokemonDataId);
       }
     }
 
@@ -129,7 +131,7 @@ namespace POGOProtos\Data\Logs {
         $size += 1 + Protobuf::size_varint($this->combatPoints);
       }
       if ($this->pokemonDataId !== 0) {
-        $size += 1 + Protobuf::size_varint($this->pokemonDataId);
+        $size += 9;
       }
       return $size;
     }

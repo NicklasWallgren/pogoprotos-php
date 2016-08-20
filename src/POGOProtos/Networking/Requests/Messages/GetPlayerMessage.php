@@ -14,7 +14,6 @@ namespace POGOProtos\Networking\Requests\Messages {
   final class GetPlayerMessage extends ProtobufMessage {
 
     private $_unknown;
-    private $appVersion = ""; // optional string app_version = 1
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -28,17 +27,6 @@ namespace POGOProtos\Networking\Requests\Messages {
         $wire  = $tag & 0x07;
         $field = $tag >> 3;
         switch($field) {
-          case 1: // optional string app_version = 1
-            if($wire !== 2) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
-            }
-            $len = Protobuf::read_varint($fp, $limit);
-            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
-            $tmp = Protobuf::read_bytes($fp, $len, $limit);
-            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
-            $this->appVersion = $tmp;
-
-            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -46,29 +34,15 @@ namespace POGOProtos\Networking\Requests\Messages {
     }
 
     public function write($fp) {
-      if ($this->appVersion !== "") {
-        fwrite($fp, "\x0a", 1);
-        Protobuf::write_varint($fp, strlen($this->appVersion));
-        fwrite($fp, $this->appVersion);
-      }
     }
 
     public function size() {
       $size = 0;
-      if ($this->appVersion !== "") {
-        $l = strlen($this->appVersion);
-        $size += 1 + Protobuf::size_varint($l) + $l;
-      }
       return $size;
     }
 
-    public function clearAppVersion() { $this->appVersion = ""; }
-    public function getAppVersion() { return $this->appVersion;}
-    public function setAppVersion($value) { $this->appVersion = $value; }
-
     public function __toString() {
-      return ''
-           . Protobuf::toString('app_version', $this->appVersion, "");
+      return '';
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Requests.Messages.GetPlayerMessage)

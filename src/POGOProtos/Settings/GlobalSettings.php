@@ -20,6 +20,7 @@ namespace POGOProtos\Settings {
     private $levelSettings = null; // optional .POGOProtos.Settings.LevelSettings level_settings = 4
     private $inventorySettings = null; // optional .POGOProtos.Settings.InventorySettings inventory_settings = 5
     private $minimumClientVersion = ""; // optional string minimum_client_version = 6
+    private $gpsSettings = null; // optional .POGOProtos.Settings.GpsSettings gps_settings = 7
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -88,6 +89,17 @@ namespace POGOProtos\Settings {
             $this->minimumClientVersion = $tmp;
 
             break;
+          case 7: // optional .POGOProtos.Settings.GpsSettings gps_settings = 7
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->gpsSettings = new \POGOProtos\Settings\GpsSettings($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Settings\GpsSettings did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -120,6 +132,11 @@ namespace POGOProtos\Settings {
         Protobuf::write_varint($fp, strlen($this->minimumClientVersion));
         fwrite($fp, $this->minimumClientVersion);
       }
+      if ($this->gpsSettings !== null) {
+        fwrite($fp, ":", 1);
+        Protobuf::write_varint($fp, $this->gpsSettings->size());
+        $this->gpsSettings->write($fp);
+      }
     }
 
     public function size() {
@@ -142,6 +159,10 @@ namespace POGOProtos\Settings {
       }
       if ($this->minimumClientVersion !== "") {
         $l = strlen($this->minimumClientVersion);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->gpsSettings !== null) {
+        $l = $this->gpsSettings->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -167,13 +188,18 @@ namespace POGOProtos\Settings {
     public function getMinimumClientVersion() { return $this->minimumClientVersion;}
     public function setMinimumClientVersion($value) { $this->minimumClientVersion = $value; }
 
+    public function clearGpsSettings() { $this->gpsSettings = null; }
+    public function getGpsSettings() { return $this->gpsSettings;}
+    public function setGpsSettings(\POGOProtos\Settings\GpsSettings $value) { $this->gpsSettings = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('fort_settings', $this->fortSettings, null)
            . Protobuf::toString('map_settings', $this->mapSettings, null)
            . Protobuf::toString('level_settings', $this->levelSettings, null)
            . Protobuf::toString('inventory_settings', $this->inventorySettings, null)
-           . Protobuf::toString('minimum_client_version', $this->minimumClientVersion, "");
+           . Protobuf::toString('minimum_client_version', $this->minimumClientVersion, "")
+           . Protobuf::toString('gps_settings', $this->gpsSettings, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Settings.GlobalSettings)

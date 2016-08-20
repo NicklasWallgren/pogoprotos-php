@@ -26,11 +26,11 @@ namespace POGOProtos\Map\Fort {
     private $guardPokemonCp = 0; // optional int32 guard_pokemon_cp = 7
     private $gymPoints = 0; // optional int64 gym_points = 10
     private $isInBattle = false; // optional bool is_in_battle = 11
+    private $activeFortModifier = array(); // repeated .POGOProtos.Inventory.Item.ItemId active_fort_modifier = 12
+    private $lureInfo = null; // optional .POGOProtos.Map.Fort.FortLureInfo lure_info = 13
     private $cooldownCompleteTimestampMs = 0; // optional int64 cooldown_complete_timestamp_ms = 14
     private $sponsor = \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR; // optional .POGOProtos.Map.Fort.FortSponsor sponsor = 15
     private $renderingType = \POGOProtos\Map\Fort\FortRenderingType::DEFAULT; // optional .POGOProtos.Map.Fort.FortRenderingType rendering_type = 16
-    private $activeFortModifier = ""; // optional bytes active_fort_modifier = 12
-    private $lureInfo = null; // optional .POGOProtos.Map.Fort.FortLureInfo lure_info = 13
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -145,6 +145,35 @@ namespace POGOProtos\Map\Fort {
             $this->isInBattle = ($tmp > 0) ? true : false;
 
             break;
+          case 12: // repeated .POGOProtos.Inventory.Item.ItemId active_fort_modifier = 12
+            if($wire !== 2 && $wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 or 0 got: $wire");
+            }
+            if ($wire === 0) {
+              $tmp = Protobuf::read_varint($fp, $limit);
+              if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+              $this->activeFortModifier[] = $tmp;
+            } elseif ($wire === 2) {
+              $len = Protobuf::read_varint($fp, $limit);
+              while ($len > 0) {
+                $tmp = Protobuf::read_varint($fp, $len);
+                if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+                $this->activeFortModifier[] = $tmp;
+              }
+            }
+
+            break;
+          case 13: // optional .POGOProtos.Map.Fort.FortLureInfo lure_info = 13
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->lureInfo = new \POGOProtos\Map\Fort\FortLureInfo($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Map\Fort\FortLureInfo did not read the full length');
+
+            break;
           case 14: // optional int64 cooldown_complete_timestamp_ms = 14
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
@@ -170,28 +199,6 @@ namespace POGOProtos\Map\Fort {
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
             $this->renderingType = $tmp;
-
-            break;
-          case 12: // optional bytes active_fort_modifier = 12
-            if($wire !== 2) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
-            }
-            $len = Protobuf::read_varint($fp, $limit);
-            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
-            $tmp = Protobuf::read_bytes($fp, $len, $limit);
-            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
-            $this->activeFortModifier = $tmp;
-
-            break;
-          case 13: // optional .POGOProtos.Map.Fort.FortLureInfo lure_info = 13
-            if($wire !== 2) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
-            }
-            $len = Protobuf::read_varint($fp, $limit);
-            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
-            $limit -= $len;
-            $this->lureInfo = new \POGOProtos\Map\Fort\FortLureInfo($fp, $len);
-            if ($len !== 0) throw new \Exception('new \POGOProtos\Map\Fort\FortLureInfo did not read the full length');
 
             break;
           default:
@@ -246,6 +253,15 @@ namespace POGOProtos\Map\Fort {
         fwrite($fp, "X", 1);
         Protobuf::write_varint($fp, $this->isInBattle ? 1 : 0);
       }
+      foreach($this->activeFortModifier as $v) {
+        fwrite($fp, "`", 1);
+        Protobuf::write_varint($fp, $v);
+      }
+      if ($this->lureInfo !== null) {
+        fwrite($fp, "j", 1);
+        Protobuf::write_varint($fp, $this->lureInfo->size());
+        $this->lureInfo->write($fp);
+      }
       if ($this->cooldownCompleteTimestampMs !== 0) {
         fwrite($fp, "p", 1);
         Protobuf::write_varint($fp, $this->cooldownCompleteTimestampMs);
@@ -257,16 +273,6 @@ namespace POGOProtos\Map\Fort {
       if ($this->renderingType !== \POGOProtos\Map\Fort\FortRenderingType::DEFAULT) {
         fwrite($fp, "\x80\x01", 2);
         Protobuf::write_varint($fp, $this->renderingType);
-      }
-      if ($this->activeFortModifier !== "") {
-        fwrite($fp, "b", 1);
-        Protobuf::write_varint($fp, strlen($this->activeFortModifier));
-        fwrite($fp, $this->activeFortModifier);
-      }
-      if ($this->lureInfo !== null) {
-        fwrite($fp, "j", 1);
-        Protobuf::write_varint($fp, $this->lureInfo->size());
-        $this->lureInfo->write($fp);
       }
     }
 
@@ -306,6 +312,14 @@ namespace POGOProtos\Map\Fort {
       if ($this->isInBattle !== false) {
         $size += 2;
       }
+      foreach($this->activeFortModifier as $v) {
+        $l = strlen($v);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->lureInfo !== null) {
+        $l = $this->lureInfo->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
       if ($this->cooldownCompleteTimestampMs !== 0) {
         $size += 1 + Protobuf::size_varint($this->cooldownCompleteTimestampMs);
       }
@@ -314,14 +328,6 @@ namespace POGOProtos\Map\Fort {
       }
       if ($this->renderingType !== \POGOProtos\Map\Fort\FortRenderingType::DEFAULT) {
         $size += 2 + Protobuf::size_varint($this->renderingType);
-      }
-      if ($this->activeFortModifier !== "") {
-        $l = strlen($this->activeFortModifier);
-        $size += 1 + Protobuf::size_varint($l) + $l;
-      }
-      if ($this->lureInfo !== null) {
-        $l = $this->lureInfo->size();
-        $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
     }
@@ -370,6 +376,18 @@ namespace POGOProtos\Map\Fort {
     public function getIsInBattle() { return $this->isInBattle;}
     public function setIsInBattle($value) { $this->isInBattle = $value; }
 
+    public function clearActiveFortModifier() { $this->activeFortModifier = array(); }
+    public function getActiveFortModifierCount() { return count($this->activeFortModifier); }
+    public function getActiveFortModifier($index) { return $this->activeFortModifier[$index]; }
+    public function getActiveFortModifierArray() { return $this->activeFortModifier; }
+    public function setActiveFortModifier($index, array $value) {$this->activeFortModifier[$index] = $value; }
+    public function addActiveFortModifier(array $value) { $this->activeFortModifier[] = $value; }
+    public function addAllActiveFortModifier(array $values) { foreach($values as $value) {$this->activeFortModifier[] = $value; }}
+
+    public function clearLureInfo() { $this->lureInfo = null; }
+    public function getLureInfo() { return $this->lureInfo;}
+    public function setLureInfo(\POGOProtos\Map\Fort\FortLureInfo $value) { $this->lureInfo = $value; }
+
     public function clearCooldownCompleteTimestampMs() { $this->cooldownCompleteTimestampMs = 0; }
     public function getCooldownCompleteTimestampMs() { return $this->cooldownCompleteTimestampMs;}
     public function setCooldownCompleteTimestampMs($value) { $this->cooldownCompleteTimestampMs = $value; }
@@ -381,14 +399,6 @@ namespace POGOProtos\Map\Fort {
     public function clearRenderingType() { $this->renderingType = \POGOProtos\Map\Fort\FortRenderingType::DEFAULT; }
     public function getRenderingType() { return $this->renderingType;}
     public function setRenderingType($value) { $this->renderingType = $value; }
-
-    public function clearActiveFortModifier() { $this->activeFortModifier = ""; }
-    public function getActiveFortModifier() { return $this->activeFortModifier;}
-    public function setActiveFortModifier($value) { $this->activeFortModifier = $value; }
-
-    public function clearLureInfo() { $this->lureInfo = null; }
-    public function getLureInfo() { return $this->lureInfo;}
-    public function setLureInfo(\POGOProtos\Map\Fort\FortLureInfo $value) { $this->lureInfo = $value; }
 
     public function __toString() {
       return ''
@@ -403,11 +413,11 @@ namespace POGOProtos\Map\Fort {
            . Protobuf::toString('guard_pokemon_cp', $this->guardPokemonCp, 0)
            . Protobuf::toString('gym_points', $this->gymPoints, 0)
            . Protobuf::toString('is_in_battle', $this->isInBattle, false)
+           . Protobuf::toString('active_fort_modifier', $this->activeFortModifier, \POGOProtos\Inventory\Item\ItemId::ITEM_UNKNOWN)
+           . Protobuf::toString('lure_info', $this->lureInfo, null)
            . Protobuf::toString('cooldown_complete_timestamp_ms', $this->cooldownCompleteTimestampMs, 0)
            . Protobuf::toString('sponsor', $this->sponsor, \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR)
-           . Protobuf::toString('rendering_type', $this->renderingType, \POGOProtos\Map\Fort\FortRenderingType::DEFAULT)
-           . Protobuf::toString('active_fort_modifier', $this->activeFortModifier, "")
-           . Protobuf::toString('lure_info', $this->lureInfo, null);
+           . Protobuf::toString('rendering_type', $this->renderingType, \POGOProtos\Map\Fort\FortRenderingType::DEFAULT);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Map.Fort.FortData)

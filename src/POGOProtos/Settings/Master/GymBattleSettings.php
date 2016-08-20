@@ -28,6 +28,7 @@ namespace POGOProtos\Settings\Master {
     private $dodgeDurationMs = 0; // optional int32 dodge_duration_ms = 12
     private $minimumPlayerLevel = 0; // optional int32 minimum_player_level = 13
     private $swapDurationMs = 0; // optional int32 swap_duration_ms = 14
+    private $dodgeDamageReductionPercent = 0; // optional float dodge_damage_reduction_percent = 15
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -167,6 +168,15 @@ namespace POGOProtos\Settings\Master {
             if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->swapDurationMs = $tmp;
 
             break;
+          case 15: // optional float dodge_damage_reduction_percent = 15
+            if($wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
+            }
+            $tmp = Protobuf::read_float($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+            $this->dodgeDamageReductionPercent = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -230,6 +240,10 @@ namespace POGOProtos\Settings\Master {
         fwrite($fp, "p", 1);
         Protobuf::write_varint($fp, $this->swapDurationMs);
       }
+      if ($this->dodgeDamageReductionPercent !== 0) {
+        fwrite($fp, "}", 1);
+        Protobuf::write_float($fp, $this->dodgeDamageReductionPercent);
+      }
     }
 
     public function size() {
@@ -275,6 +289,9 @@ namespace POGOProtos\Settings\Master {
       }
       if ($this->swapDurationMs !== 0) {
         $size += 1 + Protobuf::size_varint($this->swapDurationMs);
+      }
+      if ($this->dodgeDamageReductionPercent !== 0) {
+        $size += 5;
       }
       return $size;
     }
@@ -335,6 +352,10 @@ namespace POGOProtos\Settings\Master {
     public function getSwapDurationMs() { return $this->swapDurationMs;}
     public function setSwapDurationMs($value) { $this->swapDurationMs = $value; }
 
+    public function clearDodgeDamageReductionPercent() { $this->dodgeDamageReductionPercent = 0; }
+    public function getDodgeDamageReductionPercent() { return $this->dodgeDamageReductionPercent;}
+    public function setDodgeDamageReductionPercent($value) { $this->dodgeDamageReductionPercent = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('energy_per_sec', $this->energyPerSec, 0)
@@ -350,7 +371,8 @@ namespace POGOProtos\Settings\Master {
            . Protobuf::toString('energy_delta_per_health_lost', $this->energyDeltaPerHealthLost, 0)
            . Protobuf::toString('dodge_duration_ms', $this->dodgeDurationMs, 0)
            . Protobuf::toString('minimum_player_level', $this->minimumPlayerLevel, 0)
-           . Protobuf::toString('swap_duration_ms', $this->swapDurationMs, 0);
+           . Protobuf::toString('swap_duration_ms', $this->swapDurationMs, 0)
+           . Protobuf::toString('dodge_damage_reduction_percent', $this->dodgeDamageReductionPercent, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Settings.Master.GymBattleSettings)

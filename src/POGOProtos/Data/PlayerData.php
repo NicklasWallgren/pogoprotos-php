@@ -26,6 +26,7 @@ namespace POGOProtos\Data {
     private $equippedBadge = null; // optional .POGOProtos.Data.Player.EquippedBadge equipped_badge = 12
     private $contactSettings = null; // optional .POGOProtos.Data.Player.ContactSettings contact_settings = 13
     private $currencies = array(); // repeated .POGOProtos.Data.Player.Currency currencies = 14
+    private $remainingCodenameClaims = 0; // optional int32 remaining_codename_claims = 15
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -159,20 +160,19 @@ namespace POGOProtos\Data {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Player\Currency did not read the full length');
 
             break;
-          case 15:
+          case 15: // optional int32 remaining_codename_claims = 15
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');
-            break;
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->remainingCodenameClaims = $tmp;
 
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
       }
-      $limit = 0;
     }
 
     public function write($fp) {
@@ -226,6 +226,10 @@ namespace POGOProtos\Data {
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
       }
+      if ($this->remainingCodenameClaims !== 0) {
+        fwrite($fp, "x", 1);
+        Protobuf::write_varint($fp, $this->remainingCodenameClaims);
+      }
     }
 
     public function size() {
@@ -269,6 +273,9 @@ namespace POGOProtos\Data {
       foreach($this->currencies as $v) {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->remainingCodenameClaims !== 0) {
+        $size += 1 + Protobuf::size_varint($this->remainingCodenameClaims);
       }
       return $size;
     }
@@ -325,6 +332,10 @@ namespace POGOProtos\Data {
     public function addCurrencies(array $value) { $this->currencies[] = $value; }
     public function addAllCurrencies(array $values) { foreach($values as $value) {$this->currencies[] = $value; }}
 
+    public function clearRemainingCodenameClaims() { $this->remainingCodenameClaims = 0; }
+    public function getRemainingCodenameClaims() { return $this->remainingCodenameClaims;}
+    public function setRemainingCodenameClaims($value) { $this->remainingCodenameClaims = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('creation_timestamp_ms', $this->creationTimestampMs, 0)
@@ -337,7 +348,8 @@ namespace POGOProtos\Data {
            . Protobuf::toString('daily_bonus', $this->dailyBonus, null)
            . Protobuf::toString('equipped_badge', $this->equippedBadge, null)
            . Protobuf::toString('contact_settings', $this->contactSettings, null)
-           . Protobuf::toString('currencies', $this->currencies, null);
+           . Protobuf::toString('currencies', $this->currencies, null)
+           . Protobuf::toString('remaining_codename_claims', $this->remainingCodenameClaims, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Data.PlayerData)
