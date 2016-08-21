@@ -173,6 +173,7 @@ namespace POGOProtos\Data {
             $limit -= Protobuf::skip_field($fp, $wire);
         }
       }
+      $limit = 0;
     }
 
     public function write($fp) {
