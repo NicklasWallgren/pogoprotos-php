@@ -17,6 +17,7 @@ namespace POGOProtos\Networking\Responses {
     const POKEMON_DEPLOYED = 2;
     const FAILED = 3;
     const ERROR_POKEMON_IS_EGG = 4;
+    const ERROR_POKEMON_IS_BUDDY = 5;
 
     public static $_values = array(
       0 => "NONE",
@@ -24,6 +25,7 @@ namespace POGOProtos\Networking\Responses {
       2 => "POKEMON_DEPLOYED",
       3 => "FAILED",
       4 => "ERROR_POKEMON_IS_EGG",
+      5 => "ERROR_POKEMON_IS_BUDDY",
     );
 
     public static function isValid($value) {

@@ -18,6 +18,7 @@ namespace POGOProtos\Networking\Responses {
     const OUT_OF_RANGE = 2;
     const IN_COOLDOWN_PERIOD = 3;
     const INVENTORY_FULL = 4;
+    const EXCEEDED_DAILY_LIMIT = 5;
 
     public static $_values = array(
       0 => "NO_RESULT_SET",
@@ -25,6 +26,7 @@ namespace POGOProtos\Networking\Responses {
       2 => "OUT_OF_RANGE",
       3 => "IN_COOLDOWN_PERIOD",
       4 => "INVENTORY_FULL",
+      5 => "EXCEEDED_DAILY_LIMIT",
     );
 
     public static function isValid($value) {

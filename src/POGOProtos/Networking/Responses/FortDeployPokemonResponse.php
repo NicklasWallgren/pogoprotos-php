@@ -22,6 +22,7 @@ namespace POGOProtos\Networking\Responses {
     const ERROR_PLAYER_HAS_NO_TEAM = 6;
     const ERROR_POKEMON_NOT_FULL_HP = 7;
     const ERROR_PLAYER_BELOW_MINIMUM_LEVEL = 8;
+    const ERROR_POKEMON_IS_BUDDY = 9;
 
     public static $_values = array(
       0 => "NO_RESULT_SET",
@@ -33,6 +34,7 @@ namespace POGOProtos\Networking\Responses {
       6 => "ERROR_PLAYER_HAS_NO_TEAM",
       7 => "ERROR_POKEMON_NOT_FULL_HP",
       8 => "ERROR_PLAYER_BELOW_MINIMUM_LEVEL",
+      9 => "ERROR_POKEMON_IS_BUDDY",
     );
 
     public static function isValid($value) {

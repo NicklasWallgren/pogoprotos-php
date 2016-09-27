@@ -189,6 +189,93 @@ namespace POGOProtos\Networking\Envelopes {
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.RequestEnvelope.AuthInfo)
   }
 
+
+  // message POGOProtos.Networking.Envelopes.RequestEnvelope.PlatformRequest
+  final class RequestEnvelope_PlatformRequest extends ProtobufMessage {
+
+    private $_unknown;
+    private $type = \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE; // optional .POGOProtos.Networking.Platform.PlatformRequestType type = 1
+    private $requestMessage = ""; // optional bytes request_message = 2
+
+    public function __construct($in = null, &$limit = PHP_INT_MAX) {
+      parent::__construct($in, $limit);
+    }
+
+    public function read($fp, &$limit = PHP_INT_MAX) {
+      $fp = ProtobufIO::toStream($fp, $limit);
+      while(!feof($fp) && $limit > 0) {
+        $tag = Protobuf::read_varint($fp, $limit);
+        if ($tag === false) break;
+        $wire  = $tag & 0x07;
+        $field = $tag >> 3;
+        switch($field) {
+          case 1: // optional .POGOProtos.Networking.Platform.PlatformRequestType type = 1
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->type = $tmp;
+
+            break;
+          case 2: // optional bytes request_message = 2
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->requestMessage = $tmp;
+
+            break;
+          default:
+            $limit -= Protobuf::skip_field($fp, $wire);
+        }
+      }
+    }
+
+    public function write($fp) {
+      if ($this->type !== \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE) {
+        fwrite($fp, "\x08", 1);
+        Protobuf::write_varint($fp, $this->type);
+      }
+      if ($this->requestMessage !== "") {
+        fwrite($fp, "\x12", 1);
+        Protobuf::write_varint($fp, strlen($this->requestMessage));
+        fwrite($fp, $this->requestMessage);
+      }
+    }
+
+    public function size() {
+      $size = 0;
+      if ($this->type !== \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE) {
+        $size += 1 + Protobuf::size_varint($this->type);
+      }
+      if ($this->requestMessage !== "") {
+        $l = strlen($this->requestMessage);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      return $size;
+    }
+
+    public function clearType() { $this->type = \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE; }
+    public function getType() { return $this->type;}
+    public function setType($value) { $this->type = $value; }
+
+    public function clearRequestMessage() { $this->requestMessage = ""; }
+    public function getRequestMessage() { return $this->requestMessage;}
+    public function setRequestMessage($value) { $this->requestMessage = $value; }
+
+    public function __toString() {
+      return ''
+           . Protobuf::toString('type', $this->type, \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE)
+           . Protobuf::toString('request_message', $this->requestMessage, "");
+    }
+
+    // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.RequestEnvelope.PlatformRequest)
+  }
+
   // message POGOProtos.Networking.Envelopes.RequestEnvelope
   final class RequestEnvelope extends ProtobufMessage {
 
@@ -196,13 +283,13 @@ namespace POGOProtos\Networking\Envelopes {
     private $statusCode = 0; // optional int32 status_code = 1
     private $requestId = 0; // optional uint64 request_id = 3
     private $requests = array(); // repeated .POGOProtos.Networking.Requests.Request requests = 4
-    private $unknown6 = null; // optional .POGOProtos.Networking.Envelopes.Unknown6 unknown6 = 6
+    private $platformRequests = array(); // repeated .POGOProtos.Networking.Envelopes.RequestEnvelope.PlatformRequest platform_requests = 6
     private $latitude = 0; // optional double latitude = 7
     private $longitude = 0; // optional double longitude = 8
-    private $altitude = 0; // optional double altitude = 9
+    private $accuracy = 0; // optional double accuracy = 9
     private $authInfo = null; // optional .POGOProtos.Networking.Envelopes.RequestEnvelope.AuthInfo auth_info = 10
     private $authTicket = null; // optional .POGOProtos.Networking.Envelopes.AuthTicket auth_ticket = 11
-    private $unknown12 = 0; // optional int64 unknown12 = 12
+    private $msSinceLastLocationfix = 0; // optional int64 ms_since_last_locationfix = 12
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -245,15 +332,15 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Requests\Request did not read the full length');
 
             break;
-          case 6: // optional .POGOProtos.Networking.Envelopes.Unknown6 unknown6 = 6
+          case 6: // repeated .POGOProtos.Networking.Envelopes.RequestEnvelope.PlatformRequest platform_requests = 6
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
             $len = Protobuf::read_varint($fp, $limit);
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $limit -= $len;
-            $this->unknown6 = new \POGOProtos\Networking\Envelopes\Unknown6($fp, $len);
-            if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Unknown6 did not read the full length');
+            $this->platformRequests[] = new \POGOProtos\Networking\Envelopes\RequestEnvelope_PlatformRequest($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\RequestEnvelope_PlatformRequest did not read the full length');
 
             break;
           case 7: // optional double latitude = 7
@@ -274,13 +361,13 @@ namespace POGOProtos\Networking\Envelopes {
             $this->longitude = $tmp;
 
             break;
-          case 9: // optional double altitude = 9
+          case 9: // optional double accuracy = 9
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->altitude = $tmp;
+            $this->accuracy = $tmp;
 
             break;
           case 10: // optional .POGOProtos.Networking.Envelopes.RequestEnvelope.AuthInfo auth_info = 10
@@ -305,13 +392,13 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\AuthTicket did not read the full length');
 
             break;
-          case 12: // optional int64 unknown12 = 12
+          case 12: // optional int64 ms_since_last_locationfix = 12
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->unknown12 = $tmp;
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->msSinceLastLocationfix = $tmp;
 
             break;
           default:
@@ -334,10 +421,10 @@ namespace POGOProtos\Networking\Envelopes {
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
       }
-      if ($this->unknown6 !== null) {
+      foreach($this->platformRequests as $v) {
         fwrite($fp, "2", 1);
-        Protobuf::write_varint($fp, $this->unknown6->size());
-        $this->unknown6->write($fp);
+        Protobuf::write_varint($fp, $v->size());
+        $v->write($fp);
       }
       if ($this->latitude !== 0) {
         fwrite($fp, "9", 1);
@@ -347,9 +434,9 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "A", 1);
         Protobuf::write_double($fp, $this->longitude);
       }
-      if ($this->altitude !== 0) {
+      if ($this->accuracy !== 0) {
         fwrite($fp, "I", 1);
-        Protobuf::write_double($fp, $this->altitude);
+        Protobuf::write_double($fp, $this->accuracy);
       }
       if ($this->authInfo !== null) {
         fwrite($fp, "R", 1);
@@ -361,9 +448,9 @@ namespace POGOProtos\Networking\Envelopes {
         Protobuf::write_varint($fp, $this->authTicket->size());
         $this->authTicket->write($fp);
       }
-      if ($this->unknown12 !== 0) {
+      if ($this->msSinceLastLocationfix !== 0) {
         fwrite($fp, "`", 1);
-        Protobuf::write_varint($fp, $this->unknown12);
+        Protobuf::write_varint($fp, $this->msSinceLastLocationfix);
       }
     }
 
@@ -379,8 +466,8 @@ namespace POGOProtos\Networking\Envelopes {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->unknown6 !== null) {
-        $l = $this->unknown6->size();
+      foreach($this->platformRequests as $v) {
+        $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       if ($this->latitude !== 0) {
@@ -389,7 +476,7 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->longitude !== 0) {
         $size += 9;
       }
-      if ($this->altitude !== 0) {
+      if ($this->accuracy !== 0) {
         $size += 9;
       }
       if ($this->authInfo !== null) {
@@ -400,8 +487,8 @@ namespace POGOProtos\Networking\Envelopes {
         $l = $this->authTicket->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->unknown12 !== 0) {
-        $size += 1 + Protobuf::size_varint($this->unknown12);
+      if ($this->msSinceLastLocationfix !== 0) {
+        $size += 1 + Protobuf::size_varint($this->msSinceLastLocationfix);
       }
       return $size;
     }
@@ -422,9 +509,13 @@ namespace POGOProtos\Networking\Envelopes {
     public function addRequests(array $value) { $this->requests[] = $value; }
     public function addAllRequests(array $values) { foreach($values as $value) {$this->requests[] = $value; }}
 
-    public function clearUnknown6() { $this->unknown6 = null; }
-    public function getUnknown6() { return $this->unknown6;}
-    public function setUnknown6(\POGOProtos\Networking\Envelopes\Unknown6 $value) { $this->unknown6 = $value; }
+    public function clearPlatformRequests() { $this->platformRequests = array(); }
+    public function getPlatformRequestsCount() { return count($this->platformRequests); }
+    public function getPlatformRequests($index) { return $this->platformRequests[$index]; }
+    public function getPlatformRequestsArray() { return $this->platformRequests; }
+    public function setPlatformRequests($index, array $value) {$this->platformRequests[$index] = $value; }
+    public function addPlatformRequests(array $value) { $this->platformRequests[] = $value; }
+    public function addAllPlatformRequests(array $values) { foreach($values as $value) {$this->platformRequests[] = $value; }}
 
     public function clearLatitude() { $this->latitude = 0; }
     public function getLatitude() { return $this->latitude;}
@@ -434,9 +525,9 @@ namespace POGOProtos\Networking\Envelopes {
     public function getLongitude() { return $this->longitude;}
     public function setLongitude($value) { $this->longitude = $value; }
 
-    public function clearAltitude() { $this->altitude = 0; }
-    public function getAltitude() { return $this->altitude;}
-    public function setAltitude($value) { $this->altitude = $value; }
+    public function clearAccuracy() { $this->accuracy = 0; }
+    public function getAccuracy() { return $this->accuracy;}
+    public function setAccuracy($value) { $this->accuracy = $value; }
 
     public function clearAuthInfo() { $this->authInfo = null; }
     public function getAuthInfo() { return $this->authInfo;}
@@ -446,22 +537,22 @@ namespace POGOProtos\Networking\Envelopes {
     public function getAuthTicket() { return $this->authTicket;}
     public function setAuthTicket(\POGOProtos\Networking\Envelopes\AuthTicket $value) { $this->authTicket = $value; }
 
-    public function clearUnknown12() { $this->unknown12 = 0; }
-    public function getUnknown12() { return $this->unknown12;}
-    public function setUnknown12($value) { $this->unknown12 = $value; }
+    public function clearMsSinceLastLocationfix() { $this->msSinceLastLocationfix = 0; }
+    public function getMsSinceLastLocationfix() { return $this->msSinceLastLocationfix;}
+    public function setMsSinceLastLocationfix($value) { $this->msSinceLastLocationfix = $value; }
 
     public function __toString() {
       return ''
            . Protobuf::toString('status_code', $this->statusCode, 0)
            . Protobuf::toString('request_id', $this->requestId, 0)
            . Protobuf::toString('requests', $this->requests, null)
-           . Protobuf::toString('unknown6', $this->unknown6, null)
+           . Protobuf::toString('platform_requests', $this->platformRequests, null)
            . Protobuf::toString('latitude', $this->latitude, 0)
            . Protobuf::toString('longitude', $this->longitude, 0)
-           . Protobuf::toString('altitude', $this->altitude, 0)
+           . Protobuf::toString('accuracy', $this->accuracy, 0)
            . Protobuf::toString('auth_info', $this->authInfo, null)
            . Protobuf::toString('auth_ticket', $this->authTicket, null)
-           . Protobuf::toString('unknown12', $this->unknown12, 0);
+           . Protobuf::toString('ms_since_last_locationfix', $this->msSinceLastLocationfix, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.RequestEnvelope)

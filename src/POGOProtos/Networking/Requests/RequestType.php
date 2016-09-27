@@ -64,6 +64,8 @@ namespace POGOProtos\Networking\Requests {
     const NICKNAME_POKEMON = 149;
     const EQUIP_BADGE = 150;
     const SET_CONTACT_SETTINGS = 151;
+    const SET_BUDDY_POKEMON = 152;
+    const GET_BUDDY_WALKED = 153;
     const GET_ASSET_DIGEST = 300;
     const GET_DOWNLOAD_URLS = 301;
     const GET_SUGGESTED_CODENAMES = 401;
@@ -73,7 +75,9 @@ namespace POGOProtos\Networking\Requests {
     const SET_PLAYER_TEAM = 405;
     const MARK_TUTORIAL_COMPLETE = 406;
     const LOAD_SPAWN_POINTS = 500;
-    const PING = 666;
+    const CHECK_CHALLENGE = 600;
+    const VERIFY_CHALLENGE = 601;
+    const ECHO = 666;
     const DEBUG_UPDATE_INVENTORY = 700;
     const DEBUG_DELETE_PLAYER = 701;
     const SFIDA_REGISTRATION = 800;
@@ -137,6 +141,8 @@ namespace POGOProtos\Networking\Requests {
       149 => "NICKNAME_POKEMON",
       150 => "EQUIP_BADGE",
       151 => "SET_CONTACT_SETTINGS",
+      152 => "SET_BUDDY_POKEMON",
+      153 => "GET_BUDDY_WALKED",
       300 => "GET_ASSET_DIGEST",
       301 => "GET_DOWNLOAD_URLS",
       401 => "GET_SUGGESTED_CODENAMES",
@@ -146,7 +152,9 @@ namespace POGOProtos\Networking\Requests {
       405 => "SET_PLAYER_TEAM",
       406 => "MARK_TUTORIAL_COMPLETE",
       500 => "LOAD_SPAWN_POINTS",
-      666 => "PING",
+      600 => "CHECK_CHALLENGE",
+      601 => "VERIFY_CHALLENGE",
+      666 => "ECHO",
       700 => "DEBUG_UPDATE_INVENTORY",
       701 => "DEBUG_DELETE_PLAYER",
       800 => "SFIDA_REGISTRATION",

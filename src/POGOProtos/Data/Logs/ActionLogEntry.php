@@ -16,6 +16,7 @@ namespace POGOProtos\Data\Logs {
     const NONE = 0;
     const CATCH_POKEMON = 3;
     const FORT_SEARCH = 4;
+    const BUDDY_POKEMON = 5;
 
     private $_unknown;
     private $action = null; //  oneof Action
@@ -77,6 +78,18 @@ namespace POGOProtos\Data\Logs {
             $this->_actioncase = self::FORT_SEARCH;
 
             break;
+          case 5: // optional .POGOProtos.Data.Logs.BuddyPokemonLogEntry buddy_pokemon = 5
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->action = new \POGOProtos\Data\Logs\BuddyPokemonLogEntry($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Logs\BuddyPokemonLogEntry did not read the full length');
+            $this->_actioncase = self::BUDDY_POKEMON;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -102,6 +115,11 @@ namespace POGOProtos\Data\Logs {
         Protobuf::write_varint($fp, $this->action->size());
         $this->action->write($fp);
       }
+      if ($this->_actioncase === self::BUDDY_POKEMON) {
+        fwrite($fp, "*", 1);
+        Protobuf::write_varint($fp, $this->action->size());
+        $this->action->write($fp);
+      }
     }
 
     public function size() {
@@ -117,6 +135,10 @@ namespace POGOProtos\Data\Logs {
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       if ($this->_actioncase === self::FORT_SEARCH) {
+        $l = $this->action->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->_actioncase === self::BUDDY_POKEMON) {
         $l = $this->action->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
@@ -145,6 +167,11 @@ namespace POGOProtos\Data\Logs {
     public function hasFortSearch() { return $this->_actioncase === self::FORT_SEARCH; }
     public function getFortSearch() { if($this->_actioncase === self::FORT_SEARCH) return $this->action; else return null;}
     public function setFortSearch(\POGOProtos\Data\Logs\FortSearchLogEntry $value) { $this->_actioncase = self::FORT_SEARCH; $this->action = $value; }
+
+    public function clearBuddyPokemon() { if ($this->_actioncase === self::BUDDY_POKEMON) clearAction(); }
+    public function hasBuddyPokemon() { return $this->_actioncase === self::BUDDY_POKEMON; }
+    public function getBuddyPokemon() { if($this->_actioncase === self::BUDDY_POKEMON) return $this->action; else return null;}
+    public function setBuddyPokemon(\POGOProtos\Data\Logs\BuddyPokemonLogEntry $value) { $this->_actioncase = self::BUDDY_POKEMON; $this->action = $value; }
 
     public function __toString() {
       return ''

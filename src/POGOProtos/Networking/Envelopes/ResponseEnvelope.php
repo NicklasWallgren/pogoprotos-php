@@ -11,14 +11,137 @@ namespace POGOProtos\Networking\Envelopes {
   use ProtobufMessage;
 
 
+
+  // message POGOProtos.Networking.Envelopes.ResponseEnvelope.PlatformResponse
+  final class ResponseEnvelope_PlatformResponse extends ProtobufMessage {
+
+    private $_unknown;
+    private $type = \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE; // optional .POGOProtos.Networking.Platform.PlatformRequestType type = 1
+    private $response = ""; // optional bytes response = 2
+
+    public function __construct($in = null, &$limit = PHP_INT_MAX) {
+      parent::__construct($in, $limit);
+    }
+
+    public function read($fp, &$limit = PHP_INT_MAX) {
+      $fp = ProtobufIO::toStream($fp, $limit);
+      while(!feof($fp) && $limit > 0) {
+        $tag = Protobuf::read_varint($fp, $limit);
+        if ($tag === false) break;
+        $wire  = $tag & 0x07;
+        $field = $tag >> 3;
+        switch($field) {
+          case 1: // optional .POGOProtos.Networking.Platform.PlatformRequestType type = 1
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->type = $tmp;
+
+            break;
+          case 2: // optional bytes response = 2
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->response = $tmp;
+
+            break;
+          default:
+            $limit -= Protobuf::skip_field($fp, $wire);
+        }
+      }
+    }
+
+    public function write($fp) {
+      if ($this->type !== \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE) {
+        fwrite($fp, "\x08", 1);
+        Protobuf::write_varint($fp, $this->type);
+      }
+      if ($this->response !== "") {
+        fwrite($fp, "\x12", 1);
+        Protobuf::write_varint($fp, strlen($this->response));
+        fwrite($fp, $this->response);
+      }
+    }
+
+    public function size() {
+      $size = 0;
+      if ($this->type !== \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE) {
+        $size += 1 + Protobuf::size_varint($this->type);
+      }
+      if ($this->response !== "") {
+        $l = strlen($this->response);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      return $size;
+    }
+
+    public function clearType() { $this->type = \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE; }
+    public function getType() { return $this->type;}
+    public function setType($value) { $this->type = $value; }
+
+    public function clearResponse() { $this->response = ""; }
+    public function getResponse() { return $this->response;}
+    public function setResponse($value) { $this->response = $value; }
+
+    public function __toString() {
+      return ''
+           . Protobuf::toString('type', $this->type, \POGOProtos\Networking\Platform\PlatformRequestType::METHOD_NONE)
+           . Protobuf::toString('response', $this->response, "");
+    }
+
+    // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.ResponseEnvelope.PlatformResponse)
+  }
+
+  // enum POGOProtos.Networking.Envelopes.ResponseEnvelope.StatusCode
+  abstract class ResponseEnvelope_StatusCode extends ProtobufEnum {
+    const UNKNOWN = 0;
+    const OK = 1;
+    const OK_RPC_URL_IN_RESPONSE = 2;
+    const BAD_REQUEST = 3;
+    const INVALID_REQUEST = 51;
+    const INVALID_PLATFORM_REQUEST = 52;
+    const REDIRECT = 53;
+    const SESSION_INVALIDATED = 100;
+    const INVALID_AUTH_TOKEN = 102;
+
+    public static $_values = array(
+      0 => "UNKNOWN",
+      1 => "OK",
+      2 => "OK_RPC_URL_IN_RESPONSE",
+      3 => "BAD_REQUEST",
+      51 => "INVALID_REQUEST",
+      52 => "INVALID_PLATFORM_REQUEST",
+      53 => "REDIRECT",
+      100 => "SESSION_INVALIDATED",
+      102 => "INVALID_AUTH_TOKEN",
+    );
+
+    public static function isValid($value) {
+      return array_key_exists($value, self::$_values);
+    }
+
+    public static function toString($value) {
+      checkArgument(is_int($value), 'value must be a integer');
+      if (array_key_exists($value, self::$_values))
+        return self::$_values[$value];
+      return 'UNKNOWN';
+    }
+  }
+
   // message POGOProtos.Networking.Envelopes.ResponseEnvelope
   final class ResponseEnvelope extends ProtobufMessage {
 
     private $_unknown;
-    private $statusCode = 0; // optional int32 status_code = 1
+    private $statusCode = \POGOProtos\Networking\Envelopes\ResponseEnvelope_StatusCode::UNKNOWN; // optional .POGOProtos.Networking.Envelopes.ResponseEnvelope.StatusCode status_code = 1
     private $requestId = 0; // optional uint64 request_id = 2
     private $apiUrl = ""; // optional string api_url = 3
-    private $unknown6 = array(); // repeated .POGOProtos.Networking.Envelopes.Unknown6Response unknown6 = 6
+    private $platformReturns = array(); // repeated .POGOProtos.Networking.Envelopes.ResponseEnvelope.PlatformResponse platform_returns = 6
     private $authTicket = null; // optional .POGOProtos.Networking.Envelopes.AuthTicket auth_ticket = 7
     private $returns = array(); // repeated bytes returns = 100
     private $error = ""; // optional string error = 101
@@ -35,13 +158,13 @@ namespace POGOProtos\Networking\Envelopes {
         $wire  = $tag & 0x07;
         $field = $tag >> 3;
         switch($field) {
-          case 1: // optional int32 status_code = 1
+          case 1: // optional .POGOProtos.Networking.Envelopes.ResponseEnvelope.StatusCode status_code = 1
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
-            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->statusCode = $tmp;
+            $this->statusCode = $tmp;
 
             break;
           case 2: // optional uint64 request_id = 2
@@ -64,15 +187,15 @@ namespace POGOProtos\Networking\Envelopes {
             $this->apiUrl = $tmp;
 
             break;
-          case 6: // repeated .POGOProtos.Networking.Envelopes.Unknown6Response unknown6 = 6
+          case 6: // repeated .POGOProtos.Networking.Envelopes.ResponseEnvelope.PlatformResponse platform_returns = 6
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
             $len = Protobuf::read_varint($fp, $limit);
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $limit -= $len;
-            $this->unknown6[] = new \POGOProtos\Networking\Envelopes\Unknown6Response($fp, $len);
-            if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Unknown6Response did not read the full length');
+            $this->platformReturns[] = new \POGOProtos\Networking\Envelopes\ResponseEnvelope_PlatformResponse($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\ResponseEnvelope_PlatformResponse did not read the full length');
 
             break;
           case 7: // optional .POGOProtos.Networking.Envelopes.AuthTicket auth_ticket = 7
@@ -115,7 +238,7 @@ namespace POGOProtos\Networking\Envelopes {
     }
 
     public function write($fp) {
-      if ($this->statusCode !== 0) {
+      if ($this->statusCode !== \POGOProtos\Networking\Envelopes\ResponseEnvelope_StatusCode::UNKNOWN) {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->statusCode);
       }
@@ -128,7 +251,7 @@ namespace POGOProtos\Networking\Envelopes {
         Protobuf::write_varint($fp, strlen($this->apiUrl));
         fwrite($fp, $this->apiUrl);
       }
-      foreach($this->unknown6 as $v) {
+      foreach($this->platformReturns as $v) {
         fwrite($fp, "2", 1);
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
@@ -152,7 +275,7 @@ namespace POGOProtos\Networking\Envelopes {
 
     public function size() {
       $size = 0;
-      if ($this->statusCode !== 0) {
+      if ($this->statusCode !== \POGOProtos\Networking\Envelopes\ResponseEnvelope_StatusCode::UNKNOWN) {
         $size += 1 + Protobuf::size_varint($this->statusCode);
       }
       if ($this->requestId !== 0) {
@@ -162,7 +285,7 @@ namespace POGOProtos\Networking\Envelopes {
         $l = strlen($this->apiUrl);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      foreach($this->unknown6 as $v) {
+      foreach($this->platformReturns as $v) {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
@@ -181,7 +304,7 @@ namespace POGOProtos\Networking\Envelopes {
       return $size;
     }
 
-    public function clearStatusCode() { $this->statusCode = 0; }
+    public function clearStatusCode() { $this->statusCode = \POGOProtos\Networking\Envelopes\ResponseEnvelope_StatusCode::UNKNOWN; }
     public function getStatusCode() { return $this->statusCode;}
     public function setStatusCode($value) { $this->statusCode = $value; }
 
@@ -193,13 +316,13 @@ namespace POGOProtos\Networking\Envelopes {
     public function getApiUrl() { return $this->apiUrl;}
     public function setApiUrl($value) { $this->apiUrl = $value; }
 
-    public function clearUnknown6() { $this->unknown6 = array(); }
-    public function getUnknown6Count() { return count($this->unknown6); }
-    public function getUnknown6($index) { return $this->unknown6[$index]; }
-    public function getUnknown6Array() { return $this->unknown6; }
-    public function setUnknown6($index, array $value) {$this->unknown6[$index] = $value; }
-    public function addUnknown6(array $value) { $this->unknown6[] = $value; }
-    public function addAllUnknown6(array $values) { foreach($values as $value) {$this->unknown6[] = $value; }}
+    public function clearPlatformReturns() { $this->platformReturns = array(); }
+    public function getPlatformReturnsCount() { return count($this->platformReturns); }
+    public function getPlatformReturns($index) { return $this->platformReturns[$index]; }
+    public function getPlatformReturnsArray() { return $this->platformReturns; }
+    public function setPlatformReturns($index, array $value) {$this->platformReturns[$index] = $value; }
+    public function addPlatformReturns(array $value) { $this->platformReturns[] = $value; }
+    public function addAllPlatformReturns(array $values) { foreach($values as $value) {$this->platformReturns[] = $value; }}
 
     public function clearAuthTicket() { $this->authTicket = null; }
     public function getAuthTicket() { return $this->authTicket;}
@@ -219,10 +342,10 @@ namespace POGOProtos\Networking\Envelopes {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('status_code', $this->statusCode, 0)
+           . Protobuf::toString('status_code', $this->statusCode, \POGOProtos\Networking\Envelopes\ResponseEnvelope_StatusCode::UNKNOWN)
            . Protobuf::toString('request_id', $this->requestId, 0)
            . Protobuf::toString('api_url', $this->apiUrl, "")
-           . Protobuf::toString('unknown6', $this->unknown6, null)
+           . Protobuf::toString('platform_returns', $this->platformReturns, null)
            . Protobuf::toString('auth_ticket', $this->authTicket, null)
            . Protobuf::toString('returns', $this->returns, "")
            . Protobuf::toString('error', $this->error, "");

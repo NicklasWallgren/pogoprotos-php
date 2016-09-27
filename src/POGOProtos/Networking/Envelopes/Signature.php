@@ -17,10 +17,12 @@ namespace POGOProtos\Networking\Envelopes {
     private $_unknown;
     private $provider = ""; // optional string provider = 1
     private $timestampSnapshot = 0; // optional uint64 timestamp_snapshot = 2
+    private $altitude = 0; // optional float altitude = 4
     private $latitude = 0; // optional float latitude = 13
     private $longitude = 0; // optional float longitude = 14
-    private $horizontalAccuracy = 0; // optional float horizontal_accuracy = 20
-    private $altitude = 0; // optional float altitude = 21
+    private $speed = 0; // optional float speed = 18
+    private $course = 0; // optional float course = 20
+    private $horizontalAccuracy = 0; // optional float horizontal_accuracy = 21
     private $verticalAccuracy = 0; // optional float vertical_accuracy = 22
     private $providerStatus = 0; // optional uint64 provider_status = 26
     private $floor = 0; // optional uint32 floor = 27
@@ -58,6 +60,15 @@ namespace POGOProtos\Networking\Envelopes {
             if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->timestampSnapshot = $tmp;
 
             break;
+          case 4: // optional float altitude = 4
+            if($wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
+            }
+            $tmp = Protobuf::read_float($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+            $this->altitude = $tmp;
+
+            break;
           case 13: // optional float latitude = 13
             if($wire !== 5) {
               throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
@@ -76,22 +87,31 @@ namespace POGOProtos\Networking\Envelopes {
             $this->longitude = $tmp;
 
             break;
-          case 20: // optional float horizontal_accuracy = 20
+          case 18: // optional float speed = 18
+            if($wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
+            }
+            $tmp = Protobuf::read_float($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+            $this->speed = $tmp;
+
+            break;
+          case 20: // optional float course = 20
+            if($wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
+            }
+            $tmp = Protobuf::read_float($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+            $this->course = $tmp;
+
+            break;
+          case 21: // optional float horizontal_accuracy = 21
             if($wire !== 5) {
               throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
             }
             $tmp = Protobuf::read_float($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
             $this->horizontalAccuracy = $tmp;
-
-            break;
-          case 21: // optional float altitude = 21
-            if($wire !== 5) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
-            }
-            $tmp = Protobuf::read_float($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
-            $this->altitude = $tmp;
 
             break;
           case 22: // optional float vertical_accuracy = 22
@@ -146,6 +166,10 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "\x10", 1);
         Protobuf::write_varint($fp, $this->timestampSnapshot);
       }
+      if ($this->altitude !== 0) {
+        fwrite($fp, "%", 1);
+        Protobuf::write_float($fp, $this->altitude);
+      }
       if ($this->latitude !== 0) {
         fwrite($fp, "m", 1);
         Protobuf::write_float($fp, $this->latitude);
@@ -154,13 +178,17 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "u", 1);
         Protobuf::write_float($fp, $this->longitude);
       }
-      if ($this->horizontalAccuracy !== 0) {
-        fwrite($fp, "\xa5\x01", 2);
-        Protobuf::write_float($fp, $this->horizontalAccuracy);
+      if ($this->speed !== 0) {
+        fwrite($fp, "\x95\x01", 2);
+        Protobuf::write_float($fp, $this->speed);
       }
-      if ($this->altitude !== 0) {
+      if ($this->course !== 0) {
+        fwrite($fp, "\xa5\x01", 2);
+        Protobuf::write_float($fp, $this->course);
+      }
+      if ($this->horizontalAccuracy !== 0) {
         fwrite($fp, "\xad\x01", 2);
-        Protobuf::write_float($fp, $this->altitude);
+        Protobuf::write_float($fp, $this->horizontalAccuracy);
       }
       if ($this->verticalAccuracy !== 0) {
         fwrite($fp, "\xb5\x01", 2);
@@ -189,16 +217,22 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->timestampSnapshot !== 0) {
         $size += 1 + Protobuf::size_varint($this->timestampSnapshot);
       }
+      if ($this->altitude !== 0) {
+        $size += 5;
+      }
       if ($this->latitude !== 0) {
         $size += 5;
       }
       if ($this->longitude !== 0) {
         $size += 5;
       }
-      if ($this->horizontalAccuracy !== 0) {
+      if ($this->speed !== 0) {
         $size += 6;
       }
-      if ($this->altitude !== 0) {
+      if ($this->course !== 0) {
+        $size += 6;
+      }
+      if ($this->horizontalAccuracy !== 0) {
         $size += 6;
       }
       if ($this->verticalAccuracy !== 0) {
@@ -224,6 +258,10 @@ namespace POGOProtos\Networking\Envelopes {
     public function getTimestampSnapshot() { return $this->timestampSnapshot;}
     public function setTimestampSnapshot($value) { $this->timestampSnapshot = $value; }
 
+    public function clearAltitude() { $this->altitude = 0; }
+    public function getAltitude() { return $this->altitude;}
+    public function setAltitude($value) { $this->altitude = $value; }
+
     public function clearLatitude() { $this->latitude = 0; }
     public function getLatitude() { return $this->latitude;}
     public function setLatitude($value) { $this->latitude = $value; }
@@ -232,13 +270,17 @@ namespace POGOProtos\Networking\Envelopes {
     public function getLongitude() { return $this->longitude;}
     public function setLongitude($value) { $this->longitude = $value; }
 
+    public function clearSpeed() { $this->speed = 0; }
+    public function getSpeed() { return $this->speed;}
+    public function setSpeed($value) { $this->speed = $value; }
+
+    public function clearCourse() { $this->course = 0; }
+    public function getCourse() { return $this->course;}
+    public function setCourse($value) { $this->course = $value; }
+
     public function clearHorizontalAccuracy() { $this->horizontalAccuracy = 0; }
     public function getHorizontalAccuracy() { return $this->horizontalAccuracy;}
     public function setHorizontalAccuracy($value) { $this->horizontalAccuracy = $value; }
-
-    public function clearAltitude() { $this->altitude = 0; }
-    public function getAltitude() { return $this->altitude;}
-    public function setAltitude($value) { $this->altitude = $value; }
 
     public function clearVerticalAccuracy() { $this->verticalAccuracy = 0; }
     public function getVerticalAccuracy() { return $this->verticalAccuracy;}
@@ -260,10 +302,12 @@ namespace POGOProtos\Networking\Envelopes {
       return ''
            . Protobuf::toString('provider', $this->provider, "")
            . Protobuf::toString('timestamp_snapshot', $this->timestampSnapshot, 0)
+           . Protobuf::toString('altitude', $this->altitude, 0)
            . Protobuf::toString('latitude', $this->latitude, 0)
            . Protobuf::toString('longitude', $this->longitude, 0)
+           . Protobuf::toString('speed', $this->speed, 0)
+           . Protobuf::toString('course', $this->course, 0)
            . Protobuf::toString('horizontal_accuracy', $this->horizontalAccuracy, 0)
-           . Protobuf::toString('altitude', $this->altitude, 0)
            . Protobuf::toString('vertical_accuracy', $this->verticalAccuracy, 0)
            . Protobuf::toString('provider_status', $this->providerStatus, 0)
            . Protobuf::toString('floor', $this->floor, 0)
@@ -280,9 +324,9 @@ namespace POGOProtos\Networking\Envelopes {
     private $_unknown;
     private $timeToFix = 0; // optional uint64 time_to_fix = 1
     private $satellitesPrn = array(); // repeated int32 satellites_prn = 2
-    private $snr = array(); // repeated float snr = 3
-    private $azimuth = array(); // repeated float azimuth = 4
-    private $elevation = array(); // repeated float elevation = 5
+    private $azimuth = array(); // repeated float azimuth = 3
+    private $elevation = array(); // repeated float elevation = 4
+    private $snr = array(); // repeated float snr = 5
     private $hasAlmanac = array(); // repeated bool has_almanac = 6
     private $hasEphemeris = array(); // repeated bool has_ephemeris = 7
     private $usedInFix = array(); // repeated bool used_in_fix = 8
@@ -326,25 +370,7 @@ namespace POGOProtos\Networking\Envelopes {
             }
 
             break;
-          case 3: // repeated float snr = 3
-            if($wire !== 2 && $wire !== 5) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 2 or 5 got: $wire");
-            }
-            if ($wire === 5) {
-              $tmp = Protobuf::read_float($fp, $limit);
-              if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
-              $this->snr[] = $tmp;
-            } elseif ($wire === 2) {
-              $len = Protobuf::read_varint($fp, $limit);
-              while ($len > 0) {
-                $tmp = Protobuf::read_float($fp, $len);
-                if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
-                $this->snr[] = $tmp;
-              }
-            }
-
-            break;
-          case 4: // repeated float azimuth = 4
+          case 3: // repeated float azimuth = 3
             if($wire !== 2 && $wire !== 5) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 or 5 got: $wire");
             }
@@ -362,7 +388,7 @@ namespace POGOProtos\Networking\Envelopes {
             }
 
             break;
-          case 5: // repeated float elevation = 5
+          case 4: // repeated float elevation = 4
             if($wire !== 2 && $wire !== 5) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 or 5 got: $wire");
             }
@@ -376,6 +402,24 @@ namespace POGOProtos\Networking\Envelopes {
                 $tmp = Protobuf::read_float($fp, $len);
                 if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
                 $this->elevation[] = $tmp;
+              }
+            }
+
+            break;
+          case 5: // repeated float snr = 5
+            if($wire !== 2 && $wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 or 5 got: $wire");
+            }
+            if ($wire === 5) {
+              $tmp = Protobuf::read_float($fp, $limit);
+              if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+              $this->snr[] = $tmp;
+            } elseif ($wire === 2) {
+              $len = Protobuf::read_varint($fp, $limit);
+              while ($len > 0) {
+                $tmp = Protobuf::read_float($fp, $len);
+                if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+                $this->snr[] = $tmp;
               }
             }
 
@@ -449,15 +493,15 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "\x10", 1);
         Protobuf::write_varint($fp, $v);
       }
-      foreach($this->snr as $v) {
+      foreach($this->azimuth as $v) {
         fwrite($fp, "\x1d", 1);
         Protobuf::write_float($fp, $v);
       }
-      foreach($this->azimuth as $v) {
+      foreach($this->elevation as $v) {
         fwrite($fp, "%", 1);
         Protobuf::write_float($fp, $v);
       }
-      foreach($this->elevation as $v) {
+      foreach($this->snr as $v) {
         fwrite($fp, "-", 1);
         Protobuf::write_float($fp, $v);
       }
@@ -484,15 +528,15 @@ namespace POGOProtos\Networking\Envelopes {
         $l = strlen($v);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      foreach($this->snr as $v) {
-        $l = strlen($v);
-        $size += 1 + Protobuf::size_varint($l) + $l;
-      }
       foreach($this->azimuth as $v) {
         $l = strlen($v);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       foreach($this->elevation as $v) {
+        $l = strlen($v);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      foreach($this->snr as $v) {
         $l = strlen($v);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
@@ -523,14 +567,6 @@ namespace POGOProtos\Networking\Envelopes {
     public function addSatellitesPrn(array $value) { $this->satellitesPrn[] = $value; }
     public function addAllSatellitesPrn(array $values) { foreach($values as $value) {$this->satellitesPrn[] = $value; }}
 
-    public function clearSnr() { $this->snr = array(); }
-    public function getSnrCount() { return count($this->snr); }
-    public function getSnr($index) { return $this->snr[$index]; }
-    public function getSnrArray() { return $this->snr; }
-    public function setSnr($index, array $value) {$this->snr[$index] = $value; }
-    public function addSnr(array $value) { $this->snr[] = $value; }
-    public function addAllSnr(array $values) { foreach($values as $value) {$this->snr[] = $value; }}
-
     public function clearAzimuth() { $this->azimuth = array(); }
     public function getAzimuthCount() { return count($this->azimuth); }
     public function getAzimuth($index) { return $this->azimuth[$index]; }
@@ -546,6 +582,14 @@ namespace POGOProtos\Networking\Envelopes {
     public function setElevation($index, array $value) {$this->elevation[$index] = $value; }
     public function addElevation(array $value) { $this->elevation[] = $value; }
     public function addAllElevation(array $values) { foreach($values as $value) {$this->elevation[] = $value; }}
+
+    public function clearSnr() { $this->snr = array(); }
+    public function getSnrCount() { return count($this->snr); }
+    public function getSnr($index) { return $this->snr[$index]; }
+    public function getSnrArray() { return $this->snr; }
+    public function setSnr($index, array $value) {$this->snr[$index] = $value; }
+    public function addSnr(array $value) { $this->snr[] = $value; }
+    public function addAllSnr(array $values) { foreach($values as $value) {$this->snr[] = $value; }}
 
     public function clearHasAlmanac() { $this->hasAlmanac = array(); }
     public function getHasAlmanacCount() { return count($this->hasAlmanac); }
@@ -575,9 +619,9 @@ namespace POGOProtos\Networking\Envelopes {
       return ''
            . Protobuf::toString('time_to_fix', $this->timeToFix, 0)
            . Protobuf::toString('satellites_prn', $this->satellitesPrn, 0)
-           . Protobuf::toString('snr', $this->snr, 0)
            . Protobuf::toString('azimuth', $this->azimuth, 0)
            . Protobuf::toString('elevation', $this->elevation, 0)
+           . Protobuf::toString('snr', $this->snr, 0)
            . Protobuf::toString('has_almanac', $this->hasAlmanac, false)
            . Protobuf::toString('has_ephemeris', $this->hasEphemeris, false)
            . Protobuf::toString('used_in_fix', $this->usedInFix, false);
@@ -592,21 +636,21 @@ namespace POGOProtos\Networking\Envelopes {
 
     private $_unknown;
     private $timestampSnapshot = 0; // optional uint64 timestamp_snapshot = 1
-    private $magnetometerX = 0; // optional double magnetometer_x = 3
-    private $magnetometerY = 0; // optional double magnetometer_y = 4
-    private $magnetometerZ = 0; // optional double magnetometer_z = 5
-    private $angleNormalizedX = 0; // optional double angle_normalized_x = 6
-    private $angleNormalizedY = 0; // optional double angle_normalized_y = 7
-    private $angleNormalizedZ = 0; // optional double angle_normalized_z = 8
-    private $accelRawX = 0; // optional double accel_raw_x = 10
-    private $accelRawY = 0; // optional double accel_raw_y = 11
-    private $accelRawZ = 0; // optional double accel_raw_z = 12
+    private $linearAccelerationX = 0; // optional double linear_acceleration_x = 3
+    private $linearAccelerationY = 0; // optional double linear_acceleration_y = 4
+    private $linearAccelerationZ = 0; // optional double linear_acceleration_z = 5
+    private $magneticFieldX = 0; // optional double magnetic_field_x = 6
+    private $magneticFieldY = 0; // optional double magnetic_field_y = 7
+    private $magneticFieldZ = 0; // optional double magnetic_field_z = 8
+    private $rotationVectorX = 0; // optional double rotation_vector_x = 10
+    private $rotationVectorY = 0; // optional double rotation_vector_y = 11
+    private $rotationVectorZ = 0; // optional double rotation_vector_z = 12
     private $gyroscopeRawX = 0; // optional double gyroscope_raw_x = 13
     private $gyroscopeRawY = 0; // optional double gyroscope_raw_y = 14
     private $gyroscopeRawZ = 0; // optional double gyroscope_raw_z = 15
-    private $accelNormalizedX = 0; // optional double accel_normalized_x = 16
-    private $accelNormalizedY = 0; // optional double accel_normalized_y = 17
-    private $accelNormalizedZ = 0; // optional double accel_normalized_z = 18
+    private $gravityX = 0; // optional double gravity_x = 16
+    private $gravityY = 0; // optional double gravity_y = 17
+    private $gravityZ = 0; // optional double gravity_z = 18
     private $accelerometerAxes = 0; // optional uint64 accelerometer_axes = 19
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -630,85 +674,85 @@ namespace POGOProtos\Networking\Envelopes {
             if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->timestampSnapshot = $tmp;
 
             break;
-          case 3: // optional double magnetometer_x = 3
+          case 3: // optional double linear_acceleration_x = 3
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->magnetometerX = $tmp;
+            $this->linearAccelerationX = $tmp;
 
             break;
-          case 4: // optional double magnetometer_y = 4
+          case 4: // optional double linear_acceleration_y = 4
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->magnetometerY = $tmp;
+            $this->linearAccelerationY = $tmp;
 
             break;
-          case 5: // optional double magnetometer_z = 5
+          case 5: // optional double linear_acceleration_z = 5
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->magnetometerZ = $tmp;
+            $this->linearAccelerationZ = $tmp;
 
             break;
-          case 6: // optional double angle_normalized_x = 6
+          case 6: // optional double magnetic_field_x = 6
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->angleNormalizedX = $tmp;
+            $this->magneticFieldX = $tmp;
 
             break;
-          case 7: // optional double angle_normalized_y = 7
+          case 7: // optional double magnetic_field_y = 7
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->angleNormalizedY = $tmp;
+            $this->magneticFieldY = $tmp;
 
             break;
-          case 8: // optional double angle_normalized_z = 8
+          case 8: // optional double magnetic_field_z = 8
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->angleNormalizedZ = $tmp;
+            $this->magneticFieldZ = $tmp;
 
             break;
-          case 10: // optional double accel_raw_x = 10
+          case 10: // optional double rotation_vector_x = 10
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->accelRawX = $tmp;
+            $this->rotationVectorX = $tmp;
 
             break;
-          case 11: // optional double accel_raw_y = 11
+          case 11: // optional double rotation_vector_y = 11
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->accelRawY = $tmp;
+            $this->rotationVectorY = $tmp;
 
             break;
-          case 12: // optional double accel_raw_z = 12
+          case 12: // optional double rotation_vector_z = 12
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->accelRawZ = $tmp;
+            $this->rotationVectorZ = $tmp;
 
             break;
           case 13: // optional double gyroscope_raw_x = 13
@@ -738,31 +782,31 @@ namespace POGOProtos\Networking\Envelopes {
             $this->gyroscopeRawZ = $tmp;
 
             break;
-          case 16: // optional double accel_normalized_x = 16
+          case 16: // optional double gravity_x = 16
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->accelNormalizedX = $tmp;
+            $this->gravityX = $tmp;
 
             break;
-          case 17: // optional double accel_normalized_y = 17
+          case 17: // optional double gravity_y = 17
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->accelNormalizedY = $tmp;
+            $this->gravityY = $tmp;
 
             break;
-          case 18: // optional double accel_normalized_z = 18
+          case 18: // optional double gravity_z = 18
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->accelNormalizedZ = $tmp;
+            $this->gravityZ = $tmp;
 
             break;
           case 19: // optional uint64 accelerometer_axes = 19
@@ -785,41 +829,41 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "\x08", 1);
         Protobuf::write_varint($fp, $this->timestampSnapshot);
       }
-      if ($this->magnetometerX !== 0) {
+      if ($this->linearAccelerationX !== 0) {
         fwrite($fp, "\x19", 1);
-        Protobuf::write_double($fp, $this->magnetometerX);
+        Protobuf::write_double($fp, $this->linearAccelerationX);
       }
-      if ($this->magnetometerY !== 0) {
+      if ($this->linearAccelerationY !== 0) {
         fwrite($fp, "!", 1);
-        Protobuf::write_double($fp, $this->magnetometerY);
+        Protobuf::write_double($fp, $this->linearAccelerationY);
       }
-      if ($this->magnetometerZ !== 0) {
+      if ($this->linearAccelerationZ !== 0) {
         fwrite($fp, ")", 1);
-        Protobuf::write_double($fp, $this->magnetometerZ);
+        Protobuf::write_double($fp, $this->linearAccelerationZ);
       }
-      if ($this->angleNormalizedX !== 0) {
+      if ($this->magneticFieldX !== 0) {
         fwrite($fp, "1", 1);
-        Protobuf::write_double($fp, $this->angleNormalizedX);
+        Protobuf::write_double($fp, $this->magneticFieldX);
       }
-      if ($this->angleNormalizedY !== 0) {
+      if ($this->magneticFieldY !== 0) {
         fwrite($fp, "9", 1);
-        Protobuf::write_double($fp, $this->angleNormalizedY);
+        Protobuf::write_double($fp, $this->magneticFieldY);
       }
-      if ($this->angleNormalizedZ !== 0) {
+      if ($this->magneticFieldZ !== 0) {
         fwrite($fp, "A", 1);
-        Protobuf::write_double($fp, $this->angleNormalizedZ);
+        Protobuf::write_double($fp, $this->magneticFieldZ);
       }
-      if ($this->accelRawX !== 0) {
+      if ($this->rotationVectorX !== 0) {
         fwrite($fp, "Q", 1);
-        Protobuf::write_double($fp, $this->accelRawX);
+        Protobuf::write_double($fp, $this->rotationVectorX);
       }
-      if ($this->accelRawY !== 0) {
+      if ($this->rotationVectorY !== 0) {
         fwrite($fp, "Y", 1);
-        Protobuf::write_double($fp, $this->accelRawY);
+        Protobuf::write_double($fp, $this->rotationVectorY);
       }
-      if ($this->accelRawZ !== 0) {
+      if ($this->rotationVectorZ !== 0) {
         fwrite($fp, "a", 1);
-        Protobuf::write_double($fp, $this->accelRawZ);
+        Protobuf::write_double($fp, $this->rotationVectorZ);
       }
       if ($this->gyroscopeRawX !== 0) {
         fwrite($fp, "i", 1);
@@ -833,17 +877,17 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "y", 1);
         Protobuf::write_double($fp, $this->gyroscopeRawZ);
       }
-      if ($this->accelNormalizedX !== 0) {
+      if ($this->gravityX !== 0) {
         fwrite($fp, "\x81\x01", 2);
-        Protobuf::write_double($fp, $this->accelNormalizedX);
+        Protobuf::write_double($fp, $this->gravityX);
       }
-      if ($this->accelNormalizedY !== 0) {
+      if ($this->gravityY !== 0) {
         fwrite($fp, "\x89\x01", 2);
-        Protobuf::write_double($fp, $this->accelNormalizedY);
+        Protobuf::write_double($fp, $this->gravityY);
       }
-      if ($this->accelNormalizedZ !== 0) {
+      if ($this->gravityZ !== 0) {
         fwrite($fp, "\x91\x01", 2);
-        Protobuf::write_double($fp, $this->accelNormalizedZ);
+        Protobuf::write_double($fp, $this->gravityZ);
       }
       if ($this->accelerometerAxes !== 0) {
         fwrite($fp, "\x98\x01", 2);
@@ -856,31 +900,31 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->timestampSnapshot !== 0) {
         $size += 1 + Protobuf::size_varint($this->timestampSnapshot);
       }
-      if ($this->magnetometerX !== 0) {
+      if ($this->linearAccelerationX !== 0) {
         $size += 9;
       }
-      if ($this->magnetometerY !== 0) {
+      if ($this->linearAccelerationY !== 0) {
         $size += 9;
       }
-      if ($this->magnetometerZ !== 0) {
+      if ($this->linearAccelerationZ !== 0) {
         $size += 9;
       }
-      if ($this->angleNormalizedX !== 0) {
+      if ($this->magneticFieldX !== 0) {
         $size += 9;
       }
-      if ($this->angleNormalizedY !== 0) {
+      if ($this->magneticFieldY !== 0) {
         $size += 9;
       }
-      if ($this->angleNormalizedZ !== 0) {
+      if ($this->magneticFieldZ !== 0) {
         $size += 9;
       }
-      if ($this->accelRawX !== 0) {
+      if ($this->rotationVectorX !== 0) {
         $size += 9;
       }
-      if ($this->accelRawY !== 0) {
+      if ($this->rotationVectorY !== 0) {
         $size += 9;
       }
-      if ($this->accelRawZ !== 0) {
+      if ($this->rotationVectorZ !== 0) {
         $size += 9;
       }
       if ($this->gyroscopeRawX !== 0) {
@@ -892,13 +936,13 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->gyroscopeRawZ !== 0) {
         $size += 9;
       }
-      if ($this->accelNormalizedX !== 0) {
+      if ($this->gravityX !== 0) {
         $size += 10;
       }
-      if ($this->accelNormalizedY !== 0) {
+      if ($this->gravityY !== 0) {
         $size += 10;
       }
-      if ($this->accelNormalizedZ !== 0) {
+      if ($this->gravityZ !== 0) {
         $size += 10;
       }
       if ($this->accelerometerAxes !== 0) {
@@ -911,41 +955,41 @@ namespace POGOProtos\Networking\Envelopes {
     public function getTimestampSnapshot() { return $this->timestampSnapshot;}
     public function setTimestampSnapshot($value) { $this->timestampSnapshot = $value; }
 
-    public function clearMagnetometerX() { $this->magnetometerX = 0; }
-    public function getMagnetometerX() { return $this->magnetometerX;}
-    public function setMagnetometerX($value) { $this->magnetometerX = $value; }
+    public function clearLinearAccelerationX() { $this->linearAccelerationX = 0; }
+    public function getLinearAccelerationX() { return $this->linearAccelerationX;}
+    public function setLinearAccelerationX($value) { $this->linearAccelerationX = $value; }
 
-    public function clearMagnetometerY() { $this->magnetometerY = 0; }
-    public function getMagnetometerY() { return $this->magnetometerY;}
-    public function setMagnetometerY($value) { $this->magnetometerY = $value; }
+    public function clearLinearAccelerationY() { $this->linearAccelerationY = 0; }
+    public function getLinearAccelerationY() { return $this->linearAccelerationY;}
+    public function setLinearAccelerationY($value) { $this->linearAccelerationY = $value; }
 
-    public function clearMagnetometerZ() { $this->magnetometerZ = 0; }
-    public function getMagnetometerZ() { return $this->magnetometerZ;}
-    public function setMagnetometerZ($value) { $this->magnetometerZ = $value; }
+    public function clearLinearAccelerationZ() { $this->linearAccelerationZ = 0; }
+    public function getLinearAccelerationZ() { return $this->linearAccelerationZ;}
+    public function setLinearAccelerationZ($value) { $this->linearAccelerationZ = $value; }
 
-    public function clearAngleNormalizedX() { $this->angleNormalizedX = 0; }
-    public function getAngleNormalizedX() { return $this->angleNormalizedX;}
-    public function setAngleNormalizedX($value) { $this->angleNormalizedX = $value; }
+    public function clearMagneticFieldX() { $this->magneticFieldX = 0; }
+    public function getMagneticFieldX() { return $this->magneticFieldX;}
+    public function setMagneticFieldX($value) { $this->magneticFieldX = $value; }
 
-    public function clearAngleNormalizedY() { $this->angleNormalizedY = 0; }
-    public function getAngleNormalizedY() { return $this->angleNormalizedY;}
-    public function setAngleNormalizedY($value) { $this->angleNormalizedY = $value; }
+    public function clearMagneticFieldY() { $this->magneticFieldY = 0; }
+    public function getMagneticFieldY() { return $this->magneticFieldY;}
+    public function setMagneticFieldY($value) { $this->magneticFieldY = $value; }
 
-    public function clearAngleNormalizedZ() { $this->angleNormalizedZ = 0; }
-    public function getAngleNormalizedZ() { return $this->angleNormalizedZ;}
-    public function setAngleNormalizedZ($value) { $this->angleNormalizedZ = $value; }
+    public function clearMagneticFieldZ() { $this->magneticFieldZ = 0; }
+    public function getMagneticFieldZ() { return $this->magneticFieldZ;}
+    public function setMagneticFieldZ($value) { $this->magneticFieldZ = $value; }
 
-    public function clearAccelRawX() { $this->accelRawX = 0; }
-    public function getAccelRawX() { return $this->accelRawX;}
-    public function setAccelRawX($value) { $this->accelRawX = $value; }
+    public function clearRotationVectorX() { $this->rotationVectorX = 0; }
+    public function getRotationVectorX() { return $this->rotationVectorX;}
+    public function setRotationVectorX($value) { $this->rotationVectorX = $value; }
 
-    public function clearAccelRawY() { $this->accelRawY = 0; }
-    public function getAccelRawY() { return $this->accelRawY;}
-    public function setAccelRawY($value) { $this->accelRawY = $value; }
+    public function clearRotationVectorY() { $this->rotationVectorY = 0; }
+    public function getRotationVectorY() { return $this->rotationVectorY;}
+    public function setRotationVectorY($value) { $this->rotationVectorY = $value; }
 
-    public function clearAccelRawZ() { $this->accelRawZ = 0; }
-    public function getAccelRawZ() { return $this->accelRawZ;}
-    public function setAccelRawZ($value) { $this->accelRawZ = $value; }
+    public function clearRotationVectorZ() { $this->rotationVectorZ = 0; }
+    public function getRotationVectorZ() { return $this->rotationVectorZ;}
+    public function setRotationVectorZ($value) { $this->rotationVectorZ = $value; }
 
     public function clearGyroscopeRawX() { $this->gyroscopeRawX = 0; }
     public function getGyroscopeRawX() { return $this->gyroscopeRawX;}
@@ -959,17 +1003,17 @@ namespace POGOProtos\Networking\Envelopes {
     public function getGyroscopeRawZ() { return $this->gyroscopeRawZ;}
     public function setGyroscopeRawZ($value) { $this->gyroscopeRawZ = $value; }
 
-    public function clearAccelNormalizedX() { $this->accelNormalizedX = 0; }
-    public function getAccelNormalizedX() { return $this->accelNormalizedX;}
-    public function setAccelNormalizedX($value) { $this->accelNormalizedX = $value; }
+    public function clearGravityX() { $this->gravityX = 0; }
+    public function getGravityX() { return $this->gravityX;}
+    public function setGravityX($value) { $this->gravityX = $value; }
 
-    public function clearAccelNormalizedY() { $this->accelNormalizedY = 0; }
-    public function getAccelNormalizedY() { return $this->accelNormalizedY;}
-    public function setAccelNormalizedY($value) { $this->accelNormalizedY = $value; }
+    public function clearGravityY() { $this->gravityY = 0; }
+    public function getGravityY() { return $this->gravityY;}
+    public function setGravityY($value) { $this->gravityY = $value; }
 
-    public function clearAccelNormalizedZ() { $this->accelNormalizedZ = 0; }
-    public function getAccelNormalizedZ() { return $this->accelNormalizedZ;}
-    public function setAccelNormalizedZ($value) { $this->accelNormalizedZ = $value; }
+    public function clearGravityZ() { $this->gravityZ = 0; }
+    public function getGravityZ() { return $this->gravityZ;}
+    public function setGravityZ($value) { $this->gravityZ = $value; }
 
     public function clearAccelerometerAxes() { $this->accelerometerAxes = 0; }
     public function getAccelerometerAxes() { return $this->accelerometerAxes;}
@@ -978,21 +1022,21 @@ namespace POGOProtos\Networking\Envelopes {
     public function __toString() {
       return ''
            . Protobuf::toString('timestamp_snapshot', $this->timestampSnapshot, 0)
-           . Protobuf::toString('magnetometer_x', $this->magnetometerX, 0)
-           . Protobuf::toString('magnetometer_y', $this->magnetometerY, 0)
-           . Protobuf::toString('magnetometer_z', $this->magnetometerZ, 0)
-           . Protobuf::toString('angle_normalized_x', $this->angleNormalizedX, 0)
-           . Protobuf::toString('angle_normalized_y', $this->angleNormalizedY, 0)
-           . Protobuf::toString('angle_normalized_z', $this->angleNormalizedZ, 0)
-           . Protobuf::toString('accel_raw_x', $this->accelRawX, 0)
-           . Protobuf::toString('accel_raw_y', $this->accelRawY, 0)
-           . Protobuf::toString('accel_raw_z', $this->accelRawZ, 0)
+           . Protobuf::toString('linear_acceleration_x', $this->linearAccelerationX, 0)
+           . Protobuf::toString('linear_acceleration_y', $this->linearAccelerationY, 0)
+           . Protobuf::toString('linear_acceleration_z', $this->linearAccelerationZ, 0)
+           . Protobuf::toString('magnetic_field_x', $this->magneticFieldX, 0)
+           . Protobuf::toString('magnetic_field_y', $this->magneticFieldY, 0)
+           . Protobuf::toString('magnetic_field_z', $this->magneticFieldZ, 0)
+           . Protobuf::toString('rotation_vector_x', $this->rotationVectorX, 0)
+           . Protobuf::toString('rotation_vector_y', $this->rotationVectorY, 0)
+           . Protobuf::toString('rotation_vector_z', $this->rotationVectorZ, 0)
            . Protobuf::toString('gyroscope_raw_x', $this->gyroscopeRawX, 0)
            . Protobuf::toString('gyroscope_raw_y', $this->gyroscopeRawY, 0)
            . Protobuf::toString('gyroscope_raw_z', $this->gyroscopeRawZ, 0)
-           . Protobuf::toString('accel_normalized_x', $this->accelNormalizedX, 0)
-           . Protobuf::toString('accel_normalized_y', $this->accelNormalizedY, 0)
-           . Protobuf::toString('accel_normalized_z', $this->accelNormalizedZ, 0)
+           . Protobuf::toString('gravity_x', $this->gravityX, 0)
+           . Protobuf::toString('gravity_y', $this->gravityY, 0)
+           . Protobuf::toString('gravity_z', $this->gravityZ, 0)
            . Protobuf::toString('accelerometer_axes', $this->accelerometerAxes, 0);
     }
 
@@ -1627,8 +1671,8 @@ namespace POGOProtos\Networking\Envelopes {
     private $sensorInfo = null; // optional .POGOProtos.Networking.Envelopes.Signature.SensorInfo sensor_info = 7
     private $deviceInfo = null; // optional .POGOProtos.Networking.Envelopes.Signature.DeviceInfo device_info = 8
     private $activityStatus = null; // optional .POGOProtos.Networking.Envelopes.Signature.ActivityStatus activity_status = 9
-    private $locationHash1 = 0; // optional uint64 location_hash1 = 10
-    private $locationHash2 = 0; // optional uint64 location_hash2 = 20
+    private $locationHash1 = 0; // optional uint32 location_hash1 = 10
+    private $locationHash2 = 0; // optional uint32 location_hash2 = 20
     private $sessionHash = ""; // optional bytes session_hash = 22
     private $timestamp = 0; // optional uint64 timestamp = 23
     private $requestHash = array(); // repeated uint64 request_hash = 24
@@ -1710,22 +1754,22 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Signature_ActivityStatus did not read the full length');
 
             break;
-          case 10: // optional uint64 location_hash1 = 10
+          case 10: // optional uint32 location_hash1 = 10
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->locationHash1 = $tmp;
+            if ($tmp < Protobuf::MIN_UINT32 || $tmp > Protobuf::MAX_UINT32) throw new \Exception('uint32 out of range');$this->locationHash1 = $tmp;
 
             break;
-          case 20: // optional uint64 location_hash2 = 20
+          case 20: // optional uint32 location_hash2 = 20
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->locationHash2 = $tmp;
+            if ($tmp < Protobuf::MIN_UINT32 || $tmp > Protobuf::MAX_UINT32) throw new \Exception('uint32 out of range');$this->locationHash2 = $tmp;
 
             break;
           case 22: // optional bytes session_hash = 22

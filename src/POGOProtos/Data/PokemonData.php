@@ -45,6 +45,7 @@ namespace POGOProtos\Data {
     private $favorite = 0; // optional int32 favorite = 29
     private $nickname = ""; // optional string nickname = 30
     private $fromFort = 0; // optional int32 from_fort = 31
+    private $buddyCandyAwarded = 0; // optional int32 buddy_candy_awarded = 32
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -336,6 +337,15 @@ namespace POGOProtos\Data {
             if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->fromFort = $tmp;
 
             break;
+          case 32: // optional int32 buddy_candy_awarded = 32
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->buddyCandyAwarded = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -467,6 +477,10 @@ namespace POGOProtos\Data {
         fwrite($fp, "\xf8\x01", 2);
         Protobuf::write_varint($fp, $this->fromFort);
       }
+      if ($this->buddyCandyAwarded !== 0) {
+        fwrite($fp, "\x80\x02", 2);
+        Protobuf::write_varint($fp, $this->buddyCandyAwarded);
+      }
     }
 
     public function size() {
@@ -564,6 +578,9 @@ namespace POGOProtos\Data {
       }
       if ($this->fromFort !== 0) {
         $size += 2 + Protobuf::size_varint($this->fromFort);
+      }
+      if ($this->buddyCandyAwarded !== 0) {
+        $size += 2 + Protobuf::size_varint($this->buddyCandyAwarded);
       }
       return $size;
     }
@@ -688,6 +705,10 @@ namespace POGOProtos\Data {
     public function getFromFort() { return $this->fromFort;}
     public function setFromFort($value) { $this->fromFort = $value; }
 
+    public function clearBuddyCandyAwarded() { $this->buddyCandyAwarded = 0; }
+    public function getBuddyCandyAwarded() { return $this->buddyCandyAwarded;}
+    public function setBuddyCandyAwarded($value) { $this->buddyCandyAwarded = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('id', $this->id, 0)
@@ -719,7 +740,8 @@ namespace POGOProtos\Data {
            . Protobuf::toString('additional_cp_multiplier', $this->additionalCpMultiplier, 0)
            . Protobuf::toString('favorite', $this->favorite, 0)
            . Protobuf::toString('nickname', $this->nickname, "")
-           . Protobuf::toString('from_fort', $this->fromFort, 0);
+           . Protobuf::toString('from_fort', $this->fromFort, 0)
+           . Protobuf::toString('buddy_candy_awarded', $this->buddyCandyAwarded, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Data.PokemonData)
