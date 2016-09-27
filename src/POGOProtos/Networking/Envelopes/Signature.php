@@ -1978,8 +1978,8 @@ namespace POGOProtos\Networking\Envelopes {
     public function getRequestHashCount() { return count($this->requestHash); }
     public function getRequestHash($index) { return $this->requestHash[$index]; }
     public function getRequestHashArray() { return $this->requestHash; }
-    public function setRequestHash($index, array $value) {$this->requestHash[$index] = $value; }
-    public function addRequestHash(array $value) { $this->requestHash[] = $value; }
+    public function setRequestHash($index, $value) {$this->requestHash[$index] = $value; }
+    public function addRequestHash($value) { $this->requestHash[] = $value; }
     public function addAllRequestHash(array $values) { foreach($values as $value) {$this->requestHash[] = $value; }}
 
     public function clearUnknown25() { $this->unknown25 = 0; }
