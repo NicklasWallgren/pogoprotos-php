@@ -123,13 +123,11 @@ namespace POGOProtos\Data {
 
             break;
           case 8: // optional string deployed_fort_id = 8
-            if($wire !== 2) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
-            $len = Protobuf::read_varint($fp, $limit);
-            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
-            $tmp = Protobuf::read_bytes($fp, $len, $limit);
-            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
             $this->deployedFortId = $tmp;
 
             break;
@@ -345,7 +343,11 @@ namespace POGOProtos\Data {
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
             if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->buddyCandyAwarded = $tmp;
 
+          case 33: // optional float unknown item = 33
+            $tmp = Protobuf::read_float($fp, $limit);
+
             break;
+
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }

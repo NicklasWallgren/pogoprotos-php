@@ -77,7 +77,7 @@ namespace POGOProtos\Networking\Requests {
     const LOAD_SPAWN_POINTS = 500;
     const CHECK_CHALLENGE = 600;
     const VERIFY_CHALLENGE = 601;
-    const ECHO = 666;
+    const PING = 666;
     const DEBUG_UPDATE_INVENTORY = 700;
     const DEBUG_DELETE_PLAYER = 701;
     const SFIDA_REGISTRATION = 800;
@@ -154,7 +154,7 @@ namespace POGOProtos\Networking\Requests {
       500 => "LOAD_SPAWN_POINTS",
       600 => "CHECK_CHALLENGE",
       601 => "VERIFY_CHALLENGE",
-      666 => "ECHO",
+      666 => "PING",
       700 => "DEBUG_UPDATE_INVENTORY",
       701 => "DEBUG_DELETE_PLAYER",
       800 => "SFIDA_REGISTRATION",
