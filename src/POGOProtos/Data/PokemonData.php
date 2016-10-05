@@ -343,11 +343,16 @@ namespace POGOProtos\Data {
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
             if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->buddyCandyAwarded = $tmp;
 
-          case 33: // optional float unknown item = 33
+            break;
+          case 33: // optional float buddy_total_km_walked = 33
+            if($wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
+            }
             $tmp = Protobuf::read_float($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+            // $this->buddyTotalKmWalked = $tmp;
 
             break;
-
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
