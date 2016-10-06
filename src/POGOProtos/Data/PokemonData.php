@@ -123,11 +123,13 @@ namespace POGOProtos\Data {
 
             break;
           case 8: // optional string deployed_fort_id = 8
-            if($wire !== 0) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
-            $tmp = Protobuf::read_varint($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
             $this->deployedFortId = $tmp;
 
             break;
