@@ -10,15 +10,9 @@
         "php": ">=5.6"
     },
     "autoload": {
-      "psr-4": {
-        "POGOProtos\\": "src/POGOProtos/"
-      },
+      "classmap": ["src/"],
       "files": [
-        "src/protocolbuffers.inc.php",
-        "src/POGOProtos/Networking/Envelopes/RequestEnvelope.php",
-        "src/POGOProtos/Networking/Envelopes/ResponseEnvelope.php",
-        "src/POGOProtos/Networking/Responses/EvolvePokemonResponse.php",
-        "src/POGOProtos/Networking/Responses/UpgradePokemonResponse.php"
+        "src/protocolbuffers.inc.php"
       ]
     }
 }
