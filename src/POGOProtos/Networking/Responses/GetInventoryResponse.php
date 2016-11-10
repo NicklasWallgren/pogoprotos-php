@@ -47,9 +47,8 @@ namespace POGOProtos\Networking\Responses {
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $limit -= $len;
             $this->inventoryDelta = new \POGOProtos\Inventory\InventoryDelta($fp, $len);
-
+            $limit -= $len;
             $len = 0;
-
             if ($len !== 0) throw new \Exception('new \POGOProtos\Inventory\InventoryDelta did not read the full length');
 
             break;

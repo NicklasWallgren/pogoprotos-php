@@ -35,7 +35,7 @@ namespace POGOProtos\Data\Player {
     private $prestigeRaisedTotal = 0; // optional int32 prestige_raised_total = 19
     private $prestigeDroppedTotal = 0; // optional int32 prestige_dropped_total = 20
     private $pokemonDeployed = 0; // optional int32 pokemon_deployed = 21
-    private $pokemonCaughtByType = ""; // optional bytes pokemon_caught_by_type = 22
+    private $pokemonCaughtByType = array(); // repeated int32 pokemon_caught_by_type = 22
     private $smallRattataCaught = 0; // optional int32 small_rattata_caught = 23
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
@@ -69,12 +69,19 @@ namespace POGOProtos\Data\Player {
 
             break;
           case 3: // optional int64 prev_level_xp = 3
-            if($wire !== 0) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+
+            if($wire !== 2 && $wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 or 0 got: $wire");
             }
-            $tmp = Protobuf::read_signed_varint($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->prevLevelXp = $tmp;
+            if ($wire === 0) {
+              $tmp = Protobuf::read_signed_varint($fp, $limit);
+              if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+              if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->prevLevelXp = $tmp;
+            } elseif ($wire === 2) {
+              $len = Protobuf::read_varint($fp, $limit);
+              if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+              $limit -= $len;
+            }
 
             break;
           case 4: // optional int64 next_level_xp = 4
@@ -132,12 +139,18 @@ namespace POGOProtos\Data\Player {
 
             break;
           case 10: // optional int32 poke_stop_visits = 10
-            if($wire !== 0) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            if($wire !== 2 && $wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 or 0 got: $wire");
             }
-            $tmp = Protobuf::read_signed_varint($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->pokeStopVisits = $tmp;
+            if ($wire === 0) {
+              $tmp = Protobuf::read_signed_varint($fp, $limit);
+              if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+              if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->pokeStopVisits = $tmp;
+            } elseif ($wire === 2) {
+              $len = Protobuf::read_varint($fp, $limit);
+              if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+              $limit -= $len;
+            }
 
             break;
           case 11: // optional int32 pokeballs_thrown = 11
@@ -239,15 +252,22 @@ namespace POGOProtos\Data\Player {
             if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->pokemonDeployed = $tmp;
 
             break;
-          case 22: // optional bytes pokemon_caught_by_type = 22
-            if($wire !== 2) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+          case 22: // repeated int32 pokemon_caught_by_type = 22
+            if($wire !== 2 && $wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 or 0 got: $wire");
             }
-            $len = Protobuf::read_varint($fp, $limit);
-            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
-            $tmp = Protobuf::read_bytes($fp, $len, $limit);
-            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
-            $this->pokemonCaughtByType = $tmp;
+            if ($wire === 0) {
+              $tmp = Protobuf::read_signed_varint($fp, $limit);
+              if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+              if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->pokemonCaughtByType[] = $tmp;
+            } elseif ($wire === 2) {
+              $len = Protobuf::read_varint($fp, $limit);
+              while ($len > 0) {
+                $tmp = Protobuf::read_signed_varint($fp, $len);
+                if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+                if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->pokemonCaughtByType[] = $tmp;
+              }
+            }
 
             break;
           case 23: // optional int32 small_rattata_caught = 23
@@ -350,10 +370,9 @@ namespace POGOProtos\Data\Player {
         fwrite($fp, "\xa8\x01", 2);
         Protobuf::write_varint($fp, $this->pokemonDeployed);
       }
-      if ($this->pokemonCaughtByType !== "") {
-        fwrite($fp, "\xb2\x01", 2);
-        Protobuf::write_varint($fp, strlen($this->pokemonCaughtByType));
-        fwrite($fp, $this->pokemonCaughtByType);
+      foreach($this->pokemonCaughtByType as $v) {
+        fwrite($fp, "\xb0\x01", 2);
+        Protobuf::write_varint($fp, $v);
       }
       if ($this->smallRattataCaught !== 0) {
         fwrite($fp, "\xb8\x01", 2);
@@ -426,8 +445,8 @@ namespace POGOProtos\Data\Player {
       if ($this->pokemonDeployed !== 0) {
         $size += 2 + Protobuf::size_varint($this->pokemonDeployed);
       }
-      if ($this->pokemonCaughtByType !== "") {
-        $l = strlen($this->pokemonCaughtByType);
+      foreach($this->pokemonCaughtByType as $v) {
+        $l = strlen($v);
         $size += 2 + Protobuf::size_varint($l) + $l;
       }
       if ($this->smallRattataCaught !== 0) {
@@ -520,9 +539,13 @@ namespace POGOProtos\Data\Player {
     public function getPokemonDeployed() { return $this->pokemonDeployed;}
     public function setPokemonDeployed($value) { $this->pokemonDeployed = $value; }
 
-    public function clearPokemonCaughtByType() { $this->pokemonCaughtByType = ""; }
-    public function getPokemonCaughtByType() { return $this->pokemonCaughtByType;}
-    public function setPokemonCaughtByType($value) { $this->pokemonCaughtByType = $value; }
+    public function clearPokemonCaughtByType() { $this->pokemonCaughtByType = array(); }
+    public function getPokemonCaughtByTypeCount() { return count($this->pokemonCaughtByType); }
+    public function getPokemonCaughtByType() { return $this->pokemonCaughtByType; }
+    public function getPokemonCaughtByTypeArray() { return $this->pokemonCaughtByType; }
+    public function setPokemonCaughtByType($index, array $value) {$this->pokemonCaughtByType[$index] = $value; }
+    public function addPokemonCaughtByType(array $value) { $this->pokemonCaughtByType[] = $value; }
+    public function addAllPokemonCaughtByType(array $values) { foreach($values as $value) {$this->pokemonCaughtByType[] = $value; }}
 
     public function clearSmallRattataCaught() { $this->smallRattataCaught = 0; }
     public function getSmallRattataCaught() { return $this->smallRattataCaught;}
@@ -551,7 +574,7 @@ namespace POGOProtos\Data\Player {
            . Protobuf::toString('prestige_raised_total', $this->prestigeRaisedTotal, 0)
            . Protobuf::toString('prestige_dropped_total', $this->prestigeDroppedTotal, 0)
            . Protobuf::toString('pokemon_deployed', $this->pokemonDeployed, 0)
-           . Protobuf::toString('pokemon_caught_by_type', $this->pokemonCaughtByType, "")
+           . Protobuf::toString('pokemon_caught_by_type', $this->pokemonCaughtByType, 0)
            . Protobuf::toString('small_rattata_caught', $this->smallRattataCaught, 0);
     }
 

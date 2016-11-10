@@ -19,11 +19,11 @@ namespace POGOProtos\Map\Fort {
     private $lastModifiedTimestampMs = 0; // optional int64 last_modified_timestamp_ms = 2
     private $latitude = 0; // optional double latitude = 3
     private $longitude = 0; // optional double longitude = 4
-    private $enabled = false; // optional bool enabled = 8
-    private $type = \POGOProtos\Map\Fort\FortType::GYM; // optional .POGOProtos.Map.Fort.FortType type = 9
     private $ownedByTeam = \POGOProtos\Enums\TeamColor::NEUTRAL; // optional .POGOProtos.Enums.TeamColor owned_by_team = 5
     private $guardPokemonId = \POGOProtos\Enums\PokemonId::MISSINGNO; // optional .POGOProtos.Enums.PokemonId guard_pokemon_id = 6
     private $guardPokemonCp = 0; // optional int32 guard_pokemon_cp = 7
+    private $enabled = false; // optional bool enabled = 8
+    private $type = \POGOProtos\Map\Fort\FortType::GYM; // optional .POGOProtos.Map.Fort.FortType type = 9
     private $gymPoints = 0; // optional int64 gym_points = 10
     private $isInBattle = false; // optional bool is_in_battle = 11
     private $activeFortModifier = array(); // repeated .POGOProtos.Inventory.Item.ItemId active_fort_modifier = 12
@@ -31,6 +31,7 @@ namespace POGOProtos\Map\Fort {
     private $cooldownCompleteTimestampMs = 0; // optional int64 cooldown_complete_timestamp_ms = 14
     private $sponsor = \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR; // optional .POGOProtos.Map.Fort.FortSponsor sponsor = 15
     private $renderingType = \POGOProtos\Map\Fort\FortRenderingType::DEFAULT; // optional .POGOProtos.Map.Fort.FortRenderingType rendering_type = 16
+    private $deployLockoutEndMs = 0; // optional int64 deploy_lockout_end_ms = 17
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -82,24 +83,6 @@ namespace POGOProtos\Map\Fort {
             $this->longitude = $tmp;
 
             break;
-          case 8: // optional bool enabled = 8
-            if($wire !== 0) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
-            }
-            $tmp = Protobuf::read_varint($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            $this->enabled = ($tmp > 0) ? true : false;
-
-            break;
-          case 9: // optional .POGOProtos.Map.Fort.FortType type = 9
-            if($wire !== 0) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
-            }
-            $tmp = Protobuf::read_varint($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            $this->type = $tmp;
-
-            break;
           case 5: // optional .POGOProtos.Enums.TeamColor owned_by_team = 5
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
@@ -125,6 +108,24 @@ namespace POGOProtos\Map\Fort {
             $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
             if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->guardPokemonCp = $tmp;
+
+            break;
+          case 8: // optional bool enabled = 8
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->enabled = ($tmp > 0) ? true : false;
+
+            break;
+          case 9: // optional .POGOProtos.Map.Fort.FortType type = 9
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->type = $tmp;
 
             break;
           case 10: // optional int64 gym_points = 10
@@ -201,6 +202,15 @@ namespace POGOProtos\Map\Fort {
             $this->renderingType = $tmp;
 
             break;
+          case 17: // optional int64 deploy_lockout_end_ms = 17
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->deployLockoutEndMs = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -225,14 +235,6 @@ namespace POGOProtos\Map\Fort {
         fwrite($fp, "!", 1);
         Protobuf::write_double($fp, $this->longitude);
       }
-      if ($this->enabled !== false) {
-        fwrite($fp, "@", 1);
-        Protobuf::write_varint($fp, $this->enabled ? 1 : 0);
-      }
-      if ($this->type !== \POGOProtos\Map\Fort\FortType::GYM) {
-        fwrite($fp, "H", 1);
-        Protobuf::write_varint($fp, $this->type);
-      }
       if ($this->ownedByTeam !== \POGOProtos\Enums\TeamColor::NEUTRAL) {
         fwrite($fp, "(", 1);
         Protobuf::write_varint($fp, $this->ownedByTeam);
@@ -244,6 +246,14 @@ namespace POGOProtos\Map\Fort {
       if ($this->guardPokemonCp !== 0) {
         fwrite($fp, "8", 1);
         Protobuf::write_varint($fp, $this->guardPokemonCp);
+      }
+      if ($this->enabled !== false) {
+        fwrite($fp, "@", 1);
+        Protobuf::write_varint($fp, $this->enabled ? 1 : 0);
+      }
+      if ($this->type !== \POGOProtos\Map\Fort\FortType::GYM) {
+        fwrite($fp, "H", 1);
+        Protobuf::write_varint($fp, $this->type);
       }
       if ($this->gymPoints !== 0) {
         fwrite($fp, "P", 1);
@@ -274,6 +284,10 @@ namespace POGOProtos\Map\Fort {
         fwrite($fp, "\x80\x01", 2);
         Protobuf::write_varint($fp, $this->renderingType);
       }
+      if ($this->deployLockoutEndMs !== 0) {
+        fwrite($fp, "\x88\x01", 2);
+        Protobuf::write_varint($fp, $this->deployLockoutEndMs);
+      }
     }
 
     public function size() {
@@ -291,12 +305,6 @@ namespace POGOProtos\Map\Fort {
       if ($this->longitude !== 0) {
         $size += 9;
       }
-      if ($this->enabled !== false) {
-        $size += 2;
-      }
-      if ($this->type !== \POGOProtos\Map\Fort\FortType::GYM) {
-        $size += 1 + Protobuf::size_varint($this->type);
-      }
       if ($this->ownedByTeam !== \POGOProtos\Enums\TeamColor::NEUTRAL) {
         $size += 1 + Protobuf::size_varint($this->ownedByTeam);
       }
@@ -305,6 +313,12 @@ namespace POGOProtos\Map\Fort {
       }
       if ($this->guardPokemonCp !== 0) {
         $size += 1 + Protobuf::size_varint($this->guardPokemonCp);
+      }
+      if ($this->enabled !== false) {
+        $size += 2;
+      }
+      if ($this->type !== \POGOProtos\Map\Fort\FortType::GYM) {
+        $size += 1 + Protobuf::size_varint($this->type);
       }
       if ($this->gymPoints !== 0) {
         $size += 1 + Protobuf::size_varint($this->gymPoints);
@@ -329,6 +343,9 @@ namespace POGOProtos\Map\Fort {
       if ($this->renderingType !== \POGOProtos\Map\Fort\FortRenderingType::DEFAULT) {
         $size += 2 + Protobuf::size_varint($this->renderingType);
       }
+      if ($this->deployLockoutEndMs !== 0) {
+        $size += 2 + Protobuf::size_varint($this->deployLockoutEndMs);
+      }
       return $size;
     }
 
@@ -348,14 +365,6 @@ namespace POGOProtos\Map\Fort {
     public function getLongitude() { return $this->longitude;}
     public function setLongitude($value) { $this->longitude = $value; }
 
-    public function clearEnabled() { $this->enabled = false; }
-    public function getEnabled() { return $this->enabled;}
-    public function setEnabled($value) { $this->enabled = $value; }
-
-    public function clearType() { $this->type = \POGOProtos\Map\Fort\FortType::GYM; }
-    public function getType() { return $this->type;}
-    public function setType($value) { $this->type = $value; }
-
     public function clearOwnedByTeam() { $this->ownedByTeam = \POGOProtos\Enums\TeamColor::NEUTRAL; }
     public function getOwnedByTeam() { return $this->ownedByTeam;}
     public function setOwnedByTeam($value) { $this->ownedByTeam = $value; }
@@ -367,6 +376,14 @@ namespace POGOProtos\Map\Fort {
     public function clearGuardPokemonCp() { $this->guardPokemonCp = 0; }
     public function getGuardPokemonCp() { return $this->guardPokemonCp;}
     public function setGuardPokemonCp($value) { $this->guardPokemonCp = $value; }
+
+    public function clearEnabled() { $this->enabled = false; }
+    public function getEnabled() { return $this->enabled;}
+    public function setEnabled($value) { $this->enabled = $value; }
+
+    public function clearType() { $this->type = \POGOProtos\Map\Fort\FortType::GYM; }
+    public function getType() { return $this->type;}
+    public function setType($value) { $this->type = $value; }
 
     public function clearGymPoints() { $this->gymPoints = 0; }
     public function getGymPoints() { return $this->gymPoints;}
@@ -400,24 +417,29 @@ namespace POGOProtos\Map\Fort {
     public function getRenderingType() { return $this->renderingType;}
     public function setRenderingType($value) { $this->renderingType = $value; }
 
+    public function clearDeployLockoutEndMs() { $this->deployLockoutEndMs = 0; }
+    public function getDeployLockoutEndMs() { return $this->deployLockoutEndMs;}
+    public function setDeployLockoutEndMs($value) { $this->deployLockoutEndMs = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('id', $this->id, "")
            . Protobuf::toString('last_modified_timestamp_ms', $this->lastModifiedTimestampMs, 0)
            . Protobuf::toString('latitude', $this->latitude, 0)
            . Protobuf::toString('longitude', $this->longitude, 0)
-           . Protobuf::toString('enabled', $this->enabled, false)
-           . Protobuf::toString('type', $this->type, \POGOProtos\Map\Fort\FortType::GYM)
            . Protobuf::toString('owned_by_team', $this->ownedByTeam, \POGOProtos\Enums\TeamColor::NEUTRAL)
            . Protobuf::toString('guard_pokemon_id', $this->guardPokemonId, \POGOProtos\Enums\PokemonId::MISSINGNO)
            . Protobuf::toString('guard_pokemon_cp', $this->guardPokemonCp, 0)
+           . Protobuf::toString('enabled', $this->enabled, false)
+           . Protobuf::toString('type', $this->type, \POGOProtos\Map\Fort\FortType::GYM)
            . Protobuf::toString('gym_points', $this->gymPoints, 0)
            . Protobuf::toString('is_in_battle', $this->isInBattle, false)
            . Protobuf::toString('active_fort_modifier', $this->activeFortModifier, \POGOProtos\Inventory\Item\ItemId::ITEM_UNKNOWN)
            . Protobuf::toString('lure_info', $this->lureInfo, null)
            . Protobuf::toString('cooldown_complete_timestamp_ms', $this->cooldownCompleteTimestampMs, 0)
            . Protobuf::toString('sponsor', $this->sponsor, \POGOProtos\Map\Fort\FortSponsor::NONE_SPONSOR)
-           . Protobuf::toString('rendering_type', $this->renderingType, \POGOProtos\Map\Fort\FortRenderingType::DEFAULT);
+           . Protobuf::toString('rendering_type', $this->renderingType, \POGOProtos\Map\Fort\FortRenderingType::DEFAULT)
+           . Protobuf::toString('deploy_lockout_end_ms', $this->deployLockoutEndMs, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Map.Fort.FortData)

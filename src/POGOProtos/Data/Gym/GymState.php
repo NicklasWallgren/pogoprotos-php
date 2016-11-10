@@ -17,6 +17,7 @@ namespace POGOProtos\Data\Gym {
     private $_unknown;
     private $fortData = null; // optional .POGOProtos.Map.Fort.FortData fort_data = 1
     private $memberships = array(); // repeated .POGOProtos.Data.Gym.GymMembership memberships = 2
+    private $deployLockout = false; // optional bool deploy_lockout = 3
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -52,6 +53,15 @@ namespace POGOProtos\Data\Gym {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Gym\GymMembership did not read the full length');
 
             break;
+          case 3: // optional bool deploy_lockout = 3
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->deployLockout = ($tmp > 0) ? true : false;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -69,6 +79,10 @@ namespace POGOProtos\Data\Gym {
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
       }
+      if ($this->deployLockout !== false) {
+        fwrite($fp, "\x18", 1);
+        Protobuf::write_varint($fp, $this->deployLockout ? 1 : 0);
+      }
     }
 
     public function size() {
@@ -80,6 +94,9 @@ namespace POGOProtos\Data\Gym {
       foreach($this->memberships as $v) {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->deployLockout !== false) {
+        $size += 2;
       }
       return $size;
     }
@@ -96,10 +113,15 @@ namespace POGOProtos\Data\Gym {
     public function addMemberships(array $value) { $this->memberships[] = $value; }
     public function addAllMemberships(array $values) { foreach($values as $value) {$this->memberships[] = $value; }}
 
+    public function clearDeployLockout() { $this->deployLockout = false; }
+    public function getDeployLockout() { return $this->deployLockout;}
+    public function setDeployLockout($value) { $this->deployLockout = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('fort_data', $this->fortData, null)
-           . Protobuf::toString('memberships', $this->memberships, null);
+           . Protobuf::toString('memberships', $this->memberships, null)
+           . Protobuf::toString('deploy_lockout', $this->deployLockout, false);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Data.Gym.GymState)

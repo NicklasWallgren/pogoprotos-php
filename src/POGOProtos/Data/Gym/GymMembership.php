@@ -17,6 +17,7 @@ namespace POGOProtos\Data\Gym {
     private $_unknown;
     private $pokemonData = null; // optional .POGOProtos.Data.PokemonData pokemon_data = 1
     private $trainerPublicProfile = null; // optional .POGOProtos.Data.Player.PlayerPublicProfile trainer_public_profile = 2
+    private $trainingPokemon = null; // optional .POGOProtos.Data.PokemonData training_pokemon = 3
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -52,6 +53,17 @@ namespace POGOProtos\Data\Gym {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Player\PlayerPublicProfile did not read the full length');
 
             break;
+          case 3: // optional .POGOProtos.Data.PokemonData training_pokemon = 3
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->trainingPokemon = new \POGOProtos\Data\PokemonData($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Data\PokemonData did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -69,6 +81,11 @@ namespace POGOProtos\Data\Gym {
         Protobuf::write_varint($fp, $this->trainerPublicProfile->size());
         $this->trainerPublicProfile->write($fp);
       }
+      if ($this->trainingPokemon !== null) {
+        fwrite($fp, "\x1a", 1);
+        Protobuf::write_varint($fp, $this->trainingPokemon->size());
+        $this->trainingPokemon->write($fp);
+      }
     }
 
     public function size() {
@@ -79,6 +96,10 @@ namespace POGOProtos\Data\Gym {
       }
       if ($this->trainerPublicProfile !== null) {
         $l = $this->trainerPublicProfile->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->trainingPokemon !== null) {
+        $l = $this->trainingPokemon->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -92,10 +113,15 @@ namespace POGOProtos\Data\Gym {
     public function getTrainerPublicProfile() { return $this->trainerPublicProfile;}
     public function setTrainerPublicProfile(\POGOProtos\Data\Player\PlayerPublicProfile $value) { $this->trainerPublicProfile = $value; }
 
+    public function clearTrainingPokemon() { $this->trainingPokemon = null; }
+    public function getTrainingPokemon() { return $this->trainingPokemon;}
+    public function setTrainingPokemon(\POGOProtos\Data\PokemonData $value) { $this->trainingPokemon = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('pokemon_data', $this->pokemonData, null)
-           . Protobuf::toString('trainer_public_profile', $this->trainerPublicProfile, null);
+           . Protobuf::toString('trainer_public_profile', $this->trainerPublicProfile, null)
+           . Protobuf::toString('training_pokemon', $this->trainingPokemon, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Data.Gym.GymMembership)

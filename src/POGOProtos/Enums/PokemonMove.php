@@ -192,6 +192,7 @@ namespace POGOProtos\Enums {
     const STEEL_WING_FAST = 239;
     const FIRE_FANG_FAST = 240;
     const ROCK_SMASH_FAST = 241;
+    const TRANSFORM_FAST = 242;
 
     public static $_values = array(
       0 => "MOVE_NONE",
@@ -374,6 +375,7 @@ namespace POGOProtos\Enums {
       239 => "STEEL_WING_FAST",
       240 => "FIRE_FANG_FAST",
       241 => "ROCK_SMASH_FAST",
+      242 => "TRANSFORM_FAST",
     );
 
     public static function isValid($value) {

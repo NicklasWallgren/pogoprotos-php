@@ -17,6 +17,7 @@ namespace POGOProtos\Networking\Requests\Messages {
     private $_unknown;
     private $country = ""; // optional string country = 1
     private $language = ""; // optional string language = 2
+    private $timezone = ""; // optional string timezone = 3
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -52,6 +53,17 @@ namespace POGOProtos\Networking\Requests\Messages {
             $this->language = $tmp;
 
             break;
+          case 3: // optional string timezone = 3
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->timezone = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -69,6 +81,11 @@ namespace POGOProtos\Networking\Requests\Messages {
         Protobuf::write_varint($fp, strlen($this->language));
         fwrite($fp, $this->language);
       }
+      if ($this->timezone !== "") {
+        fwrite($fp, "\x1a", 1);
+        Protobuf::write_varint($fp, strlen($this->timezone));
+        fwrite($fp, $this->timezone);
+      }
     }
 
     public function size() {
@@ -79,6 +96,10 @@ namespace POGOProtos\Networking\Requests\Messages {
       }
       if ($this->language !== "") {
         $l = strlen($this->language);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->timezone !== "") {
+        $l = strlen($this->timezone);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -92,10 +113,15 @@ namespace POGOProtos\Networking\Requests\Messages {
     public function getLanguage() { return $this->language;}
     public function setLanguage($value) { $this->language = $value; }
 
+    public function clearTimezone() { $this->timezone = ""; }
+    public function getTimezone() { return $this->timezone;}
+    public function setTimezone($value) { $this->timezone = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('country', $this->country, "")
-           . Protobuf::toString('language', $this->language, "");
+           . Protobuf::toString('language', $this->language, "")
+           . Protobuf::toString('timezone', $this->timezone, "");
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Requests.Messages.GetPlayerMessage.PlayerLocale)

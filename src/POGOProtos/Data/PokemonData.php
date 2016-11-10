@@ -46,6 +46,9 @@ namespace POGOProtos\Data {
     private $nickname = ""; // optional string nickname = 30
     private $fromFort = 0; // optional int32 from_fort = 31
     private $buddyCandyAwarded = 0; // optional int32 buddy_candy_awarded = 32
+    private $buddyTotalKmWalked = 0; // optional float buddy_total_km_walked = 33
+    private $displayPokemonId = 0; // optional int32 display_pokemon_id = 34
+    private $displayCp = 0; // optional int32 display_cp = 35
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -123,11 +126,13 @@ namespace POGOProtos\Data {
 
             break;
           case 8: // optional string deployed_fort_id = 8
-            if($wire !== 0) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
-            $tmp = Protobuf::read_varint($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
             $this->deployedFortId = $tmp;
 
             break;
@@ -350,7 +355,25 @@ namespace POGOProtos\Data {
             }
             $tmp = Protobuf::read_float($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
-            // $this->buddyTotalKmWalked = $tmp;
+            $this->buddyTotalKmWalked = $tmp;
+
+            break;
+          case 34: // optional int32 display_pokemon_id = 34
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->displayPokemonId = $tmp;
+
+            break;
+          case 35: // optional int32 display_cp = 35
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->displayCp = $tmp;
 
             break;
           default:
@@ -488,6 +511,18 @@ namespace POGOProtos\Data {
         fwrite($fp, "\x80\x02", 2);
         Protobuf::write_varint($fp, $this->buddyCandyAwarded);
       }
+      if ($this->buddyTotalKmWalked !== 0) {
+        fwrite($fp, "\x8d\x02", 2);
+        Protobuf::write_float($fp, $this->buddyTotalKmWalked);
+      }
+      if ($this->displayPokemonId !== 0) {
+        fwrite($fp, "\x90\x02", 2);
+        Protobuf::write_varint($fp, $this->displayPokemonId);
+      }
+      if ($this->displayCp !== 0) {
+        fwrite($fp, "\x98\x02", 2);
+        Protobuf::write_varint($fp, $this->displayCp);
+      }
     }
 
     public function size() {
@@ -588,6 +623,15 @@ namespace POGOProtos\Data {
       }
       if ($this->buddyCandyAwarded !== 0) {
         $size += 2 + Protobuf::size_varint($this->buddyCandyAwarded);
+      }
+      if ($this->buddyTotalKmWalked !== 0) {
+        $size += 6;
+      }
+      if ($this->displayPokemonId !== 0) {
+        $size += 2 + Protobuf::size_varint($this->displayPokemonId);
+      }
+      if ($this->displayCp !== 0) {
+        $size += 2 + Protobuf::size_varint($this->displayCp);
       }
       return $size;
     }
@@ -716,6 +760,18 @@ namespace POGOProtos\Data {
     public function getBuddyCandyAwarded() { return $this->buddyCandyAwarded;}
     public function setBuddyCandyAwarded($value) { $this->buddyCandyAwarded = $value; }
 
+    public function clearBuddyTotalKmWalked() { $this->buddyTotalKmWalked = 0; }
+    public function getBuddyTotalKmWalked() { return $this->buddyTotalKmWalked;}
+    public function setBuddyTotalKmWalked($value) { $this->buddyTotalKmWalked = $value; }
+
+    public function clearDisplayPokemonId() { $this->displayPokemonId = 0; }
+    public function getDisplayPokemonId() { return $this->displayPokemonId;}
+    public function setDisplayPokemonId($value) { $this->displayPokemonId = $value; }
+
+    public function clearDisplayCp() { $this->displayCp = 0; }
+    public function getDisplayCp() { return $this->displayCp;}
+    public function setDisplayCp($value) { $this->displayCp = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('id', $this->id, 0)
@@ -748,7 +804,10 @@ namespace POGOProtos\Data {
            . Protobuf::toString('favorite', $this->favorite, 0)
            . Protobuf::toString('nickname', $this->nickname, "")
            . Protobuf::toString('from_fort', $this->fromFort, 0)
-           . Protobuf::toString('buddy_candy_awarded', $this->buddyCandyAwarded, 0);
+           . Protobuf::toString('buddy_candy_awarded', $this->buddyCandyAwarded, 0)
+           . Protobuf::toString('buddy_total_km_walked', $this->buddyTotalKmWalked, 0)
+           . Protobuf::toString('display_pokemon_id', $this->displayPokemonId, 0)
+           . Protobuf::toString('display_cp', $this->displayCp, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Data.PokemonData)

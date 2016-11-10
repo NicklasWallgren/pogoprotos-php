@@ -28,6 +28,7 @@ namespace POGOProtos\Data {
     private $currencies = array(); // repeated .POGOProtos.Data.Player.Currency currencies = 14
     private $remainingCodenameClaims = 0; // optional int32 remaining_codename_claims = 15
     private $buddyPokemon = null; // optional .POGOProtos.Data.BuddyPokemon buddy_pokemon = 16
+    private $battleLockoutEndMs = 0; // optional int64 battle_lockout_end_ms = 17
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -181,11 +182,19 @@ namespace POGOProtos\Data {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\BuddyPokemon did not read the full length');
 
             break;
+          case 17: // optional int64 battle_lockout_end_ms = 17
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->battleLockoutEndMs = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
       }
-      $limit = 0;
     }
 
     public function write($fp) {
@@ -248,6 +257,10 @@ namespace POGOProtos\Data {
         Protobuf::write_varint($fp, $this->buddyPokemon->size());
         $this->buddyPokemon->write($fp);
       }
+      if ($this->battleLockoutEndMs !== 0) {
+        fwrite($fp, "\x88\x01", 2);
+        Protobuf::write_varint($fp, $this->battleLockoutEndMs);
+      }
     }
 
     public function size() {
@@ -298,6 +311,9 @@ namespace POGOProtos\Data {
       if ($this->buddyPokemon !== null) {
         $l = $this->buddyPokemon->size();
         $size += 2 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->battleLockoutEndMs !== 0) {
+        $size += 2 + Protobuf::size_varint($this->battleLockoutEndMs);
       }
       return $size;
     }
@@ -362,6 +378,10 @@ namespace POGOProtos\Data {
     public function getBuddyPokemon() { return $this->buddyPokemon;}
     public function setBuddyPokemon(\POGOProtos\Data\BuddyPokemon $value) { $this->buddyPokemon = $value; }
 
+    public function clearBattleLockoutEndMs() { $this->battleLockoutEndMs = 0; }
+    public function getBattleLockoutEndMs() { return $this->battleLockoutEndMs;}
+    public function setBattleLockoutEndMs($value) { $this->battleLockoutEndMs = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('creation_timestamp_ms', $this->creationTimestampMs, 0)
@@ -376,7 +396,8 @@ namespace POGOProtos\Data {
            . Protobuf::toString('contact_settings', $this->contactSettings, null)
            . Protobuf::toString('currencies', $this->currencies, null)
            . Protobuf::toString('remaining_codename_claims', $this->remainingCodenameClaims, 0)
-           . Protobuf::toString('buddy_pokemon', $this->buddyPokemon, null);
+           . Protobuf::toString('buddy_pokemon', $this->buddyPokemon, null)
+           . Protobuf::toString('battle_lockout_end_ms', $this->battleLockoutEndMs, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Data.PlayerData)

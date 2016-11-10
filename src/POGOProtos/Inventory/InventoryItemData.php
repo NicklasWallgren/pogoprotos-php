@@ -25,6 +25,7 @@ namespace POGOProtos\Inventory {
     private $appliedItems = null; // optional .POGOProtos.Inventory.AppliedItems applied_items = 8
     private $eggIncubators = null; // optional .POGOProtos.Inventory.EggIncubators egg_incubators = 9
     private $candy = null; // optional .POGOProtos.Inventory.Candy candy = 10
+    private $quest = null; // optional .POGOProtos.Data.Quests.Quest quest = 11
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -148,6 +149,17 @@ namespace POGOProtos\Inventory {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Inventory\Candy did not read the full length');
 
             break;
+          case 11: // optional .POGOProtos.Data.Quests.Quest quest = 11
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->quest = new \POGOProtos\Data\Quests\Quest($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Quests\Quest did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -205,6 +217,11 @@ namespace POGOProtos\Inventory {
         Protobuf::write_varint($fp, $this->candy->size());
         $this->candy->write($fp);
       }
+      if ($this->quest !== null) {
+        fwrite($fp, "Z", 1);
+        Protobuf::write_varint($fp, $this->quest->size());
+        $this->quest->write($fp);
+      }
     }
 
     public function size() {
@@ -247,6 +264,10 @@ namespace POGOProtos\Inventory {
       }
       if ($this->candy !== null) {
         $l = $this->candy->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->quest !== null) {
+        $l = $this->quest->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -292,6 +313,10 @@ namespace POGOProtos\Inventory {
     public function getCandy() { return $this->candy;}
     public function setCandy(\POGOProtos\Inventory\Candy $value) { $this->candy = $value; }
 
+    public function clearQuest() { $this->quest = null; }
+    public function getQuest() { return $this->quest;}
+    public function setQuest(\POGOProtos\Data\Quests\Quest $value) { $this->quest = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('pokemon_data', $this->pokemonData, null)
@@ -303,7 +328,8 @@ namespace POGOProtos\Inventory {
            . Protobuf::toString('inventory_upgrades', $this->inventoryUpgrades, null)
            . Protobuf::toString('applied_items', $this->appliedItems, null)
            . Protobuf::toString('egg_incubators', $this->eggIncubators, null)
-           . Protobuf::toString('candy', $this->candy, null);
+           . Protobuf::toString('candy', $this->candy, null)
+           . Protobuf::toString('quest', $this->quest, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Inventory.InventoryItemData)
