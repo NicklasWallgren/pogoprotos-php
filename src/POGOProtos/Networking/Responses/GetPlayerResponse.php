@@ -17,6 +17,8 @@ namespace POGOProtos\Networking\Responses {
     private $_unknown;
     private $success = false; // optional bool success = 1
     private $playerData = null; // optional .POGOProtos.Data.PlayerData player_data = 2
+    private $banned = false; // optional bool banned = 3
+    private $warn = false; // optional bool warn = 4
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -50,6 +52,24 @@ namespace POGOProtos\Networking\Responses {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\PlayerData did not read the full length');
 
             break;
+          case 3: // optional bool banned = 3
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->banned = ($tmp > 0) ? true : false;
+
+            break;
+          case 4: // optional bool warn = 4
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->warn = ($tmp > 0) ? true : false;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -66,6 +86,14 @@ namespace POGOProtos\Networking\Responses {
         Protobuf::write_varint($fp, $this->playerData->size());
         $this->playerData->write($fp);
       }
+      if ($this->banned !== false) {
+        fwrite($fp, "\x18", 1);
+        Protobuf::write_varint($fp, $this->banned ? 1 : 0);
+      }
+      if ($this->warn !== false) {
+        fwrite($fp, " ", 1);
+        Protobuf::write_varint($fp, $this->warn ? 1 : 0);
+      }
     }
 
     public function size() {
@@ -76,6 +104,12 @@ namespace POGOProtos\Networking\Responses {
       if ($this->playerData !== null) {
         $l = $this->playerData->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->banned !== false) {
+        $size += 2;
+      }
+      if ($this->warn !== false) {
+        $size += 2;
       }
       return $size;
     }
@@ -88,10 +122,20 @@ namespace POGOProtos\Networking\Responses {
     public function getPlayerData() { return $this->playerData;}
     public function setPlayerData(\POGOProtos\Data\PlayerData $value) { $this->playerData = $value; }
 
+    public function clearBanned() { $this->banned = false; }
+    public function getBanned() { return $this->banned;}
+    public function setBanned($value) { $this->banned = $value; }
+
+    public function clearWarn() { $this->warn = false; }
+    public function getWarn() { return $this->warn;}
+    public function setWarn($value) { $this->warn = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('success', $this->success, false)
-           . Protobuf::toString('player_data', $this->playerData, null);
+           . Protobuf::toString('player_data', $this->playerData, null)
+           . Protobuf::toString('banned', $this->banned, false)
+           . Protobuf::toString('warn', $this->warn, false);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.GetPlayerResponse)

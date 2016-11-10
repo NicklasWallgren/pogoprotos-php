@@ -67,6 +67,7 @@ namespace POGOProtos\Networking\Responses {
     private $battleId = ""; // optional string battle_id = 4
     private $defender = null; // optional .POGOProtos.Data.Battle.BattleParticipant defender = 5
     private $battleLog = null; // optional .POGOProtos.Data.Battle.BattleLog battle_log = 6
+    private $attacker = null; // optional .POGOProtos.Data.Battle.BattleParticipant attacker = 7
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -140,6 +141,17 @@ namespace POGOProtos\Networking\Responses {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Battle\BattleLog did not read the full length');
 
             break;
+          case 7: // optional .POGOProtos.Data.Battle.BattleParticipant attacker = 7
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->attacker = new \POGOProtos\Data\Battle\BattleParticipant($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Battle\BattleParticipant did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -174,6 +186,11 @@ namespace POGOProtos\Networking\Responses {
         Protobuf::write_varint($fp, $this->battleLog->size());
         $this->battleLog->write($fp);
       }
+      if ($this->attacker !== null) {
+        fwrite($fp, ":", 1);
+        Protobuf::write_varint($fp, $this->attacker->size());
+        $this->attacker->write($fp);
+      }
     }
 
     public function size() {
@@ -197,6 +214,10 @@ namespace POGOProtos\Networking\Responses {
       }
       if ($this->battleLog !== null) {
         $l = $this->battleLog->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->attacker !== null) {
+        $l = $this->attacker->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -226,6 +247,10 @@ namespace POGOProtos\Networking\Responses {
     public function getBattleLog() { return $this->battleLog;}
     public function setBattleLog(\POGOProtos\Data\Battle\BattleLog $value) { $this->battleLog = $value; }
 
+    public function clearAttacker() { $this->attacker = null; }
+    public function getAttacker() { return $this->attacker;}
+    public function setAttacker(\POGOProtos\Data\Battle\BattleParticipant $value) { $this->attacker = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('result', $this->result, \POGOProtos\Networking\Responses\StartGymBattleResponse_Result::NONE)
@@ -233,7 +258,8 @@ namespace POGOProtos\Networking\Responses {
            . Protobuf::toString('battle_end_timestamp_ms', $this->battleEndTimestampMs, 0)
            . Protobuf::toString('battle_id', $this->battleId, "")
            . Protobuf::toString('defender', $this->defender, null)
-           . Protobuf::toString('battle_log', $this->battleLog, null);
+           . Protobuf::toString('battle_log', $this->battleLog, null)
+           . Protobuf::toString('attacker', $this->attacker, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.StartGymBattleResponse)

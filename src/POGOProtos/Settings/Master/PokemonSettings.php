@@ -64,6 +64,7 @@ namespace POGOProtos\Settings\Master {
     private $candyToEvolve = 0; // optional int32 candy_to_evolve = 22
     private $kmBuddyDistance = 0; // optional float km_buddy_distance = 23
     private $buddySize = \POGOProtos\Settings\Master\PokemonSettings_BuddySize::BUDDY_MEDIUM; // optional .POGOProtos.Settings.Master.PokemonSettings.BuddySize buddy_size = 24
+    private $modelHeight = 0; // optional float model_height = 25
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -326,6 +327,15 @@ namespace POGOProtos\Settings\Master {
             $this->buddySize = $tmp;
 
             break;
+          case 25: // optional float model_height = 25
+            if($wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 5 got: $wire");
+            }
+            $tmp = Protobuf::read_float($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+            $this->modelHeight = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -428,6 +438,10 @@ namespace POGOProtos\Settings\Master {
         fwrite($fp, "\xc0\x01", 2);
         Protobuf::write_varint($fp, $this->buddySize);
       }
+      if ($this->modelHeight !== 0) {
+        fwrite($fp, "\xcd\x01", 2);
+        Protobuf::write_float($fp, $this->modelHeight);
+      }
     }
 
     public function size() {
@@ -507,6 +521,9 @@ namespace POGOProtos\Settings\Master {
       }
       if ($this->buddySize !== \POGOProtos\Settings\Master\PokemonSettings_BuddySize::BUDDY_MEDIUM) {
         $size += 2 + Protobuf::size_varint($this->buddySize);
+      }
+      if ($this->modelHeight !== 0) {
+        $size += 6;
       }
       return $size;
     }
@@ -619,6 +636,10 @@ namespace POGOProtos\Settings\Master {
     public function getBuddySize() { return $this->buddySize;}
     public function setBuddySize($value) { $this->buddySize = $value; }
 
+    public function clearModelHeight() { $this->modelHeight = 0; }
+    public function getModelHeight() { return $this->modelHeight;}
+    public function setModelHeight($value) { $this->modelHeight = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('pokemon_id', $this->pokemonId, \POGOProtos\Enums\PokemonId::MISSINGNO)
@@ -643,7 +664,8 @@ namespace POGOProtos\Settings\Master {
            . Protobuf::toString('family_id', $this->familyId, \POGOProtos\Enums\PokemonFamilyId::FAMILY_NONE)
            . Protobuf::toString('candy_to_evolve', $this->candyToEvolve, 0)
            . Protobuf::toString('km_buddy_distance', $this->kmBuddyDistance, 0)
-           . Protobuf::toString('buddy_size', $this->buddySize, \POGOProtos\Settings\Master\PokemonSettings_BuddySize::BUDDY_MEDIUM);
+           . Protobuf::toString('buddy_size', $this->buddySize, \POGOProtos\Settings\Master\PokemonSettings_BuddySize::BUDDY_MEDIUM)
+           . Protobuf::toString('model_height', $this->modelHeight, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Settings.Master.PokemonSettings)

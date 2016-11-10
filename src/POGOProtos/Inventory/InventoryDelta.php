@@ -32,12 +32,12 @@ namespace POGOProtos\Inventory {
         $field = $tag >> 3;
         switch($field) {
           case 1: // optional int64 original_timestamp_ms = 1
-//            if($wire !== 0) {
-//              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
-//            }
-//            $tmp = Protobuf::read_signed_varint($fp, $limit);
-//            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-//            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->originalTimestampMs = $tmp;
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->originalTimestampMs = $tmp;
 
             break;
           case 2: // optional int64 new_timestamp_ms = 2

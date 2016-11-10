@@ -19,6 +19,7 @@ namespace POGOProtos\Networking\Responses {
     private $experienceAwarded = array(); // repeated int32 experience_awarded = 3
     private $candyAwarded = array(); // repeated int32 candy_awarded = 4
     private $stardustAwarded = array(); // repeated int32 stardust_awarded = 5
+    private $eggKmWalked = array(); // repeated float egg_km_walked = 6
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -113,6 +114,24 @@ namespace POGOProtos\Networking\Responses {
             }
 
             break;
+          case 6: // repeated float egg_km_walked = 6
+            if($wire !== 2 && $wire !== 5) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 or 5 got: $wire");
+            }
+            if ($wire === 5) {
+              $tmp = Protobuf::read_float($fp, $limit);
+              if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+              $this->eggKmWalked[] = $tmp;
+            } elseif ($wire === 2) {
+              $len = Protobuf::read_varint($fp, $limit);
+              while ($len > 0) {
+                $tmp = Protobuf::read_float($fp, $len);
+                if ($tmp === false) throw new \Exception('Protobuf::read_float returned false');
+                $this->eggKmWalked[] = $tmp;
+              }
+            }
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -140,6 +159,10 @@ namespace POGOProtos\Networking\Responses {
         fwrite($fp, "(", 1);
         Protobuf::write_varint($fp, $v);
       }
+      foreach($this->eggKmWalked as $v) {
+        fwrite($fp, "5", 1);
+        Protobuf::write_float($fp, $v);
+      }
     }
 
     public function size() {
@@ -160,6 +183,10 @@ namespace POGOProtos\Networking\Responses {
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       foreach($this->stardustAwarded as $v) {
+        $l = strlen($v);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      foreach($this->eggKmWalked as $v) {
         $l = strlen($v);
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
@@ -202,13 +229,22 @@ namespace POGOProtos\Networking\Responses {
     public function addStardustAwarded(array $value) { $this->stardustAwarded[] = $value; }
     public function addAllStardustAwarded(array $values) { foreach($values as $value) {$this->stardustAwarded[] = $value; }}
 
+    public function clearEggKmWalked() { $this->eggKmWalked = array(); }
+    public function getEggKmWalkedCount() { return count($this->eggKmWalked); }
+    public function getEggKmWalked($index) { return $this->eggKmWalked[$index]; }
+    public function getEggKmWalkedArray() { return $this->eggKmWalked; }
+    public function setEggKmWalked($index, array $value) {$this->eggKmWalked[$index] = $value; }
+    public function addEggKmWalked(array $value) { $this->eggKmWalked[] = $value; }
+    public function addAllEggKmWalked(array $values) { foreach($values as $value) {$this->eggKmWalked[] = $value; }}
+
     public function __toString() {
       return ''
            . Protobuf::toString('success', $this->success, false)
            . Protobuf::toString('pokemon_id', $this->pokemonId, 0)
            . Protobuf::toString('experience_awarded', $this->experienceAwarded, 0)
            . Protobuf::toString('candy_awarded', $this->candyAwarded, 0)
-           . Protobuf::toString('stardust_awarded', $this->stardustAwarded, 0);
+           . Protobuf::toString('stardust_awarded', $this->stardustAwarded, 0)
+           . Protobuf::toString('egg_km_walked', $this->eggKmWalked, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.GetHatchedEggsResponse)

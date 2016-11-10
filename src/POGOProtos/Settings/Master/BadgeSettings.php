@@ -18,6 +18,7 @@ namespace POGOProtos\Settings\Master {
     private $badgeType = \POGOProtos\Enums\BadgeType::BADGE_NONE; // optional .POGOProtos.Enums.BadgeType badge_type = 1
     private $badgeRank = 0; // optional int32 badge_rank = 2
     private $targets = array(); // repeated int32 targets = 3
+    private $captureReward = array(); // repeated .POGOProtos.Data.Badge.BadgeCaptureReward capture_reward = 4
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -67,6 +68,17 @@ namespace POGOProtos\Settings\Master {
             }
 
             break;
+          case 4: // repeated .POGOProtos.Data.Badge.BadgeCaptureReward capture_reward = 4
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->captureReward[] = new \POGOProtos\Data\Badge\BadgeCaptureReward($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Badge\BadgeCaptureReward did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -86,6 +98,11 @@ namespace POGOProtos\Settings\Master {
         fwrite($fp, "\x18", 1);
         Protobuf::write_varint($fp, $v);
       }
+      foreach($this->captureReward as $v) {
+        fwrite($fp, "\"", 1);
+        Protobuf::write_varint($fp, $v->size());
+        $v->write($fp);
+      }
     }
 
     public function size() {
@@ -98,6 +115,10 @@ namespace POGOProtos\Settings\Master {
       }
       foreach($this->targets as $v) {
         $l = strlen($v);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      foreach($this->captureReward as $v) {
+        $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -119,11 +140,20 @@ namespace POGOProtos\Settings\Master {
     public function addTargets(array $value) { $this->targets[] = $value; }
     public function addAllTargets(array $values) { foreach($values as $value) {$this->targets[] = $value; }}
 
+    public function clearCaptureReward() { $this->captureReward = array(); }
+    public function getCaptureRewardCount() { return count($this->captureReward); }
+    public function getCaptureReward($index) { return $this->captureReward[$index]; }
+    public function getCaptureRewardArray() { return $this->captureReward; }
+    public function setCaptureReward($index, array $value) {$this->captureReward[$index] = $value; }
+    public function addCaptureReward(array $value) { $this->captureReward[] = $value; }
+    public function addAllCaptureReward(array $values) { foreach($values as $value) {$this->captureReward[] = $value; }}
+
     public function __toString() {
       return ''
            . Protobuf::toString('badge_type', $this->badgeType, \POGOProtos\Enums\BadgeType::BADGE_NONE)
            . Protobuf::toString('badge_rank', $this->badgeRank, 0)
-           . Protobuf::toString('targets', $this->targets, 0);
+           . Protobuf::toString('targets', $this->targets, 0)
+           . Protobuf::toString('capture_reward', $this->captureReward, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Settings.Master.BadgeSettings)

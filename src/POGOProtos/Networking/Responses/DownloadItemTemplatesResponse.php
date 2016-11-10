@@ -32,6 +32,7 @@ namespace POGOProtos\Networking\Responses {
     private $iapSettings = null; // optional .POGOProtos.Settings.Master.IapSettings iap_settings = 17
     private $pokemonUpgrades = null; // optional .POGOProtos.Settings.Master.PokemonUpgradeSettings pokemon_upgrades = 18
     private $equippedBadges = null; // optional .POGOProtos.Settings.Master.EquippedBadgeSettings equipped_badges = 19
+    private $questSettings = null; // optional .POGOProtos.Settings.Master.QuestSettings quest_settings = 20
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -221,6 +222,17 @@ namespace POGOProtos\Networking\Responses {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Settings\Master\EquippedBadgeSettings did not read the full length');
 
             break;
+          case 20: // optional .POGOProtos.Settings.Master.QuestSettings quest_settings = 20
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->questSettings = new \POGOProtos\Settings\Master\QuestSettings($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Settings\Master\QuestSettings did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -308,6 +320,11 @@ namespace POGOProtos\Networking\Responses {
         Protobuf::write_varint($fp, $this->equippedBadges->size());
         $this->equippedBadges->write($fp);
       }
+      if ($this->questSettings !== null) {
+        fwrite($fp, "\xa2\x01", 2);
+        Protobuf::write_varint($fp, $this->questSettings->size());
+        $this->questSettings->write($fp);
+      }
     }
 
     public function size() {
@@ -374,6 +391,10 @@ namespace POGOProtos\Networking\Responses {
       }
       if ($this->equippedBadges !== null) {
         $l = $this->equippedBadges->size();
+        $size += 2 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->questSettings !== null) {
+        $l = $this->questSettings->size();
         $size += 2 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -443,6 +464,10 @@ namespace POGOProtos\Networking\Responses {
     public function getEquippedBadges() { return $this->equippedBadges;}
     public function setEquippedBadges(\POGOProtos\Settings\Master\EquippedBadgeSettings $value) { $this->equippedBadges = $value; }
 
+    public function clearQuestSettings() { $this->questSettings = null; }
+    public function getQuestSettings() { return $this->questSettings;}
+    public function setQuestSettings(\POGOProtos\Settings\Master\QuestSettings $value) { $this->questSettings = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('template_id', $this->templateId, "")
@@ -460,7 +485,8 @@ namespace POGOProtos\Networking\Responses {
            . Protobuf::toString('iap_item_display', $this->iapItemDisplay, null)
            . Protobuf::toString('iap_settings', $this->iapSettings, null)
            . Protobuf::toString('pokemon_upgrades', $this->pokemonUpgrades, null)
-           . Protobuf::toString('equipped_badges', $this->equippedBadges, null);
+           . Protobuf::toString('equipped_badges', $this->equippedBadges, null)
+           . Protobuf::toString('quest_settings', $this->questSettings, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.DownloadItemTemplatesResponse.ItemTemplate)

@@ -18,7 +18,7 @@ namespace POGOProtos\Networking\Requests\Messages {
     private $gymId = ""; // optional string gym_id = 1
     private $battleId = ""; // optional string battle_id = 2
     private $attackActions = array(); // repeated .POGOProtos.Data.Battle.BattleAction attack_actions = 3
-    private $lastRetrievedActions = null; // optional .POGOProtos.Data.Battle.BattleAction last_retrieved_actions = 4
+    private $lastRetrievedAction = null; // optional .POGOProtos.Data.Battle.BattleAction last_retrieved_action = 4
     private $playerLatitude = 0; // optional double player_latitude = 5
     private $playerLongitude = 0; // optional double player_longitude = 6
 
@@ -67,14 +67,14 @@ namespace POGOProtos\Networking\Requests\Messages {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Battle\BattleAction did not read the full length');
 
             break;
-          case 4: // optional .POGOProtos.Data.Battle.BattleAction last_retrieved_actions = 4
+          case 4: // optional .POGOProtos.Data.Battle.BattleAction last_retrieved_action = 4
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
             $len = Protobuf::read_varint($fp, $limit);
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $limit -= $len;
-            $this->lastRetrievedActions = new \POGOProtos\Data\Battle\BattleAction($fp, $len);
+            $this->lastRetrievedAction = new \POGOProtos\Data\Battle\BattleAction($fp, $len);
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Battle\BattleAction did not read the full length');
 
             break;
@@ -118,10 +118,10 @@ namespace POGOProtos\Networking\Requests\Messages {
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
       }
-      if ($this->lastRetrievedActions !== null) {
+      if ($this->lastRetrievedAction !== null) {
         fwrite($fp, "\"", 1);
-        Protobuf::write_varint($fp, $this->lastRetrievedActions->size());
-        $this->lastRetrievedActions->write($fp);
+        Protobuf::write_varint($fp, $this->lastRetrievedAction->size());
+        $this->lastRetrievedAction->write($fp);
       }
       if ($this->playerLatitude !== 0) {
         fwrite($fp, ")", 1);
@@ -147,8 +147,8 @@ namespace POGOProtos\Networking\Requests\Messages {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->lastRetrievedActions !== null) {
-        $l = $this->lastRetrievedActions->size();
+      if ($this->lastRetrievedAction !== null) {
+        $l = $this->lastRetrievedAction->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       if ($this->playerLatitude !== 0) {
@@ -176,9 +176,9 @@ namespace POGOProtos\Networking\Requests\Messages {
     public function addAttackActions(array $value) { $this->attackActions[] = $value; }
     public function addAllAttackActions(array $values) { foreach($values as $value) {$this->attackActions[] = $value; }}
 
-    public function clearLastRetrievedActions() { $this->lastRetrievedActions = null; }
-    public function getLastRetrievedActions() { return $this->lastRetrievedActions;}
-    public function setLastRetrievedActions(\POGOProtos\Data\Battle\BattleAction $value) { $this->lastRetrievedActions = $value; }
+    public function clearLastRetrievedAction() { $this->lastRetrievedAction = null; }
+    public function getLastRetrievedAction() { return $this->lastRetrievedAction;}
+    public function setLastRetrievedAction(\POGOProtos\Data\Battle\BattleAction $value) { $this->lastRetrievedAction = $value; }
 
     public function clearPlayerLatitude() { $this->playerLatitude = 0; }
     public function getPlayerLatitude() { return $this->playerLatitude;}
@@ -193,7 +193,7 @@ namespace POGOProtos\Networking\Requests\Messages {
            . Protobuf::toString('gym_id', $this->gymId, "")
            . Protobuf::toString('battle_id', $this->battleId, "")
            . Protobuf::toString('attack_actions', $this->attackActions, null)
-           . Protobuf::toString('last_retrieved_actions', $this->lastRetrievedActions, null)
+           . Protobuf::toString('last_retrieved_action', $this->lastRetrievedAction, null)
            . Protobuf::toString('player_latitude', $this->playerLatitude, 0)
            . Protobuf::toString('player_longitude', $this->playerLongitude, 0);
     }

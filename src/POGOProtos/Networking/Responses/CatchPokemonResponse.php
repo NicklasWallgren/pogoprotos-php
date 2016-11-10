@@ -39,6 +39,30 @@ namespace POGOProtos\Networking\Responses {
     }
   }
 
+  // enum POGOProtos.Networking.Responses.CatchPokemonResponse.CaptureReason
+  abstract class CatchPokemonResponse_CaptureReason extends ProtobufEnum {
+    const NONE = 0;
+    const DEFAULT = 1;
+    const ELEMENTAL_BADGE = 2;
+
+    public static $_values = array(
+      0 => "NONE",
+      1 => "DEFAULT",
+      2 => "ELEMENTAL_BADGE",
+    );
+
+    public static function isValid($value) {
+      return array_key_exists($value, self::$_values);
+    }
+
+    public static function toString($value) {
+      checkArgument(is_int($value), 'value must be a integer');
+      if (array_key_exists($value, self::$_values))
+        return self::$_values[$value];
+      return 'UNKNOWN';
+    }
+  }
+
   // message POGOProtos.Networking.Responses.CatchPokemonResponse
   final class CatchPokemonResponse extends ProtobufMessage {
 
@@ -47,6 +71,7 @@ namespace POGOProtos\Networking\Responses {
     private $missPercent = 0; // optional double miss_percent = 2
     private $capturedPokemonId = 0; // optional fixed64 captured_pokemon_id = 3
     private $captureAward = null; // optional .POGOProtos.Data.Capture.CaptureAward capture_award = 4
+    private $captureReason = \POGOProtos\Networking\Responses\CatchPokemonResponse_CaptureReason::NONE; // optional .POGOProtos.Networking.Responses.CatchPokemonResponse.CaptureReason capture_reason = 5
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -98,6 +123,15 @@ namespace POGOProtos\Networking\Responses {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Capture\CaptureAward did not read the full length');
 
             break;
+          case 5: // optional .POGOProtos.Networking.Responses.CatchPokemonResponse.CaptureReason capture_reason = 5
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->captureReason = $tmp;
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -122,6 +156,10 @@ namespace POGOProtos\Networking\Responses {
         Protobuf::write_varint($fp, $this->captureAward->size());
         $this->captureAward->write($fp);
       }
+      if ($this->captureReason !== \POGOProtos\Networking\Responses\CatchPokemonResponse_CaptureReason::NONE) {
+        fwrite($fp, "(", 1);
+        Protobuf::write_varint($fp, $this->captureReason);
+      }
     }
 
     public function size() {
@@ -138,6 +176,9 @@ namespace POGOProtos\Networking\Responses {
       if ($this->captureAward !== null) {
         $l = $this->captureAward->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->captureReason !== \POGOProtos\Networking\Responses\CatchPokemonResponse_CaptureReason::NONE) {
+        $size += 1 + Protobuf::size_varint($this->captureReason);
       }
       return $size;
     }
@@ -158,12 +199,17 @@ namespace POGOProtos\Networking\Responses {
     public function getCaptureAward() { return $this->captureAward;}
     public function setCaptureAward(\POGOProtos\Data\Capture\CaptureAward $value) { $this->captureAward = $value; }
 
+    public function clearCaptureReason() { $this->captureReason = \POGOProtos\Networking\Responses\CatchPokemonResponse_CaptureReason::NONE; }
+    public function getCaptureReason() { return $this->captureReason;}
+    public function setCaptureReason($value) { $this->captureReason = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('status', $this->status, \POGOProtos\Networking\Responses\CatchPokemonResponse_CatchStatus::CATCH_ERROR)
            . Protobuf::toString('miss_percent', $this->missPercent, 0)
            . Protobuf::toString('captured_pokemon_id', $this->capturedPokemonId, 0)
-           . Protobuf::toString('capture_award', $this->captureAward, null);
+           . Protobuf::toString('capture_award', $this->captureAward, null)
+           . Protobuf::toString('capture_reason', $this->captureReason, \POGOProtos\Networking\Responses\CatchPokemonResponse_CaptureReason::NONE);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Responses.CatchPokemonResponse)

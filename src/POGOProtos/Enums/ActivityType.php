@@ -36,6 +36,9 @@ namespace POGOProtos\Enums {
     const ACTIVITY_HATCH_EGG_LARGE_BONUS = 21;
     const ACTIVITY_DEFEAT_GYM_DEFENDER = 22;
     const ACTIVITY_DEFEAT_GYM_LEADER = 23;
+    const ACTIVITY_CATCH_FIRST_CATCH_STREAK_BONUS = 24;
+    const ACTIVITY_SEARCH_FORT_FIRST_OF_THE_DAY = 25;
+    const ACTIVITY_SEARCH_FORT_STREAK_BONUS = 26;
 
     public static $_values = array(
       0 => "ACTIVITY_UNKNOWN",
@@ -62,6 +65,9 @@ namespace POGOProtos\Enums {
       21 => "ACTIVITY_HATCH_EGG_LARGE_BONUS",
       22 => "ACTIVITY_DEFEAT_GYM_DEFENDER",
       23 => "ACTIVITY_DEFEAT_GYM_LEADER",
+      24 => "ACTIVITY_CATCH_FIRST_CATCH_STREAK_BONUS",
+      25 => "ACTIVITY_SEARCH_FORT_FIRST_OF_THE_DAY",
+      26 => "ACTIVITY_SEARCH_FORT_STREAK_BONUS",
     );
 
     public static function isValid($value) {

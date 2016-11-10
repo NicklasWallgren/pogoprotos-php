@@ -19,6 +19,7 @@ namespace POGOProtos\Networking\Requests {
     const DOWNLOAD_SETTINGS = 5;
     const DOWNLOAD_ITEM_TEMPLATES = 6;
     const DOWNLOAD_REMOTE_CONFIG_VERSION = 7;
+    const REGISTER_BACKGROUND_DEVICE = 8;
     const FORT_SEARCH = 101;
     const ENCOUNTER = 102;
     const CATCH_POKEMON = 103;
@@ -96,6 +97,7 @@ namespace POGOProtos\Networking\Requests {
       5 => "DOWNLOAD_SETTINGS",
       6 => "DOWNLOAD_ITEM_TEMPLATES",
       7 => "DOWNLOAD_REMOTE_CONFIG_VERSION",
+      8 => "REGISTER_BACKGROUND_DEVICE",
       101 => "FORT_SEARCH",
       102 => "ENCOUNTER",
       103 => "CATCH_POKEMON",

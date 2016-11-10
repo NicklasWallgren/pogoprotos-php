@@ -21,6 +21,10 @@ namespace POGOProtos\Settings {
     private $inventorySettings = null; // optional .POGOProtos.Settings.InventorySettings inventory_settings = 5
     private $minimumClientVersion = ""; // optional string minimum_client_version = 6
     private $gpsSettings = null; // optional .POGOProtos.Settings.GpsSettings gps_settings = 7
+    private $festivalSettings = null; // optional .POGOProtos.Settings.FestivalSettings festival_settings = 8
+    private $eventSettings = null; // optional .POGOProtos.Settings.EventSettings event_settings = 9
+    private $maxPokemonTypes = 0; // optional int32 max_pokemon_types = 10
+    private $sfidaSettings = null; // optional .POGOProtos.Settings.SfidaSettings sfida_settings = 11
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -100,6 +104,48 @@ namespace POGOProtos\Settings {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Settings\GpsSettings did not read the full length');
 
             break;
+          case 8: // optional .POGOProtos.Settings.FestivalSettings festival_settings = 8
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->festivalSettings = new \POGOProtos\Settings\FestivalSettings($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Settings\FestivalSettings did not read the full length');
+
+            break;
+          case 9: // optional .POGOProtos.Settings.EventSettings event_settings = 9
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->eventSettings = new \POGOProtos\Settings\EventSettings($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Settings\EventSettings did not read the full length');
+
+            break;
+          case 10: // optional int32 max_pokemon_types = 10
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->maxPokemonTypes = $tmp;
+
+            break;
+          case 11: // optional .POGOProtos.Settings.SfidaSettings sfida_settings = 11
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->sfidaSettings = new \POGOProtos\Settings\SfidaSettings($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Settings\SfidaSettings did not read the full length');
+
+            break;
           default:
             $limit -= Protobuf::skip_field($fp, $wire);
         }
@@ -137,6 +183,25 @@ namespace POGOProtos\Settings {
         Protobuf::write_varint($fp, $this->gpsSettings->size());
         $this->gpsSettings->write($fp);
       }
+      if ($this->festivalSettings !== null) {
+        fwrite($fp, "B", 1);
+        Protobuf::write_varint($fp, $this->festivalSettings->size());
+        $this->festivalSettings->write($fp);
+      }
+      if ($this->eventSettings !== null) {
+        fwrite($fp, "J", 1);
+        Protobuf::write_varint($fp, $this->eventSettings->size());
+        $this->eventSettings->write($fp);
+      }
+      if ($this->maxPokemonTypes !== 0) {
+        fwrite($fp, "P", 1);
+        Protobuf::write_varint($fp, $this->maxPokemonTypes);
+      }
+      if ($this->sfidaSettings !== null) {
+        fwrite($fp, "Z", 1);
+        Protobuf::write_varint($fp, $this->sfidaSettings->size());
+        $this->sfidaSettings->write($fp);
+      }
     }
 
     public function size() {
@@ -163,6 +228,21 @@ namespace POGOProtos\Settings {
       }
       if ($this->gpsSettings !== null) {
         $l = $this->gpsSettings->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->festivalSettings !== null) {
+        $l = $this->festivalSettings->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->eventSettings !== null) {
+        $l = $this->eventSettings->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->maxPokemonTypes !== 0) {
+        $size += 1 + Protobuf::size_varint($this->maxPokemonTypes);
+      }
+      if ($this->sfidaSettings !== null) {
+        $l = $this->sfidaSettings->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       return $size;
@@ -192,6 +272,22 @@ namespace POGOProtos\Settings {
     public function getGpsSettings() { return $this->gpsSettings;}
     public function setGpsSettings(\POGOProtos\Settings\GpsSettings $value) { $this->gpsSettings = $value; }
 
+    public function clearFestivalSettings() { $this->festivalSettings = null; }
+    public function getFestivalSettings() { return $this->festivalSettings;}
+    public function setFestivalSettings(\POGOProtos\Settings\FestivalSettings $value) { $this->festivalSettings = $value; }
+
+    public function clearEventSettings() { $this->eventSettings = null; }
+    public function getEventSettings() { return $this->eventSettings;}
+    public function setEventSettings(\POGOProtos\Settings\EventSettings $value) { $this->eventSettings = $value; }
+
+    public function clearMaxPokemonTypes() { $this->maxPokemonTypes = 0; }
+    public function getMaxPokemonTypes() { return $this->maxPokemonTypes;}
+    public function setMaxPokemonTypes($value) { $this->maxPokemonTypes = $value; }
+
+    public function clearSfidaSettings() { $this->sfidaSettings = null; }
+    public function getSfidaSettings() { return $this->sfidaSettings;}
+    public function setSfidaSettings(\POGOProtos\Settings\SfidaSettings $value) { $this->sfidaSettings = $value; }
+
     public function __toString() {
       return ''
            . Protobuf::toString('fort_settings', $this->fortSettings, null)
@@ -199,7 +295,11 @@ namespace POGOProtos\Settings {
            . Protobuf::toString('level_settings', $this->levelSettings, null)
            . Protobuf::toString('inventory_settings', $this->inventorySettings, null)
            . Protobuf::toString('minimum_client_version', $this->minimumClientVersion, "")
-           . Protobuf::toString('gps_settings', $this->gpsSettings, null);
+           . Protobuf::toString('gps_settings', $this->gpsSettings, null)
+           . Protobuf::toString('festival_settings', $this->festivalSettings, null)
+           . Protobuf::toString('event_settings', $this->eventSettings, null)
+           . Protobuf::toString('max_pokemon_types', $this->maxPokemonTypes, 0)
+           . Protobuf::toString('sfida_settings', $this->sfidaSettings, null);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Settings.GlobalSettings)

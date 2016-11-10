@@ -642,16 +642,17 @@ namespace POGOProtos\Networking\Envelopes {
     private $magneticFieldX = 0; // optional double magnetic_field_x = 6
     private $magneticFieldY = 0; // optional double magnetic_field_y = 7
     private $magneticFieldZ = 0; // optional double magnetic_field_z = 8
-    private $rotationVectorX = 0; // optional double rotation_vector_x = 10
-    private $rotationVectorY = 0; // optional double rotation_vector_y = 11
-    private $rotationVectorZ = 0; // optional double rotation_vector_z = 12
-    private $gyroscopeRawX = 0; // optional double gyroscope_raw_x = 13
-    private $gyroscopeRawY = 0; // optional double gyroscope_raw_y = 14
-    private $gyroscopeRawZ = 0; // optional double gyroscope_raw_z = 15
+    private $magneticFieldAccuracy = 0; // optional int32 magnetic_field_accuracy = 9
+    private $attitudePitch = 0; // optional double attitude_pitch = 10
+    private $attitudeYaw = 0; // optional double attitude_yaw = 11
+    private $attitudeRoll = 0; // optional double attitude_roll = 12
+    private $rotationRateX = 0; // optional double rotation_rate_x = 13
+    private $rotationRateY = 0; // optional double rotation_rate_y = 14
+    private $rotationRateZ = 0; // optional double rotation_rate_z = 15
     private $gravityX = 0; // optional double gravity_x = 16
     private $gravityY = 0; // optional double gravity_y = 17
     private $gravityZ = 0; // optional double gravity_z = 18
-    private $accelerometerAxes = 0; // optional uint64 accelerometer_axes = 19
+    private $status = 0; // optional int32 status = 19
 
     public function __construct($in = null, &$limit = PHP_INT_MAX) {
       parent::__construct($in, $limit);
@@ -728,58 +729,67 @@ namespace POGOProtos\Networking\Envelopes {
             $this->magneticFieldZ = $tmp;
 
             break;
-          case 10: // optional double rotation_vector_x = 10
-            if($wire !== 1) {
-              throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
+          case 9: // optional int32 magnetic_field_accuracy = 9
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
-            $tmp = Protobuf::read_double($fp, $limit);
-            if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->rotationVectorX = $tmp;
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->magneticFieldAccuracy = $tmp;
 
             break;
-          case 11: // optional double rotation_vector_y = 11
+          case 10: // optional double attitude_pitch = 10
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->rotationVectorY = $tmp;
+            $this->attitudePitch = $tmp;
 
             break;
-          case 12: // optional double rotation_vector_z = 12
+          case 11: // optional double attitude_yaw = 11
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->rotationVectorZ = $tmp;
+            $this->attitudeYaw = $tmp;
 
             break;
-          case 13: // optional double gyroscope_raw_x = 13
+          case 12: // optional double attitude_roll = 12
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->gyroscopeRawX = $tmp;
+            $this->attitudeRoll = $tmp;
 
             break;
-          case 14: // optional double gyroscope_raw_y = 14
+          case 13: // optional double rotation_rate_x = 13
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->gyroscopeRawY = $tmp;
+            $this->rotationRateX = $tmp;
 
             break;
-          case 15: // optional double gyroscope_raw_z = 15
+          case 14: // optional double rotation_rate_y = 14
             if($wire !== 1) {
               throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
             }
             $tmp = Protobuf::read_double($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
-            $this->gyroscopeRawZ = $tmp;
+            $this->rotationRateY = $tmp;
+
+            break;
+          case 15: // optional double rotation_rate_z = 15
+            if($wire !== 1) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 1 got: $wire");
+            }
+            $tmp = Protobuf::read_double($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_double returned false');
+            $this->rotationRateZ = $tmp;
 
             break;
           case 16: // optional double gravity_x = 16
@@ -809,13 +819,13 @@ namespace POGOProtos\Networking\Envelopes {
             $this->gravityZ = $tmp;
 
             break;
-          case 19: // optional uint64 accelerometer_axes = 19
+          case 19: // optional int32 status = 19
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
-            $tmp = Protobuf::read_varint($fp, $limit);
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->accelerometerAxes = $tmp;
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->status = $tmp;
 
             break;
           default:
@@ -853,29 +863,33 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "A", 1);
         Protobuf::write_double($fp, $this->magneticFieldZ);
       }
-      if ($this->rotationVectorX !== 0) {
+      if ($this->magneticFieldAccuracy !== 0) {
+        fwrite($fp, "H", 1);
+        Protobuf::write_varint($fp, $this->magneticFieldAccuracy);
+      }
+      if ($this->attitudePitch !== 0) {
         fwrite($fp, "Q", 1);
-        Protobuf::write_double($fp, $this->rotationVectorX);
+        Protobuf::write_double($fp, $this->attitudePitch);
       }
-      if ($this->rotationVectorY !== 0) {
+      if ($this->attitudeYaw !== 0) {
         fwrite($fp, "Y", 1);
-        Protobuf::write_double($fp, $this->rotationVectorY);
+        Protobuf::write_double($fp, $this->attitudeYaw);
       }
-      if ($this->rotationVectorZ !== 0) {
+      if ($this->attitudeRoll !== 0) {
         fwrite($fp, "a", 1);
-        Protobuf::write_double($fp, $this->rotationVectorZ);
+        Protobuf::write_double($fp, $this->attitudeRoll);
       }
-      if ($this->gyroscopeRawX !== 0) {
+      if ($this->rotationRateX !== 0) {
         fwrite($fp, "i", 1);
-        Protobuf::write_double($fp, $this->gyroscopeRawX);
+        Protobuf::write_double($fp, $this->rotationRateX);
       }
-      if ($this->gyroscopeRawY !== 0) {
+      if ($this->rotationRateY !== 0) {
         fwrite($fp, "q", 1);
-        Protobuf::write_double($fp, $this->gyroscopeRawY);
+        Protobuf::write_double($fp, $this->rotationRateY);
       }
-      if ($this->gyroscopeRawZ !== 0) {
+      if ($this->rotationRateZ !== 0) {
         fwrite($fp, "y", 1);
-        Protobuf::write_double($fp, $this->gyroscopeRawZ);
+        Protobuf::write_double($fp, $this->rotationRateZ);
       }
       if ($this->gravityX !== 0) {
         fwrite($fp, "\x81\x01", 2);
@@ -889,9 +903,9 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "\x91\x01", 2);
         Protobuf::write_double($fp, $this->gravityZ);
       }
-      if ($this->accelerometerAxes !== 0) {
+      if ($this->status !== 0) {
         fwrite($fp, "\x98\x01", 2);
-        Protobuf::write_varint($fp, $this->accelerometerAxes);
+        Protobuf::write_varint($fp, $this->status);
       }
     }
 
@@ -918,22 +932,25 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->magneticFieldZ !== 0) {
         $size += 9;
       }
-      if ($this->rotationVectorX !== 0) {
+      if ($this->magneticFieldAccuracy !== 0) {
+        $size += 1 + Protobuf::size_varint($this->magneticFieldAccuracy);
+      }
+      if ($this->attitudePitch !== 0) {
         $size += 9;
       }
-      if ($this->rotationVectorY !== 0) {
+      if ($this->attitudeYaw !== 0) {
         $size += 9;
       }
-      if ($this->rotationVectorZ !== 0) {
+      if ($this->attitudeRoll !== 0) {
         $size += 9;
       }
-      if ($this->gyroscopeRawX !== 0) {
+      if ($this->rotationRateX !== 0) {
         $size += 9;
       }
-      if ($this->gyroscopeRawY !== 0) {
+      if ($this->rotationRateY !== 0) {
         $size += 9;
       }
-      if ($this->gyroscopeRawZ !== 0) {
+      if ($this->rotationRateZ !== 0) {
         $size += 9;
       }
       if ($this->gravityX !== 0) {
@@ -945,8 +962,8 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->gravityZ !== 0) {
         $size += 10;
       }
-      if ($this->accelerometerAxes !== 0) {
-        $size += 2 + Protobuf::size_varint($this->accelerometerAxes);
+      if ($this->status !== 0) {
+        $size += 2 + Protobuf::size_varint($this->status);
       }
       return $size;
     }
@@ -979,29 +996,33 @@ namespace POGOProtos\Networking\Envelopes {
     public function getMagneticFieldZ() { return $this->magneticFieldZ;}
     public function setMagneticFieldZ($value) { $this->magneticFieldZ = $value; }
 
-    public function clearRotationVectorX() { $this->rotationVectorX = 0; }
-    public function getRotationVectorX() { return $this->rotationVectorX;}
-    public function setRotationVectorX($value) { $this->rotationVectorX = $value; }
+    public function clearMagneticFieldAccuracy() { $this->magneticFieldAccuracy = 0; }
+    public function getMagneticFieldAccuracy() { return $this->magneticFieldAccuracy;}
+    public function setMagneticFieldAccuracy($value) { $this->magneticFieldAccuracy = $value; }
 
-    public function clearRotationVectorY() { $this->rotationVectorY = 0; }
-    public function getRotationVectorY() { return $this->rotationVectorY;}
-    public function setRotationVectorY($value) { $this->rotationVectorY = $value; }
+    public function clearAttitudePitch() { $this->attitudePitch = 0; }
+    public function getAttitudePitch() { return $this->attitudePitch;}
+    public function setAttitudePitch($value) { $this->attitudePitch = $value; }
 
-    public function clearRotationVectorZ() { $this->rotationVectorZ = 0; }
-    public function getRotationVectorZ() { return $this->rotationVectorZ;}
-    public function setRotationVectorZ($value) { $this->rotationVectorZ = $value; }
+    public function clearAttitudeYaw() { $this->attitudeYaw = 0; }
+    public function getAttitudeYaw() { return $this->attitudeYaw;}
+    public function setAttitudeYaw($value) { $this->attitudeYaw = $value; }
 
-    public function clearGyroscopeRawX() { $this->gyroscopeRawX = 0; }
-    public function getGyroscopeRawX() { return $this->gyroscopeRawX;}
-    public function setGyroscopeRawX($value) { $this->gyroscopeRawX = $value; }
+    public function clearAttitudeRoll() { $this->attitudeRoll = 0; }
+    public function getAttitudeRoll() { return $this->attitudeRoll;}
+    public function setAttitudeRoll($value) { $this->attitudeRoll = $value; }
 
-    public function clearGyroscopeRawY() { $this->gyroscopeRawY = 0; }
-    public function getGyroscopeRawY() { return $this->gyroscopeRawY;}
-    public function setGyroscopeRawY($value) { $this->gyroscopeRawY = $value; }
+    public function clearRotationRateX() { $this->rotationRateX = 0; }
+    public function getRotationRateX() { return $this->rotationRateX;}
+    public function setRotationRateX($value) { $this->rotationRateX = $value; }
 
-    public function clearGyroscopeRawZ() { $this->gyroscopeRawZ = 0; }
-    public function getGyroscopeRawZ() { return $this->gyroscopeRawZ;}
-    public function setGyroscopeRawZ($value) { $this->gyroscopeRawZ = $value; }
+    public function clearRotationRateY() { $this->rotationRateY = 0; }
+    public function getRotationRateY() { return $this->rotationRateY;}
+    public function setRotationRateY($value) { $this->rotationRateY = $value; }
+
+    public function clearRotationRateZ() { $this->rotationRateZ = 0; }
+    public function getRotationRateZ() { return $this->rotationRateZ;}
+    public function setRotationRateZ($value) { $this->rotationRateZ = $value; }
 
     public function clearGravityX() { $this->gravityX = 0; }
     public function getGravityX() { return $this->gravityX;}
@@ -1015,9 +1036,9 @@ namespace POGOProtos\Networking\Envelopes {
     public function getGravityZ() { return $this->gravityZ;}
     public function setGravityZ($value) { $this->gravityZ = $value; }
 
-    public function clearAccelerometerAxes() { $this->accelerometerAxes = 0; }
-    public function getAccelerometerAxes() { return $this->accelerometerAxes;}
-    public function setAccelerometerAxes($value) { $this->accelerometerAxes = $value; }
+    public function clearStatus() { $this->status = 0; }
+    public function getStatus() { return $this->status;}
+    public function setStatus($value) { $this->status = $value; }
 
     public function __toString() {
       return ''
@@ -1028,16 +1049,17 @@ namespace POGOProtos\Networking\Envelopes {
            . Protobuf::toString('magnetic_field_x', $this->magneticFieldX, 0)
            . Protobuf::toString('magnetic_field_y', $this->magneticFieldY, 0)
            . Protobuf::toString('magnetic_field_z', $this->magneticFieldZ, 0)
-           . Protobuf::toString('rotation_vector_x', $this->rotationVectorX, 0)
-           . Protobuf::toString('rotation_vector_y', $this->rotationVectorY, 0)
-           . Protobuf::toString('rotation_vector_z', $this->rotationVectorZ, 0)
-           . Protobuf::toString('gyroscope_raw_x', $this->gyroscopeRawX, 0)
-           . Protobuf::toString('gyroscope_raw_y', $this->gyroscopeRawY, 0)
-           . Protobuf::toString('gyroscope_raw_z', $this->gyroscopeRawZ, 0)
+           . Protobuf::toString('magnetic_field_accuracy', $this->magneticFieldAccuracy, 0)
+           . Protobuf::toString('attitude_pitch', $this->attitudePitch, 0)
+           . Protobuf::toString('attitude_yaw', $this->attitudeYaw, 0)
+           . Protobuf::toString('attitude_roll', $this->attitudeRoll, 0)
+           . Protobuf::toString('rotation_rate_x', $this->rotationRateX, 0)
+           . Protobuf::toString('rotation_rate_y', $this->rotationRateY, 0)
+           . Protobuf::toString('rotation_rate_z', $this->rotationRateZ, 0)
            . Protobuf::toString('gravity_x', $this->gravityX, 0)
            . Protobuf::toString('gravity_y', $this->gravityY, 0)
            . Protobuf::toString('gravity_z', $this->gravityZ, 0)
-           . Protobuf::toString('accelerometer_axes', $this->accelerometerAxes, 0);
+           . Protobuf::toString('status', $this->status, 0);
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.Signature.SensorInfo)
@@ -1665,14 +1687,27 @@ namespace POGOProtos\Networking\Envelopes {
   final class Signature extends ProtobufMessage {
 
     private $_unknown;
+    private $field1 = array(); // repeated .POGOProtos.Networking.Envelopes.UnknownMessage field1 = 1
     private $timestampSinceStart = 0; // optional uint64 timestamp_since_start = 2
+    private $field3 = ""; // optional string field3 = 3
     private $locationFix = array(); // repeated .POGOProtos.Networking.Envelopes.Signature.LocationFix location_fix = 4
-    private $gpsInfo = null; // optional .POGOProtos.Networking.Envelopes.Signature.AndroidGpsInfo gps_info = 5
-    private $sensorInfo = null; // optional .POGOProtos.Networking.Envelopes.Signature.SensorInfo sensor_info = 7
+    private $gpsInfo = array(); // repeated .POGOProtos.Networking.Envelopes.Signature.AndroidGpsInfo gps_info = 5
+    private $field6 = array(); // repeated .POGOProtos.Networking.Envelopes.UnknownMessage field6 = 6
+    private $sensorInfo = array(); // repeated .POGOProtos.Networking.Envelopes.Signature.SensorInfo sensor_info = 7
     private $deviceInfo = null; // optional .POGOProtos.Networking.Envelopes.Signature.DeviceInfo device_info = 8
     private $activityStatus = null; // optional .POGOProtos.Networking.Envelopes.Signature.ActivityStatus activity_status = 9
-    private $locationHash1 = 0; // optional uint32 location_hash1 = 10
-    private $locationHash2 = 0; // optional uint32 location_hash2 = 20
+    private $locationHash1 = 0; // optional int32 location_hash1 = 10
+    private $field11 = false; // optional bool field11 = 11
+    private $field12 = false; // optional bool field12 = 12
+    private $field13 = 0; // optional int32 field13 = 13
+    private $field14 = 0; // optional int32 field14 = 14
+    private $field15 = ""; // optional string field15 = 15
+    private $field16 = 0; // optional int32 field16 = 16
+    private $field17 = ""; // optional string field17 = 17
+    private $field18 = ""; // optional string field18 = 18
+    private $field19 = false; // optional bool field19 = 19
+    private $locationHash2 = 0; // optional int32 location_hash2 = 20
+    private $field21 = false; // optional bool field21 = 21
     private $sessionHash = ""; // optional bytes session_hash = 22
     private $timestamp = 0; // optional uint64 timestamp = 23
     private $requestHash = array(); // repeated uint64 request_hash = 24
@@ -1690,6 +1725,17 @@ namespace POGOProtos\Networking\Envelopes {
         $wire  = $tag & 0x07;
         $field = $tag >> 3;
         switch($field) {
+          case 1: // repeated .POGOProtos.Networking.Envelopes.UnknownMessage field1 = 1
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->field1[] = new \POGOProtos\Networking\Envelopes\UnknownMessage($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\UnknownMessage did not read the full length');
+
+            break;
           case 2: // optional uint64 timestamp_since_start = 2
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
@@ -1697,6 +1743,17 @@ namespace POGOProtos\Networking\Envelopes {
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
             if ($tmp < Protobuf::MIN_UINT64 || $tmp > Protobuf::MAX_UINT64) throw new \Exception('uint64 out of range');$this->timestampSinceStart = $tmp;
+
+            break;
+          case 3: // optional string field3 = 3
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->field3 = $tmp;
 
             break;
           case 4: // repeated .POGOProtos.Networking.Envelopes.Signature.LocationFix location_fix = 4
@@ -1710,25 +1767,36 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Signature_LocationFix did not read the full length');
 
             break;
-          case 5: // optional .POGOProtos.Networking.Envelopes.Signature.AndroidGpsInfo gps_info = 5
+          case 5: // repeated .POGOProtos.Networking.Envelopes.Signature.AndroidGpsInfo gps_info = 5
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
             $len = Protobuf::read_varint($fp, $limit);
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $limit -= $len;
-            $this->gpsInfo = new \POGOProtos\Networking\Envelopes\Signature_AndroidGpsInfo($fp, $len);
+            $this->gpsInfo[] = new \POGOProtos\Networking\Envelopes\Signature_AndroidGpsInfo($fp, $len);
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Signature_AndroidGpsInfo did not read the full length');
 
             break;
-          case 7: // optional .POGOProtos.Networking.Envelopes.Signature.SensorInfo sensor_info = 7
+          case 6: // repeated .POGOProtos.Networking.Envelopes.UnknownMessage field6 = 6
             if($wire !== 2) {
               throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
             }
             $len = Protobuf::read_varint($fp, $limit);
             if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
             $limit -= $len;
-            $this->sensorInfo = new \POGOProtos\Networking\Envelopes\Signature_SensorInfo($fp, $len);
+            $this->field6[] = new \POGOProtos\Networking\Envelopes\UnknownMessage($fp, $len);
+            if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\UnknownMessage did not read the full length');
+
+            break;
+          case 7: // repeated .POGOProtos.Networking.Envelopes.Signature.SensorInfo sensor_info = 7
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $limit -= $len;
+            $this->sensorInfo[] = new \POGOProtos\Networking\Envelopes\Signature_SensorInfo($fp, $len);
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Signature_SensorInfo did not read the full length');
 
             break;
@@ -1754,22 +1822,118 @@ namespace POGOProtos\Networking\Envelopes {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Networking\Envelopes\Signature_ActivityStatus did not read the full length');
 
             break;
-          case 10: // optional uint32 location_hash1 = 10
+          case 10: // optional int32 location_hash1 = 10
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
-            $tmp = Protobuf::read_varint($fp, $limit);
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT32 || $tmp > Protobuf::MAX_UINT32) throw new \Exception('uint32 out of range');$this->locationHash1 = $tmp;
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->locationHash1 = $tmp;
 
             break;
-          case 20: // optional uint32 location_hash2 = 20
+          case 11: // optional bool field11 = 11
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_UINT32 || $tmp > Protobuf::MAX_UINT32) throw new \Exception('uint32 out of range');$this->locationHash2 = $tmp;
+            $this->field11 = ($tmp > 0) ? true : false;
+
+            break;
+          case 12: // optional bool field12 = 12
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->field12 = ($tmp > 0) ? true : false;
+
+            break;
+          case 13: // optional int32 field13 = 13
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->field13 = $tmp;
+
+            break;
+          case 14: // optional int32 field14 = 14
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->field14 = $tmp;
+
+            break;
+          case 15: // optional string field15 = 15
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->field15 = $tmp;
+
+            break;
+          case 16: // optional int32 field16 = 16
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->field16 = $tmp;
+
+            break;
+          case 17: // optional string field17 = 17
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->field17 = $tmp;
+
+            break;
+          case 18: // optional string field18 = 18
+            if($wire !== 2) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 2 got: $wire");
+            }
+            $len = Protobuf::read_varint($fp, $limit);
+            if ($len === false) throw new \Exception('Protobuf::read_varint returned false');
+            $tmp = Protobuf::read_bytes($fp, $len, $limit);
+            if ($tmp === false) throw new \Exception("read_bytes($len) returned false");
+            $this->field18 = $tmp;
+
+            break;
+          case 19: // optional bool field19 = 19
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->field19 = ($tmp > 0) ? true : false;
+
+            break;
+          case 20: // optional int32 location_hash2 = 20
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_signed_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            if ($tmp < Protobuf::MIN_INT32 || $tmp > Protobuf::MAX_INT32) throw new \Exception('int32 out of range');$this->locationHash2 = $tmp;
+
+            break;
+          case 21: // optional bool field21 = 21
+            if($wire !== 0) {
+              throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
+            }
+            $tmp = Protobuf::read_varint($fp, $limit);
+            if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
+            $this->field21 = ($tmp > 0) ? true : false;
 
             break;
           case 22: // optional bytes session_hash = 22
@@ -1826,24 +1990,39 @@ namespace POGOProtos\Networking\Envelopes {
     }
 
     public function write($fp) {
+      foreach($this->field1 as $v) {
+        fwrite($fp, "\x0a", 1);
+        Protobuf::write_varint($fp, $v->size());
+        $v->write($fp);
+      }
       if ($this->timestampSinceStart !== 0) {
         fwrite($fp, "\x10", 1);
         Protobuf::write_varint($fp, $this->timestampSinceStart);
+      }
+      if ($this->field3 !== "") {
+        fwrite($fp, "\x1a", 1);
+        Protobuf::write_varint($fp, strlen($this->field3));
+        fwrite($fp, $this->field3);
       }
       foreach($this->locationFix as $v) {
         fwrite($fp, "\"", 1);
         Protobuf::write_varint($fp, $v->size());
         $v->write($fp);
       }
-      if ($this->gpsInfo !== null) {
+      foreach($this->gpsInfo as $v) {
         fwrite($fp, "*", 1);
-        Protobuf::write_varint($fp, $this->gpsInfo->size());
-        $this->gpsInfo->write($fp);
+        Protobuf::write_varint($fp, $v->size());
+        $v->write($fp);
       }
-      if ($this->sensorInfo !== null) {
+      foreach($this->field6 as $v) {
+        fwrite($fp, "2", 1);
+        Protobuf::write_varint($fp, $v->size());
+        $v->write($fp);
+      }
+      foreach($this->sensorInfo as $v) {
         fwrite($fp, ":", 1);
-        Protobuf::write_varint($fp, $this->sensorInfo->size());
-        $this->sensorInfo->write($fp);
+        Protobuf::write_varint($fp, $v->size());
+        $v->write($fp);
       }
       if ($this->deviceInfo !== null) {
         fwrite($fp, "B", 1);
@@ -1859,9 +2038,52 @@ namespace POGOProtos\Networking\Envelopes {
         fwrite($fp, "P", 1);
         Protobuf::write_varint($fp, $this->locationHash1);
       }
+      if ($this->field11 !== false) {
+        fwrite($fp, "X", 1);
+        Protobuf::write_varint($fp, $this->field11 ? 1 : 0);
+      }
+      if ($this->field12 !== false) {
+        fwrite($fp, "`", 1);
+        Protobuf::write_varint($fp, $this->field12 ? 1 : 0);
+      }
+      if ($this->field13 !== 0) {
+        fwrite($fp, "h", 1);
+        Protobuf::write_varint($fp, $this->field13);
+      }
+      if ($this->field14 !== 0) {
+        fwrite($fp, "p", 1);
+        Protobuf::write_varint($fp, $this->field14);
+      }
+      if ($this->field15 !== "") {
+        fwrite($fp, "z", 1);
+        Protobuf::write_varint($fp, strlen($this->field15));
+        fwrite($fp, $this->field15);
+      }
+      if ($this->field16 !== 0) {
+        fwrite($fp, "\x80\x01", 2);
+        Protobuf::write_varint($fp, $this->field16);
+      }
+      if ($this->field17 !== "") {
+        fwrite($fp, "\x8a\x01", 2);
+        Protobuf::write_varint($fp, strlen($this->field17));
+        fwrite($fp, $this->field17);
+      }
+      if ($this->field18 !== "") {
+        fwrite($fp, "\x92\x01", 2);
+        Protobuf::write_varint($fp, strlen($this->field18));
+        fwrite($fp, $this->field18);
+      }
+      if ($this->field19 !== false) {
+        fwrite($fp, "\x98\x01", 2);
+        Protobuf::write_varint($fp, $this->field19 ? 1 : 0);
+      }
       if ($this->locationHash2 !== 0) {
         fwrite($fp, "\xa0\x01", 2);
         Protobuf::write_varint($fp, $this->locationHash2);
+      }
+      if ($this->field21 !== false) {
+        fwrite($fp, "\xa8\x01", 2);
+        Protobuf::write_varint($fp, $this->field21 ? 1 : 0);
       }
       if ($this->sessionHash !== "") {
         fwrite($fp, "\xb2\x01", 2);
@@ -1884,19 +2106,31 @@ namespace POGOProtos\Networking\Envelopes {
 
     public function size() {
       $size = 0;
+      foreach($this->field1 as $v) {
+        $l = $v->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
       if ($this->timestampSinceStart !== 0) {
         $size += 1 + Protobuf::size_varint($this->timestampSinceStart);
+      }
+      if ($this->field3 !== "") {
+        $l = strlen($this->field3);
+        $size += 1 + Protobuf::size_varint($l) + $l;
       }
       foreach($this->locationFix as $v) {
         $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->gpsInfo !== null) {
-        $l = $this->gpsInfo->size();
+      foreach($this->gpsInfo as $v) {
+        $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->sensorInfo !== null) {
-        $l = $this->sensorInfo->size();
+      foreach($this->field6 as $v) {
+        $l = $v->size();
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      foreach($this->sensorInfo as $v) {
+        $l = $v->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
       if ($this->deviceInfo !== null) {
@@ -1910,8 +2144,41 @@ namespace POGOProtos\Networking\Envelopes {
       if ($this->locationHash1 !== 0) {
         $size += 1 + Protobuf::size_varint($this->locationHash1);
       }
+      if ($this->field11 !== false) {
+        $size += 2;
+      }
+      if ($this->field12 !== false) {
+        $size += 2;
+      }
+      if ($this->field13 !== 0) {
+        $size += 1 + Protobuf::size_varint($this->field13);
+      }
+      if ($this->field14 !== 0) {
+        $size += 1 + Protobuf::size_varint($this->field14);
+      }
+      if ($this->field15 !== "") {
+        $l = strlen($this->field15);
+        $size += 1 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->field16 !== 0) {
+        $size += 2 + Protobuf::size_varint($this->field16);
+      }
+      if ($this->field17 !== "") {
+        $l = strlen($this->field17);
+        $size += 2 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->field18 !== "") {
+        $l = strlen($this->field18);
+        $size += 2 + Protobuf::size_varint($l) + $l;
+      }
+      if ($this->field19 !== false) {
+        $size += 3;
+      }
       if ($this->locationHash2 !== 0) {
         $size += 2 + Protobuf::size_varint($this->locationHash2);
+      }
+      if ($this->field21 !== false) {
+        $size += 3;
       }
       if ($this->sessionHash !== "") {
         $l = strlen($this->sessionHash);
@@ -1930,9 +2197,21 @@ namespace POGOProtos\Networking\Envelopes {
       return $size;
     }
 
+    public function clearField1() { $this->field1 = array(); }
+    public function getField1Count() { return count($this->field1); }
+    public function getField1($index) { return $this->field1[$index]; }
+    public function getField1Array() { return $this->field1; }
+    public function setField1($index, array $value) {$this->field1[$index] = $value; }
+    public function addField1(array $value) { $this->field1[] = $value; }
+    public function addAllField1(array $values) { foreach($values as $value) {$this->field1[] = $value; }}
+
     public function clearTimestampSinceStart() { $this->timestampSinceStart = 0; }
     public function getTimestampSinceStart() { return $this->timestampSinceStart;}
     public function setTimestampSinceStart($value) { $this->timestampSinceStart = $value; }
+
+    public function clearField3() { $this->field3 = ""; }
+    public function getField3() { return $this->field3;}
+    public function setField3($value) { $this->field3 = $value; }
 
     public function clearLocationFix() { $this->locationFix = array(); }
     public function getLocationFixCount() { return count($this->locationFix); }
@@ -1942,13 +2221,29 @@ namespace POGOProtos\Networking\Envelopes {
     public function addLocationFix(array $value) { $this->locationFix[] = $value; }
     public function addAllLocationFix(array $values) { foreach($values as $value) {$this->locationFix[] = $value; }}
 
-    public function clearGpsInfo() { $this->gpsInfo = null; }
-    public function getGpsInfo() { return $this->gpsInfo;}
-    public function setGpsInfo(\POGOProtos\Networking\Envelopes\Signature_AndroidGpsInfo $value) { $this->gpsInfo = $value; }
+    public function clearGpsInfo() { $this->gpsInfo = array(); }
+    public function getGpsInfoCount() { return count($this->gpsInfo); }
+    public function getGpsInfo($index) { return $this->gpsInfo[$index]; }
+    public function getGpsInfoArray() { return $this->gpsInfo; }
+    public function setGpsInfo($index, array $value) {$this->gpsInfo[$index] = $value; }
+    public function addGpsInfo(array $value) { $this->gpsInfo[] = $value; }
+    public function addAllGpsInfo(array $values) { foreach($values as $value) {$this->gpsInfo[] = $value; }}
 
-    public function clearSensorInfo() { $this->sensorInfo = null; }
-    public function getSensorInfo() { return $this->sensorInfo;}
-    public function setSensorInfo(\POGOProtos\Networking\Envelopes\Signature_SensorInfo $value) { $this->sensorInfo = $value; }
+    public function clearField6() { $this->field6 = array(); }
+    public function getField6Count() { return count($this->field6); }
+    public function getField6($index) { return $this->field6[$index]; }
+    public function getField6Array() { return $this->field6; }
+    public function setField6($index, array $value) {$this->field6[$index] = $value; }
+    public function addField6(array $value) { $this->field6[] = $value; }
+    public function addAllField6(array $values) { foreach($values as $value) {$this->field6[] = $value; }}
+
+    public function clearSensorInfo() { $this->sensorInfo = array(); }
+    public function getSensorInfoCount() { return count($this->sensorInfo); }
+    public function getSensorInfo($index) { return $this->sensorInfo[$index]; }
+    public function getSensorInfoArray() { return $this->sensorInfo; }
+    public function setSensorInfo($index, array $value) {$this->sensorInfo[$index] = $value; }
+    public function addSensorInfo(array $value) { $this->sensorInfo[] = $value; }
+    public function addAllSensorInfo(array $values) { foreach($values as $value) {$this->sensorInfo[] = $value; }}
 
     public function clearDeviceInfo() { $this->deviceInfo = null; }
     public function getDeviceInfo() { return $this->deviceInfo;}
@@ -1962,9 +2257,49 @@ namespace POGOProtos\Networking\Envelopes {
     public function getLocationHash1() { return $this->locationHash1;}
     public function setLocationHash1($value) { $this->locationHash1 = $value; }
 
+    public function clearField11() { $this->field11 = false; }
+    public function getField11() { return $this->field11;}
+    public function setField11($value) { $this->field11 = $value; }
+
+    public function clearField12() { $this->field12 = false; }
+    public function getField12() { return $this->field12;}
+    public function setField12($value) { $this->field12 = $value; }
+
+    public function clearField13() { $this->field13 = 0; }
+    public function getField13() { return $this->field13;}
+    public function setField13($value) { $this->field13 = $value; }
+
+    public function clearField14() { $this->field14 = 0; }
+    public function getField14() { return $this->field14;}
+    public function setField14($value) { $this->field14 = $value; }
+
+    public function clearField15() { $this->field15 = ""; }
+    public function getField15() { return $this->field15;}
+    public function setField15($value) { $this->field15 = $value; }
+
+    public function clearField16() { $this->field16 = 0; }
+    public function getField16() { return $this->field16;}
+    public function setField16($value) { $this->field16 = $value; }
+
+    public function clearField17() { $this->field17 = ""; }
+    public function getField17() { return $this->field17;}
+    public function setField17($value) { $this->field17 = $value; }
+
+    public function clearField18() { $this->field18 = ""; }
+    public function getField18() { return $this->field18;}
+    public function setField18($value) { $this->field18 = $value; }
+
+    public function clearField19() { $this->field19 = false; }
+    public function getField19() { return $this->field19;}
+    public function setField19($value) { $this->field19 = $value; }
+
     public function clearLocationHash2() { $this->locationHash2 = 0; }
     public function getLocationHash2() { return $this->locationHash2;}
     public function setLocationHash2($value) { $this->locationHash2 = $value; }
+
+    public function clearField21() { $this->field21 = false; }
+    public function getField21() { return $this->field21;}
+    public function setField21($value) { $this->field21 = $value; }
 
     public function clearSessionHash() { $this->sessionHash = ""; }
     public function getSessionHash() { return $this->sessionHash;}
@@ -1978,8 +2313,8 @@ namespace POGOProtos\Networking\Envelopes {
     public function getRequestHashCount() { return count($this->requestHash); }
     public function getRequestHash($index) { return $this->requestHash[$index]; }
     public function getRequestHashArray() { return $this->requestHash; }
-    public function setRequestHash($index, $value) {$this->requestHash[$index] = $value; }
-    public function addRequestHash($value) { $this->requestHash[] = $value; }
+    public function setRequestHash($index, array $value) {$this->requestHash[$index] = $value; }
+    public function addRequestHash(array $value) { $this->requestHash[] = $value; }
     public function addAllRequestHash(array $values) { foreach($values as $value) {$this->requestHash[] = $value; }}
 
     public function clearUnknown25() { $this->unknown25 = 0; }
@@ -1988,14 +2323,27 @@ namespace POGOProtos\Networking\Envelopes {
 
     public function __toString() {
       return ''
+           . Protobuf::toString('field1', $this->field1, null)
            . Protobuf::toString('timestamp_since_start', $this->timestampSinceStart, 0)
+           . Protobuf::toString('field3', $this->field3, "")
            . Protobuf::toString('location_fix', $this->locationFix, null)
            . Protobuf::toString('gps_info', $this->gpsInfo, null)
+           . Protobuf::toString('field6', $this->field6, null)
            . Protobuf::toString('sensor_info', $this->sensorInfo, null)
            . Protobuf::toString('device_info', $this->deviceInfo, null)
            . Protobuf::toString('activity_status', $this->activityStatus, null)
            . Protobuf::toString('location_hash1', $this->locationHash1, 0)
+           . Protobuf::toString('field11', $this->field11, false)
+           . Protobuf::toString('field12', $this->field12, false)
+           . Protobuf::toString('field13', $this->field13, 0)
+           . Protobuf::toString('field14', $this->field14, 0)
+           . Protobuf::toString('field15', $this->field15, "")
+           . Protobuf::toString('field16', $this->field16, 0)
+           . Protobuf::toString('field17', $this->field17, "")
+           . Protobuf::toString('field18', $this->field18, "")
+           . Protobuf::toString('field19', $this->field19, false)
            . Protobuf::toString('location_hash2', $this->locationHash2, 0)
+           . Protobuf::toString('field21', $this->field21, false)
            . Protobuf::toString('session_hash', $this->sessionHash, "")
            . Protobuf::toString('timestamp', $this->timestamp, 0)
            . Protobuf::toString('request_hash', $this->requestHash, 0)
@@ -2003,6 +2351,44 @@ namespace POGOProtos\Networking\Envelopes {
     }
 
     // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.Signature)
+  }
+
+  // message POGOProtos.Networking.Envelopes.UnknownMessage
+  final class UnknownMessage extends ProtobufMessage {
+
+    private $_unknown;
+
+    public function __construct($in = null, &$limit = PHP_INT_MAX) {
+      parent::__construct($in, $limit);
+    }
+
+    public function read($fp, &$limit = PHP_INT_MAX) {
+      $fp = ProtobufIO::toStream($fp, $limit);
+      while(!feof($fp) && $limit > 0) {
+        $tag = Protobuf::read_varint($fp, $limit);
+        if ($tag === false) break;
+        $wire  = $tag & 0x07;
+        $field = $tag >> 3;
+        switch($field) {
+          default:
+            $limit -= Protobuf::skip_field($fp, $wire);
+        }
+      }
+    }
+
+    public function write($fp) {
+    }
+
+    public function size() {
+      $size = 0;
+      return $size;
+    }
+
+    public function __toString() {
+      return '';
+    }
+
+    // @@protoc_insertion_point(class_scope:POGOProtos.Networking.Envelopes.UnknownMessage)
   }
 
 }

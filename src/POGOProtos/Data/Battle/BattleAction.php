@@ -15,7 +15,7 @@ namespace POGOProtos\Data\Battle {
   final class BattleAction extends ProtobufMessage {
 
     private $_unknown;
-    private $type = \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE; // optional .POGOProtos.Data.Battle.BattleActionType Type = 1
+    private $type = \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE; // optional .POGOProtos.Data.Battle.BattleActionType type = 1
     private $actionStartMs = 0; // optional int64 action_start_ms = 2
     private $durationMs = 0; // optional int32 duration_ms = 3
     private $energyDelta = 0; // optional int32 energy_delta = 5
@@ -24,8 +24,8 @@ namespace POGOProtos\Data\Battle {
     private $activePokemonId = 0; // optional fixed64 active_pokemon_id = 8
     private $playerJoined = null; // optional .POGOProtos.Data.Battle.BattleParticipant player_joined = 9
     private $battleResults = null; // optional .POGOProtos.Data.Battle.BattleResults battle_results = 10
-    private $damageWindowsStartTimestampMss = 0; // optional int64 damage_windows_start_timestamp_mss = 11
-    private $damageWindowsEndTimestampMss = 0; // optional int64 damage_windows_end_timestamp_mss = 12
+    private $damageWindowsStartTimestampMs = 0; // optional int64 damage_windows_start_timestamp_ms = 11
+    private $damageWindowsEndTimestampMs = 0; // optional int64 damage_windows_end_timestamp_ms = 12
     private $playerLeft = null; // optional .POGOProtos.Data.Battle.BattleParticipant player_left = 13
     private $targetPokemonId = 0; // optional fixed64 target_pokemon_id = 14
 
@@ -41,7 +41,7 @@ namespace POGOProtos\Data\Battle {
         $wire  = $tag & 0x07;
         $field = $tag >> 3;
         switch($field) {
-          case 1: // optional .POGOProtos.Data.Battle.BattleActionType Type = 1
+          case 1: // optional .POGOProtos.Data.Battle.BattleActionType type = 1
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
@@ -126,22 +126,22 @@ namespace POGOProtos\Data\Battle {
             if ($len !== 0) throw new \Exception('new \POGOProtos\Data\Battle\BattleResults did not read the full length');
 
             break;
-          case 11: // optional int64 damage_windows_start_timestamp_mss = 11
+          case 11: // optional int64 damage_windows_start_timestamp_ms = 11
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->damageWindowsStartTimestampMss = $tmp;
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->damageWindowsStartTimestampMs = $tmp;
 
             break;
-          case 12: // optional int64 damage_windows_end_timestamp_mss = 12
+          case 12: // optional int64 damage_windows_end_timestamp_ms = 12
             if($wire !== 0) {
               throw new \Exception("Incorrect wire format for field $field, expected: 0 got: $wire");
             }
             $tmp = Protobuf::read_signed_varint($fp, $limit);
             if ($tmp === false) throw new \Exception('Protobuf::read_varint returned false');
-            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->damageWindowsEndTimestampMss = $tmp;
+            if ($tmp < Protobuf::MIN_INT64 || $tmp > Protobuf::MAX_INT64) throw new \Exception('int64 out of range');$this->damageWindowsEndTimestampMs = $tmp;
 
             break;
           case 13: // optional .POGOProtos.Data.Battle.BattleParticipant player_left = 13
@@ -209,13 +209,13 @@ namespace POGOProtos\Data\Battle {
         Protobuf::write_varint($fp, $this->battleResults->size());
         $this->battleResults->write($fp);
       }
-      if ($this->damageWindowsStartTimestampMss !== 0) {
+      if ($this->damageWindowsStartTimestampMs !== 0) {
         fwrite($fp, "X", 1);
-        Protobuf::write_varint($fp, $this->damageWindowsStartTimestampMss);
+        Protobuf::write_varint($fp, $this->damageWindowsStartTimestampMs);
       }
-      if ($this->damageWindowsEndTimestampMss !== 0) {
+      if ($this->damageWindowsEndTimestampMs !== 0) {
         fwrite($fp, "`", 1);
-        Protobuf::write_varint($fp, $this->damageWindowsEndTimestampMss);
+        Protobuf::write_varint($fp, $this->damageWindowsEndTimestampMs);
       }
       if ($this->playerLeft !== null) {
         fwrite($fp, "j", 1);
@@ -259,11 +259,11 @@ namespace POGOProtos\Data\Battle {
         $l = $this->battleResults->size();
         $size += 1 + Protobuf::size_varint($l) + $l;
       }
-      if ($this->damageWindowsStartTimestampMss !== 0) {
-        $size += 1 + Protobuf::size_varint($this->damageWindowsStartTimestampMss);
+      if ($this->damageWindowsStartTimestampMs !== 0) {
+        $size += 1 + Protobuf::size_varint($this->damageWindowsStartTimestampMs);
       }
-      if ($this->damageWindowsEndTimestampMss !== 0) {
-        $size += 1 + Protobuf::size_varint($this->damageWindowsEndTimestampMss);
+      if ($this->damageWindowsEndTimestampMs !== 0) {
+        $size += 1 + Protobuf::size_varint($this->damageWindowsEndTimestampMs);
       }
       if ($this->playerLeft !== null) {
         $l = $this->playerLeft->size();
@@ -311,13 +311,13 @@ namespace POGOProtos\Data\Battle {
     public function getBattleResults() { return $this->battleResults;}
     public function setBattleResults(\POGOProtos\Data\Battle\BattleResults $value) { $this->battleResults = $value; }
 
-    public function clearDamageWindowsStartTimestampMss() { $this->damageWindowsStartTimestampMss = 0; }
-    public function getDamageWindowsStartTimestampMss() { return $this->damageWindowsStartTimestampMss;}
-    public function setDamageWindowsStartTimestampMss($value) { $this->damageWindowsStartTimestampMss = $value; }
+    public function clearDamageWindowsStartTimestampMs() { $this->damageWindowsStartTimestampMs = 0; }
+    public function getDamageWindowsStartTimestampMs() { return $this->damageWindowsStartTimestampMs;}
+    public function setDamageWindowsStartTimestampMs($value) { $this->damageWindowsStartTimestampMs = $value; }
 
-    public function clearDamageWindowsEndTimestampMss() { $this->damageWindowsEndTimestampMss = 0; }
-    public function getDamageWindowsEndTimestampMss() { return $this->damageWindowsEndTimestampMss;}
-    public function setDamageWindowsEndTimestampMss($value) { $this->damageWindowsEndTimestampMss = $value; }
+    public function clearDamageWindowsEndTimestampMs() { $this->damageWindowsEndTimestampMs = 0; }
+    public function getDamageWindowsEndTimestampMs() { return $this->damageWindowsEndTimestampMs;}
+    public function setDamageWindowsEndTimestampMs($value) { $this->damageWindowsEndTimestampMs = $value; }
 
     public function clearPlayerLeft() { $this->playerLeft = null; }
     public function getPlayerLeft() { return $this->playerLeft;}
@@ -329,7 +329,7 @@ namespace POGOProtos\Data\Battle {
 
     public function __toString() {
       return ''
-           . Protobuf::toString('Type', $this->type, \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE)
+           . Protobuf::toString('type', $this->type, \POGOProtos\Data\Battle\BattleActionType::ACTION_NONE)
            . Protobuf::toString('action_start_ms', $this->actionStartMs, 0)
            . Protobuf::toString('duration_ms', $this->durationMs, 0)
            . Protobuf::toString('energy_delta', $this->energyDelta, 0)
@@ -338,8 +338,8 @@ namespace POGOProtos\Data\Battle {
            . Protobuf::toString('active_pokemon_id', $this->activePokemonId, 0)
            . Protobuf::toString('player_joined', $this->playerJoined, null)
            . Protobuf::toString('battle_results', $this->battleResults, null)
-           . Protobuf::toString('damage_windows_start_timestamp_mss', $this->damageWindowsStartTimestampMss, 0)
-           . Protobuf::toString('damage_windows_end_timestamp_mss', $this->damageWindowsEndTimestampMss, 0)
+           . Protobuf::toString('damage_windows_start_timestamp_ms', $this->damageWindowsStartTimestampMs, 0)
+           . Protobuf::toString('damage_windows_end_timestamp_ms', $this->damageWindowsEndTimestampMs, 0)
            . Protobuf::toString('player_left', $this->playerLeft, null)
            . Protobuf::toString('target_pokemon_id', $this->targetPokemonId, 0);
     }
