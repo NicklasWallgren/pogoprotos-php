@@ -4,24 +4,24 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * <pre>
+ * No message needed.
+ * </pre>
+ *
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.DownloadItemTemplatesMessage</code>
+ */
 class DownloadItemTemplatesMessage extends \Google\Protobuf\Internal\Message
 {
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\DownloadItemTemplatesMessage::initOnce();
+        parent::__construct();
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a9d010a4a504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f446f776e6c6f61644974656d54656d" .
-    "706c617465734d6573736167652e70726f746f1227504f474f50726f746f" .
-    "732e4e6574776f726b696e672e52657175657374732e4d65737361676573" .
-    "221e0a1c446f776e6c6f61644974656d54656d706c617465734d65737361" .
-    "6765620670726f746f33"
-));
 

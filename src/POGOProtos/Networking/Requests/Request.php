@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Networking\Requests;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Request</code>
+ */
 class Request extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Requests.RequestType request_type = 1;</code>
+     */
     private $request_type = 0;
+    /**
+     * <code>bytes request_message = 2;</code>
+     */
     private $request_message = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Request::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Requests.RequestType request_type = 1;</code>
+     */
     public function getRequestType()
     {
         return $this->request_type;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Requests.RequestType request_type = 1;</code>
+     */
     public function setRequestType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Requests\RequestType::class);
         $this->request_type = $var;
     }
 
+    /**
+     * <code>bytes request_message = 2;</code>
+     */
     public function getRequestMessage()
     {
         return $this->request_message;
     }
 
+    /**
+     * <code>bytes request_message = 2;</code>
+     */
     public function setRequestMessage($var)
     {
         GPBUtil::checkString($var, False);
@@ -38,18 +62,4 @@ class Request extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aef010a2c504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f526571756573742e70726f746f121e504f474f50726f746f" .
-    "732e4e6574776f726b696e672e52657175657374731a30504f474f50726f" .
-    "746f732f4e6574776f726b696e672f52657175657374732f526571756573" .
-    "74547970652e70726f746f22650a075265717565737412410a0c72657175" .
-    "6573745f7479706518012001280e322b2e504f474f50726f746f732e4e65" .
-    "74776f726b696e672e52657175657374732e526571756573745479706512" .
-    "170a0f726571756573745f6d65737361676518022001280c620670726f74" .
-    "6f33"
-));
 

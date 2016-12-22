@@ -4,100 +4,146 @@
 
 namespace POGOProtos\Networking\Responses;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.GetHatchedEggsResponse</code>
+ */
 class GetHatchedEggsResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bool success = 1;</code>
+     */
     private $success = false;
+    /**
+     * <code>repeated fixed64 pokemon_id = 2 [packed = true];</code>
+     */
     private $pokemon_id;
+    /**
+     * <code>repeated int32 experience_awarded = 3;</code>
+     */
     private $experience_awarded;
+    /**
+     * <code>repeated int32 candy_awarded = 4;</code>
+     */
     private $candy_awarded;
+    /**
+     * <code>repeated int32 stardust_awarded = 5;</code>
+     */
     private $stardust_awarded;
+    /**
+     * <code>repeated float egg_km_walked = 6;</code>
+     */
     private $egg_km_walked;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\GetHatchedEggsResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function getSuccess()
     {
         return $this->success;
     }
 
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function setSuccess($var)
     {
         GPBUtil::checkBool($var);
         $this->success = $var;
     }
 
+    /**
+     * <code>repeated fixed64 pokemon_id = 2 [packed = true];</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>repeated fixed64 pokemon_id = 2 [packed = true];</code>
+     */
     public function setPokemonId(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FIXED64);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FIXED64);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>repeated int32 experience_awarded = 3;</code>
+     */
     public function getExperienceAwarded()
     {
         return $this->experience_awarded;
     }
 
+    /**
+     * <code>repeated int32 experience_awarded = 3;</code>
+     */
     public function setExperienceAwarded(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->experience_awarded = $var;
     }
 
+    /**
+     * <code>repeated int32 candy_awarded = 4;</code>
+     */
     public function getCandyAwarded()
     {
         return $this->candy_awarded;
     }
 
+    /**
+     * <code>repeated int32 candy_awarded = 4;</code>
+     */
     public function setCandyAwarded(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->candy_awarded = $var;
     }
 
+    /**
+     * <code>repeated int32 stardust_awarded = 5;</code>
+     */
     public function getStardustAwarded()
     {
         return $this->stardust_awarded;
     }
 
+    /**
+     * <code>repeated int32 stardust_awarded = 5;</code>
+     */
     public function setStardustAwarded(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->stardust_awarded = $var;
     }
 
+    /**
+     * <code>repeated float egg_km_walked = 6;</code>
+     */
     public function getEggKmWalked()
     {
         return $this->egg_km_walked;
     }
 
+    /**
+     * <code>repeated float egg_km_walked = 6;</code>
+     */
     public function setEggKmWalked(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->egg_km_walked = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8f020a3c504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f4765744861746368656445676773526573706f6e73652e" .
-    "70726f746f121f504f474f50726f746f732e4e6574776f726b696e672e52" .
-    "6573706f6e73657322a5010a164765744861746368656445676773526573" .
-    "706f6e7365120f0a077375636365737318012001280812160a0a706f6b65" .
-    "6d6f6e5f696418022003280642021001121a0a12657870657269656e6365" .
-    "5f6177617264656418032003280512150a0d63616e64795f617761726465" .
-    "6418042003280512180a1073746172647573745f61776172646564180520" .
-    "03280512150a0d6567675f6b6d5f77616c6b656418062003280262067072" .
-    "6f746f33"
-));
 

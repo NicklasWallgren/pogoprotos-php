@@ -4,44 +4,78 @@
 
 namespace POGOProtos\Data;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.BackgroundToken</code>
+ */
 class BackgroundToken extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bytes token = 1;</code>
+     */
     private $token = '';
+    /**
+     * <code>int64 expiration_time = 2;</code>
+     */
     private $expiration_time = 0;
+    /**
+     * <code>bytes iv = 3;</code>
+     */
     private $iv = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\BackgroundToken::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bytes token = 1;</code>
+     */
     public function getToken()
     {
         return $this->token;
     }
 
+    /**
+     * <code>bytes token = 1;</code>
+     */
     public function setToken($var)
     {
         GPBUtil::checkString($var, False);
         $this->token = $var;
     }
 
+    /**
+     * <code>int64 expiration_time = 2;</code>
+     */
     public function getExpirationTime()
     {
         return $this->expiration_time;
     }
 
+    /**
+     * <code>int64 expiration_time = 2;</code>
+     */
     public function setExpirationTime($var)
     {
         GPBUtil::checkInt64($var);
         $this->expiration_time = $var;
     }
 
+    /**
+     * <code>bytes iv = 3;</code>
+     */
     public function getIv()
     {
         return $this->iv;
     }
 
+    /**
+     * <code>bytes iv = 3;</code>
+     */
     public function setIv($var)
     {
         GPBUtil::checkString($var, False);
@@ -49,14 +83,4 @@ class BackgroundToken extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a87010a25504f474f50726f746f732f446174612f4261636b67726f756e" .
-    "64546f6b656e2e70726f746f120f504f474f50726f746f732e4461746122" .
-    "450a0f4261636b67726f756e64546f6b656e120d0a05746f6b656e180120" .
-    "01280c12170a0f65787069726174696f6e5f74696d65180220012803120a" .
-    "0a02697618032001280c620670726f746f33"
-));
 

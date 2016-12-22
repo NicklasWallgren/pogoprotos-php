@@ -4,70 +4,120 @@
 
 namespace POGOProtos\Data\Battle;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Battle.BattleResults</code>
+ */
 class BattleResults extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Gym.GymState gym_state = 1;</code>
+     */
     private $gym_state = null;
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleParticipant attackers = 2;</code>
+     */
     private $attackers;
+    /**
+     * <code>repeated int32 player_experience_awarded = 3;</code>
+     */
     private $player_experience_awarded;
+    /**
+     * <code>int64 next_defender_pokemon_id = 4;</code>
+     */
     private $next_defender_pokemon_id = 0;
+    /**
+     * <code>int32 gym_points_delta = 5;</code>
+     */
     private $gym_points_delta = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Battle\BattleResults::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Gym.GymState gym_state = 1;</code>
+     */
     public function getGymState()
     {
         return $this->gym_state;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Gym.GymState gym_state = 1;</code>
+     */
     public function setGymState(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Gym\GymState::class);
         $this->gym_state = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleParticipant attackers = 2;</code>
+     */
     public function getAttackers()
     {
         return $this->attackers;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleParticipant attackers = 2;</code>
+     */
     public function setAttackers(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Battle\BattleParticipant::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Battle\BattleParticipant::class);
         $this->attackers = $var;
     }
 
+    /**
+     * <code>repeated int32 player_experience_awarded = 3;</code>
+     */
     public function getPlayerExperienceAwarded()
     {
         return $this->player_experience_awarded;
     }
 
+    /**
+     * <code>repeated int32 player_experience_awarded = 3;</code>
+     */
     public function setPlayerExperienceAwarded(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->player_experience_awarded = $var;
     }
 
+    /**
+     * <code>int64 next_defender_pokemon_id = 4;</code>
+     */
     public function getNextDefenderPokemonId()
     {
         return $this->next_defender_pokemon_id;
     }
 
+    /**
+     * <code>int64 next_defender_pokemon_id = 4;</code>
+     */
     public function setNextDefenderPokemonId($var)
     {
         GPBUtil::checkInt64($var);
         $this->next_defender_pokemon_id = $var;
     }
 
+    /**
+     * <code>int32 gym_points_delta = 5;</code>
+     */
     public function getGymPointsDelta()
     {
         return $this->gym_points_delta;
     }
 
+    /**
+     * <code>int32 gym_points_delta = 5;</code>
+     */
     public function setGymPointsDelta($var)
     {
         GPBUtil::checkInt32($var);
@@ -75,22 +125,4 @@ class BattleResults extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a81030a2a504f474f50726f746f732f446174612f426174746c652f4261" .
-    "74746c65526573756c74732e70726f746f1216504f474f50726f746f732e" .
-    "446174612e426174746c651a22504f474f50726f746f732f446174612f47" .
-    "796d2f47796d53746174652e70726f746f1a2e504f474f50726f746f732f" .
-    "446174612f426174746c652f426174746c655061727469636970616e742e" .
-    "70726f746f22de010a0d426174746c65526573756c747312300a0967796d" .
-    "5f737461746518012001280b321d2e504f474f50726f746f732e44617461" .
-    "2e47796d2e47796d5374617465123c0a0961747461636b65727318022003" .
-    "280b32292e504f474f50726f746f732e446174612e426174746c652e4261" .
-    "74746c655061727469636970616e7412210a19706c617965725f65787065" .
-    "7269656e63655f6177617264656418032003280512200a186e6578745f64" .
-    "6566656e6465725f706f6b656d6f6e5f696418042001280312180a106779" .
-    "6d5f706f696e74735f64656c7461180520012805620670726f746f33"
-));
 

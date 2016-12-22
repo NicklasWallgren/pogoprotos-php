@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Networking\Responses;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.EchoResponse</code>
+ */
 class EchoResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string context = 1;</code>
+     */
     private $context = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\EchoResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string context = 1;</code>
+     */
     public function getContext()
     {
         return $this->context;
     }
 
+    /**
+     * <code>string context = 1;</code>
+     */
     public function setContext($var)
     {
         GPBUtil::checkString($var, True);
@@ -25,14 +41,4 @@ class EchoResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a7e0a32504f474f50726f746f732f4e6574776f726b696e672f52657370" .
-    "6f6e7365732f4563686f526573706f6e73652e70726f746f121f504f474f" .
-    "50726f746f732e4e6574776f726b696e672e526573706f6e736573221f0a" .
-    "0c4563686f526573706f6e7365120f0a07636f6e74657874180120012809" .
-    "620670726f746f33"
-));
 

@@ -4,34 +4,57 @@
 
 namespace POGOProtos\Data\Quests;
 
-require_once('POGOProtos/Enums/QuestType.pb.php');
-require_once('POGOProtos/Data/Quests/DailyQuest.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Quests.Quest</code>
+ */
 class Quest extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.QuestType quest_type = 1;</code>
+     */
     private $quest_type = 0;
+    /**
+     * <code>.POGOProtos.Data.Quests.DailyQuest daily_quest = 2;</code>
+     */
     private $daily_quest = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Quests\Quest::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.QuestType quest_type = 1;</code>
+     */
     public function getQuestType()
     {
         return $this->quest_type;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.QuestType quest_type = 1;</code>
+     */
     public function setQuestType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\QuestType::class);
         $this->quest_type = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Quests.DailyQuest daily_quest = 2;</code>
+     */
     public function getDailyQuest()
     {
         return $this->daily_quest;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Quests.DailyQuest daily_quest = 2;</code>
+     */
     public function setDailyQuest(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Quests\DailyQuest::class);
@@ -39,18 +62,4 @@ class Quest extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a82020a22504f474f50726f746f732f446174612f5175657374732f5175" .
-    "6573742e70726f746f1216504f474f50726f746f732e446174612e517565" .
-    "7374731a20504f474f50726f746f732f456e756d732f5175657374547970" .
-    "652e70726f746f1a27504f474f50726f746f732f446174612f5175657374" .
-    "732f4461696c7951756573742e70726f746f22710a055175657374122f0a" .
-    "0a71756573745f7479706518012001280e321b2e504f474f50726f746f73" .
-    "2e456e756d732e51756573745479706512370a0b6461696c795f71756573" .
-    "7418022001280b32222e504f474f50726f746f732e446174612e51756573" .
-    "74732e4461696c795175657374620670726f746f33"
-));
 

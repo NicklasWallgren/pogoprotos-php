@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Data\Quests;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Quests.DailyQuest</code>
+ */
 class DailyQuest extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int32 current_period_bucket = 1;</code>
+     */
     private $current_period_bucket = 0;
+    /**
+     * <code>int32 current_streak_count = 2;</code>
+     */
     private $current_streak_count = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Quests\DailyQuest::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int32 current_period_bucket = 1;</code>
+     */
     public function getCurrentPeriodBucket()
     {
         return $this->current_period_bucket;
     }
 
+    /**
+     * <code>int32 current_period_bucket = 1;</code>
+     */
     public function setCurrentPeriodBucket($var)
     {
         GPBUtil::checkInt32($var);
         $this->current_period_bucket = $var;
     }
 
+    /**
+     * <code>int32 current_streak_count = 2;</code>
+     */
     public function getCurrentStreakCount()
     {
         return $this->current_streak_count;
     }
 
+    /**
+     * <code>int32 current_streak_count = 2;</code>
+     */
     public function setCurrentStreakCount($var)
     {
         GPBUtil::checkInt32($var);
@@ -37,15 +62,4 @@ class DailyQuest extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a94010a27504f474f50726f746f732f446174612f5175657374732f4461" .
-    "696c7951756573742e70726f746f1216504f474f50726f746f732e446174" .
-    "612e51756573747322490a0a4461696c795175657374121d0a1563757272" .
-    "656e745f706572696f645f6275636b6574180120012805121c0a14637572" .
-    "72656e745f73747265616b5f636f756e74180220012805620670726f746f" .
-    "33"
-));
 

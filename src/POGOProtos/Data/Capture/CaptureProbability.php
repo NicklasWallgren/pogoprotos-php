@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Data\Capture;
 
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Capture.CaptureProbability</code>
+ */
 class CaptureProbability extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId pokeball_type = 1 [packed = true];</code>
+     */
     private $pokeball_type;
+    /**
+     * <code>repeated float capture_probability = 2 [packed = true];</code>
+     */
     private $capture_probability;
+    /**
+     * <code>double reticle_difficulty_scale = 12;</code>
+     */
     private $reticle_difficulty_scale = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Capture\CaptureProbability::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId pokeball_type = 1 [packed = true];</code>
+     */
     public function getPokeballType()
     {
         return $this->pokeball_type;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId pokeball_type = 1 [packed = true];</code>
+     */
     public function setPokeballType(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
         $this->pokeball_type = $var;
     }
 
+    /**
+     * <code>repeated float capture_probability = 2 [packed = true];</code>
+     */
     public function getCaptureProbability()
     {
         return $this->capture_probability;
     }
 
+    /**
+     * <code>repeated float capture_probability = 2 [packed = true];</code>
+     */
     public function setCaptureProbability(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->capture_probability = $var;
     }
 
+    /**
+     * <code>double reticle_difficulty_scale = 12;</code>
+     */
     public function getReticleDifficultyScale()
     {
         return $this->reticle_difficulty_scale;
     }
 
+    /**
+     * <code>double reticle_difficulty_scale = 12;</code>
+     */
     public function setReticleDifficultyScale($var)
     {
         GPBUtil::checkDouble($var);
@@ -50,19 +83,4 @@ class CaptureProbability extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a93020a30504f474f50726f746f732f446174612f436170747572652f43" .
-    "61707475726550726f626162696c6974792e70726f746f1217504f474f50" .
-    "726f746f732e446174612e436170747572651a26504f474f50726f746f73" .
-    "2f496e76656e746f72792f4974656d2f4974656d49642e70726f746f2295" .
-    "010a124361707475726550726f626162696c697479123c0a0d706f6b6562" .
-    "616c6c5f7479706518012003280e32212e504f474f50726f746f732e496e" .
-    "76656e746f72792e4974656d2e4974656d496442021001121f0a13636170" .
-    "747572655f70726f626162696c6974791802200328024202100112200a18" .
-    "72657469636c655f646966666963756c74795f7363616c65180c20012801" .
-    "620670726f746f33"
-));
 

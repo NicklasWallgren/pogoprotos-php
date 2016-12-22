@@ -4,80 +4,141 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.GetGymDetailsMessage</code>
+ */
 class GetGymDetailsMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     private $gym_id = '';
+    /**
+     * <code>double player_latitude = 2;</code>
+     */
     private $player_latitude = 0.0;
+    /**
+     * <code>double player_longitude = 3;</code>
+     */
     private $player_longitude = 0.0;
+    /**
+     * <code>double gym_latitude = 4;</code>
+     */
     private $gym_latitude = 0.0;
+    /**
+     * <code>double gym_longitude = 5;</code>
+     */
     private $gym_longitude = 0.0;
+    /**
+     * <code>string client_version = 6;</code>
+     */
     private $client_version = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\GetGymDetailsMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     public function getGymId()
     {
         return $this->gym_id;
     }
 
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     public function setGymId($var)
     {
         GPBUtil::checkString($var, True);
         $this->gym_id = $var;
     }
 
+    /**
+     * <code>double player_latitude = 2;</code>
+     */
     public function getPlayerLatitude()
     {
         return $this->player_latitude;
     }
 
+    /**
+     * <code>double player_latitude = 2;</code>
+     */
     public function setPlayerLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_latitude = $var;
     }
 
+    /**
+     * <code>double player_longitude = 3;</code>
+     */
     public function getPlayerLongitude()
     {
         return $this->player_longitude;
     }
 
+    /**
+     * <code>double player_longitude = 3;</code>
+     */
     public function setPlayerLongitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_longitude = $var;
     }
 
+    /**
+     * <code>double gym_latitude = 4;</code>
+     */
     public function getGymLatitude()
     {
         return $this->gym_latitude;
     }
 
+    /**
+     * <code>double gym_latitude = 4;</code>
+     */
     public function setGymLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->gym_latitude = $var;
     }
 
+    /**
+     * <code>double gym_longitude = 5;</code>
+     */
     public function getGymLongitude()
     {
         return $this->gym_longitude;
     }
 
+    /**
+     * <code>double gym_longitude = 5;</code>
+     */
     public function setGymLongitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->gym_longitude = $var;
     }
 
+    /**
+     * <code>string client_version = 6;</code>
+     */
     public function getClientVersion()
     {
         return $this->client_version;
     }
 
+    /**
+     * <code>string client_version = 6;</code>
+     */
     public function setClientVersion($var)
     {
         GPBUtil::checkString($var, True);
@@ -85,19 +146,4 @@ class GetGymDetailsMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a96020a42504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f47657447796d44657461696c734d65" .
-    "73736167652e70726f746f1227504f474f50726f746f732e4e6574776f72" .
-    "6b696e672e52657175657374732e4d65737361676573229e010a14476574" .
-    "47796d44657461696c734d657373616765120e0a0667796d5f6964180120" .
-    "01280912170a0f706c617965725f6c617469747564651802200128011218" .
-    "0a10706c617965725f6c6f6e67697475646518032001280112140a0c6779" .
-    "6d5f6c6174697475646518042001280112150a0d67796d5f6c6f6e676974" .
-    "75646518052001280112160a0e636c69656e745f76657273696f6e180620" .
-    "012809620670726f746f33"
-));
 

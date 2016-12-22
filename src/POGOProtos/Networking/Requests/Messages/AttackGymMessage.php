@@ -4,81 +4,141 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Data/Battle/BattleAction.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.AttackGymMessage</code>
+ */
 class AttackGymMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     private $gym_id = '';
+    /**
+     * <code>string battle_id = 2;</code>
+     */
     private $battle_id = '';
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleAction attack_actions = 3;</code>
+     */
     private $attack_actions;
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleAction last_retrieved_action = 4;</code>
+     */
     private $last_retrieved_action = null;
+    /**
+     * <code>double player_latitude = 5;</code>
+     */
     private $player_latitude = 0.0;
+    /**
+     * <code>double player_longitude = 6;</code>
+     */
     private $player_longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\AttackGymMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     public function getGymId()
     {
         return $this->gym_id;
     }
 
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     public function setGymId($var)
     {
         GPBUtil::checkString($var, True);
         $this->gym_id = $var;
     }
 
+    /**
+     * <code>string battle_id = 2;</code>
+     */
     public function getBattleId()
     {
         return $this->battle_id;
     }
 
+    /**
+     * <code>string battle_id = 2;</code>
+     */
     public function setBattleId($var)
     {
         GPBUtil::checkString($var, True);
         $this->battle_id = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleAction attack_actions = 3;</code>
+     */
     public function getAttackActions()
     {
         return $this->attack_actions;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleAction attack_actions = 3;</code>
+     */
     public function setAttackActions(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Battle\BattleAction::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Battle\BattleAction::class);
         $this->attack_actions = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleAction last_retrieved_action = 4;</code>
+     */
     public function getLastRetrievedAction()
     {
         return $this->last_retrieved_action;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleAction last_retrieved_action = 4;</code>
+     */
     public function setLastRetrievedAction(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Battle\BattleAction::class);
         $this->last_retrieved_action = $var;
     }
 
+    /**
+     * <code>double player_latitude = 5;</code>
+     */
     public function getPlayerLatitude()
     {
         return $this->player_latitude;
     }
 
+    /**
+     * <code>double player_latitude = 5;</code>
+     */
     public function setPlayerLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_latitude = $var;
     }
 
+    /**
+     * <code>double player_longitude = 6;</code>
+     */
     public function getPlayerLongitude()
     {
         return $this->player_longitude;
     }
 
+    /**
+     * <code>double player_longitude = 6;</code>
+     */
     public function setPlayerLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -86,23 +146,4 @@ class AttackGymMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8a030a3e504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f41747461636b47796d4d6573736167" .
-    "652e70726f746f1227504f474f50726f746f732e4e6574776f726b696e67" .
-    "2e52657175657374732e4d657373616765731a29504f474f50726f746f73" .
-    "2f446174612f426174746c652f426174746c65416374696f6e2e70726f74" .
-    "6f22eb010a1041747461636b47796d4d657373616765120e0a0667796d5f" .
-    "696418012001280912110a09626174746c655f6964180220012809123c0a" .
-    "0e61747461636b5f616374696f6e7318032003280b32242e504f474f5072" .
-    "6f746f732e446174612e426174746c652e426174746c65416374696f6e12" .
-    "430a156c6173745f7265747269657665645f616374696f6e18042001280b" .
-    "32242e504f474f50726f746f732e446174612e426174746c652e42617474" .
-    "6c65416374696f6e12170a0f706c617965725f6c61746974756465180520" .
-    "01280112180a10706c617965725f6c6f6e67697475646518062001280162" .
-    "0670726f746f33"
-));
 

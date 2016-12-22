@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Data\Player;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Player.EquippedBadge</code>
+ */
 class EquippedBadge extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     private $badge_type = 0;
+    /**
+     * <code>int32 level = 2;</code>
+     */
     private $level = 0;
+    /**
+     * <code>int64 next_equip_change_allowed_timestamp_ms = 3;</code>
+     */
     private $next_equip_change_allowed_timestamp_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Player\EquippedBadge::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     public function getBadgeType()
     {
         return $this->badge_type;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     public function setBadgeType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\BadgeType::class);
         $this->badge_type = $var;
     }
 
+    /**
+     * <code>int32 level = 2;</code>
+     */
     public function getLevel()
     {
         return $this->level;
     }
 
+    /**
+     * <code>int32 level = 2;</code>
+     */
     public function setLevel($var)
     {
         GPBUtil::checkInt32($var);
         $this->level = $var;
     }
 
+    /**
+     * <code>int64 next_equip_change_allowed_timestamp_ms = 3;</code>
+     */
     public function getNextEquipChangeAllowedTimestampMs()
     {
         return $this->next_equip_change_allowed_timestamp_ms;
     }
 
+    /**
+     * <code>int64 next_equip_change_allowed_timestamp_ms = 3;</code>
+     */
     public function setNextEquipChangeAllowedTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
@@ -50,18 +83,4 @@ class EquippedBadge extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aef010a2a504f474f50726f746f732f446174612f506c617965722f4571" .
-    "75697070656442616467652e70726f746f1216504f474f50726f746f732e" .
-    "446174612e506c617965721a20504f474f50726f746f732f456e756d732f" .
-    "4261646765547970652e70726f746f227f0a0d4571756970706564426164" .
-    "6765122f0a0a62616467655f7479706518012001280e321b2e504f474f50" .
-    "726f746f732e456e756d732e426164676554797065120d0a056c6576656c" .
-    "180220012805122e0a266e6578745f65717569705f6368616e67655f616c" .
-    "6c6f7765645f74696d657374616d705f6d73180320012803620670726f74" .
-    "6f33"
-));
 

@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Enums/TutorialState.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.MarkTutorialCompleteMessage</code>
+ */
 class MarkTutorialCompleteMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Enums.TutorialState tutorials_completed = 1;</code>
+     */
     private $tutorials_completed;
+    /**
+     * <code>bool send_marketing_emails = 2;</code>
+     */
     private $send_marketing_emails = false;
+    /**
+     * <code>bool send_push_notifications = 3;</code>
+     */
     private $send_push_notifications = false;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\MarkTutorialCompleteMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Enums.TutorialState tutorials_completed = 1;</code>
+     */
     public function getTutorialsCompleted()
     {
         return $this->tutorials_completed;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.TutorialState tutorials_completed = 1;</code>
+     */
     public function setTutorialsCompleted(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\TutorialState::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\TutorialState::class);
         $this->tutorials_completed = $var;
     }
 
+    /**
+     * <code>bool send_marketing_emails = 2;</code>
+     */
     public function getSendMarketingEmails()
     {
         return $this->send_marketing_emails;
     }
 
+    /**
+     * <code>bool send_marketing_emails = 2;</code>
+     */
     public function setSendMarketingEmails($var)
     {
         GPBUtil::checkBool($var);
         $this->send_marketing_emails = $var;
     }
 
+    /**
+     * <code>bool send_push_notifications = 3;</code>
+     */
     public function getSendPushNotifications()
     {
         return $this->send_push_notifications;
     }
 
+    /**
+     * <code>bool send_push_notifications = 3;</code>
+     */
     public function setSendPushNotifications($var)
     {
         GPBUtil::checkBool($var);
@@ -50,20 +83,4 @@ class MarkTutorialCompleteMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac0020a49504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f4d61726b5475746f7269616c436f6d" .
-    "706c6574654d6573736167652e70726f746f1227504f474f50726f746f73" .
-    "2e4e6574776f726b696e672e52657175657374732e4d657373616765731a" .
-    "24504f474f50726f746f732f456e756d732f5475746f7269616c53746174" .
-    "652e70726f746f229b010a1b4d61726b5475746f7269616c436f6d706c65" .
-    "74654d657373616765123c0a137475746f7269616c735f636f6d706c6574" .
-    "656418012003280e321f2e504f474f50726f746f732e456e756d732e5475" .
-    "746f7269616c5374617465121d0a1573656e645f6d61726b6574696e675f" .
-    "656d61696c73180220012808121f0a1773656e645f707573685f6e6f7469" .
-    "6669636174696f6e73180320012808620670726f746f33"
-));
 

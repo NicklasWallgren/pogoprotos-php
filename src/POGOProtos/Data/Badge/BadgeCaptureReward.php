@@ -4,35 +4,62 @@
 
 namespace POGOProtos\Data\Badge;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Badge.BadgeCaptureReward</code>
+ */
 class BadgeCaptureReward extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>float capture_reward_multiplier = 1;</code>
+     */
     private $capture_reward_multiplier = 0.0;
+    /**
+     * <code>repeated string avatar_template_ids = 2;</code>
+     */
+    private $avatar_template_ids;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Badge\BadgeCaptureReward::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>float capture_reward_multiplier = 1;</code>
+     */
     public function getCaptureRewardMultiplier()
     {
         return $this->capture_reward_multiplier;
     }
 
+    /**
+     * <code>float capture_reward_multiplier = 1;</code>
+     */
     public function setCaptureRewardMultiplier($var)
     {
         GPBUtil::checkFloat($var);
         $this->capture_reward_multiplier = $var;
     }
 
+    /**
+     * <code>repeated string avatar_template_ids = 2;</code>
+     */
+    public function getAvatarTemplateIds()
+    {
+        return $this->avatar_template_ids;
+    }
+
+    /**
+     * <code>repeated string avatar_template_ids = 2;</code>
+     */
+    public function setAvatarTemplateIds(&$var)
+    {
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->avatar_template_ids = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a88010a2e504f474f50726f746f732f446174612f42616467652f426164" .
-    "6765436170747572655265776172642e70726f746f1215504f474f50726f" .
-    "746f732e446174612e426164676522370a12426164676543617074757265" .
-    "52657761726412210a19636170747572655f7265776172645f6d756c7469" .
-    "706c696572180120012802620670726f746f33"
-));
 

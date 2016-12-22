@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Settings;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.DownloadSettingsAction</code>
+ */
 class DownloadSettingsAction extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string hash = 1;</code>
+     */
     private $hash = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\DownloadSettingsAction::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string hash = 1;</code>
+     */
     public function getHash()
     {
         return $this->hash;
     }
 
+    /**
+     * <code>string hash = 1;</code>
+     */
     public function setHash($var)
     {
         GPBUtil::checkString($var, True);
@@ -25,14 +41,4 @@ class DownloadSettingsAction extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a770a30504f474f50726f746f732f53657474696e67732f446f776e6c6f" .
-    "616453657474696e6773416374696f6e2e70726f746f1213504f474f5072" .
-    "6f746f732e53657474696e677322260a16446f776e6c6f61645365747469" .
-    "6e6773416374696f6e120c0a0468617368180120012809620670726f746f" .
-    "33"
-));
 

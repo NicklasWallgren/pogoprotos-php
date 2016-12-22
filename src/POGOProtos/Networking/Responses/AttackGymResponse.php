@@ -4,70 +4,120 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.AttackGymResponse</code>
+ */
 class AttackGymResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.AttackGymResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleLog battle_log = 2;</code>
+     */
     private $battle_log = null;
+    /**
+     * <code>string battle_id = 3;</code>
+     */
     private $battle_id = '';
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_defender = 4;</code>
+     */
     private $active_defender = null;
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_attacker = 5;</code>
+     */
     private $active_attacker = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\AttackGymResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.AttackGymResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.AttackGymResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\AttackGymResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleLog battle_log = 2;</code>
+     */
     public function getBattleLog()
     {
         return $this->battle_log;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleLog battle_log = 2;</code>
+     */
     public function setBattleLog(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Battle\BattleLog::class);
         $this->battle_log = $var;
     }
 
+    /**
+     * <code>string battle_id = 3;</code>
+     */
     public function getBattleId()
     {
         return $this->battle_id;
     }
 
+    /**
+     * <code>string battle_id = 3;</code>
+     */
     public function setBattleId($var)
     {
         GPBUtil::checkString($var, True);
         $this->battle_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_defender = 4;</code>
+     */
     public function getActiveDefender()
     {
         return $this->active_defender;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_defender = 4;</code>
+     */
     public function setActiveDefender(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Battle\BattlePokemonInfo::class);
         $this->active_defender = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_attacker = 5;</code>
+     */
     public function getActiveAttacker()
     {
         return $this->active_attacker;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_attacker = 5;</code>
+     */
     public function setActiveAttacker(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Battle\BattlePokemonInfo::class);
@@ -75,37 +125,4 @@ class AttackGymResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class AttackGymResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const ERROR_INVALID_ATTACK_ACTIONS = 2;
-    const ERROR_NOT_IN_RANGE = 3;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac9040a37504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f41747461636b47796d526573706f6e73652e70726f746f" .
-    "121f504f474f50726f746f732e4e6574776f726b696e672e526573706f6e" .
-    "7365731a26504f474f50726f746f732f446174612f426174746c652f4261" .
-    "74746c654c6f672e70726f746f1a2e504f474f50726f746f732f44617461" .
-    "2f426174746c652f426174746c65506f6b656d6f6e496e666f2e70726f74" .
-    "6f228c030a1141747461636b47796d526573706f6e736512490a06726573" .
-    "756c7418012001280e32392e504f474f50726f746f732e4e6574776f726b" .
-    "696e672e526573706f6e7365732e41747461636b47796d526573706f6e73" .
-    "652e526573756c7412350a0a626174746c655f6c6f6718022001280b3221" .
-    "2e504f474f50726f746f732e446174612e426174746c652e426174746c65" .
-    "4c6f6712110a09626174746c655f696418032001280912420a0f61637469" .
-    "76655f646566656e64657218042001280b32292e504f474f50726f746f73" .
-    "2e446174612e426174746c652e426174746c65506f6b656d6f6e496e666f" .
-    "12420a0f6163746976655f61747461636b657218052001280b32292e504f" .
-    "474f50726f746f732e446174612e426174746c652e426174746c65506f6b" .
-    "656d6f6e496e666f225a0a06526573756c7412090a05554e534554100012" .
-    "0b0a0753554343455353100112200a1c4552524f525f494e56414c49445f" .
-    "41545441434b5f414354494f4e53100212160a124552524f525f4e4f545f" .
-    "494e5f52414e47451003620670726f746f33"
-));
 

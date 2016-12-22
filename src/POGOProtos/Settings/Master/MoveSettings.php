@@ -4,190 +4,330 @@
 
 namespace POGOProtos\Settings\Master;
 
-require_once('POGOProtos/Enums/PokemonType.pb.php');
-require_once('POGOProtos/Enums/PokemonMove.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.MoveSettings</code>
+ */
 class MoveSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove movement_id = 1;</code>
+     */
     private $movement_id = 0;
+    /**
+     * <code>int32 animation_id = 2;</code>
+     */
     private $animation_id = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonType pokemon_type = 3;</code>
+     */
     private $pokemon_type = 0;
+    /**
+     * <code>float power = 4;</code>
+     */
     private $power = 0.0;
+    /**
+     * <code>float accuracy_chance = 5;</code>
+     */
     private $accuracy_chance = 0.0;
+    /**
+     * <code>float critical_chance = 6;</code>
+     */
     private $critical_chance = 0.0;
+    /**
+     * <code>float heal_scalar = 7;</code>
+     */
     private $heal_scalar = 0.0;
+    /**
+     * <code>float stamina_loss_scalar = 8;</code>
+     */
     private $stamina_loss_scalar = 0.0;
+    /**
+     * <code>int32 trainer_level_min = 9;</code>
+     */
     private $trainer_level_min = 0;
+    /**
+     * <code>int32 trainer_level_max = 10;</code>
+     */
     private $trainer_level_max = 0;
+    /**
+     * <code>string vfx_name = 11;</code>
+     */
     private $vfx_name = '';
+    /**
+     * <code>int32 duration_ms = 12;</code>
+     */
     private $duration_ms = 0;
+    /**
+     * <code>int32 damage_window_start_ms = 13;</code>
+     */
     private $damage_window_start_ms = 0;
+    /**
+     * <code>int32 damage_window_end_ms = 14;</code>
+     */
     private $damage_window_end_ms = 0;
+    /**
+     * <code>int32 energy_delta = 15;</code>
+     */
     private $energy_delta = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\MoveSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove movement_id = 1;</code>
+     */
     public function getMovementId()
     {
         return $this->movement_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove movement_id = 1;</code>
+     */
     public function setMovementId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonMove::class);
         $this->movement_id = $var;
     }
 
+    /**
+     * <code>int32 animation_id = 2;</code>
+     */
     public function getAnimationId()
     {
         return $this->animation_id;
     }
 
+    /**
+     * <code>int32 animation_id = 2;</code>
+     */
     public function setAnimationId($var)
     {
         GPBUtil::checkInt32($var);
         $this->animation_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType pokemon_type = 3;</code>
+     */
     public function getPokemonType()
     {
         return $this->pokemon_type;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType pokemon_type = 3;</code>
+     */
     public function setPokemonType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonType::class);
         $this->pokemon_type = $var;
     }
 
+    /**
+     * <code>float power = 4;</code>
+     */
     public function getPower()
     {
         return $this->power;
     }
 
+    /**
+     * <code>float power = 4;</code>
+     */
     public function setPower($var)
     {
         GPBUtil::checkFloat($var);
         $this->power = $var;
     }
 
+    /**
+     * <code>float accuracy_chance = 5;</code>
+     */
     public function getAccuracyChance()
     {
         return $this->accuracy_chance;
     }
 
+    /**
+     * <code>float accuracy_chance = 5;</code>
+     */
     public function setAccuracyChance($var)
     {
         GPBUtil::checkFloat($var);
         $this->accuracy_chance = $var;
     }
 
+    /**
+     * <code>float critical_chance = 6;</code>
+     */
     public function getCriticalChance()
     {
         return $this->critical_chance;
     }
 
+    /**
+     * <code>float critical_chance = 6;</code>
+     */
     public function setCriticalChance($var)
     {
         GPBUtil::checkFloat($var);
         $this->critical_chance = $var;
     }
 
+    /**
+     * <code>float heal_scalar = 7;</code>
+     */
     public function getHealScalar()
     {
         return $this->heal_scalar;
     }
 
+    /**
+     * <code>float heal_scalar = 7;</code>
+     */
     public function setHealScalar($var)
     {
         GPBUtil::checkFloat($var);
         $this->heal_scalar = $var;
     }
 
+    /**
+     * <code>float stamina_loss_scalar = 8;</code>
+     */
     public function getStaminaLossScalar()
     {
         return $this->stamina_loss_scalar;
     }
 
+    /**
+     * <code>float stamina_loss_scalar = 8;</code>
+     */
     public function setStaminaLossScalar($var)
     {
         GPBUtil::checkFloat($var);
         $this->stamina_loss_scalar = $var;
     }
 
+    /**
+     * <code>int32 trainer_level_min = 9;</code>
+     */
     public function getTrainerLevelMin()
     {
         return $this->trainer_level_min;
     }
 
+    /**
+     * <code>int32 trainer_level_min = 9;</code>
+     */
     public function setTrainerLevelMin($var)
     {
         GPBUtil::checkInt32($var);
         $this->trainer_level_min = $var;
     }
 
+    /**
+     * <code>int32 trainer_level_max = 10;</code>
+     */
     public function getTrainerLevelMax()
     {
         return $this->trainer_level_max;
     }
 
+    /**
+     * <code>int32 trainer_level_max = 10;</code>
+     */
     public function setTrainerLevelMax($var)
     {
         GPBUtil::checkInt32($var);
         $this->trainer_level_max = $var;
     }
 
+    /**
+     * <code>string vfx_name = 11;</code>
+     */
     public function getVfxName()
     {
         return $this->vfx_name;
     }
 
+    /**
+     * <code>string vfx_name = 11;</code>
+     */
     public function setVfxName($var)
     {
         GPBUtil::checkString($var, True);
         $this->vfx_name = $var;
     }
 
+    /**
+     * <code>int32 duration_ms = 12;</code>
+     */
     public function getDurationMs()
     {
         return $this->duration_ms;
     }
 
+    /**
+     * <code>int32 duration_ms = 12;</code>
+     */
     public function setDurationMs($var)
     {
         GPBUtil::checkInt32($var);
         $this->duration_ms = $var;
     }
 
+    /**
+     * <code>int32 damage_window_start_ms = 13;</code>
+     */
     public function getDamageWindowStartMs()
     {
         return $this->damage_window_start_ms;
     }
 
+    /**
+     * <code>int32 damage_window_start_ms = 13;</code>
+     */
     public function setDamageWindowStartMs($var)
     {
         GPBUtil::checkInt32($var);
         $this->damage_window_start_ms = $var;
     }
 
+    /**
+     * <code>int32 damage_window_end_ms = 14;</code>
+     */
     public function getDamageWindowEndMs()
     {
         return $this->damage_window_end_ms;
     }
 
+    /**
+     * <code>int32 damage_window_end_ms = 14;</code>
+     */
     public function setDamageWindowEndMs($var)
     {
         GPBUtil::checkInt32($var);
         $this->damage_window_end_ms = $var;
     }
 
+    /**
+     * <code>int32 energy_delta = 15;</code>
+     */
     public function getEnergyDelta()
     {
         return $this->energy_delta;
     }
 
+    /**
+     * <code>int32 energy_delta = 15;</code>
+     */
     public function setEnergyDelta($var)
     {
         GPBUtil::checkInt32($var);
@@ -195,29 +335,4 @@ class MoveSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0acf040a2d504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4d6f766553657474696e67732e70726f746f121a504f474f50726f74" .
-    "6f732e53657474696e67732e4d61737465721a22504f474f50726f746f73" .
-    "2f456e756d732f506f6b656d6f6e547970652e70726f746f1a22504f474f" .
-    "50726f746f732f456e756d732f506f6b656d6f6e4d6f76652e70726f746f" .
-    "22b1030a0c4d6f766553657474696e677312320a0b6d6f76656d656e745f" .
-    "696418012001280e321d2e504f474f50726f746f732e456e756d732e506f" .
-    "6b656d6f6e4d6f766512140a0c616e696d6174696f6e5f69641802200128" .
-    "0512330a0c706f6b656d6f6e5f7479706518032001280e321d2e504f474f" .
-    "50726f746f732e456e756d732e506f6b656d6f6e54797065120d0a05706f" .
-    "77657218042001280212170a0f61636375726163795f6368616e63651805" .
-    "2001280212170a0f637269746963616c5f6368616e636518062001280212" .
-    "130a0b6865616c5f7363616c6172180720012802121b0a137374616d696e" .
-    "615f6c6f73735f7363616c617218082001280212190a11747261696e6572" .
-    "5f6c6576656c5f6d696e18092001280512190a11747261696e65725f6c65" .
-    "76656c5f6d6178180a2001280512100a087666785f6e616d65180b200128" .
-    "0912130a0b6475726174696f6e5f6d73180c20012805121e0a1664616d61" .
-    "67655f77696e646f775f73746172745f6d73180d20012805121c0a146461" .
-    "6d6167655f77696e646f775f656e645f6d73180e2001280512140a0c656e" .
-    "657267795f64656c7461180f20012805620670726f746f33"
-));
 

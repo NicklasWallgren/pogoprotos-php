@@ -4,44 +4,78 @@
 
 namespace POGOProtos\Data;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.BuddyPokemon</code>
+ */
 class BuddyPokemon extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>fixed64 id = 1;</code>
+     */
     private $id = 0;
+    /**
+     * <code>double start_km_walked = 2;</code>
+     */
     private $start_km_walked = 0.0;
+    /**
+     * <code>double last_km_awarded = 3;</code>
+     */
     private $last_km_awarded = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\BuddyPokemon::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>fixed64 id = 1;</code>
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * <code>fixed64 id = 1;</code>
+     */
     public function setId($var)
     {
         GPBUtil::checkUint64($var);
         $this->id = $var;
     }
 
+    /**
+     * <code>double start_km_walked = 2;</code>
+     */
     public function getStartKmWalked()
     {
         return $this->start_km_walked;
     }
 
+    /**
+     * <code>double start_km_walked = 2;</code>
+     */
     public function setStartKmWalked($var)
     {
         GPBUtil::checkDouble($var);
         $this->start_km_walked = $var;
     }
 
+    /**
+     * <code>double last_km_awarded = 3;</code>
+     */
     public function getLastKmAwarded()
     {
         return $this->last_km_awarded;
     }
 
+    /**
+     * <code>double last_km_awarded = 3;</code>
+     */
     public function setLastKmAwarded($var)
     {
         GPBUtil::checkDouble($var);
@@ -49,14 +83,4 @@ class BuddyPokemon extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8b010a22504f474f50726f746f732f446174612f4275646479506f6b65" .
-    "6d6f6e2e70726f746f120f504f474f50726f746f732e44617461224c0a0c" .
-    "4275646479506f6b656d6f6e120a0a02696418012001280612170a0f7374" .
-    "6172745f6b6d5f77616c6b656418022001280112170a0f6c6173745f6b6d" .
-    "5f61776172646564180320012801620670726f746f33"
-));
 

@@ -4,57 +4,99 @@
 
 namespace POGOProtos\Data\Logs;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Logs.FortSearchLogEntry</code>
+ */
 class FortSearchLogEntry extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Logs.FortSearchLogEntry.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>string fort_id = 2;</code>
+     */
     private $fort_id = '';
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemData items = 3;</code>
+     */
     private $items;
+    /**
+     * <code>int32 eggs = 4;</code>
+     */
     private $eggs = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Logs\FortSearchLogEntry::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Logs.FortSearchLogEntry.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Logs.FortSearchLogEntry.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Data\Logs\FortSearchLogEntry_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>string fort_id = 2;</code>
+     */
     public function getFortId()
     {
         return $this->fort_id;
     }
 
+    /**
+     * <code>string fort_id = 2;</code>
+     */
     public function setFortId($var)
     {
         GPBUtil::checkString($var, True);
         $this->fort_id = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemData items = 3;</code>
+     */
     public function getItems()
     {
         return $this->items;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemData items = 3;</code>
+     */
     public function setItems(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Inventory\Item\ItemData::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Inventory\Item\ItemData::class);
         $this->items = $var;
     }
 
+    /**
+     * <code>int32 eggs = 4;</code>
+     */
     public function getEggs()
     {
         return $this->eggs;
     }
 
+    /**
+     * <code>int32 eggs = 4;</code>
+     */
     public function setEggs($var)
     {
         GPBUtil::checkInt32($var);
@@ -62,26 +104,4 @@ class FortSearchLogEntry extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class FortSearchLogEntry_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac4020a2d504f474f50726f746f732f446174612f4c6f67732f466f7274" .
-    "5365617263684c6f67456e7472792e70726f746f1214504f474f50726f74" .
-    "6f732e446174612e4c6f67731a28504f474f50726f746f732f496e76656e" .
-    "746f72792f4974656d2f4974656d446174612e70726f746f22ca010a1246" .
-    "6f72745365617263684c6f67456e747279123f0a06726573756c74180120" .
-    "01280e322f2e504f474f50726f746f732e446174612e4c6f67732e466f72" .
-    "745365617263684c6f67456e7472792e526573756c74120f0a07666f7274" .
-    "5f696418022001280912320a056974656d7318032003280b32232e504f47" .
-    "4f50726f746f732e496e76656e746f72792e4974656d2e4974656d446174" .
-    "61120c0a046567677318042001280522200a06526573756c7412090a0555" .
-    "4e5345541000120b0a07535543434553531001620670726f746f33"
-));
 

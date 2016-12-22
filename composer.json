@@ -1,26 +1,33 @@
 {
-    "name": "nicklasw/pogoprotos-php",
-    "authors": [
-        {
-            "name": "Nicklas Wallgren",
-            "email": "nicklas.wallgren@gmail.com"
+  "name": "nicklasw/pogoprotos-php",
+  "authors": [
+    {
+      "name": "Nicklas Wallgren",
+      "email": "nicklas.wallgren@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "google/protobuf",
+        "version": "3.1",
+        "source": {
+          "url": "https://github.com/NicklasWallgren/protobuf",
+          "type": "git",
+          "reference": "master"
         }
-    ],
-    "require": {
-        "php": ">=5.6",
-	    "google/protobuf": "v3.1.0-alpha-1"
-    },
-    "autoload": {
-      "psr-4": {
-        "POGOProtos\\": "src/POGOProtos/"
-      },
-      "files": [
-        "src/POGOProtos/Networking/Envelopes/RequestEnvelope.php",
-        "src/POGOProtos/Networking/Envelopes/ResponseEnvelope.php",
-        "src/POGOProtos/Networking/Responses/EvolvePokemonResponse.php",
-        "src/POGOProtos/Networking/Responses/UpgradePokemonResponse.php"
-      ]
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+      }
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "google/protobuf": "^3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "POGOProtos\\": "src/POGOProtos/",
+      "GPBMetadata\\": "src/GPBMetadata/"
+    }
+  }
 }

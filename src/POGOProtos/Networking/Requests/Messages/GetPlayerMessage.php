@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.GetPlayerMessage</code>
+ */
 class GetPlayerMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Requests.Messages.GetPlayerMessage.PlayerLocale player_locale = 1;</code>
+     */
     private $player_locale = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\GetPlayerMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Requests.Messages.GetPlayerMessage.PlayerLocale player_locale = 1;</code>
+     */
     public function getPlayerLocale()
     {
         return $this->player_locale;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Requests.Messages.GetPlayerMessage.PlayerLocale player_locale = 1;</code>
+     */
     public function setPlayerLocale(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Networking\Requests\Messages\GetPlayerMessage_PlayerLocale::class);
@@ -25,61 +41,4 @@ class GetPlayerMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class GetPlayerMessage_PlayerLocale extends \Google\Protobuf\Internal\Message
-{
-    private $country = '';
-    private $language = '';
-    private $timezone = '';
-
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    public function setCountry($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->country = $var;
-    }
-
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    public function setLanguage($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->language = $var;
-    }
-
-    public function getTimezone()
-    {
-        return $this->timezone;
-    }
-
-    public function setTimezone($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->timezone = $var;
-    }
-
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aaa020a3e504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f476574506c617965724d6573736167" .
-    "652e70726f746f1227504f474f50726f746f732e4e6574776f726b696e67" .
-    "2e52657175657374732e4d6573736167657322b6010a10476574506c6179" .
-    "65724d657373616765125d0a0d706c617965725f6c6f63616c6518012001" .
-    "280b32462e504f474f50726f746f732e4e6574776f726b696e672e526571" .
-    "75657374732e4d657373616765732e476574506c617965724d6573736167" .
-    "652e506c617965724c6f63616c651a430a0c506c617965724c6f63616c65" .
-    "120f0a07636f756e74727918012001280912100a086c616e677561676518" .
-    "022001280912100a0874696d657a6f6e65180320012809620670726f746f" .
-    "33"
-));
 

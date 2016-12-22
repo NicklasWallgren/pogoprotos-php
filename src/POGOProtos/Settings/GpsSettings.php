@@ -4,56 +4,99 @@
 
 namespace POGOProtos\Settings;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.GpsSettings</code>
+ */
 class GpsSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>float driving_warning_speed_meters_per_second = 1;</code>
+     */
     private $driving_warning_speed_meters_per_second = 0.0;
+    /**
+     * <code>float driving_warning_cooldown_minutes = 2;</code>
+     */
     private $driving_warning_cooldown_minutes = 0.0;
+    /**
+     * <code>float driving_speed_sample_interval_seconds = 3;</code>
+     */
     private $driving_speed_sample_interval_seconds = 0.0;
+    /**
+     * <code>int32 driving_speed_sample_count = 4;</code>
+     */
     private $driving_speed_sample_count = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\GpsSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>float driving_warning_speed_meters_per_second = 1;</code>
+     */
     public function getDrivingWarningSpeedMetersPerSecond()
     {
         return $this->driving_warning_speed_meters_per_second;
     }
 
+    /**
+     * <code>float driving_warning_speed_meters_per_second = 1;</code>
+     */
     public function setDrivingWarningSpeedMetersPerSecond($var)
     {
         GPBUtil::checkFloat($var);
         $this->driving_warning_speed_meters_per_second = $var;
     }
 
+    /**
+     * <code>float driving_warning_cooldown_minutes = 2;</code>
+     */
     public function getDrivingWarningCooldownMinutes()
     {
         return $this->driving_warning_cooldown_minutes;
     }
 
+    /**
+     * <code>float driving_warning_cooldown_minutes = 2;</code>
+     */
     public function setDrivingWarningCooldownMinutes($var)
     {
         GPBUtil::checkFloat($var);
         $this->driving_warning_cooldown_minutes = $var;
     }
 
+    /**
+     * <code>float driving_speed_sample_interval_seconds = 3;</code>
+     */
     public function getDrivingSpeedSampleIntervalSeconds()
     {
         return $this->driving_speed_sample_interval_seconds;
     }
 
+    /**
+     * <code>float driving_speed_sample_interval_seconds = 3;</code>
+     */
     public function setDrivingSpeedSampleIntervalSeconds($var)
     {
         GPBUtil::checkFloat($var);
         $this->driving_speed_sample_interval_seconds = $var;
     }
 
+    /**
+     * <code>int32 driving_speed_sample_count = 4;</code>
+     */
     public function getDrivingSpeedSampleCount()
     {
         return $this->driving_speed_sample_count;
     }
 
+    /**
+     * <code>int32 driving_speed_sample_count = 4;</code>
+     */
     public function setDrivingSpeedSampleCount($var)
     {
         GPBUtil::checkInt32($var);
@@ -61,18 +104,4 @@ class GpsSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a82020a25504f474f50726f746f732f53657474696e67732f4770735365" .
-    "7474696e67732e70726f746f1213504f474f50726f746f732e5365747469" .
-    "6e677322bb010a0b47707353657474696e6773122f0a2764726976696e67" .
-    "5f7761726e696e675f73706565645f6d65746572735f7065725f7365636f" .
-    "6e6418012001280212280a2064726976696e675f7761726e696e675f636f" .
-    "6f6c646f776e5f6d696e75746573180220012802122d0a2564726976696e" .
-    "675f73706565645f73616d706c655f696e74657276616c5f7365636f6e64" .
-    "7318032001280212220a1a64726976696e675f73706565645f73616d706c" .
-    "655f636f756e74180420012805620670726f746f33"
-));
 

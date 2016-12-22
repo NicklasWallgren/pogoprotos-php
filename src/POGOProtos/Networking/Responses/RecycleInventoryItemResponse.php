@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Networking\Responses;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.RecycleInventoryItemResponse</code>
+ */
 class RecycleInventoryItemResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.RecycleInventoryItemResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>int32 new_count = 2;</code>
+     */
     private $new_count = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\RecycleInventoryItemResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.RecycleInventoryItemResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.RecycleInventoryItemResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\RecycleInventoryItemResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>int32 new_count = 2;</code>
+     */
     public function getNewCount()
     {
         return $this->new_count;
     }
 
+    /**
+     * <code>int32 new_count = 2;</code>
+     */
     public function setNewCount($var)
     {
         GPBUtil::checkInt32($var);
@@ -37,29 +62,4 @@ class RecycleInventoryItemResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class RecycleInventoryItemResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const ERROR_NOT_ENOUGH_COPIES = 2;
-    const ERROR_CANNOT_RECYCLE_INCUBATORS = 3;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0adb020a42504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f52656379636c65496e76656e746f72794974656d526573" .
-    "706f6e73652e70726f746f121f504f474f50726f746f732e4e6574776f72" .
-    "6b696e672e526573706f6e73657322eb010a1c52656379636c65496e7665" .
-    "6e746f72794974656d526573706f6e736512540a06726573756c74180120" .
-    "01280e32442e504f474f50726f746f732e4e6574776f726b696e672e5265" .
-    "73706f6e7365732e52656379636c65496e76656e746f72794974656d5265" .
-    "73706f6e73652e526573756c7412110a096e65775f636f756e7418022001" .
-    "280522620a06526573756c7412090a05554e5345541000120b0a07535543" .
-    "434553531001121b0a174552524f525f4e4f545f454e4f5547485f434f50" .
-    "494553100212230a1f4552524f525f43414e4e4f545f52454359434c455f" .
-    "494e43554241544f52531003620670726f746f33"
-));
 

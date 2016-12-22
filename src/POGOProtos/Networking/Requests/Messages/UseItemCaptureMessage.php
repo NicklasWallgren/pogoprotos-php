@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.UseItemCaptureMessage</code>
+ */
 class UseItemCaptureMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     private $encounter_id = 0;
+    /**
+     * <code>string spawn_point_id = 3;</code>
+     */
     private $spawn_point_id = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\UseItemCaptureMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     public function getEncounterId()
     {
         return $this->encounter_id;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     public function setEncounterId($var)
     {
         GPBUtil::checkUint64($var);
         $this->encounter_id = $var;
     }
 
+    /**
+     * <code>string spawn_point_id = 3;</code>
+     */
     public function getSpawnPointId()
     {
         return $this->spawn_point_id;
     }
 
+    /**
+     * <code>string spawn_point_id = 3;</code>
+     */
     public function setSpawnPointId($var)
     {
         GPBUtil::checkString($var, True);
@@ -50,19 +83,4 @@ class UseItemCaptureMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a99020a43504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f5573654974656d436170747572654d" .
-    "6573736167652e70726f746f1227504f474f50726f746f732e4e6574776f" .
-    "726b696e672e52657175657374732e4d657373616765731a26504f474f50" .
-    "726f746f732f496e76656e746f72792f4974656d2f4974656d49642e7072" .
-    "6f746f22790a155573654974656d436170747572654d6573736167651232" .
-    "0a076974656d5f696418012001280e32212e504f474f50726f746f732e49" .
-    "6e76656e746f72792e4974656d2e4974656d496412140a0c656e636f756e" .
-    "7465725f696418022001280612160a0e737061776e5f706f696e745f6964" .
-    "180320012809620670726f746f33"
-));
 

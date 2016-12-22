@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Data\Player;
 
-require_once('POGOProtos/Data/Player/PlayerAvatar.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Player.PlayerPublicProfile</code>
+ */
 class PlayerPublicProfile extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string name = 1;</code>
+     */
     private $name = '';
+    /**
+     * <code>int32 level = 2;</code>
+     */
     private $level = 0;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar avatar = 3;</code>
+     */
     private $avatar = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Player\PlayerPublicProfile::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string name = 1;</code>
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * <code>string name = 1;</code>
+     */
     public function setName($var)
     {
         GPBUtil::checkString($var, True);
         $this->name = $var;
     }
 
+    /**
+     * <code>int32 level = 2;</code>
+     */
     public function getLevel()
     {
         return $this->level;
     }
 
+    /**
+     * <code>int32 level = 2;</code>
+     */
     public function setLevel($var)
     {
         GPBUtil::checkInt32($var);
         $this->level = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar avatar = 3;</code>
+     */
     public function getAvatar()
     {
         return $this->avatar;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar avatar = 3;</code>
+     */
     public function setAvatar(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerAvatar::class);
@@ -50,17 +83,4 @@ class PlayerPublicProfile extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae7010a30504f474f50726f746f732f446174612f506c617965722f506c" .
-    "617965725075626c696350726f66696c652e70726f746f1216504f474f50" .
-    "726f746f732e446174612e506c617965721a29504f474f50726f746f732f" .
-    "446174612f506c617965722f506c617965724176617461722e70726f746f" .
-    "22680a13506c617965725075626c696350726f66696c65120c0a046e616d" .
-    "65180120012809120d0a056c6576656c18022001280512340a0661766174" .
-    "617218032001280b32242e504f474f50726f746f732e446174612e506c61" .
-    "7965722e506c61796572417661746172620670726f746f33"
-));
 

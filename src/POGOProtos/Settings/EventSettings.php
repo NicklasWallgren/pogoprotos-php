@@ -4,35 +4,41 @@
 
 namespace POGOProtos\Settings;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.EventSettings</code>
+ */
 class EventSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated string condolence_ribbon_country = 1;</code>
+     */
     private $condolence_ribbon_country;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\EventSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated string condolence_ribbon_country = 1;</code>
+     */
     public function getCondolenceRibbonCountry()
     {
         return $this->condolence_ribbon_country;
     }
 
+    /**
+     * <code>repeated string condolence_ribbon_country = 1;</code>
+     */
     public function setCondolenceRibbonCountry(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::STRING);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->condolence_ribbon_country = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a7a0a27504f474f50726f746f732f53657474696e67732f4576656e7453" .
-    "657474696e67732e70726f746f1213504f474f50726f746f732e53657474" .
-    "696e677322320a0d4576656e7453657474696e677312210a19636f6e646f" .
-    "6c656e63655f726962626f6e5f636f756e74727918012003280962067072" .
-    "6f746f33"
-));
 

@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Networking\Platform\Requests;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Platform.Requests.BuyItemPokeCoinsRequest</code>
+ */
 class BuyItemPokeCoinsRequest extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string item_id = 1;</code>
+     */
     private $item_id = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Platform\Requests\BuyItemPokeCoinsRequest::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>string item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkString($var, True);
@@ -25,15 +41,4 @@ class BuyItemPokeCoinsRequest extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa4010a45504f474f50726f746f732f4e6574776f726b696e672f506c61" .
-    "74666f726d2f52657175657374732f4275794974656d506f6b65436f696e" .
-    "73526571756573742e70726f746f1227504f474f50726f746f732e4e6574" .
-    "776f726b696e672e506c6174666f726d2e5265717565737473222a0a1742" .
-    "75794974656d506f6b65436f696e7352657175657374120f0a076974656d" .
-    "5f6964180120012809620670726f746f33"
-));
 

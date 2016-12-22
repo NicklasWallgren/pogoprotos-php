@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Networking\Platform\Requests;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Platform.Requests.SendEncryptedSignatureRequest</code>
+ */
 class SendEncryptedSignatureRequest extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bytes encrypted_signature = 1;</code>
+     */
     private $encrypted_signature = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Platform\Requests\SendEncryptedSignatureRequest::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bytes encrypted_signature = 1;</code>
+     */
     public function getEncryptedSignature()
     {
         return $this->encrypted_signature;
     }
 
+    /**
+     * <code>bytes encrypted_signature = 1;</code>
+     */
     public function setEncryptedSignature($var)
     {
         GPBUtil::checkString($var, False);
@@ -25,16 +41,4 @@ class SendEncryptedSignatureRequest extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0abc010a4b504f474f50726f746f732f4e6574776f726b696e672f506c61" .
-    "74666f726d2f52657175657374732f53656e64456e637279707465645369" .
-    "676e6174757265526571756573742e70726f746f1227504f474f50726f74" .
-    "6f732e4e6574776f726b696e672e506c6174666f726d2e52657175657374" .
-    "73223c0a1d53656e64456e637279707465645369676e6174757265526571" .
-    "75657374121b0a13656e637279707465645f7369676e6174757265180120" .
-    "01280c620670726f746f33"
-));
 

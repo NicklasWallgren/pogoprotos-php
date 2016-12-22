@@ -4,58 +4,99 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.EncounterResponse</code>
+ */
 class EncounterResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Map.Pokemon.WildPokemon wild_pokemon = 1;</code>
+     */
     private $wild_pokemon = null;
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterResponse.Background background = 2;</code>
+     */
     private $background = 0;
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterResponse.Status status = 3;</code>
+     */
     private $status = 0;
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureProbability capture_probability = 4;</code>
+     */
     private $capture_probability = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\EncounterResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Map.Pokemon.WildPokemon wild_pokemon = 1;</code>
+     */
     public function getWildPokemon()
     {
         return $this->wild_pokemon;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Pokemon.WildPokemon wild_pokemon = 1;</code>
+     */
     public function setWildPokemon(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Map\Pokemon\WildPokemon::class);
         $this->wild_pokemon = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterResponse.Background background = 2;</code>
+     */
     public function getBackground()
     {
         return $this->background;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterResponse.Background background = 2;</code>
+     */
     public function setBackground($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\EncounterResponse_Background::class);
         $this->background = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterResponse.Status status = 3;</code>
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterResponse.Status status = 3;</code>
+     */
     public function setStatus($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\EncounterResponse_Status::class);
         $this->status = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureProbability capture_probability = 4;</code>
+     */
     public function getCaptureProbability()
     {
         return $this->capture_probability;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureProbability capture_probability = 4;</code>
+     */
     public function setCaptureProbability(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Capture\CaptureProbability::class);
@@ -63,53 +104,4 @@ class EncounterResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class EncounterResponse_Background
-{
-    const PARK = 0;
-    const DESERT = 1;
-}
-
-class EncounterResponse_Status
-{
-    const ENCOUNTER_ERROR = 0;
-    const ENCOUNTER_SUCCESS = 1;
-    const ENCOUNTER_NOT_FOUND = 2;
-    const ENCOUNTER_CLOSED = 3;
-    const ENCOUNTER_POKEMON_FLED = 4;
-    const ENCOUNTER_NOT_IN_RANGE = 5;
-    const ENCOUNTER_ALREADY_HAPPENED = 6;
-    const POKEMON_INVENTORY_FULL = 7;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0af5050a37504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f456e636f756e746572526573706f6e73652e70726f746f" .
-    "121f504f474f50726f746f732e4e6574776f726b696e672e526573706f6e" .
-    "7365731a30504f474f50726f746f732f446174612f436170747572652f43" .
-    "61707475726550726f626162696c6974792e70726f746f1a28504f474f50" .
-    "726f746f732f4d61702f506f6b656d6f6e2f57696c64506f6b656d6f6e2e" .
-    "70726f746f22b4040a11456e636f756e746572526573706f6e736512390a" .
-    "0c77696c645f706f6b656d6f6e18012001280b32232e504f474f50726f74" .
-    "6f732e4d61702e506f6b656d6f6e2e57696c64506f6b656d6f6e12510a0a" .
-    "6261636b67726f756e6418022001280e323d2e504f474f50726f746f732e" .
-    "4e6574776f726b696e672e526573706f6e7365732e456e636f756e746572" .
-    "526573706f6e73652e4261636b67726f756e6412490a0673746174757318" .
-    "032001280e32392e504f474f50726f746f732e4e6574776f726b696e672e" .
-    "526573706f6e7365732e456e636f756e746572526573706f6e73652e5374" .
-    "6174757312480a13636170747572655f70726f626162696c697479180420" .
-    "01280b322b2e504f474f50726f746f732e446174612e436170747572652e" .
-    "4361707475726550726f626162696c69747922220a0a4261636b67726f75" .
-    "6e6412080a045041524b1000120a0a06444553455254100122d7010a0653" .
-    "746174757312130a0f454e434f554e5445525f4552524f52100012150a11" .
-    "454e434f554e5445525f53554343455353100112170a13454e434f554e54" .
-    "45525f4e4f545f464f554e44100212140a10454e434f554e5445525f434c" .
-    "4f5345441003121a0a16454e434f554e5445525f504f4b454d4f4e5f464c" .
-    "45441004121a0a16454e434f554e5445525f4e4f545f494e5f52414e4745" .
-    "1005121e0a1a454e434f554e5445525f414c52454144595f48415050454e" .
-    "45441006121a0a16504f4b454d4f4e5f494e56454e544f52595f46554c4c" .
-    "1007620670726f746f33"
-));
 

@@ -4,44 +4,90 @@
 
 namespace POGOProtos\Networking\Responses;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.DownloadRemoteConfigVersionResponse</code>
+ */
 class DownloadRemoteConfigVersionResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.DownloadRemoteConfigVersionResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <pre>
+     * Latest available?
+     * </pre>
+     *
+     * <code>uint64 item_templates_timestamp_ms = 2;</code>
+     */
     private $item_templates_timestamp_ms = 0;
+    /**
+     * <code>uint64 asset_digest_timestamp_ms = 3;</code>
+     */
     private $asset_digest_timestamp_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\DownloadRemoteConfigVersionResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.DownloadRemoteConfigVersionResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.DownloadRemoteConfigVersionResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\DownloadRemoteConfigVersionResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <pre>
+     * Latest available?
+     * </pre>
+     *
+     * <code>uint64 item_templates_timestamp_ms = 2;</code>
+     */
     public function getItemTemplatesTimestampMs()
     {
         return $this->item_templates_timestamp_ms;
     }
 
+    /**
+     * <pre>
+     * Latest available?
+     * </pre>
+     *
+     * <code>uint64 item_templates_timestamp_ms = 2;</code>
+     */
     public function setItemTemplatesTimestampMs($var)
     {
         GPBUtil::checkUint64($var);
         $this->item_templates_timestamp_ms = $var;
     }
 
+    /**
+     * <code>uint64 asset_digest_timestamp_ms = 3;</code>
+     */
     public function getAssetDigestTimestampMs()
     {
         return $this->asset_digest_timestamp_ms;
     }
 
+    /**
+     * <code>uint64 asset_digest_timestamp_ms = 3;</code>
+     */
     public function setAssetDigestTimestampMs($var)
     {
         GPBUtil::checkUint64($var);
@@ -49,27 +95,4 @@ class DownloadRemoteConfigVersionResponse extends \Google\Protobuf\Internal\Mess
     }
 
 }
-
-class DownloadRemoteConfigVersionResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae3020a49504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f446f776e6c6f616452656d6f7465436f6e666967566572" .
-    "73696f6e526573706f6e73652e70726f746f121f504f474f50726f746f73" .
-    "2e4e6574776f726b696e672e526573706f6e73657322ec010a23446f776e" .
-    "6c6f616452656d6f7465436f6e66696756657273696f6e526573706f6e73" .
-    "65125b0a06726573756c7418012001280e324b2e504f474f50726f746f73" .
-    "2e4e6574776f726b696e672e526573706f6e7365732e446f776e6c6f6164" .
-    "52656d6f7465436f6e66696756657273696f6e526573706f6e73652e5265" .
-    "73756c7412230a1b6974656d5f74656d706c617465735f74696d65737461" .
-    "6d705f6d7318022001280412210a1961737365745f6469676573745f7469" .
-    "6d657374616d705f6d7318032001280422200a06526573756c7412090a05" .
-    "554e5345541000120b0a07535543434553531001620670726f746f33"
-));
 

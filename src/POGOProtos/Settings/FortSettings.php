@@ -4,80 +4,141 @@
 
 namespace POGOProtos\Settings;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.FortSettings</code>
+ */
 class FortSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>double interaction_range_meters = 1;</code>
+     */
     private $interaction_range_meters = 0.0;
+    /**
+     * <code>int32 max_total_deployed_pokemon = 2;</code>
+     */
     private $max_total_deployed_pokemon = 0;
+    /**
+     * <code>int32 max_player_deployed_pokemon = 3;</code>
+     */
     private $max_player_deployed_pokemon = 0;
+    /**
+     * <code>double deploy_stamina_multiplier = 4;</code>
+     */
     private $deploy_stamina_multiplier = 0.0;
+    /**
+     * <code>double deploy_attack_multiplier = 5;</code>
+     */
     private $deploy_attack_multiplier = 0.0;
+    /**
+     * <code>double far_interaction_range_meters = 6;</code>
+     */
     private $far_interaction_range_meters = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\FortSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>double interaction_range_meters = 1;</code>
+     */
     public function getInteractionRangeMeters()
     {
         return $this->interaction_range_meters;
     }
 
+    /**
+     * <code>double interaction_range_meters = 1;</code>
+     */
     public function setInteractionRangeMeters($var)
     {
         GPBUtil::checkDouble($var);
         $this->interaction_range_meters = $var;
     }
 
+    /**
+     * <code>int32 max_total_deployed_pokemon = 2;</code>
+     */
     public function getMaxTotalDeployedPokemon()
     {
         return $this->max_total_deployed_pokemon;
     }
 
+    /**
+     * <code>int32 max_total_deployed_pokemon = 2;</code>
+     */
     public function setMaxTotalDeployedPokemon($var)
     {
         GPBUtil::checkInt32($var);
         $this->max_total_deployed_pokemon = $var;
     }
 
+    /**
+     * <code>int32 max_player_deployed_pokemon = 3;</code>
+     */
     public function getMaxPlayerDeployedPokemon()
     {
         return $this->max_player_deployed_pokemon;
     }
 
+    /**
+     * <code>int32 max_player_deployed_pokemon = 3;</code>
+     */
     public function setMaxPlayerDeployedPokemon($var)
     {
         GPBUtil::checkInt32($var);
         $this->max_player_deployed_pokemon = $var;
     }
 
+    /**
+     * <code>double deploy_stamina_multiplier = 4;</code>
+     */
     public function getDeployStaminaMultiplier()
     {
         return $this->deploy_stamina_multiplier;
     }
 
+    /**
+     * <code>double deploy_stamina_multiplier = 4;</code>
+     */
     public function setDeployStaminaMultiplier($var)
     {
         GPBUtil::checkDouble($var);
         $this->deploy_stamina_multiplier = $var;
     }
 
+    /**
+     * <code>double deploy_attack_multiplier = 5;</code>
+     */
     public function getDeployAttackMultiplier()
     {
         return $this->deploy_attack_multiplier;
     }
 
+    /**
+     * <code>double deploy_attack_multiplier = 5;</code>
+     */
     public function setDeployAttackMultiplier($var)
     {
         GPBUtil::checkDouble($var);
         $this->deploy_attack_multiplier = $var;
     }
 
+    /**
+     * <code>double far_interaction_range_meters = 6;</code>
+     */
     public function getFarInteractionRangeMeters()
     {
         return $this->far_interaction_range_meters;
     }
 
+    /**
+     * <code>double far_interaction_range_meters = 6;</code>
+     */
     public function setFarInteractionRangeMeters($var)
     {
         GPBUtil::checkDouble($var);
@@ -85,20 +146,4 @@ class FortSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aac020a26504f474f50726f746f732f53657474696e67732f466f727453" .
-    "657474696e67732e70726f746f1213504f474f50726f746f732e53657474" .
-    "696e677322e4010a0c466f727453657474696e677312200a18696e746572" .
-    "616374696f6e5f72616e67655f6d657465727318012001280112220a1a6d" .
-    "61785f746f74616c5f6465706c6f7965645f706f6b656d6f6e1802200128" .
-    "0512230a1b6d61785f706c617965725f6465706c6f7965645f706f6b656d" .
-    "6f6e18032001280512210a196465706c6f795f7374616d696e615f6d756c" .
-    "7469706c69657218042001280112200a186465706c6f795f61747461636b" .
-    "5f6d756c7469706c69657218052001280112240a1c6661725f696e746572" .
-    "616374696f6e5f72616e67655f6d6574657273180620012801620670726f" .
-    "746f33"
-));
 

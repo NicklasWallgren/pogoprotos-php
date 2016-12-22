@@ -4,201 +4,342 @@
 
 namespace POGOProtos\Settings\Master;
 
-require_once('POGOProtos/Enums/ItemCategory.pb.php');
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-require_once('POGOProtos/Inventory/Item/ItemType.pb.php');
-require_once('POGOProtos/Settings/Master/Item/FoodAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/PotionAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/ReviveAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/BattleAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/IncenseAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/PokeballAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/FortModifierAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/EggIncubatorAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/ExperienceBoostAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Item/InventoryUpgradeAttributes.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.ItemSettings</code>
+ */
 class ItemSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemType item_type = 2;</code>
+     */
     private $item_type = 0;
+    /**
+     * <code>.POGOProtos.Enums.ItemCategory category = 3;</code>
+     */
     private $category = 0;
+    /**
+     * <code>float drop_freq = 4;</code>
+     */
     private $drop_freq = 0.0;
+    /**
+     * <code>int32 drop_trainer_level = 5;</code>
+     */
     private $drop_trainer_level = 0;
+    /**
+     * <pre>
+     * One of the below attributes will be set in the response, the others will be null.
+     * </pre>
+     *
+     * <code>.POGOProtos.Settings.Master.Item.PokeballAttributes pokeball = 6;</code>
+     */
     private $pokeball = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.PotionAttributes potion = 7;</code>
+     */
     private $potion = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.ReviveAttributes revive = 8;</code>
+     */
     private $revive = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.BattleAttributes battle = 9;</code>
+     */
     private $battle = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.FoodAttributes food = 10;</code>
+     */
     private $food = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.InventoryUpgradeAttributes inventory_upgrade = 11;</code>
+     */
     private $inventory_upgrade = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.ExperienceBoostAttributes xp_boost = 12;</code>
+     */
     private $xp_boost = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.IncenseAttributes incense = 13;</code>
+     */
     private $incense = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.EggIncubatorAttributes egg_incubator = 14;</code>
+     */
     private $egg_incubator = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.FortModifierAttributes fort_modifier = 15;</code>
+     */
     private $fort_modifier = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\ItemSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemType item_type = 2;</code>
+     */
     public function getItemType()
     {
         return $this->item_type;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemType item_type = 2;</code>
+     */
     public function setItemType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemType::class);
         $this->item_type = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.ItemCategory category = 3;</code>
+     */
     public function getCategory()
     {
         return $this->category;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.ItemCategory category = 3;</code>
+     */
     public function setCategory($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\ItemCategory::class);
         $this->category = $var;
     }
 
+    /**
+     * <code>float drop_freq = 4;</code>
+     */
     public function getDropFreq()
     {
         return $this->drop_freq;
     }
 
+    /**
+     * <code>float drop_freq = 4;</code>
+     */
     public function setDropFreq($var)
     {
         GPBUtil::checkFloat($var);
         $this->drop_freq = $var;
     }
 
+    /**
+     * <code>int32 drop_trainer_level = 5;</code>
+     */
     public function getDropTrainerLevel()
     {
         return $this->drop_trainer_level;
     }
 
+    /**
+     * <code>int32 drop_trainer_level = 5;</code>
+     */
     public function setDropTrainerLevel($var)
     {
         GPBUtil::checkInt32($var);
         $this->drop_trainer_level = $var;
     }
 
+    /**
+     * <pre>
+     * One of the below attributes will be set in the response, the others will be null.
+     * </pre>
+     *
+     * <code>.POGOProtos.Settings.Master.Item.PokeballAttributes pokeball = 6;</code>
+     */
     public function getPokeball()
     {
         return $this->pokeball;
     }
 
+    /**
+     * <pre>
+     * One of the below attributes will be set in the response, the others will be null.
+     * </pre>
+     *
+     * <code>.POGOProtos.Settings.Master.Item.PokeballAttributes pokeball = 6;</code>
+     */
     public function setPokeball(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\PokeballAttributes::class);
         $this->pokeball = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.PotionAttributes potion = 7;</code>
+     */
     public function getPotion()
     {
         return $this->potion;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.PotionAttributes potion = 7;</code>
+     */
     public function setPotion(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\PotionAttributes::class);
         $this->potion = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.ReviveAttributes revive = 8;</code>
+     */
     public function getRevive()
     {
         return $this->revive;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.ReviveAttributes revive = 8;</code>
+     */
     public function setRevive(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\ReviveAttributes::class);
         $this->revive = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.BattleAttributes battle = 9;</code>
+     */
     public function getBattle()
     {
         return $this->battle;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.BattleAttributes battle = 9;</code>
+     */
     public function setBattle(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\BattleAttributes::class);
         $this->battle = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.FoodAttributes food = 10;</code>
+     */
     public function getFood()
     {
         return $this->food;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.FoodAttributes food = 10;</code>
+     */
     public function setFood(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\FoodAttributes::class);
         $this->food = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.InventoryUpgradeAttributes inventory_upgrade = 11;</code>
+     */
     public function getInventoryUpgrade()
     {
         return $this->inventory_upgrade;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.InventoryUpgradeAttributes inventory_upgrade = 11;</code>
+     */
     public function setInventoryUpgrade(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\InventoryUpgradeAttributes::class);
         $this->inventory_upgrade = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.ExperienceBoostAttributes xp_boost = 12;</code>
+     */
     public function getXpBoost()
     {
         return $this->xp_boost;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.ExperienceBoostAttributes xp_boost = 12;</code>
+     */
     public function setXpBoost(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\ExperienceBoostAttributes::class);
         $this->xp_boost = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.IncenseAttributes incense = 13;</code>
+     */
     public function getIncense()
     {
         return $this->incense;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.IncenseAttributes incense = 13;</code>
+     */
     public function setIncense(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\IncenseAttributes::class);
         $this->incense = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.EggIncubatorAttributes egg_incubator = 14;</code>
+     */
     public function getEggIncubator()
     {
         return $this->egg_incubator;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.EggIncubatorAttributes egg_incubator = 14;</code>
+     */
     public function setEggIncubator(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\EggIncubatorAttributes::class);
         $this->egg_incubator = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.FortModifierAttributes fort_modifier = 15;</code>
+     */
     public function getFortModifier()
     {
         return $this->fort_modifier;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Item.FortModifierAttributes fort_modifier = 15;</code>
+     */
     public function setFortModifier(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Item\FortModifierAttributes::class);
@@ -206,68 +347,4 @@ class ItemSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ad20d0a2d504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4974656d53657474696e67732e70726f746f121a504f474f50726f74" .
-    "6f732e53657474696e67732e4d61737465721a23504f474f50726f746f73" .
-    "2f456e756d732f4974656d43617465676f72792e70726f746f1a26504f47" .
-    "4f50726f746f732f496e76656e746f72792f4974656d2f4974656d49642e" .
-    "70726f746f1a28504f474f50726f746f732f496e76656e746f72792f4974" .
-    "656d2f4974656d547970652e70726f746f1a34504f474f50726f746f732f" .
-    "53657474696e67732f4d61737465722f4974656d2f466f6f644174747269" .
-    "62757465732e70726f746f1a36504f474f50726f746f732f53657474696e" .
-    "67732f4d61737465722f4974656d2f506f74696f6e417474726962757465" .
-    "732e70726f746f1a36504f474f50726f746f732f53657474696e67732f4d" .
-    "61737465722f4974656d2f526576697665417474726962757465732e7072" .
-    "6f746f1a36504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4974656d2f426174746c65417474726962757465732e70726f746f1a" .
-    "37504f474f50726f746f732f53657474696e67732f4d61737465722f4974" .
-    "656d2f496e63656e7365417474726962757465732e70726f746f1a38504f" .
-    "474f50726f746f732f53657474696e67732f4d61737465722f4974656d2f" .
-    "506f6b6562616c6c417474726962757465732e70726f746f1a3c504f474f" .
-    "50726f746f732f53657474696e67732f4d61737465722f4974656d2f466f" .
-    "72744d6f646966696572417474726962757465732e70726f746f1a3c504f" .
-    "474f50726f746f732f53657474696e67732f4d61737465722f4974656d2f" .
-    "456767496e63756261746f72417474726962757465732e70726f746f1a3f" .
-    "504f474f50726f746f732f53657474696e67732f4d61737465722f497465" .
-    "6d2f457870657269656e6365426f6f7374417474726962757465732e7072" .
-    "6f746f1a40504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4974656d2f496e76656e746f72795570677261646541747472696275" .
-    "7465732e70726f746f22b5070a0c4974656d53657474696e677312320a07" .
-    "6974656d5f696418012001280e32212e504f474f50726f746f732e496e76" .
-    "656e746f72792e4974656d2e4974656d496412360a096974656d5f747970" .
-    "6518022001280e32232e504f474f50726f746f732e496e76656e746f7279" .
-    "2e4974656d2e4974656d5479706512300a0863617465676f727918032001" .
-    "280e321e2e504f474f50726f746f732e456e756d732e4974656d43617465" .
-    "676f727912110a0964726f705f66726571180420012802121a0a1264726f" .
-    "705f747261696e65725f6c6576656c18052001280512450a08706f6b6562" .
-    "616c6c18062001280b32332e504f474f50726f746f732e53657474696e67" .
-    "732e4d61737465722e4974656d2e506f6b6562616c6c4174747269627574" .
-    "657312410a06706f74696f6e18072001280b32312e504f474f50726f746f" .
-    "732e53657474696e67732e4d61737465722e4974656d2e506f74696f6e41" .
-    "74747269627574657312410a0672657669766518082001280b32312e504f" .
-    "474f50726f746f732e53657474696e67732e4d61737465722e4974656d2e" .
-    "5265766976654174747269627574657312410a06626174746c6518092001" .
-    "280b32312e504f474f50726f746f732e53657474696e67732e4d61737465" .
-    "722e4974656d2e426174746c6541747472696275746573123d0a04666f6f" .
-    "64180a2001280b322f2e504f474f50726f746f732e53657474696e67732e" .
-    "4d61737465722e4974656d2e466f6f644174747269627574657312560a11" .
-    "696e76656e746f72795f75706772616465180b2001280b323b2e504f474f" .
-    "50726f746f732e53657474696e67732e4d61737465722e4974656d2e496e" .
-    "76656e746f72795570677261646541747472696275746573124c0a087870" .
-    "5f626f6f7374180c2001280b323a2e504f474f50726f746f732e53657474" .
-    "696e67732e4d61737465722e4974656d2e457870657269656e6365426f6f" .
-    "73744174747269627574657312430a07696e63656e7365180d2001280b32" .
-    "322e504f474f50726f746f732e53657474696e67732e4d61737465722e49" .
-    "74656d2e496e63656e736541747472696275746573124e0a0d6567675f69" .
-    "6e63756261746f72180e2001280b32372e504f474f50726f746f732e5365" .
-    "7474696e67732e4d61737465722e4974656d2e456767496e63756261746f" .
-    "7241747472696275746573124e0a0d666f72745f6d6f646966696572180f" .
-    "2001280b32372e504f474f50726f746f732e53657474696e67732e4d6173" .
-    "7465722e4974656d2e466f72744d6f646966696572417474726962757465" .
-    "73620670726f746f33"
-));
 

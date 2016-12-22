@@ -4,76 +4,104 @@
 
 namespace POGOProtos\Data\Capture;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Capture.CaptureAward</code>
+ */
 class CaptureAward extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Enums.ActivityType activity_type = 1 [packed = true];</code>
+     */
     private $activity_type;
+    /**
+     * <code>repeated int32 xp = 2 [packed = true];</code>
+     */
     private $xp;
+    /**
+     * <code>repeated int32 candy = 3 [packed = true];</code>
+     */
     private $candy;
+    /**
+     * <code>repeated int32 stardust = 4 [packed = true];</code>
+     */
     private $stardust;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Capture\CaptureAward::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Enums.ActivityType activity_type = 1 [packed = true];</code>
+     */
     public function getActivityType()
     {
         return $this->activity_type;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.ActivityType activity_type = 1 [packed = true];</code>
+     */
     public function setActivityType(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\ActivityType::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\ActivityType::class);
         $this->activity_type = $var;
     }
 
+    /**
+     * <code>repeated int32 xp = 2 [packed = true];</code>
+     */
     public function getXp()
     {
         return $this->xp;
     }
 
+    /**
+     * <code>repeated int32 xp = 2 [packed = true];</code>
+     */
     public function setXp(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->xp = $var;
     }
 
+    /**
+     * <code>repeated int32 candy = 3 [packed = true];</code>
+     */
     public function getCandy()
     {
         return $this->candy;
     }
 
+    /**
+     * <code>repeated int32 candy = 3 [packed = true];</code>
+     */
     public function setCandy(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->candy = $var;
     }
 
+    /**
+     * <code>repeated int32 stardust = 4 [packed = true];</code>
+     */
     public function getStardust()
     {
         return $this->stardust;
     }
 
+    /**
+     * <code>repeated int32 stardust = 4 [packed = true];</code>
+     */
     public function setStardust(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->stardust = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0af7010a2a504f474f50726f746f732f446174612f436170747572652f43" .
-    "61707475726541776172642e70726f746f1217504f474f50726f746f732e" .
-    "446174612e436170747572651a23504f474f50726f746f732f456e756d73" .
-    "2f4163746976697479547970652e70726f746f2282010a0c436170747572" .
-    "65417761726412390a0d61637469766974795f7479706518012003280e32" .
-    "1e2e504f474f50726f746f732e456e756d732e4163746976697479547970" .
-    "6542021001120e0a0278701802200328054202100112110a0563616e6479" .
-    "1803200328054202100112140a0873746172647573741804200328054202" .
-    "1001620670726f746f33"
-));
 

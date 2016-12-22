@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.GetPlayerProfileMessage</code>
+ */
 class GetPlayerProfileMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string player_name = 1;</code>
+     */
     private $player_name = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\GetPlayerProfileMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string player_name = 1;</code>
+     */
     public function getPlayerName()
     {
         return $this->player_name;
     }
 
+    /**
+     * <code>string player_name = 1;</code>
+     */
     public function setPlayerName($var)
     {
         GPBUtil::checkString($var, True);
@@ -25,15 +41,4 @@ class GetPlayerProfileMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa8010a45504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f476574506c6179657250726f66696c" .
-    "654d6573736167652e70726f746f1227504f474f50726f746f732e4e6574" .
-    "776f726b696e672e52657175657374732e4d65737361676573222e0a1747" .
-    "6574506c6179657250726f66696c654d65737361676512130a0b706c6179" .
-    "65725f6e616d65180120012809620670726f746f33"
-));
 

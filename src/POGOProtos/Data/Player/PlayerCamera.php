@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Data\Player;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Player.PlayerCamera</code>
+ */
 class PlayerCamera extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bool is_default_camera = 1;</code>
+     */
     private $is_default_camera = false;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Player\PlayerCamera::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bool is_default_camera = 1;</code>
+     */
     public function getIsDefaultCamera()
     {
         return $this->is_default_camera;
     }
 
+    /**
+     * <code>bool is_default_camera = 1;</code>
+     */
     public function setIsDefaultCamera($var)
     {
         GPBUtil::checkBool($var);
@@ -25,13 +41,4 @@ class PlayerCamera extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a760a29504f474f50726f746f732f446174612f506c617965722f506c61" .
-    "79657243616d6572612e70726f746f1216504f474f50726f746f732e4461" .
-    "74612e506c6179657222290a0c506c6179657243616d65726112190a1169" .
-    "735f64656661756c745f63616d657261180120012808620670726f746f33"
-));
 

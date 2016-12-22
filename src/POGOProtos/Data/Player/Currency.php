@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Data\Player;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Player.Currency</code>
+ */
 class Currency extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string name = 1;</code>
+     */
     private $name = '';
+    /**
+     * <code>int32 amount = 2;</code>
+     */
     private $amount = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Player\Currency::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string name = 1;</code>
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * <code>string name = 1;</code>
+     */
     public function setName($var)
     {
         GPBUtil::checkString($var, True);
         $this->name = $var;
     }
 
+    /**
+     * <code>int32 amount = 2;</code>
+     */
     public function getAmount()
     {
         return $this->amount;
     }
 
+    /**
+     * <code>int32 amount = 2;</code>
+     */
     public function setAmount($var)
     {
         GPBUtil::checkInt32($var);
@@ -37,13 +62,4 @@ class Currency extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a710a25504f474f50726f746f732f446174612f506c617965722f437572" .
-    "72656e63792e70726f746f1216504f474f50726f746f732e446174612e50" .
-    "6c6179657222280a0843757272656e6379120c0a046e616d651801200128" .
-    "09120e0a06616d6f756e74180220012805620670726f746f33"
-));
 

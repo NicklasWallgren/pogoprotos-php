@@ -4,56 +4,99 @@
 
 namespace POGOProtos\Settings\Master\Pokemon;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.Pokemon.StatsAttributes</code>
+ */
 class StatsAttributes extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int32 base_stamina = 1;</code>
+     */
     private $base_stamina = 0;
+    /**
+     * <code>int32 base_attack = 2;</code>
+     */
     private $base_attack = 0;
+    /**
+     * <code>int32 base_defense = 3;</code>
+     */
     private $base_defense = 0;
+    /**
+     * <code>int32 dodge_energy_delta = 8;</code>
+     */
     private $dodge_energy_delta = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\Pokemon\StatsAttributes::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int32 base_stamina = 1;</code>
+     */
     public function getBaseStamina()
     {
         return $this->base_stamina;
     }
 
+    /**
+     * <code>int32 base_stamina = 1;</code>
+     */
     public function setBaseStamina($var)
     {
         GPBUtil::checkInt32($var);
         $this->base_stamina = $var;
     }
 
+    /**
+     * <code>int32 base_attack = 2;</code>
+     */
     public function getBaseAttack()
     {
         return $this->base_attack;
     }
 
+    /**
+     * <code>int32 base_attack = 2;</code>
+     */
     public function setBaseAttack($var)
     {
         GPBUtil::checkInt32($var);
         $this->base_attack = $var;
     }
 
+    /**
+     * <code>int32 base_defense = 3;</code>
+     */
     public function getBaseDefense()
     {
         return $this->base_defense;
     }
 
+    /**
+     * <code>int32 base_defense = 3;</code>
+     */
     public function setBaseDefense($var)
     {
         GPBUtil::checkInt32($var);
         $this->base_defense = $var;
     }
 
+    /**
+     * <code>int32 dodge_energy_delta = 8;</code>
+     */
     public function getDodgeEnergyDelta()
     {
         return $this->dodge_energy_delta;
     }
 
+    /**
+     * <code>int32 dodge_energy_delta = 8;</code>
+     */
     public function setDodgeEnergyDelta($var)
     {
         GPBUtil::checkInt32($var);
@@ -61,17 +104,4 @@ class StatsAttributes extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ad6010a38504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f506f6b656d6f6e2f5374617473417474726962757465732e70726f74" .
-    "6f1222504f474f50726f746f732e53657474696e67732e4d61737465722e" .
-    "506f6b656d6f6e226e0a0f53746174734174747269627574657312140a0c" .
-    "626173655f7374616d696e6118012001280512130a0b626173655f617474" .
-    "61636b18022001280512140a0c626173655f646566656e73651803200128" .
-    "05121a0a12646f6467655f656e657267795f64656c746118082001280562" .
-    "0670726f746f33"
-));
 

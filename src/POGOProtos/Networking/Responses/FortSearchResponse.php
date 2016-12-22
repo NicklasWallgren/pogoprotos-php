@@ -4,94 +4,162 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.FortSearchResponse</code>
+ */
 class FortSearchResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.FortSearchResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemAward items_awarded = 2;</code>
+     */
     private $items_awarded;
+    /**
+     * <code>int32 gems_awarded = 3;</code>
+     */
     private $gems_awarded = 0;
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data_egg = 4;</code>
+     */
     private $pokemon_data_egg = null;
+    /**
+     * <code>int32 experience_awarded = 5;</code>
+     */
     private $experience_awarded = 0;
+    /**
+     * <code>int64 cooldown_complete_timestamp_ms = 6;</code>
+     */
     private $cooldown_complete_timestamp_ms = 0;
+    /**
+     * <code>int32 chain_hack_sequence_number = 7;</code>
+     */
     private $chain_hack_sequence_number = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\FortSearchResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.FortSearchResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.FortSearchResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\FortSearchResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemAward items_awarded = 2;</code>
+     */
     public function getItemsAwarded()
     {
         return $this->items_awarded;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemAward items_awarded = 2;</code>
+     */
     public function setItemsAwarded(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Inventory\Item\ItemAward::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Inventory\Item\ItemAward::class);
         $this->items_awarded = $var;
     }
 
+    /**
+     * <code>int32 gems_awarded = 3;</code>
+     */
     public function getGemsAwarded()
     {
         return $this->gems_awarded;
     }
 
+    /**
+     * <code>int32 gems_awarded = 3;</code>
+     */
     public function setGemsAwarded($var)
     {
         GPBUtil::checkInt32($var);
         $this->gems_awarded = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data_egg = 4;</code>
+     */
     public function getPokemonDataEgg()
     {
         return $this->pokemon_data_egg;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data_egg = 4;</code>
+     */
     public function setPokemonDataEgg(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->pokemon_data_egg = $var;
     }
 
+    /**
+     * <code>int32 experience_awarded = 5;</code>
+     */
     public function getExperienceAwarded()
     {
         return $this->experience_awarded;
     }
 
+    /**
+     * <code>int32 experience_awarded = 5;</code>
+     */
     public function setExperienceAwarded($var)
     {
         GPBUtil::checkInt32($var);
         $this->experience_awarded = $var;
     }
 
+    /**
+     * <code>int64 cooldown_complete_timestamp_ms = 6;</code>
+     */
     public function getCooldownCompleteTimestampMs()
     {
         return $this->cooldown_complete_timestamp_ms;
     }
 
+    /**
+     * <code>int64 cooldown_complete_timestamp_ms = 6;</code>
+     */
     public function setCooldownCompleteTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->cooldown_complete_timestamp_ms = $var;
     }
 
+    /**
+     * <code>int32 chain_hack_sequence_number = 7;</code>
+     */
     public function getChainHackSequenceNumber()
     {
         return $this->chain_hack_sequence_number;
     }
 
+    /**
+     * <code>int32 chain_hack_sequence_number = 7;</code>
+     */
     public function setChainHackSequenceNumber($var)
     {
         GPBUtil::checkInt32($var);
@@ -99,41 +167,4 @@ class FortSearchResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class FortSearchResponse_Result
-{
-    const NO_RESULT_SET = 0;
-    const SUCCESS = 1;
-    const OUT_OF_RANGE = 2;
-    const IN_COOLDOWN_PERIOD = 3;
-    const INVENTORY_FULL = 4;
-    const EXCEEDED_DAILY_LIMIT = 5;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8a050a38504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f466f7274536561726368526573706f6e73652e70726f74" .
-    "6f121f504f474f50726f746f732e4e6574776f726b696e672e526573706f" .
-    "6e7365731a21504f474f50726f746f732f446174612f506f6b656d6f6e44" .
-    "6174612e70726f746f1a29504f474f50726f746f732f496e76656e746f72" .
-    "792f4974656d2f4974656d41776172642e70726f746f22d6030a12466f72" .
-    "74536561726368526573706f6e7365124a0a06726573756c741801200128" .
-    "0e323a2e504f474f50726f746f732e4e6574776f726b696e672e52657370" .
-    "6f6e7365732e466f7274536561726368526573706f6e73652e526573756c" .
-    "74123b0a0d6974656d735f6177617264656418022003280b32242e504f47" .
-    "4f50726f746f732e496e76656e746f72792e4974656d2e4974656d417761" .
-    "726412140a0c67656d735f6177617264656418032001280512360a10706f" .
-    "6b656d6f6e5f646174615f65676718042001280b321c2e504f474f50726f" .
-    "746f732e446174612e506f6b656d6f6e44617461121a0a12657870657269" .
-    "656e63655f6177617264656418052001280512260a1e636f6f6c646f776e" .
-    "5f636f6d706c6574655f74696d657374616d705f6d731806200128031222" .
-    "0a1a636861696e5f6861636b5f73657175656e63655f6e756d6265721807" .
-    "200128052280010a06526573756c7412110a0d4e4f5f524553554c545f53" .
-    "45541000120b0a0753554343455353100112100a0c4f55545f4f465f5241" .
-    "4e4745100212160a12494e5f434f4f4c444f574e5f504552494f44100312" .
-    "120a0e494e56454e544f52595f46554c4c100412180a1445584345454445" .
-    "445f4441494c595f4c494d49541005620670726f746f33"
-));
 

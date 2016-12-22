@@ -4,64 +4,83 @@
 
 namespace POGOProtos\Inventory;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.InventoryDelta</code>
+ */
 class InventoryDelta extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int64 original_timestamp_ms = 1;</code>
+     */
     private $original_timestamp_ms = 0;
+    /**
+     * <code>int64 new_timestamp_ms = 2;</code>
+     */
     private $new_timestamp_ms = 0;
+    /**
+     * <code>repeated .POGOProtos.Inventory.InventoryItem inventory_items = 3;</code>
+     */
     private $inventory_items;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\InventoryDelta::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int64 original_timestamp_ms = 1;</code>
+     */
     public function getOriginalTimestampMs()
     {
         return $this->original_timestamp_ms;
     }
 
+    /**
+     * <code>int64 original_timestamp_ms = 1;</code>
+     */
     public function setOriginalTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->original_timestamp_ms = $var;
     }
 
+    /**
+     * <code>int64 new_timestamp_ms = 2;</code>
+     */
     public function getNewTimestampMs()
     {
         return $this->new_timestamp_ms;
     }
 
+    /**
+     * <code>int64 new_timestamp_ms = 2;</code>
+     */
     public function setNewTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->new_timestamp_ms = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.InventoryItem inventory_items = 3;</code>
+     */
     public function getInventoryItems()
     {
         return $this->inventory_items;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.InventoryItem inventory_items = 3;</code>
+     */
     public function setInventoryItems(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Inventory\InventoryItem::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Inventory\InventoryItem::class);
         $this->inventory_items = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0afd010a29504f474f50726f746f732f496e76656e746f72792f496e7665" .
-    "6e746f727944656c74612e70726f746f1214504f474f50726f746f732e49" .
-    "6e76656e746f72791a28504f474f50726f746f732f496e76656e746f7279" .
-    "2f496e76656e746f72794974656d2e70726f746f2287010a0e496e76656e" .
-    "746f727944656c7461121d0a156f726967696e616c5f74696d657374616d" .
-    "705f6d7318012001280312180a106e65775f74696d657374616d705f6d73" .
-    "180220012803123c0a0f696e76656e746f72795f6974656d731803200328" .
-    "0b32232e504f474f50726f746f732e496e76656e746f72792e496e76656e" .
-    "746f72794974656d620670726f746f33"
-));
 

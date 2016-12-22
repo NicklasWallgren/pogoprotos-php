@@ -4,234 +4,356 @@
 
 namespace POGOProtos\Settings\Master;
 
-require_once('POGOProtos/Enums/CameraTarget.pb.php');
-require_once('POGOProtos/Enums/CameraInterpolation.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.CameraSettings</code>
+ */
 class CameraSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string next_camera = 1;</code>
+     */
     private $next_camera = '';
+    /**
+     * <code>repeated .POGOProtos.Enums.CameraInterpolation interpolation = 2;</code>
+     */
     private $interpolation;
+    /**
+     * <code>repeated .POGOProtos.Enums.CameraTarget target_type = 3;</code>
+     */
     private $target_type;
+    /**
+     * <code>repeated float ease_in_speed = 4;</code>
+     */
     private $ease_in_speed;
+    /**
+     * <code>repeated float east_out_speed = 5;</code>
+     */
     private $east_out_speed;
+    /**
+     * <code>repeated float duration_seconds = 6;</code>
+     */
     private $duration_seconds;
+    /**
+     * <code>repeated float wait_seconds = 7;</code>
+     */
     private $wait_seconds;
+    /**
+     * <code>repeated float transition_seconds = 8;</code>
+     */
     private $transition_seconds;
+    /**
+     * <code>repeated float angle_degree = 9;</code>
+     */
     private $angle_degree;
+    /**
+     * <code>repeated float angle_offset_degree = 10;</code>
+     */
     private $angle_offset_degree;
+    /**
+     * <code>repeated float pitch_degree = 11;</code>
+     */
     private $pitch_degree;
+    /**
+     * <code>repeated float pitch_offset_degree = 12;</code>
+     */
     private $pitch_offset_degree;
+    /**
+     * <code>repeated float roll_degree = 13;</code>
+     */
     private $roll_degree;
+    /**
+     * <code>repeated float distance_meters = 14;</code>
+     */
     private $distance_meters;
+    /**
+     * <code>repeated float height_percent = 15;</code>
+     */
     private $height_percent;
+    /**
+     * <code>repeated float vert_ctr_ratio = 16;</code>
+     */
     private $vert_ctr_ratio;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\CameraSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string next_camera = 1;</code>
+     */
     public function getNextCamera()
     {
         return $this->next_camera;
     }
 
+    /**
+     * <code>string next_camera = 1;</code>
+     */
     public function setNextCamera($var)
     {
         GPBUtil::checkString($var, True);
         $this->next_camera = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.CameraInterpolation interpolation = 2;</code>
+     */
     public function getInterpolation()
     {
         return $this->interpolation;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.CameraInterpolation interpolation = 2;</code>
+     */
     public function setInterpolation(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\CameraInterpolation::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\CameraInterpolation::class);
         $this->interpolation = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.CameraTarget target_type = 3;</code>
+     */
     public function getTargetType()
     {
         return $this->target_type;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.CameraTarget target_type = 3;</code>
+     */
     public function setTargetType(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\CameraTarget::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\CameraTarget::class);
         $this->target_type = $var;
     }
 
+    /**
+     * <code>repeated float ease_in_speed = 4;</code>
+     */
     public function getEaseInSpeed()
     {
         return $this->ease_in_speed;
     }
 
+    /**
+     * <code>repeated float ease_in_speed = 4;</code>
+     */
     public function setEaseInSpeed(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->ease_in_speed = $var;
     }
 
+    /**
+     * <code>repeated float east_out_speed = 5;</code>
+     */
     public function getEastOutSpeed()
     {
         return $this->east_out_speed;
     }
 
+    /**
+     * <code>repeated float east_out_speed = 5;</code>
+     */
     public function setEastOutSpeed(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->east_out_speed = $var;
     }
 
+    /**
+     * <code>repeated float duration_seconds = 6;</code>
+     */
     public function getDurationSeconds()
     {
         return $this->duration_seconds;
     }
 
+    /**
+     * <code>repeated float duration_seconds = 6;</code>
+     */
     public function setDurationSeconds(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->duration_seconds = $var;
     }
 
+    /**
+     * <code>repeated float wait_seconds = 7;</code>
+     */
     public function getWaitSeconds()
     {
         return $this->wait_seconds;
     }
 
+    /**
+     * <code>repeated float wait_seconds = 7;</code>
+     */
     public function setWaitSeconds(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->wait_seconds = $var;
     }
 
+    /**
+     * <code>repeated float transition_seconds = 8;</code>
+     */
     public function getTransitionSeconds()
     {
         return $this->transition_seconds;
     }
 
+    /**
+     * <code>repeated float transition_seconds = 8;</code>
+     */
     public function setTransitionSeconds(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->transition_seconds = $var;
     }
 
+    /**
+     * <code>repeated float angle_degree = 9;</code>
+     */
     public function getAngleDegree()
     {
         return $this->angle_degree;
     }
 
+    /**
+     * <code>repeated float angle_degree = 9;</code>
+     */
     public function setAngleDegree(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->angle_degree = $var;
     }
 
+    /**
+     * <code>repeated float angle_offset_degree = 10;</code>
+     */
     public function getAngleOffsetDegree()
     {
         return $this->angle_offset_degree;
     }
 
+    /**
+     * <code>repeated float angle_offset_degree = 10;</code>
+     */
     public function setAngleOffsetDegree(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->angle_offset_degree = $var;
     }
 
+    /**
+     * <code>repeated float pitch_degree = 11;</code>
+     */
     public function getPitchDegree()
     {
         return $this->pitch_degree;
     }
 
+    /**
+     * <code>repeated float pitch_degree = 11;</code>
+     */
     public function setPitchDegree(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->pitch_degree = $var;
     }
 
+    /**
+     * <code>repeated float pitch_offset_degree = 12;</code>
+     */
     public function getPitchOffsetDegree()
     {
         return $this->pitch_offset_degree;
     }
 
+    /**
+     * <code>repeated float pitch_offset_degree = 12;</code>
+     */
     public function setPitchOffsetDegree(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->pitch_offset_degree = $var;
     }
 
+    /**
+     * <code>repeated float roll_degree = 13;</code>
+     */
     public function getRollDegree()
     {
         return $this->roll_degree;
     }
 
+    /**
+     * <code>repeated float roll_degree = 13;</code>
+     */
     public function setRollDegree(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->roll_degree = $var;
     }
 
+    /**
+     * <code>repeated float distance_meters = 14;</code>
+     */
     public function getDistanceMeters()
     {
         return $this->distance_meters;
     }
 
+    /**
+     * <code>repeated float distance_meters = 14;</code>
+     */
     public function setDistanceMeters(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->distance_meters = $var;
     }
 
+    /**
+     * <code>repeated float height_percent = 15;</code>
+     */
     public function getHeightPercent()
     {
         return $this->height_percent;
     }
 
+    /**
+     * <code>repeated float height_percent = 15;</code>
+     */
     public function setHeightPercent(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->height_percent = $var;
     }
 
+    /**
+     * <code>repeated float vert_ctr_ratio = 16;</code>
+     */
     public function getVertCtrRatio()
     {
         return $this->vert_ctr_ratio;
     }
 
+    /**
+     * <code>repeated float vert_ctr_ratio = 16;</code>
+     */
     public function setVertCtrRatio(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->vert_ctr_ratio = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a80050a2f504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f43616d65726153657474696e67732e70726f746f121a504f474f5072" .
-    "6f746f732e53657474696e67732e4d61737465721a23504f474f50726f74" .
-    "6f732f456e756d732f43616d6572615461726765742e70726f746f1a2a50" .
-    "4f474f50726f746f732f456e756d732f43616d657261496e746572706f6c" .
-    "6174696f6e2e70726f746f22d7030a0e43616d65726153657474696e6773" .
-    "12130a0b6e6578745f63616d657261180120012809123c0a0d696e746572" .
-    "706f6c6174696f6e18022003280e32252e504f474f50726f746f732e456e" .
-    "756d732e43616d657261496e746572706f6c6174696f6e12330a0b746172" .
-    "6765745f7479706518032003280e321e2e504f474f50726f746f732e456e" .
-    "756d732e43616d65726154617267657412150a0d656173655f696e5f7370" .
-    "65656418042003280212160a0e656173745f6f75745f7370656564180520" .
-    "03280212180a106475726174696f6e5f7365636f6e647318062003280212" .
-    "140a0c776169745f7365636f6e6473180720032802121a0a127472616e73" .
-    "6974696f6e5f7365636f6e647318082003280212140a0c616e676c655f64" .
-    "6567726565180920032802121b0a13616e676c655f6f66667365745f6465" .
-    "67726565180a2003280212140a0c70697463685f646567726565180b2003" .
-    "2802121b0a1370697463685f6f66667365745f646567726565180c200328" .
-    "0212130a0b726f6c6c5f646567726565180d2003280212170a0f64697374" .
-    "616e63655f6d6574657273180e2003280212160a0e6865696768745f7065" .
-    "7263656e74180f2003280212160a0e766572745f6374725f726174696f18" .
-    "1020032802620670726f746f33"
-));
 

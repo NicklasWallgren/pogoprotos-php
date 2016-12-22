@@ -4,57 +4,99 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.EvolvePokemonResponse</code>
+ */
 class EvolvePokemonResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.EvolvePokemonResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>.POGOProtos.Data.PokemonData evolved_pokemon_data = 2;</code>
+     */
     private $evolved_pokemon_data = null;
+    /**
+     * <code>int32 experience_awarded = 3;</code>
+     */
     private $experience_awarded = 0;
+    /**
+     * <code>int32 candy_awarded = 4;</code>
+     */
     private $candy_awarded = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\EvolvePokemonResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.EvolvePokemonResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.EvolvePokemonResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\EvolvePokemonResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData evolved_pokemon_data = 2;</code>
+     */
     public function getEvolvedPokemonData()
     {
         return $this->evolved_pokemon_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData evolved_pokemon_data = 2;</code>
+     */
     public function setEvolvedPokemonData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->evolved_pokemon_data = $var;
     }
 
+    /**
+     * <code>int32 experience_awarded = 3;</code>
+     */
     public function getExperienceAwarded()
     {
         return $this->experience_awarded;
     }
 
+    /**
+     * <code>int32 experience_awarded = 3;</code>
+     */
     public function setExperienceAwarded($var)
     {
         GPBUtil::checkInt32($var);
         $this->experience_awarded = $var;
     }
 
+    /**
+     * <code>int32 candy_awarded = 4;</code>
+     */
     public function getCandyAwarded()
     {
         return $this->candy_awarded;
     }
 
+    /**
+     * <code>int32 candy_awarded = 4;</code>
+     */
     public function setCandyAwarded($var)
     {
         GPBUtil::checkInt32($var);
@@ -62,37 +104,4 @@ class EvolvePokemonResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class EvolvePokemonResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const FAILED_POKEMON_MISSING = 2;
-    const FAILED_INSUFFICIENT_RESOURCES = 3;
-    const FAILED_POKEMON_CANNOT_EVOLVE = 4;
-    const FAILED_POKEMON_IS_DEPLOYED = 5;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a85040a3b504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f45766f6c7665506f6b656d6f6e526573706f6e73652e70" .
-    "726f746f121f504f474f50726f746f732e4e6574776f726b696e672e5265" .
-    "73706f6e7365731a21504f474f50726f746f732f446174612f506f6b656d" .
-    "6f6e446174612e70726f746f22f9020a1545766f6c7665506f6b656d6f6e" .
-    "526573706f6e7365124d0a06726573756c7418012001280e323d2e504f47" .
-    "4f50726f746f732e4e6574776f726b696e672e526573706f6e7365732e45" .
-    "766f6c7665506f6b656d6f6e526573706f6e73652e526573756c74123a0a" .
-    "1465766f6c7665645f706f6b656d6f6e5f6461746118022001280b321c2e" .
-    "504f474f50726f746f732e446174612e506f6b656d6f6e44617461121a0a" .
-    "12657870657269656e63655f6177617264656418032001280512150a0d63" .
-    "616e64795f6177617264656418042001280522a1010a06526573756c7412" .
-    "090a05554e5345541000120b0a07535543434553531001121a0a16464149" .
-    "4c45445f504f4b454d4f4e5f4d495353494e47100212210a1d4641494c45" .
-    "445f494e53554646494349454e545f5245534f5552434553100312200a1c" .
-    "4641494c45445f504f4b454d4f4e5f43414e4e4f545f45564f4c56451004" .
-    "121e0a1a4641494c45445f504f4b454d4f4e5f49535f4445504c4f594544" .
-    "1005620670726f746f33"
-));
 

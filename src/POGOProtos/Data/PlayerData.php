@@ -4,229 +4,335 @@
 
 namespace POGOProtos\Data;
 
-
-
-
-
-
-
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.PlayerData</code>
+ */
 class PlayerData extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int64 creation_timestamp_ms = 1;</code>
+     */
     private $creation_timestamp_ms = 0;
+    /**
+     * <code>string username = 2;</code>
+     */
     private $username = '';
+    /**
+     * <code>.POGOProtos.Enums.TeamColor team = 5;</code>
+     */
     private $team = 0;
+    /**
+     * <code>repeated .POGOProtos.Enums.TutorialState tutorial_state = 7 [packed = true];</code>
+     */
     private $tutorial_state;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar avatar = 8;</code>
+     */
     private $avatar = null;
+    /**
+     * <code>int32 max_pokemon_storage = 9;</code>
+     */
     private $max_pokemon_storage = 0;
+    /**
+     * <code>int32 max_item_storage = 10;</code>
+     */
     private $max_item_storage = 0;
+    /**
+     * <code>.POGOProtos.Data.Player.DailyBonus daily_bonus = 11;</code>
+     */
     private $daily_bonus = null;
+    /**
+     * <code>.POGOProtos.Data.Player.EquippedBadge equipped_badge = 12;</code>
+     */
     private $equipped_badge = null;
+    /**
+     * <code>.POGOProtos.Data.Player.ContactSettings contact_settings = 13;</code>
+     */
     private $contact_settings = null;
+    /**
+     * <code>repeated .POGOProtos.Data.Player.Currency currencies = 14;</code>
+     */
     private $currencies;
+    /**
+     * <code>int32 remaining_codename_claims = 15;</code>
+     */
     private $remaining_codename_claims = 0;
+    /**
+     * <code>.POGOProtos.Data.BuddyPokemon buddy_pokemon = 16;</code>
+     */
     private $buddy_pokemon = null;
+    /**
+     * <code>int64 battle_lockout_end_ms = 17;</code>
+     */
     private $battle_lockout_end_ms = 0;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar secondary_player_avatar = 18;</code>
+     */
+    private $secondary_player_avatar = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\PlayerData::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int64 creation_timestamp_ms = 1;</code>
+     */
     public function getCreationTimestampMs()
     {
         return $this->creation_timestamp_ms;
     }
 
+    /**
+     * <code>int64 creation_timestamp_ms = 1;</code>
+     */
     public function setCreationTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->creation_timestamp_ms = $var;
     }
 
+    /**
+     * <code>string username = 2;</code>
+     */
     public function getUsername()
     {
         return $this->username;
     }
 
+    /**
+     * <code>string username = 2;</code>
+     */
     public function setUsername($var)
     {
         GPBUtil::checkString($var, True);
         $this->username = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.TeamColor team = 5;</code>
+     */
     public function getTeam()
     {
         return $this->team;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.TeamColor team = 5;</code>
+     */
     public function setTeam($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\TeamColor::class);
         $this->team = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.TutorialState tutorial_state = 7 [packed = true];</code>
+     */
     public function getTutorialState()
     {
         return $this->tutorial_state;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.TutorialState tutorial_state = 7 [packed = true];</code>
+     */
     public function setTutorialState(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\TutorialState::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\TutorialState::class);
         $this->tutorial_state = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar avatar = 8;</code>
+     */
     public function getAvatar()
     {
         return $this->avatar;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar avatar = 8;</code>
+     */
     public function setAvatar(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerAvatar::class);
         $this->avatar = $var;
     }
 
+    /**
+     * <code>int32 max_pokemon_storage = 9;</code>
+     */
     public function getMaxPokemonStorage()
     {
         return $this->max_pokemon_storage;
     }
 
+    /**
+     * <code>int32 max_pokemon_storage = 9;</code>
+     */
     public function setMaxPokemonStorage($var)
     {
         GPBUtil::checkInt32($var);
         $this->max_pokemon_storage = $var;
     }
 
+    /**
+     * <code>int32 max_item_storage = 10;</code>
+     */
     public function getMaxItemStorage()
     {
         return $this->max_item_storage;
     }
 
+    /**
+     * <code>int32 max_item_storage = 10;</code>
+     */
     public function setMaxItemStorage($var)
     {
         GPBUtil::checkInt32($var);
         $this->max_item_storage = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.DailyBonus daily_bonus = 11;</code>
+     */
     public function getDailyBonus()
     {
         return $this->daily_bonus;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.DailyBonus daily_bonus = 11;</code>
+     */
     public function setDailyBonus(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\DailyBonus::class);
         $this->daily_bonus = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.EquippedBadge equipped_badge = 12;</code>
+     */
     public function getEquippedBadge()
     {
         return $this->equipped_badge;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.EquippedBadge equipped_badge = 12;</code>
+     */
     public function setEquippedBadge(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\EquippedBadge::class);
         $this->equipped_badge = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.ContactSettings contact_settings = 13;</code>
+     */
     public function getContactSettings()
     {
         return $this->contact_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.ContactSettings contact_settings = 13;</code>
+     */
     public function setContactSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\ContactSettings::class);
         $this->contact_settings = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Player.Currency currencies = 14;</code>
+     */
     public function getCurrencies()
     {
         return $this->currencies;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Player.Currency currencies = 14;</code>
+     */
     public function setCurrencies(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Player\Currency::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Player\Currency::class);
         $this->currencies = $var;
     }
 
+    /**
+     * <code>int32 remaining_codename_claims = 15;</code>
+     */
     public function getRemainingCodenameClaims()
     {
         return $this->remaining_codename_claims;
     }
 
+    /**
+     * <code>int32 remaining_codename_claims = 15;</code>
+     */
     public function setRemainingCodenameClaims($var)
     {
         GPBUtil::checkInt32($var);
         $this->remaining_codename_claims = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.BuddyPokemon buddy_pokemon = 16;</code>
+     */
     public function getBuddyPokemon()
     {
         return $this->buddy_pokemon;
     }
 
+    /**
+     * <code>.POGOProtos.Data.BuddyPokemon buddy_pokemon = 16;</code>
+     */
     public function setBuddyPokemon(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\BuddyPokemon::class);
         $this->buddy_pokemon = $var;
     }
 
+    /**
+     * <code>int64 battle_lockout_end_ms = 17;</code>
+     */
     public function getBattleLockoutEndMs()
     {
         return $this->battle_lockout_end_ms;
     }
 
+    /**
+     * <code>int64 battle_lockout_end_ms = 17;</code>
+     */
     public function setBattleLockoutEndMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->battle_lockout_end_ms = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar secondary_player_avatar = 18;</code>
+     */
+    public function getSecondaryPlayerAvatar()
+    {
+        return $this->secondary_player_avatar;
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar secondary_player_avatar = 18;</code>
+     */
+    public function setSecondaryPlayerAvatar(&$var)
+    {
+        GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerAvatar::class);
+        $this->secondary_player_avatar = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0afa070a20504f474f50726f746f732f446174612f506c61796572446174" .
-    "612e70726f746f120f504f474f50726f746f732e446174611a24504f474f" .
-    "50726f746f732f456e756d732f5475746f7269616c53746174652e70726f" .
-    "746f1a29504f474f50726f746f732f446174612f506c617965722f506c61" .
-    "7965724176617461722e70726f746f1a27504f474f50726f746f732f4461" .
-    "74612f506c617965722f4461696c79426f6e75732e70726f746f1a2a504f" .
-    "474f50726f746f732f446174612f506c617965722f457175697070656442" .
-    "616467652e70726f746f1a2c504f474f50726f746f732f446174612f506c" .
-    "617965722f436f6e7461637453657474696e67732e70726f746f1a25504f" .
-    "474f50726f746f732f446174612f506c617965722f43757272656e63792e" .
-    "70726f746f1a22504f474f50726f746f732f446174612f4275646479506f" .
-    "6b656d6f6e2e70726f746f1a20504f474f50726f746f732f456e756d732f" .
-    "5465616d436f6c6f722e70726f746f22fb040a0a506c6179657244617461" .
-    "121d0a156372656174696f6e5f74696d657374616d705f6d731801200128" .
-    "0312100a08757365726e616d6518022001280912290a047465616d180520" .
-    "01280e321b2e504f474f50726f746f732e456e756d732e5465616d436f6c" .
-    "6f72123b0a0e7475746f7269616c5f737461746518072003280e321f2e50" .
-    "4f474f50726f746f732e456e756d732e5475746f7269616c537461746542" .
-    "02100112340a0661766174617218082001280b32242e504f474f50726f74" .
-    "6f732e446174612e506c617965722e506c61796572417661746172121b0a" .
-    "136d61785f706f6b656d6f6e5f73746f7261676518092001280512180a10" .
-    "6d61785f6974656d5f73746f72616765180a2001280512370a0b6461696c" .
-    "795f626f6e7573180b2001280b32222e504f474f50726f746f732e446174" .
-    "612e506c617965722e4461696c79426f6e7573123d0a0e65717569707065" .
-    "645f6261646765180c2001280b32252e504f474f50726f746f732e446174" .
-    "612e506c617965722e4571756970706564426164676512410a10636f6e74" .
-    "6163745f73657474696e6773180d2001280b32272e504f474f50726f746f" .
-    "732e446174612e506c617965722e436f6e7461637453657474696e677312" .
-    "340a0a63757272656e63696573180e2003280b32202e504f474f50726f74" .
-    "6f732e446174612e506c617965722e43757272656e637912210a1972656d" .
-    "61696e696e675f636f64656e616d655f636c61696d73180f200128051234" .
-    "0a0d62756464795f706f6b656d6f6e18102001280b321d2e504f474f5072" .
-    "6f746f732e446174612e4275646479506f6b656d6f6e121d0a1562617474" .
-    "6c655f6c6f636b6f75745f656e645f6d73181120012803620670726f746f" .
-    "33"
-));
 

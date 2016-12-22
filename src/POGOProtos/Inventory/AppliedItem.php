@@ -4,58 +4,99 @@
 
 namespace POGOProtos\Inventory;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.AppliedItem</code>
+ */
 class AppliedItem extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemType item_type = 2;</code>
+     */
     private $item_type = 0;
+    /**
+     * <code>int64 expire_ms = 3;</code>
+     */
     private $expire_ms = 0;
+    /**
+     * <code>int64 applied_ms = 4;</code>
+     */
     private $applied_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\AppliedItem::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemType item_type = 2;</code>
+     */
     public function getItemType()
     {
         return $this->item_type;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemType item_type = 2;</code>
+     */
     public function setItemType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemType::class);
         $this->item_type = $var;
     }
 
+    /**
+     * <code>int64 expire_ms = 3;</code>
+     */
     public function getExpireMs()
     {
         return $this->expire_ms;
     }
 
+    /**
+     * <code>int64 expire_ms = 3;</code>
+     */
     public function setExpireMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->expire_ms = $var;
     }
 
+    /**
+     * <code>int64 applied_ms = 4;</code>
+     */
     public function getAppliedMs()
     {
         return $this->applied_ms;
     }
 
+    /**
+     * <code>int64 applied_ms = 4;</code>
+     */
     public function setAppliedMs($var)
     {
         GPBUtil::checkInt64($var);
@@ -63,20 +104,4 @@ class AppliedItem extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0abb020a26504f474f50726f746f732f496e76656e746f72792f4170706c" .
-    "6965644974656d2e70726f746f1214504f474f50726f746f732e496e7665" .
-    "6e746f72791a26504f474f50726f746f732f496e76656e746f72792f4974" .
-    "656d2f4974656d49642e70726f746f1a28504f474f50726f746f732f496e" .
-    "76656e746f72792f4974656d2f4974656d547970652e70726f746f22a001" .
-    "0a0b4170706c6965644974656d12320a076974656d5f696418012001280e" .
-    "32212e504f474f50726f746f732e496e76656e746f72792e4974656d2e49" .
-    "74656d496412360a096974656d5f7479706518022001280e32232e504f47" .
-    "4f50726f746f732e496e76656e746f72792e4974656d2e4974656d547970" .
-    "6512110a096578706972655f6d7318032001280312120a0a6170706c6965" .
-    "645f6d73180420012803620670726f746f33"
-));
 

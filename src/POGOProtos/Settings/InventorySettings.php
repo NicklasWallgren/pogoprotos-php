@@ -4,68 +4,120 @@
 
 namespace POGOProtos\Settings;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.InventorySettings</code>
+ */
 class InventorySettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int32 max_pokemon = 1;</code>
+     */
     private $max_pokemon = 0;
+    /**
+     * <code>int32 max_bag_items = 2;</code>
+     */
     private $max_bag_items = 0;
+    /**
+     * <code>int32 base_pokemon = 3;</code>
+     */
     private $base_pokemon = 0;
+    /**
+     * <code>int32 base_bag_items = 4;</code>
+     */
     private $base_bag_items = 0;
+    /**
+     * <code>int32 base_eggs = 5;</code>
+     */
     private $base_eggs = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\InventorySettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int32 max_pokemon = 1;</code>
+     */
     public function getMaxPokemon()
     {
         return $this->max_pokemon;
     }
 
+    /**
+     * <code>int32 max_pokemon = 1;</code>
+     */
     public function setMaxPokemon($var)
     {
         GPBUtil::checkInt32($var);
         $this->max_pokemon = $var;
     }
 
+    /**
+     * <code>int32 max_bag_items = 2;</code>
+     */
     public function getMaxBagItems()
     {
         return $this->max_bag_items;
     }
 
+    /**
+     * <code>int32 max_bag_items = 2;</code>
+     */
     public function setMaxBagItems($var)
     {
         GPBUtil::checkInt32($var);
         $this->max_bag_items = $var;
     }
 
+    /**
+     * <code>int32 base_pokemon = 3;</code>
+     */
     public function getBasePokemon()
     {
         return $this->base_pokemon;
     }
 
+    /**
+     * <code>int32 base_pokemon = 3;</code>
+     */
     public function setBasePokemon($var)
     {
         GPBUtil::checkInt32($var);
         $this->base_pokemon = $var;
     }
 
+    /**
+     * <code>int32 base_bag_items = 4;</code>
+     */
     public function getBaseBagItems()
     {
         return $this->base_bag_items;
     }
 
+    /**
+     * <code>int32 base_bag_items = 4;</code>
+     */
     public function setBaseBagItems($var)
     {
         GPBUtil::checkInt32($var);
         $this->base_bag_items = $var;
     }
 
+    /**
+     * <code>int32 base_eggs = 5;</code>
+     */
     public function getBaseEggs()
     {
         return $this->base_eggs;
     }
 
+    /**
+     * <code>int32 base_eggs = 5;</code>
+     */
     public function setBaseEggs($var)
     {
         GPBUtil::checkInt32($var);
@@ -73,16 +125,4 @@ class InventorySettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0acd010a2b504f474f50726f746f732f53657474696e67732f496e76656e" .
-    "746f727953657474696e67732e70726f746f1213504f474f50726f746f73" .
-    "2e53657474696e67732280010a11496e76656e746f727953657474696e67" .
-    "7312130a0b6d61785f706f6b656d6f6e18012001280512150a0d6d61785f" .
-    "6261675f6974656d7318022001280512140a0c626173655f706f6b656d6f" .
-    "6e18032001280512160a0e626173655f6261675f6974656d731804200128" .
-    "0512110a09626173655f65676773180520012805620670726f746f33"
-));
 

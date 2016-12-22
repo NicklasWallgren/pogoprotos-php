@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.GetAssetDigestResponse</code>
+ */
 class GetAssetDigestResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Data.AssetDigestEntry digest = 1;</code>
+     */
     private $digest;
+    /**
+     * <code>uint64 timestamp_ms = 2;</code>
+     */
     private $timestamp_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\GetAssetDigestResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Data.AssetDigestEntry digest = 1;</code>
+     */
     public function getDigest()
     {
         return $this->digest;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.AssetDigestEntry digest = 1;</code>
+     */
     public function setDigest(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\AssetDigestEntry::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\AssetDigestEntry::class);
         $this->digest = $var;
     }
 
+    /**
+     * <code>uint64 timestamp_ms = 2;</code>
+     */
     public function getTimestampMs()
     {
         return $this->timestamp_ms;
     }
 
+    /**
+     * <code>uint64 timestamp_ms = 2;</code>
+     */
     public function setTimestampMs($var)
     {
         GPBUtil::checkUint64($var);
@@ -38,18 +62,4 @@ class GetAssetDigestResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0af2010a3c504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f4765744173736574446967657374526573706f6e73652e" .
-    "70726f746f121f504f474f50726f746f732e4e6574776f726b696e672e52" .
-    "6573706f6e7365731a26504f474f50726f746f732f446174612f41737365" .
-    "74446967657374456e7472792e70726f746f22610a164765744173736574" .
-    "446967657374526573706f6e736512310a0664696765737418012003280b" .
-    "32212e504f474f50726f746f732e446174612e4173736574446967657374" .
-    "456e74727912140a0c74696d657374616d705f6d73180220012804620670" .
-    "726f746f33"
-));
 

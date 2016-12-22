@@ -4,57 +4,99 @@
 
 namespace POGOProtos\Data\Logs;
 
-require_once('POGOProtos/Enums/PokemonId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Logs.CatchPokemonLogEntry</code>
+ */
 class CatchPokemonLogEntry extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Logs.CatchPokemonLogEntry.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>int32 combat_points = 3;</code>
+     */
     private $combat_points = 0;
+    /**
+     * <code>fixed64 pokemon_data_id = 4;</code>
+     */
     private $pokemon_data_id = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Logs\CatchPokemonLogEntry::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Logs.CatchPokemonLogEntry.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Logs.CatchPokemonLogEntry.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Data\Logs\CatchPokemonLogEntry_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>int32 combat_points = 3;</code>
+     */
     public function getCombatPoints()
     {
         return $this->combat_points;
     }
 
+    /**
+     * <code>int32 combat_points = 3;</code>
+     */
     public function setCombatPoints($var)
     {
         GPBUtil::checkInt32($var);
         $this->combat_points = $var;
     }
 
+    /**
+     * <code>fixed64 pokemon_data_id = 4;</code>
+     */
     public function getPokemonDataId()
     {
         return $this->pokemon_data_id;
     }
 
+    /**
+     * <code>fixed64 pokemon_data_id = 4;</code>
+     */
     public function setPokemonDataId($var)
     {
         GPBUtil::checkUint64($var);
@@ -62,30 +104,4 @@ class CatchPokemonLogEntry extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class CatchPokemonLogEntry_Result
-{
-    const UNSET = 0;
-    const POKEMON_CAPTURED = 1;
-    const POKEMON_FLED = 2;
-    const POKEMON_HATCHED = 3;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a80030a2f504f474f50726f746f732f446174612f4c6f67732f43617463" .
-    "68506f6b656d6f6e4c6f67456e7472792e70726f746f1214504f474f5072" .
-    "6f746f732e446174612e4c6f67731a20504f474f50726f746f732f456e75" .
-    "6d732f506f6b656d6f6e49642e70726f746f228c020a144361746368506f" .
-    "6b656d6f6e4c6f67456e74727912410a06726573756c7418012001280e32" .
-    "312e504f474f50726f746f732e446174612e4c6f67732e4361746368506f" .
-    "6b656d6f6e4c6f67456e7472792e526573756c74122f0a0a706f6b656d6f" .
-    "6e5f696418022001280e321b2e504f474f50726f746f732e456e756d732e" .
-    "506f6b656d6f6e496412150a0d636f6d6261745f706f696e747318032001" .
-    "280512170a0f706f6b656d6f6e5f646174615f696418042001280622500a" .
-    "06526573756c7412090a05554e534554100012140a10504f4b454d4f4e5f" .
-    "4341505455524544100112100a0c504f4b454d4f4e5f464c454410021213" .
-    "0a0f504f4b454d4f4e5f484154434845441003620670726f746f33"
-));
 

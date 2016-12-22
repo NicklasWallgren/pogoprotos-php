@@ -4,73 +4,83 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.GetPlayerProfileResponse</code>
+ */
 class GetPlayerProfileResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.GetPlayerProfileResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>int64 start_time = 2;</code>
+     */
     private $start_time = 0;
+    /**
+     * <code>repeated .POGOProtos.Data.PlayerBadge badges = 3;</code>
+     */
     private $badges;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\GetPlayerProfileResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.GetPlayerProfileResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.GetPlayerProfileResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\GetPlayerProfileResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>int64 start_time = 2;</code>
+     */
     public function getStartTime()
     {
         return $this->start_time;
     }
 
+    /**
+     * <code>int64 start_time = 2;</code>
+     */
     public function setStartTime($var)
     {
         GPBUtil::checkInt64($var);
         $this->start_time = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.PlayerBadge badges = 3;</code>
+     */
     public function getBadges()
     {
         return $this->badges;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.PlayerBadge badges = 3;</code>
+     */
     public function setBadges(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\PlayerBadge::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\PlayerBadge::class);
         $this->badges = $var;
     }
 
 }
-
-class GetPlayerProfileResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0adf020a3e504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f476574506c6179657250726f66696c65526573706f6e73" .
-    "652e70726f746f121f504f474f50726f746f732e4e6574776f726b696e67" .
-    "2e526573706f6e7365731a21504f474f50726f746f732f446174612f506c" .
-    "6179657242616467652e70726f746f22d0010a18476574506c6179657250" .
-    "726f66696c65526573706f6e736512500a06726573756c7418012001280e" .
-    "32402e504f474f50726f746f732e4e6574776f726b696e672e526573706f" .
-    "6e7365732e476574506c6179657250726f66696c65526573706f6e73652e" .
-    "526573756c7412120a0a73746172745f74696d65180220012803122c0a06" .
-    "62616467657318032003280b321c2e504f474f50726f746f732e44617461" .
-    "2e506c61796572426164676522200a06526573756c7412090a05554e5345" .
-    "541000120b0a07535543434553531001620670726f746f33"
-));
 

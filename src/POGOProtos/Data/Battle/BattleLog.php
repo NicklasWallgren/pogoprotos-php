@@ -4,83 +4,141 @@
 
 namespace POGOProtos\Data\Battle;
 
-
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Battle.BattleLog</code>
+ */
 class BattleLog extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleState state = 1;</code>
+     */
     private $state = 0;
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleType battle_type = 2;</code>
+     */
     private $battle_type = 0;
+    /**
+     * <code>int64 server_ms = 3;</code>
+     */
     private $server_ms = 0;
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleAction battle_actions = 4;</code>
+     */
     private $battle_actions;
+    /**
+     * <code>int64 battle_start_timestamp_ms = 5;</code>
+     */
     private $battle_start_timestamp_ms = 0;
+    /**
+     * <code>int64 battle_end_timestamp_ms = 6;</code>
+     */
     private $battle_end_timestamp_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Battle\BattleLog::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleState state = 1;</code>
+     */
     public function getState()
     {
         return $this->state;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleState state = 1;</code>
+     */
     public function setState($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Data\Battle\BattleState::class);
         $this->state = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleType battle_type = 2;</code>
+     */
     public function getBattleType()
     {
         return $this->battle_type;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattleType battle_type = 2;</code>
+     */
     public function setBattleType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Data\Battle\BattleType::class);
         $this->battle_type = $var;
     }
 
+    /**
+     * <code>int64 server_ms = 3;</code>
+     */
     public function getServerMs()
     {
         return $this->server_ms;
     }
 
+    /**
+     * <code>int64 server_ms = 3;</code>
+     */
     public function setServerMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->server_ms = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleAction battle_actions = 4;</code>
+     */
     public function getBattleActions()
     {
         return $this->battle_actions;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattleAction battle_actions = 4;</code>
+     */
     public function setBattleActions(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Battle\BattleAction::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Battle\BattleAction::class);
         $this->battle_actions = $var;
     }
 
+    /**
+     * <code>int64 battle_start_timestamp_ms = 5;</code>
+     */
     public function getBattleStartTimestampMs()
     {
         return $this->battle_start_timestamp_ms;
     }
 
+    /**
+     * <code>int64 battle_start_timestamp_ms = 5;</code>
+     */
     public function setBattleStartTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->battle_start_timestamp_ms = $var;
     }
 
+    /**
+     * <code>int64 battle_end_timestamp_ms = 6;</code>
+     */
     public function getBattleEndTimestampMs()
     {
         return $this->battle_end_timestamp_ms;
     }
 
+    /**
+     * <code>int64 battle_end_timestamp_ms = 6;</code>
+     */
     public function setBattleEndTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
@@ -88,25 +146,4 @@ class BattleLog extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ad6030a26504f474f50726f746f732f446174612f426174746c652f4261" .
-    "74746c654c6f672e70726f746f1216504f474f50726f746f732e44617461" .
-    "2e426174746c651a28504f474f50726f746f732f446174612f426174746c" .
-    "652f426174746c6553746174652e70726f746f1a27504f474f50726f746f" .
-    "732f446174612f426174746c652f426174746c65547970652e70726f746f" .
-    "1a29504f474f50726f746f732f446174612f426174746c652f426174746c" .
-    "65416374696f6e2e70726f746f228d020a09426174746c654c6f6712320a" .
-    "05737461746518012001280e32232e504f474f50726f746f732e44617461" .
-    "2e426174746c652e426174746c65537461746512370a0b626174746c655f" .
-    "7479706518022001280e32222e504f474f50726f746f732e446174612e42" .
-    "6174746c652e426174746c655479706512110a097365727665725f6d7318" .
-    "0320012803123c0a0e626174746c655f616374696f6e7318042003280b32" .
-    "242e504f474f50726f746f732e446174612e426174746c652e426174746c" .
-    "65416374696f6e12210a19626174746c655f73746172745f74696d657374" .
-    "616d705f6d73180520012803121f0a17626174746c655f656e645f74696d" .
-    "657374616d705f6d73180620012803620670726f746f33"
-));
 

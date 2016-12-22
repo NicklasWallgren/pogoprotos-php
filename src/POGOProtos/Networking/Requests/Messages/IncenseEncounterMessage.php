@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.IncenseEncounterMessage</code>
+ */
 class IncenseEncounterMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>uint64 encounter_id = 1;</code>
+     */
     private $encounter_id = 0;
+    /**
+     * <code>string encounter_location = 2;</code>
+     */
     private $encounter_location = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\IncenseEncounterMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>uint64 encounter_id = 1;</code>
+     */
     public function getEncounterId()
     {
         return $this->encounter_id;
     }
 
+    /**
+     * <code>uint64 encounter_id = 1;</code>
+     */
     public function setEncounterId($var)
     {
         GPBUtil::checkUint64($var);
         $this->encounter_id = $var;
     }
 
+    /**
+     * <code>string encounter_location = 2;</code>
+     */
     public function getEncounterLocation()
     {
         return $this->encounter_location;
     }
 
+    /**
+     * <code>string encounter_location = 2;</code>
+     */
     public function setEncounterLocation($var)
     {
         GPBUtil::checkString($var, True);
@@ -37,16 +62,4 @@ class IncenseEncounterMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac5010a45504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f496e63656e7365456e636f756e7465" .
-    "724d6573736167652e70726f746f1227504f474f50726f746f732e4e6574" .
-    "776f726b696e672e52657175657374732e4d65737361676573224b0a1749" .
-    "6e63656e7365456e636f756e7465724d65737361676512140a0c656e636f" .
-    "756e7465725f6964180120012804121a0a12656e636f756e7465725f6c6f" .
-    "636174696f6e180220012809620670726f746f33"
-));
 

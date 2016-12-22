@@ -4,89 +4,146 @@
 
 namespace POGOProtos\Map\Pokemon;
 
-require_once('POGOProtos/Enums/PokemonId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Map.Pokemon.NearbyPokemon</code>
+ */
 class NearbyPokemon extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 1;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>float distance_in_meters = 2;</code>
+     */
     private $distance_in_meters = 0.0;
+    /**
+     * <code>fixed64 encounter_id = 3;</code>
+     */
     private $encounter_id = 0;
+    /**
+     * <code>string fort_id = 4;</code>
+     */
     private $fort_id = '';
+    /**
+     * <code>string fort_image_url = 5;</code>
+     */
     private $fort_image_url = '';
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 6;</code>
+     */
+    private $pokemon_display = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Map\Pokemon\NearbyPokemon::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 1;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 1;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>float distance_in_meters = 2;</code>
+     */
     public function getDistanceInMeters()
     {
         return $this->distance_in_meters;
     }
 
+    /**
+     * <code>float distance_in_meters = 2;</code>
+     */
     public function setDistanceInMeters($var)
     {
         GPBUtil::checkFloat($var);
         $this->distance_in_meters = $var;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 3;</code>
+     */
     public function getEncounterId()
     {
         return $this->encounter_id;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 3;</code>
+     */
     public function setEncounterId($var)
     {
         GPBUtil::checkUint64($var);
         $this->encounter_id = $var;
     }
 
+    /**
+     * <code>string fort_id = 4;</code>
+     */
     public function getFortId()
     {
         return $this->fort_id;
     }
 
+    /**
+     * <code>string fort_id = 4;</code>
+     */
     public function setFortId($var)
     {
         GPBUtil::checkString($var, True);
         $this->fort_id = $var;
     }
 
+    /**
+     * <code>string fort_image_url = 5;</code>
+     */
     public function getFortImageUrl()
     {
         return $this->fort_image_url;
     }
 
+    /**
+     * <code>string fort_image_url = 5;</code>
+     */
     public function setFortImageUrl($var)
     {
         GPBUtil::checkString($var, True);
         $this->fort_image_url = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 6;</code>
+     */
+    public function getPokemonDisplay()
+    {
+        return $this->pokemon_display;
+    }
+
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 6;</code>
+     */
+    public function setPokemonDisplay(&$var)
+    {
+        GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonDisplay::class);
+        $this->pokemon_display = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8c020a2a504f474f50726f746f732f4d61702f506f6b656d6f6e2f4e65" .
-    "61726279506f6b656d6f6e2e70726f746f1216504f474f50726f746f732e" .
-    "4d61702e506f6b656d6f6e1a20504f474f50726f746f732f456e756d732f" .
-    "506f6b656d6f6e49642e70726f746f229b010a0d4e6561726279506f6b65" .
-    "6d6f6e122f0a0a706f6b656d6f6e5f696418012001280e321b2e504f474f" .
-    "50726f746f732e456e756d732e506f6b656d6f6e4964121a0a1264697374" .
-    "616e63655f696e5f6d657465727318022001280212140a0c656e636f756e" .
-    "7465725f6964180320012806120f0a07666f72745f696418042001280912" .
-    "160a0e666f72745f696d6167655f75726c180520012809620670726f746f" .
-    "33"
-));
 

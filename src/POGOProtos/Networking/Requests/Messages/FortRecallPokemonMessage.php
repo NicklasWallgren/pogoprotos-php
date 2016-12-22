@@ -4,56 +4,99 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.FortRecallPokemonMessage</code>
+ */
 class FortRecallPokemonMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     private $fort_id = '';
+    /**
+     * <code>fixed64 pokemon_id = 2;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     private $player_latitude = 0.0;
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     private $player_longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\FortRecallPokemonMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     public function getFortId()
     {
         return $this->fort_id;
     }
 
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     public function setFortId($var)
     {
         GPBUtil::checkString($var, True);
         $this->fort_id = $var;
     }
 
+    /**
+     * <code>fixed64 pokemon_id = 2;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>fixed64 pokemon_id = 2;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkUint64($var);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     public function getPlayerLatitude()
     {
         return $this->player_latitude;
     }
 
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     public function setPlayerLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_latitude = $var;
     }
 
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     public function getPlayerLongitude()
     {
         return $this->player_longitude;
     }
 
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     public function setPlayerLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -61,17 +104,4 @@ class FortRecallPokemonMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aed010a46504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f466f7274526563616c6c506f6b656d" .
-    "6f6e4d6573736167652e70726f746f1227504f474f50726f746f732e4e65" .
-    "74776f726b696e672e52657175657374732e4d6573736167657322720a18" .
-    "466f7274526563616c6c506f6b656d6f6e4d657373616765120f0a07666f" .
-    "72745f696418012001280912120a0a706f6b656d6f6e5f69641802200128" .
-    "0612170a0f706c617965725f6c6174697475646518032001280112180a10" .
-    "706c617965725f6c6f6e676974756465180420012801620670726f746f33"
-));
 

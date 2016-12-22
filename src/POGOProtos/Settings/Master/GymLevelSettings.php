@@ -4,74 +4,104 @@
 
 namespace POGOProtos\Settings\Master;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.GymLevelSettings</code>
+ */
 class GymLevelSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated int32 required_experience = 1;</code>
+     */
     private $required_experience;
+    /**
+     * <code>repeated int32 leader_slots = 2;</code>
+     */
     private $leader_slots;
+    /**
+     * <code>repeated int32 trainer_slots = 3;</code>
+     */
     private $trainer_slots;
+    /**
+     * <code>repeated int32 search_roll_bonus = 4;</code>
+     */
     private $search_roll_bonus;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\GymLevelSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated int32 required_experience = 1;</code>
+     */
     public function getRequiredExperience()
     {
         return $this->required_experience;
     }
 
+    /**
+     * <code>repeated int32 required_experience = 1;</code>
+     */
     public function setRequiredExperience(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->required_experience = $var;
     }
 
+    /**
+     * <code>repeated int32 leader_slots = 2;</code>
+     */
     public function getLeaderSlots()
     {
         return $this->leader_slots;
     }
 
+    /**
+     * <code>repeated int32 leader_slots = 2;</code>
+     */
     public function setLeaderSlots(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->leader_slots = $var;
     }
 
+    /**
+     * <code>repeated int32 trainer_slots = 3;</code>
+     */
     public function getTrainerSlots()
     {
         return $this->trainer_slots;
     }
 
+    /**
+     * <code>repeated int32 trainer_slots = 3;</code>
+     */
     public function setTrainerSlots(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->trainer_slots = $var;
     }
 
+    /**
+     * <code>repeated int32 search_roll_bonus = 4;</code>
+     */
     public function getSearchRollBonus()
     {
         return $this->search_roll_bonus;
     }
 
+    /**
+     * <code>repeated int32 search_roll_bonus = 4;</code>
+     */
     public function setSearchRollBonus(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->search_roll_bonus = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ad0010a31504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f47796d4c6576656c53657474696e67732e70726f746f121a504f474f" .
-    "50726f746f732e53657474696e67732e4d617374657222770a1047796d4c" .
-    "6576656c53657474696e6773121b0a1372657175697265645f6578706572" .
-    "69656e636518012003280512140a0c6c65616465725f736c6f7473180220" .
-    "03280512150a0d747261696e65725f736c6f747318032003280512190a11" .
-    "7365617263685f726f6c6c5f626f6e7573180420032805620670726f746f" .
-    "33"
-));
 

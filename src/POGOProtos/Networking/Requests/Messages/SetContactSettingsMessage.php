@@ -4,21 +4,36 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Data/Player/ContactSettings.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.SetContactSettingsMessage</code>
+ */
 class SetContactSettingsMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Player.ContactSettings contact_settings = 1;</code>
+     */
     private $contact_settings = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\SetContactSettingsMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Player.ContactSettings contact_settings = 1;</code>
+     */
     public function getContactSettings()
     {
         return $this->contact_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.ContactSettings contact_settings = 1;</code>
+     */
     public function setContactSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\ContactSettings::class);
@@ -26,18 +41,4 @@ class SetContactSettingsMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a88020a47504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f536574436f6e746163745365747469" .
-    "6e67734d6573736167652e70726f746f1227504f474f50726f746f732e4e" .
-    "6574776f726b696e672e52657175657374732e4d657373616765731a2c50" .
-    "4f474f50726f746f732f446174612f506c617965722f436f6e7461637453" .
-    "657474696e67732e70726f746f225e0a19536574436f6e74616374536574" .
-    "74696e67734d65737361676512410a10636f6e746163745f73657474696e" .
-    "677318012001280b32272e504f474f50726f746f732e446174612e506c61" .
-    "7965722e436f6e7461637453657474696e6773620670726f746f33"
-));
 

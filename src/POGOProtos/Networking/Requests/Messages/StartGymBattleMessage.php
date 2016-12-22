@@ -4,68 +4,132 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.StartGymBattleMessage</code>
+ */
 class StartGymBattleMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     private $gym_id = '';
+    /**
+     * <code>repeated fixed64 attacking_pokemon_ids = 2;</code>
+     */
     private $attacking_pokemon_ids;
+    /**
+     * <pre>
+     * needs to be fixed64, tested by Grover
+     * </pre>
+     *
+     * <code>fixed64 defending_pokemon_id = 3;</code>
+     */
     private $defending_pokemon_id = 0;
+    /**
+     * <code>double player_latitude = 4;</code>
+     */
     private $player_latitude = 0.0;
+    /**
+     * <code>double player_longitude = 5;</code>
+     */
     private $player_longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\StartGymBattleMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     public function getGymId()
     {
         return $this->gym_id;
     }
 
+    /**
+     * <code>string gym_id = 1;</code>
+     */
     public function setGymId($var)
     {
         GPBUtil::checkString($var, True);
         $this->gym_id = $var;
     }
 
+    /**
+     * <code>repeated fixed64 attacking_pokemon_ids = 2;</code>
+     */
     public function getAttackingPokemonIds()
     {
         return $this->attacking_pokemon_ids;
     }
 
+    /**
+     * <code>repeated fixed64 attacking_pokemon_ids = 2;</code>
+     */
     public function setAttackingPokemonIds(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FIXED64);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FIXED64);
         $this->attacking_pokemon_ids = $var;
     }
 
+    /**
+     * <pre>
+     * needs to be fixed64, tested by Grover
+     * </pre>
+     *
+     * <code>fixed64 defending_pokemon_id = 3;</code>
+     */
     public function getDefendingPokemonId()
     {
         return $this->defending_pokemon_id;
     }
 
+    /**
+     * <pre>
+     * needs to be fixed64, tested by Grover
+     * </pre>
+     *
+     * <code>fixed64 defending_pokemon_id = 3;</code>
+     */
     public function setDefendingPokemonId($var)
     {
         GPBUtil::checkUint64($var);
         $this->defending_pokemon_id = $var;
     }
 
+    /**
+     * <code>double player_latitude = 4;</code>
+     */
     public function getPlayerLatitude()
     {
         return $this->player_latitude;
     }
 
+    /**
+     * <code>double player_latitude = 4;</code>
+     */
     public function setPlayerLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_latitude = $var;
     }
 
+    /**
+     * <code>double player_longitude = 5;</code>
+     */
     public function getPlayerLongitude()
     {
         return $this->player_longitude;
     }
 
+    /**
+     * <code>double player_longitude = 5;</code>
+     */
     public function setPlayerLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -73,19 +137,4 @@ class StartGymBattleMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a90020a43504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f537461727447796d426174746c654d" .
-    "6573736167652e70726f746f1227504f474f50726f746f732e4e6574776f" .
-    "726b696e672e52657175657374732e4d657373616765732297010a155374" .
-    "61727447796d426174746c654d657373616765120e0a0667796d5f696418" .
-    "0120012809121d0a1561747461636b696e675f706f6b656d6f6e5f696473" .
-    "180220032806121c0a14646566656e64696e675f706f6b656d6f6e5f6964" .
-    "18032001280612170a0f706c617965725f6c617469747564651804200128" .
-    "0112180a10706c617965725f6c6f6e676974756465180520012801620670" .
-    "726f746f33"
-));
 

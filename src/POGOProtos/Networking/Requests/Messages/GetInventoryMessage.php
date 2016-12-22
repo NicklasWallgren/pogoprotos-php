@@ -4,32 +4,69 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.GetInventoryMessage</code>
+ */
 class GetInventoryMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int64 last_timestamp_ms = 1;</code>
+     */
     private $last_timestamp_ms = 0;
+    /**
+     * <pre>
+     * TODO: Find out what this is.
+     * </pre>
+     *
+     * <code>int32 item_been_seen = 2;</code>
+     */
     private $item_been_seen = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\GetInventoryMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int64 last_timestamp_ms = 1;</code>
+     */
     public function getLastTimestampMs()
     {
         return $this->last_timestamp_ms;
     }
 
+    /**
+     * <code>int64 last_timestamp_ms = 1;</code>
+     */
     public function setLastTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->last_timestamp_ms = $var;
     }
 
+    /**
+     * <pre>
+     * TODO: Find out what this is.
+     * </pre>
+     *
+     * <code>int32 item_been_seen = 2;</code>
+     */
     public function getItemBeenSeen()
     {
         return $this->item_been_seen;
     }
 
+    /**
+     * <pre>
+     * TODO: Find out what this is.
+     * </pre>
+     *
+     * <code>int32 item_been_seen = 2;</code>
+     */
     public function setItemBeenSeen($var)
     {
         GPBUtil::checkInt32($var);
@@ -37,16 +74,4 @@ class GetInventoryMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0abe010a41504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f476574496e76656e746f72794d6573" .
-    "736167652e70726f746f1227504f474f50726f746f732e4e6574776f726b" .
-    "696e672e52657175657374732e4d6573736167657322480a13476574496e" .
-    "76656e746f72794d65737361676512190a116c6173745f74696d65737461" .
-    "6d705f6d7318012001280312160a0e6974656d5f6265656e5f7365656e18" .
-    "0220012805620670726f746f33"
-));
 

@@ -4,262 +4,494 @@
 
 namespace POGOProtos\Map\Fort;
 
-require_once('POGOProtos/Enums/PokemonId.pb.php');
-require_once('POGOProtos/Enums/TeamColor.pb.php');
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-require_once('POGOProtos/Map/Fort/FortType.pb.php');
-require_once('POGOProtos/Map/Fort/FortSponsor.pb.php');
-require_once('POGOProtos/Map/Fort/FortRenderingType.pb.php');
-require_once('POGOProtos/Map/Fort/FortLureInfo.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Map.Fort.FortData</code>
+ */
 class FortData extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string id = 1;</code>
+     */
     private $id = '';
+    /**
+     * <code>int64 last_modified_timestamp_ms = 2;</code>
+     */
     private $last_modified_timestamp_ms = 0;
+    /**
+     * <code>double latitude = 3;</code>
+     */
     private $latitude = 0.0;
+    /**
+     * <code>double longitude = 4;</code>
+     */
     private $longitude = 0.0;
+    /**
+     * <pre>
+     * (Gym only) Team that owns the gym.
+     * </pre>
+     *
+     * <code>.POGOProtos.Enums.TeamColor owned_by_team = 5;</code>
+     */
     private $owned_by_team = 0;
+    /**
+     * <pre>
+     * (Gym only) Highest CP Pokemon ID at the gym.
+     * </pre>
+     *
+     * <code>.POGOProtos.Enums.PokemonId guard_pokemon_id = 6;</code>
+     */
     private $guard_pokemon_id = 0;
+    /**
+     * <pre>
+     * (Gym only) Highest CP Pokemon at the gym.
+     * </pre>
+     *
+     * <code>int32 guard_pokemon_cp = 7;</code>
+     */
     private $guard_pokemon_cp = 0;
+    /**
+     * <code>bool enabled = 8;</code>
+     */
     private $enabled = false;
+    /**
+     * <code>.POGOProtos.Map.Fort.FortType type = 9;</code>
+     */
     private $type = 0;
+    /**
+     * <pre>
+     * (Gym only) Prestigate / experience of the gym.
+     * </pre>
+     *
+     * <code>int64 gym_points = 10;</code>
+     */
     private $gym_points = 0;
+    /**
+     * <pre>
+     * (Gym only) Whether someone is battling at the gym currently.
+     * </pre>
+     *
+     * <code>bool is_in_battle = 11;</code>
+     */
     private $is_in_battle = false;
+    /**
+     * <pre>
+     * (Pokestop only)
+     * </pre>
+     *
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId active_fort_modifier = 12;</code>
+     */
     private $active_fort_modifier;
+    /**
+     * <pre>
+     * (Pokestop only)
+     * </pre>
+     *
+     * <code>.POGOProtos.Map.Fort.FortLureInfo lure_info = 13;</code>
+     */
     private $lure_info = null;
+    /**
+     * <pre>
+     * (Pokestop only) Timestamp when the pokestop can be activated again to get items / xp.
+     * </pre>
+     *
+     * <code>int64 cooldown_complete_timestamp_ms = 14;</code>
+     */
     private $cooldown_complete_timestamp_ms = 0;
+    /**
+     * <code>.POGOProtos.Map.Fort.FortSponsor sponsor = 15;</code>
+     */
     private $sponsor = 0;
+    /**
+     * <code>.POGOProtos.Map.Fort.FortRenderingType rendering_type = 16;</code>
+     */
     private $rendering_type = 0;
+    /**
+     * <code>int64 deploy_lockout_end_ms = 17;</code>
+     */
     private $deploy_lockout_end_ms = 0;
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay guard_pokemon_display = 18;</code>
+     */
+    private $guard_pokemon_display = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Map\Fort\FortData::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string id = 1;</code>
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * <code>string id = 1;</code>
+     */
     public function setId($var)
     {
         GPBUtil::checkString($var, True);
         $this->id = $var;
     }
 
+    /**
+     * <code>int64 last_modified_timestamp_ms = 2;</code>
+     */
     public function getLastModifiedTimestampMs()
     {
         return $this->last_modified_timestamp_ms;
     }
 
+    /**
+     * <code>int64 last_modified_timestamp_ms = 2;</code>
+     */
     public function setLastModifiedTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->last_modified_timestamp_ms = $var;
     }
 
+    /**
+     * <code>double latitude = 3;</code>
+     */
     public function getLatitude()
     {
         return $this->latitude;
     }
 
+    /**
+     * <code>double latitude = 3;</code>
+     */
     public function setLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->latitude = $var;
     }
 
+    /**
+     * <code>double longitude = 4;</code>
+     */
     public function getLongitude()
     {
         return $this->longitude;
     }
 
+    /**
+     * <code>double longitude = 4;</code>
+     */
     public function setLongitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->longitude = $var;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Team that owns the gym.
+     * </pre>
+     *
+     * <code>.POGOProtos.Enums.TeamColor owned_by_team = 5;</code>
+     */
     public function getOwnedByTeam()
     {
         return $this->owned_by_team;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Team that owns the gym.
+     * </pre>
+     *
+     * <code>.POGOProtos.Enums.TeamColor owned_by_team = 5;</code>
+     */
     public function setOwnedByTeam($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\TeamColor::class);
         $this->owned_by_team = $var;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Highest CP Pokemon ID at the gym.
+     * </pre>
+     *
+     * <code>.POGOProtos.Enums.PokemonId guard_pokemon_id = 6;</code>
+     */
     public function getGuardPokemonId()
     {
         return $this->guard_pokemon_id;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Highest CP Pokemon ID at the gym.
+     * </pre>
+     *
+     * <code>.POGOProtos.Enums.PokemonId guard_pokemon_id = 6;</code>
+     */
     public function setGuardPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->guard_pokemon_id = $var;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Highest CP Pokemon at the gym.
+     * </pre>
+     *
+     * <code>int32 guard_pokemon_cp = 7;</code>
+     */
     public function getGuardPokemonCp()
     {
         return $this->guard_pokemon_cp;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Highest CP Pokemon at the gym.
+     * </pre>
+     *
+     * <code>int32 guard_pokemon_cp = 7;</code>
+     */
     public function setGuardPokemonCp($var)
     {
         GPBUtil::checkInt32($var);
         $this->guard_pokemon_cp = $var;
     }
 
+    /**
+     * <code>bool enabled = 8;</code>
+     */
     public function getEnabled()
     {
         return $this->enabled;
     }
 
+    /**
+     * <code>bool enabled = 8;</code>
+     */
     public function setEnabled($var)
     {
         GPBUtil::checkBool($var);
         $this->enabled = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Fort.FortType type = 9;</code>
+     */
     public function getType()
     {
         return $this->type;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Fort.FortType type = 9;</code>
+     */
     public function setType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Map\Fort\FortType::class);
         $this->type = $var;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Prestigate / experience of the gym.
+     * </pre>
+     *
+     * <code>int64 gym_points = 10;</code>
+     */
     public function getGymPoints()
     {
         return $this->gym_points;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Prestigate / experience of the gym.
+     * </pre>
+     *
+     * <code>int64 gym_points = 10;</code>
+     */
     public function setGymPoints($var)
     {
         GPBUtil::checkInt64($var);
         $this->gym_points = $var;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Whether someone is battling at the gym currently.
+     * </pre>
+     *
+     * <code>bool is_in_battle = 11;</code>
+     */
     public function getIsInBattle()
     {
         return $this->is_in_battle;
     }
 
+    /**
+     * <pre>
+     * (Gym only) Whether someone is battling at the gym currently.
+     * </pre>
+     *
+     * <code>bool is_in_battle = 11;</code>
+     */
     public function setIsInBattle($var)
     {
         GPBUtil::checkBool($var);
         $this->is_in_battle = $var;
     }
 
+    /**
+     * <pre>
+     * (Pokestop only)
+     * </pre>
+     *
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId active_fort_modifier = 12;</code>
+     */
     public function getActiveFortModifier()
     {
         return $this->active_fort_modifier;
     }
 
+    /**
+     * <pre>
+     * (Pokestop only)
+     * </pre>
+     *
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId active_fort_modifier = 12;</code>
+     */
     public function setActiveFortModifier(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
         $this->active_fort_modifier = $var;
     }
 
+    /**
+     * <pre>
+     * (Pokestop only)
+     * </pre>
+     *
+     * <code>.POGOProtos.Map.Fort.FortLureInfo lure_info = 13;</code>
+     */
     public function getLureInfo()
     {
         return $this->lure_info;
     }
 
+    /**
+     * <pre>
+     * (Pokestop only)
+     * </pre>
+     *
+     * <code>.POGOProtos.Map.Fort.FortLureInfo lure_info = 13;</code>
+     */
     public function setLureInfo(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Map\Fort\FortLureInfo::class);
         $this->lure_info = $var;
     }
 
+    /**
+     * <pre>
+     * (Pokestop only) Timestamp when the pokestop can be activated again to get items / xp.
+     * </pre>
+     *
+     * <code>int64 cooldown_complete_timestamp_ms = 14;</code>
+     */
     public function getCooldownCompleteTimestampMs()
     {
         return $this->cooldown_complete_timestamp_ms;
     }
 
+    /**
+     * <pre>
+     * (Pokestop only) Timestamp when the pokestop can be activated again to get items / xp.
+     * </pre>
+     *
+     * <code>int64 cooldown_complete_timestamp_ms = 14;</code>
+     */
     public function setCooldownCompleteTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->cooldown_complete_timestamp_ms = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Fort.FortSponsor sponsor = 15;</code>
+     */
     public function getSponsor()
     {
         return $this->sponsor;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Fort.FortSponsor sponsor = 15;</code>
+     */
     public function setSponsor($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Map\Fort\FortSponsor::class);
         $this->sponsor = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Fort.FortRenderingType rendering_type = 16;</code>
+     */
     public function getRenderingType()
     {
         return $this->rendering_type;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Fort.FortRenderingType rendering_type = 16;</code>
+     */
     public function setRenderingType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Map\Fort\FortRenderingType::class);
         $this->rendering_type = $var;
     }
 
+    /**
+     * <code>int64 deploy_lockout_end_ms = 17;</code>
+     */
     public function getDeployLockoutEndMs()
     {
         return $this->deploy_lockout_end_ms;
     }
 
+    /**
+     * <code>int64 deploy_lockout_end_ms = 17;</code>
+     */
     public function setDeployLockoutEndMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->deploy_lockout_end_ms = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay guard_pokemon_display = 18;</code>
+     */
+    public function getGuardPokemonDisplay()
+    {
+        return $this->guard_pokemon_display;
+    }
+
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay guard_pokemon_display = 18;</code>
+     */
+    public function setGuardPokemonDisplay(&$var)
+    {
+        GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonDisplay::class);
+        $this->guard_pokemon_display = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0acd070a22504f474f50726f746f732f4d61702f466f72742f466f727444" .
-    "6174612e70726f746f1213504f474f50726f746f732e4d61702e466f7274" .
-    "1a20504f474f50726f746f732f456e756d732f506f6b656d6f6e49642e70" .
-    "726f746f1a20504f474f50726f746f732f456e756d732f5465616d436f6c" .
-    "6f722e70726f746f1a26504f474f50726f746f732f496e76656e746f7279" .
-    "2f4974656d2f4974656d49642e70726f746f1a22504f474f50726f746f73" .
-    "2f4d61702f466f72742f466f7274547970652e70726f746f1a25504f474f" .
-    "50726f746f732f4d61702f466f72742f466f727453706f6e736f722e7072" .
-    "6f746f1a2b504f474f50726f746f732f4d61702f466f72742f466f727452" .
-    "656e646572696e67547970652e70726f746f1a26504f474f50726f746f73" .
-    "2f4d61702f466f72742f466f72744c757265496e666f2e70726f746f22fd" .
-    "040a08466f727444617461120a0a02696418012001280912220a1a6c6173" .
-    "745f6d6f6469666965645f74696d657374616d705f6d7318022001280312" .
-    "100a086c6174697475646518032001280112110a096c6f6e676974756465" .
-    "18042001280112320a0d6f776e65645f62795f7465616d18052001280e32" .
-    "1b2e504f474f50726f746f732e456e756d732e5465616d436f6c6f721235" .
-    "0a1067756172645f706f6b656d6f6e5f696418062001280e321b2e504f47" .
-    "4f50726f746f732e456e756d732e506f6b656d6f6e496412180a10677561" .
-    "72645f706f6b656d6f6e5f6370180720012805120f0a07656e61626c6564" .
-    "180820012808122b0a047479706518092001280e321d2e504f474f50726f" .
-    "746f732e4d61702e466f72742e466f72745479706512120a0a67796d5f70" .
-    "6f696e7473180a2001280312140a0c69735f696e5f626174746c65180b20" .
-    "012808123f0a146163746976655f666f72745f6d6f646966696572180c20" .
-    "03280e32212e504f474f50726f746f732e496e76656e746f72792e497465" .
-    "6d2e4974656d496412340a096c7572655f696e666f180d2001280b32212e" .
-    "504f474f50726f746f732e4d61702e466f72742e466f72744c757265496e" .
-    "666f12260a1e636f6f6c646f776e5f636f6d706c6574655f74696d657374" .
-    "616d705f6d73180e2001280312310a0773706f6e736f72180f2001280e32" .
-    "202e504f474f50726f746f732e4d61702e466f72742e466f727453706f6e" .
-    "736f72123e0a0e72656e646572696e675f7479706518102001280e32262e" .
-    "504f474f50726f746f732e4d61702e466f72742e466f727452656e646572" .
-    "696e6754797065121d0a156465706c6f795f6c6f636b6f75745f656e645f" .
-    "6d73181120012803620670726f746f33"
-));
 

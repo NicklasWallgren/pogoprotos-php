@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Inventory\Item;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.Item.ItemAward</code>
+ */
 class ItemAward extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>int32 item_count = 2;</code>
+     */
     private $item_count = 0;
+    /**
+     * <code>int32 bonus_count = 3;</code>
+     */
     private $bonus_count = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\Item\ItemAward::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>int32 item_count = 2;</code>
+     */
     public function getItemCount()
     {
         return $this->item_count;
     }
 
+    /**
+     * <code>int32 item_count = 2;</code>
+     */
     public function setItemCount($var)
     {
         GPBUtil::checkInt32($var);
         $this->item_count = $var;
     }
 
+    /**
+     * <code>int32 bonus_count = 3;</code>
+     */
     public function getBonusCount()
     {
         return $this->bonus_count;
     }
 
+    /**
+     * <code>int32 bonus_count = 3;</code>
+     */
     public function setBonusCount($var)
     {
         GPBUtil::checkInt32($var);
@@ -50,17 +83,4 @@ class ItemAward extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae0010a29504f474f50726f746f732f496e76656e746f72792f4974656d" .
-    "2f4974656d41776172642e70726f746f1219504f474f50726f746f732e49" .
-    "6e76656e746f72792e4974656d1a26504f474f50726f746f732f496e7665" .
-    "6e746f72792f4974656d2f4974656d49642e70726f746f22680a09497465" .
-    "6d417761726412320a076974656d5f696418012001280e32212e504f474f" .
-    "50726f746f732e496e76656e746f72792e4974656d2e4974656d49641212" .
-    "0a0a6974656d5f636f756e7418022001280512130a0b626f6e75735f636f" .
-    "756e74180320012805620670726f746f33"
-));
 

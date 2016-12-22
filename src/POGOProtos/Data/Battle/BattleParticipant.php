@@ -4,85 +4,104 @@
 
 namespace POGOProtos\Data\Battle;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Battle.BattleParticipant</code>
+ */
 class BattleParticipant extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_pokemon = 1;</code>
+     */
     private $active_pokemon = null;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerPublicProfile trainer_public_profile = 2;</code>
+     */
     private $trainer_public_profile = null;
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattlePokemonInfo reverse_pokemon = 3;</code>
+     */
     private $reverse_pokemon;
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattlePokemonInfo defeated_pokemon = 4;</code>
+     */
     private $defeated_pokemon;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Battle\BattleParticipant::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_pokemon = 1;</code>
+     */
     public function getActivePokemon()
     {
         return $this->active_pokemon;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Battle.BattlePokemonInfo active_pokemon = 1;</code>
+     */
     public function setActivePokemon(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Battle\BattlePokemonInfo::class);
         $this->active_pokemon = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerPublicProfile trainer_public_profile = 2;</code>
+     */
     public function getTrainerPublicProfile()
     {
         return $this->trainer_public_profile;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerPublicProfile trainer_public_profile = 2;</code>
+     */
     public function setTrainerPublicProfile(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerPublicProfile::class);
         $this->trainer_public_profile = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattlePokemonInfo reverse_pokemon = 3;</code>
+     */
     public function getReversePokemon()
     {
         return $this->reverse_pokemon;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattlePokemonInfo reverse_pokemon = 3;</code>
+     */
     public function setReversePokemon(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Battle\BattlePokemonInfo::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Battle\BattlePokemonInfo::class);
         $this->reverse_pokemon = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattlePokemonInfo defeated_pokemon = 4;</code>
+     */
     public function getDefeatedPokemon()
     {
         return $this->defeated_pokemon;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Battle.BattlePokemonInfo defeated_pokemon = 4;</code>
+     */
     public function setDefeatedPokemon(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Battle\BattlePokemonInfo::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Battle\BattlePokemonInfo::class);
         $this->defeated_pokemon = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae1030a2e504f474f50726f746f732f446174612f426174746c652f4261" .
-    "74746c655061727469636970616e742e70726f746f1216504f474f50726f" .
-    "746f732e446174612e426174746c651a2e504f474f50726f746f732f4461" .
-    "74612f426174746c652f426174746c65506f6b656d6f6e496e666f2e7072" .
-    "6f746f1a30504f474f50726f746f732f446174612f506c617965722f506c" .
-    "617965725075626c696350726f66696c652e70726f746f22ac020a114261" .
-    "74746c655061727469636970616e7412410a0e6163746976655f706f6b65" .
-    "6d6f6e18012001280b32292e504f474f50726f746f732e446174612e4261" .
-    "74746c652e426174746c65506f6b656d6f6e496e666f124b0a1674726169" .
-    "6e65725f7075626c69635f70726f66696c6518022001280b322b2e504f47" .
-    "4f50726f746f732e446174612e506c617965722e506c617965725075626c" .
-    "696350726f66696c6512420a0f726576657273655f706f6b656d6f6e1803" .
-    "2003280b32292e504f474f50726f746f732e446174612e426174746c652e" .
-    "426174746c65506f6b656d6f6e496e666f12430a1064656665617465645f" .
-    "706f6b656d6f6e18042003280b32292e504f474f50726f746f732e446174" .
-    "612e426174746c652e426174746c65506f6b656d6f6e496e666f62067072" .
-    "6f746f33"
-));
 

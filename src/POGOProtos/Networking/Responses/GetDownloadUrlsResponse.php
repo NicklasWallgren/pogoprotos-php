@@ -4,39 +4,41 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.GetDownloadUrlsResponse</code>
+ */
 class GetDownloadUrlsResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Data.DownloadUrlEntry download_urls = 1;</code>
+     */
     private $download_urls;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\GetDownloadUrlsResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Data.DownloadUrlEntry download_urls = 1;</code>
+     */
     public function getDownloadUrls()
     {
         return $this->download_urls;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.DownloadUrlEntry download_urls = 1;</code>
+     */
     public function setDownloadUrls(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\DownloadUrlEntry::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\DownloadUrlEntry::class);
         $this->download_urls = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae5010a3d504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f476574446f776e6c6f616455726c73526573706f6e7365" .
-    "2e70726f746f121f504f474f50726f746f732e4e6574776f726b696e672e" .
-    "526573706f6e7365731a26504f474f50726f746f732f446174612f446f77" .
-    "6e6c6f616455726c456e7472792e70726f746f22530a17476574446f776e" .
-    "6c6f616455726c73526573706f6e736512380a0d646f776e6c6f61645f75" .
-    "726c7318012003280b32212e504f474f50726f746f732e446174612e446f" .
-    "776e6c6f616455726c456e747279620670726f746f33"
-));
 

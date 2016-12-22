@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.SetContactSettingsResponse</code>
+ */
 class SetContactSettingsResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.SetContactSettingsResponse.Status status = 1;</code>
+     */
     private $status = 0;
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     private $player_data = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\SetContactSettingsResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.SetContactSettingsResponse.Status status = 1;</code>
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.SetContactSettingsResponse.Status status = 1;</code>
+     */
     public function setStatus($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\SetContactSettingsResponse_Status::class);
         $this->status = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     public function getPlayerData()
     {
         return $this->player_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     public function setPlayerData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PlayerData::class);
@@ -38,28 +62,4 @@ class SetContactSettingsResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class SetContactSettingsResponse_Status
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const FAILURE = 2;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae1020a40504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f536574436f6e7461637453657474696e6773526573706f" .
-    "6e73652e70726f746f121f504f474f50726f746f732e4e6574776f726b69" .
-    "6e672e526573706f6e7365731a20504f474f50726f746f732f446174612f" .
-    "506c61796572446174612e70726f746f22d1010a1a536574436f6e746163" .
-    "7453657474696e6773526573706f6e736512520a06737461747573180120" .
-    "01280e32422e504f474f50726f746f732e4e6574776f726b696e672e5265" .
-    "73706f6e7365732e536574436f6e7461637453657474696e677352657370" .
-    "6f6e73652e53746174757312300a0b706c617965725f6461746118022001" .
-    "280b321b2e504f474f50726f746f732e446174612e506c61796572446174" .
-    "61222d0a0653746174757312090a05554e5345541000120b0a0753554343" .
-    "4553531001120b0a074641494c5552451002620670726f746f33"
-));
 

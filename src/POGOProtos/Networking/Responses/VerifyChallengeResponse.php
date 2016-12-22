@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Networking\Responses;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.VerifyChallengeResponse</code>
+ */
 class VerifyChallengeResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bool success = 1;</code>
+     */
     private $success = false;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\VerifyChallengeResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function getSuccess()
     {
         return $this->success;
     }
 
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function setSuccess($var)
     {
         GPBUtil::checkBool($var);
@@ -25,15 +41,4 @@ class VerifyChallengeResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a94010a3d504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f5665726966794368616c6c656e6765526573706f6e7365" .
-    "2e70726f746f121f504f474f50726f746f732e4e6574776f726b696e672e" .
-    "526573706f6e736573222a0a175665726966794368616c6c656e67655265" .
-    "73706f6e7365120f0a0773756363657373180120012808620670726f746f" .
-    "33"
-));
 

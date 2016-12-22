@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.UseIncenseResponse</code>
+ */
 class UseIncenseResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.UseIncenseResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>.POGOProtos.Inventory.AppliedItem applied_incense = 2;</code>
+     */
     private $applied_incense = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\UseIncenseResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.UseIncenseResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.UseIncenseResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\UseIncenseResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.AppliedItem applied_incense = 2;</code>
+     */
     public function getAppliedIncense()
     {
         return $this->applied_incense;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.AppliedItem applied_incense = 2;</code>
+     */
     public function setAppliedIncense(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Inventory\AppliedItem::class);
@@ -38,32 +62,4 @@ class UseIncenseResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class UseIncenseResponse_Result
-{
-    const UNKNOWN = 0;
-    const SUCCESS = 1;
-    const INCENSE_ALREADY_ACTIVE = 2;
-    const NONE_IN_INVENTORY = 3;
-    const LOCATION_UNSET = 4;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a95030a38504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f557365496e63656e7365526573706f6e73652e70726f74" .
-    "6f121f504f474f50726f746f732e4e6574776f726b696e672e526573706f" .
-    "6e7365731a26504f474f50726f746f732f496e76656e746f72792f417070" .
-    "6c6965644974656d2e70726f746f2287020a12557365496e63656e736552" .
-    "6573706f6e7365124a0a06726573756c7418012001280e323a2e504f474f" .
-    "50726f746f732e4e6574776f726b696e672e526573706f6e7365732e5573" .
-    "65496e63656e7365526573706f6e73652e526573756c74123a0a0f617070" .
-    "6c6965645f696e63656e736518022001280b32212e504f474f50726f746f" .
-    "732e496e76656e746f72792e4170706c6965644974656d22690a06526573" .
-    "756c74120b0a07554e4b4e4f574e1000120b0a0753554343455353100112" .
-    "1a0a16494e43454e53455f414c52454144595f414354495645100212150a" .
-    "114e4f4e455f494e5f494e56454e544f5259100312120a0e4c4f43415449" .
-    "4f4e5f554e5345541004620670726f746f33"
-));
 

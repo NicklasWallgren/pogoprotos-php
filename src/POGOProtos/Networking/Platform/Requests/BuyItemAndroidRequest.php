@@ -4,20 +4,48 @@
 
 namespace POGOProtos\Networking\Platform\Requests;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Platform.Requests.BuyItemAndroidRequest</code>
+ */
 class BuyItemAndroidRequest extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <pre>
+     * see https://developer.android.com/google/play/billing/billing_reference.html table 4
+     * </pre>
+     *
+     * <code>string buy_item_intent = 1;</code>
+     */
     private $buy_item_intent = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Platform\Requests\BuyItemAndroidRequest::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <pre>
+     * see https://developer.android.com/google/play/billing/billing_reference.html table 4
+     * </pre>
+     *
+     * <code>string buy_item_intent = 1;</code>
+     */
     public function getBuyItemIntent()
     {
         return $this->buy_item_intent;
     }
 
+    /**
+     * <pre>
+     * see https://developer.android.com/google/play/billing/billing_reference.html table 4
+     * </pre>
+     *
+     * <code>string buy_item_intent = 1;</code>
+     */
     public function setBuyItemIntent($var)
     {
         GPBUtil::checkString($var, True);
@@ -25,15 +53,4 @@ class BuyItemAndroidRequest extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa8010a43504f474f50726f746f732f4e6574776f726b696e672f506c61" .
-    "74666f726d2f52657175657374732f4275794974656d416e64726f696452" .
-    "6571756573742e70726f746f1227504f474f50726f746f732e4e6574776f" .
-    "726b696e672e506c6174666f726d2e526571756573747322300a15427579" .
-    "4974656d416e64726f69645265717565737412170a0f6275795f6974656d" .
-    "5f696e74656e74180120012809620670726f746f33"
-));
 

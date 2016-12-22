@@ -4,21 +4,36 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.UseIncenseMessage</code>
+ */
 class UseIncenseMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId incense_type = 1;</code>
+     */
     private $incense_type = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\UseIncenseMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId incense_type = 1;</code>
+     */
     public function getIncenseType()
     {
         return $this->incense_type;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId incense_type = 1;</code>
+     */
     public function setIncenseType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
@@ -26,17 +41,4 @@ class UseIncenseMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae8010a3f504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f557365496e63656e73654d65737361" .
-    "67652e70726f746f1227504f474f50726f746f732e4e6574776f726b696e" .
-    "672e52657175657374732e4d657373616765731a26504f474f50726f746f" .
-    "732f496e76656e746f72792f4974656d2f4974656d49642e70726f746f22" .
-    "4c0a11557365496e63656e73654d65737361676512370a0c696e63656e73" .
-    "655f7479706518012001280e32212e504f474f50726f746f732e496e7665" .
-    "6e746f72792e4974656d2e4974656d4964620670726f746f33"
-));
 

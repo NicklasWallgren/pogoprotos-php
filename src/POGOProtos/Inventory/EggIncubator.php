@@ -4,94 +4,174 @@
 
 namespace POGOProtos\Inventory;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.EggIncubator</code>
+ */
 class EggIncubator extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string id = 1;</code>
+     */
     private $id = '';
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 2;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>.POGOProtos.Inventory.EggIncubatorType incubator_type = 3;</code>
+     */
     private $incubator_type = 0;
+    /**
+     * <code>int32 uses_remaining = 4;</code>
+     */
     private $uses_remaining = 0;
+    /**
+     * <pre>
+     * TODO: Check if is PokemonType
+     * </pre>
+     *
+     * <code>uint64 pokemon_id = 5;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>double start_km_walked = 6;</code>
+     */
     private $start_km_walked = 0.0;
+    /**
+     * <code>double target_km_walked = 7;</code>
+     */
     private $target_km_walked = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\EggIncubator::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string id = 1;</code>
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * <code>string id = 1;</code>
+     */
     public function setId($var)
     {
         GPBUtil::checkString($var, True);
         $this->id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 2;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 2;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.EggIncubatorType incubator_type = 3;</code>
+     */
     public function getIncubatorType()
     {
         return $this->incubator_type;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.EggIncubatorType incubator_type = 3;</code>
+     */
     public function setIncubatorType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\EggIncubatorType::class);
         $this->incubator_type = $var;
     }
 
+    /**
+     * <code>int32 uses_remaining = 4;</code>
+     */
     public function getUsesRemaining()
     {
         return $this->uses_remaining;
     }
 
+    /**
+     * <code>int32 uses_remaining = 4;</code>
+     */
     public function setUsesRemaining($var)
     {
         GPBUtil::checkInt32($var);
         $this->uses_remaining = $var;
     }
 
+    /**
+     * <pre>
+     * TODO: Check if is PokemonType
+     * </pre>
+     *
+     * <code>uint64 pokemon_id = 5;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <pre>
+     * TODO: Check if is PokemonType
+     * </pre>
+     *
+     * <code>uint64 pokemon_id = 5;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkUint64($var);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>double start_km_walked = 6;</code>
+     */
     public function getStartKmWalked()
     {
         return $this->start_km_walked;
     }
 
+    /**
+     * <code>double start_km_walked = 6;</code>
+     */
     public function setStartKmWalked($var)
     {
         GPBUtil::checkDouble($var);
         $this->start_km_walked = $var;
     }
 
+    /**
+     * <code>double target_km_walked = 7;</code>
+     */
     public function getTargetKmWalked()
     {
         return $this->target_km_walked;
     }
 
+    /**
+     * <code>double target_km_walked = 7;</code>
+     */
     public function setTargetKmWalked($var)
     {
         GPBUtil::checkDouble($var);
@@ -99,23 +179,4 @@ class EggIncubator extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8c030a27504f474f50726f746f732f496e76656e746f72792f45676749" .
-    "6e63756261746f722e70726f746f1214504f474f50726f746f732e496e76" .
-    "656e746f72791a26504f474f50726f746f732f496e76656e746f72792f49" .
-    "74656d2f4974656d49642e70726f746f1a2b504f474f50726f746f732f49" .
-    "6e76656e746f72792f456767496e63756261746f72547970652e70726f74" .
-    "6f22ed010a0c456767496e63756261746f72120a0a026964180120012809" .
-    "12320a076974656d5f696418022001280e32212e504f474f50726f746f73" .
-    "2e496e76656e746f72792e4974656d2e4974656d4964123e0a0e696e6375" .
-    "6261746f725f7479706518032001280e32262e504f474f50726f746f732e" .
-    "496e76656e746f72792e456767496e63756261746f725479706512160a0e" .
-    "757365735f72656d61696e696e6718042001280512120a0a706f6b656d6f" .
-    "6e5f696418052001280412170a0f73746172745f6b6d5f77616c6b656418" .
-    "062001280112180a107461726765745f6b6d5f77616c6b65641807200128" .
-    "01620670726f746f33"
-));
 
