@@ -4,37 +4,41 @@
 
 namespace POGOProtos\Inventory;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.AppliedItems</code>
+ */
 class AppliedItems extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Inventory.AppliedItem item = 4;</code>
+     */
     private $item;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\AppliedItems::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Inventory.AppliedItem item = 4;</code>
+     */
     public function getItem()
     {
         return $this->item;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.AppliedItem item = 4;</code>
+     */
     public function setItem(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Inventory\AppliedItem::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Inventory\AppliedItem::class);
         $this->item = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ab0010a27504f474f50726f746f732f496e76656e746f72792f4170706c" .
-    "6965644974656d732e70726f746f1214504f474f50726f746f732e496e76" .
-    "656e746f72791a26504f474f50726f746f732f496e76656e746f72792f41" .
-    "70706c6965644974656d2e70726f746f223f0a0c4170706c696564497465" .
-    "6d73122f0a046974656d18042003280b32212e504f474f50726f746f732e" .
-    "496e76656e746f72792e4170706c6965644974656d620670726f746f33"
-));
 

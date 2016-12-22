@@ -4,188 +4,330 @@
 
 namespace POGOProtos\Settings\Master;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.GymBattleSettings</code>
+ */
 class GymBattleSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>float energy_per_sec = 1;</code>
+     */
     private $energy_per_sec = 0.0;
+    /**
+     * <code>float dodge_energy_cost = 2;</code>
+     */
     private $dodge_energy_cost = 0.0;
+    /**
+     * <code>float retarget_seconds = 3;</code>
+     */
     private $retarget_seconds = 0.0;
+    /**
+     * <code>float enemy_attack_interval = 4;</code>
+     */
     private $enemy_attack_interval = 0.0;
+    /**
+     * <code>float attack_server_interval = 5;</code>
+     */
     private $attack_server_interval = 0.0;
+    /**
+     * <code>float round_duration_seconds = 6;</code>
+     */
     private $round_duration_seconds = 0.0;
+    /**
+     * <code>float bonus_time_per_ally_seconds = 7;</code>
+     */
     private $bonus_time_per_ally_seconds = 0.0;
+    /**
+     * <code>int32 maximum_attackers_per_battle = 8;</code>
+     */
     private $maximum_attackers_per_battle = 0;
+    /**
+     * <code>float same_type_attack_bonus_multiplier = 9;</code>
+     */
     private $same_type_attack_bonus_multiplier = 0.0;
+    /**
+     * <code>int32 maximum_energy = 10;</code>
+     */
     private $maximum_energy = 0;
+    /**
+     * <code>float energy_delta_per_health_lost = 11;</code>
+     */
     private $energy_delta_per_health_lost = 0.0;
+    /**
+     * <code>int32 dodge_duration_ms = 12;</code>
+     */
     private $dodge_duration_ms = 0;
+    /**
+     * <code>int32 minimum_player_level = 13;</code>
+     */
     private $minimum_player_level = 0;
+    /**
+     * <code>int32 swap_duration_ms = 14;</code>
+     */
     private $swap_duration_ms = 0;
+    /**
+     * <code>float dodge_damage_reduction_percent = 15;</code>
+     */
     private $dodge_damage_reduction_percent = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\GymBattleSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>float energy_per_sec = 1;</code>
+     */
     public function getEnergyPerSec()
     {
         return $this->energy_per_sec;
     }
 
+    /**
+     * <code>float energy_per_sec = 1;</code>
+     */
     public function setEnergyPerSec($var)
     {
         GPBUtil::checkFloat($var);
         $this->energy_per_sec = $var;
     }
 
+    /**
+     * <code>float dodge_energy_cost = 2;</code>
+     */
     public function getDodgeEnergyCost()
     {
         return $this->dodge_energy_cost;
     }
 
+    /**
+     * <code>float dodge_energy_cost = 2;</code>
+     */
     public function setDodgeEnergyCost($var)
     {
         GPBUtil::checkFloat($var);
         $this->dodge_energy_cost = $var;
     }
 
+    /**
+     * <code>float retarget_seconds = 3;</code>
+     */
     public function getRetargetSeconds()
     {
         return $this->retarget_seconds;
     }
 
+    /**
+     * <code>float retarget_seconds = 3;</code>
+     */
     public function setRetargetSeconds($var)
     {
         GPBUtil::checkFloat($var);
         $this->retarget_seconds = $var;
     }
 
+    /**
+     * <code>float enemy_attack_interval = 4;</code>
+     */
     public function getEnemyAttackInterval()
     {
         return $this->enemy_attack_interval;
     }
 
+    /**
+     * <code>float enemy_attack_interval = 4;</code>
+     */
     public function setEnemyAttackInterval($var)
     {
         GPBUtil::checkFloat($var);
         $this->enemy_attack_interval = $var;
     }
 
+    /**
+     * <code>float attack_server_interval = 5;</code>
+     */
     public function getAttackServerInterval()
     {
         return $this->attack_server_interval;
     }
 
+    /**
+     * <code>float attack_server_interval = 5;</code>
+     */
     public function setAttackServerInterval($var)
     {
         GPBUtil::checkFloat($var);
         $this->attack_server_interval = $var;
     }
 
+    /**
+     * <code>float round_duration_seconds = 6;</code>
+     */
     public function getRoundDurationSeconds()
     {
         return $this->round_duration_seconds;
     }
 
+    /**
+     * <code>float round_duration_seconds = 6;</code>
+     */
     public function setRoundDurationSeconds($var)
     {
         GPBUtil::checkFloat($var);
         $this->round_duration_seconds = $var;
     }
 
+    /**
+     * <code>float bonus_time_per_ally_seconds = 7;</code>
+     */
     public function getBonusTimePerAllySeconds()
     {
         return $this->bonus_time_per_ally_seconds;
     }
 
+    /**
+     * <code>float bonus_time_per_ally_seconds = 7;</code>
+     */
     public function setBonusTimePerAllySeconds($var)
     {
         GPBUtil::checkFloat($var);
         $this->bonus_time_per_ally_seconds = $var;
     }
 
+    /**
+     * <code>int32 maximum_attackers_per_battle = 8;</code>
+     */
     public function getMaximumAttackersPerBattle()
     {
         return $this->maximum_attackers_per_battle;
     }
 
+    /**
+     * <code>int32 maximum_attackers_per_battle = 8;</code>
+     */
     public function setMaximumAttackersPerBattle($var)
     {
         GPBUtil::checkInt32($var);
         $this->maximum_attackers_per_battle = $var;
     }
 
+    /**
+     * <code>float same_type_attack_bonus_multiplier = 9;</code>
+     */
     public function getSameTypeAttackBonusMultiplier()
     {
         return $this->same_type_attack_bonus_multiplier;
     }
 
+    /**
+     * <code>float same_type_attack_bonus_multiplier = 9;</code>
+     */
     public function setSameTypeAttackBonusMultiplier($var)
     {
         GPBUtil::checkFloat($var);
         $this->same_type_attack_bonus_multiplier = $var;
     }
 
+    /**
+     * <code>int32 maximum_energy = 10;</code>
+     */
     public function getMaximumEnergy()
     {
         return $this->maximum_energy;
     }
 
+    /**
+     * <code>int32 maximum_energy = 10;</code>
+     */
     public function setMaximumEnergy($var)
     {
         GPBUtil::checkInt32($var);
         $this->maximum_energy = $var;
     }
 
+    /**
+     * <code>float energy_delta_per_health_lost = 11;</code>
+     */
     public function getEnergyDeltaPerHealthLost()
     {
         return $this->energy_delta_per_health_lost;
     }
 
+    /**
+     * <code>float energy_delta_per_health_lost = 11;</code>
+     */
     public function setEnergyDeltaPerHealthLost($var)
     {
         GPBUtil::checkFloat($var);
         $this->energy_delta_per_health_lost = $var;
     }
 
+    /**
+     * <code>int32 dodge_duration_ms = 12;</code>
+     */
     public function getDodgeDurationMs()
     {
         return $this->dodge_duration_ms;
     }
 
+    /**
+     * <code>int32 dodge_duration_ms = 12;</code>
+     */
     public function setDodgeDurationMs($var)
     {
         GPBUtil::checkInt32($var);
         $this->dodge_duration_ms = $var;
     }
 
+    /**
+     * <code>int32 minimum_player_level = 13;</code>
+     */
     public function getMinimumPlayerLevel()
     {
         return $this->minimum_player_level;
     }
 
+    /**
+     * <code>int32 minimum_player_level = 13;</code>
+     */
     public function setMinimumPlayerLevel($var)
     {
         GPBUtil::checkInt32($var);
         $this->minimum_player_level = $var;
     }
 
+    /**
+     * <code>int32 swap_duration_ms = 14;</code>
+     */
     public function getSwapDurationMs()
     {
         return $this->swap_duration_ms;
     }
 
+    /**
+     * <code>int32 swap_duration_ms = 14;</code>
+     */
     public function setSwapDurationMs($var)
     {
         GPBUtil::checkInt32($var);
         $this->swap_duration_ms = $var;
     }
 
+    /**
+     * <code>float dodge_damage_reduction_percent = 15;</code>
+     */
     public function getDodgeDamageReductionPercent()
     {
         return $this->dodge_damage_reduction_percent;
     }
 
+    /**
+     * <code>float dodge_damage_reduction_percent = 15;</code>
+     */
     public function setDodgeDamageReductionPercent($var)
     {
         GPBUtil::checkFloat($var);
@@ -193,29 +335,4 @@ class GymBattleSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac9040a32504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f47796d426174746c6553657474696e67732e70726f746f121a504f47" .
-    "4f50726f746f732e53657474696e67732e4d617374657222ee030a114779" .
-    "6d426174746c6553657474696e677312160a0e656e657267795f7065725f" .
-    "73656318012001280212190a11646f6467655f656e657267795f636f7374" .
-    "18022001280212180a1072657461726765745f7365636f6e647318032001" .
-    "2802121d0a15656e656d795f61747461636b5f696e74657276616c180420" .
-    "012802121e0a1661747461636b5f7365727665725f696e74657276616c18" .
-    "0520012802121e0a16726f756e645f6475726174696f6e5f7365636f6e64" .
-    "7318062001280212230a1b626f6e75735f74696d655f7065725f616c6c79" .
-    "5f7365636f6e647318072001280212240a1c6d6178696d756d5f61747461" .
-    "636b6572735f7065725f626174746c6518082001280512290a2173616d65" .
-    "5f747970655f61747461636b5f626f6e75735f6d756c7469706c69657218" .
-    "092001280212160a0e6d6178696d756d5f656e65726779180a2001280512" .
-    "240a1c656e657267795f64656c74615f7065725f6865616c74685f6c6f73" .
-    "74180b2001280212190a11646f6467655f6475726174696f6e5f6d73180c" .
-    "20012805121c0a146d696e696d756d5f706c617965725f6c6576656c180d" .
-    "2001280512180a10737761705f6475726174696f6e5f6d73180e20012805" .
-    "12260a1e646f6467655f64616d6167655f726564756374696f6e5f706572" .
-    "63656e74180f20012802620670726f746f33"
-));
 

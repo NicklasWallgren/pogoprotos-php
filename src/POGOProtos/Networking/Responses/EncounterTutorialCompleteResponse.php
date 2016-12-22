@@ -4,46 +4,78 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.EncounterTutorialCompleteResponse</code>
+ */
 class EncounterTutorialCompleteResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterTutorialCompleteResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 2;</code>
+     */
     private $pokemon_data = null;
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureAward capture_award = 3;</code>
+     */
     private $capture_award = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterTutorialCompleteResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.EncounterTutorialCompleteResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 2;</code>
+     */
     public function getPokemonData()
     {
         return $this->pokemon_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 2;</code>
+     */
     public function setPokemonData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->pokemon_data = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureAward capture_award = 3;</code>
+     */
     public function getCaptureAward()
     {
         return $this->capture_award;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureAward capture_award = 3;</code>
+     */
     public function setCaptureAward(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Capture\CaptureAward::class);
@@ -51,33 +83,4 @@ class EncounterTutorialCompleteResponse extends \Google\Protobuf\Internal\Messag
     }
 
 }
-
-class EncounterTutorialCompleteResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const ERROR_INVALID_POKEMON = 2;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0af1030a47504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f456e636f756e7465725475746f7269616c436f6d706c65" .
-    "7465526573706f6e73652e70726f746f121f504f474f50726f746f732e4e" .
-    "6574776f726b696e672e526573706f6e7365731a21504f474f50726f746f" .
-    "732f446174612f506f6b656d6f6e446174612e70726f746f1a2a504f474f" .
-    "50726f746f732f446174612f436170747572652f43617074757265417761" .
-    "72642e70726f746f22ad020a21456e636f756e7465725475746f7269616c" .
-    "436f6d706c657465526573706f6e736512590a06726573756c7418012001" .
-    "280e32492e504f474f50726f746f732e4e6574776f726b696e672e526573" .
-    "706f6e7365732e456e636f756e7465725475746f7269616c436f6d706c65" .
-    "7465526573706f6e73652e526573756c7412320a0c706f6b656d6f6e5f64" .
-    "61746118022001280b321c2e504f474f50726f746f732e446174612e506f" .
-    "6b656d6f6e44617461123c0a0d636170747572655f617761726418032001" .
-    "280b32252e504f474f50726f746f732e446174612e436170747572652e43" .
-    "6170747572654177617264223b0a06526573756c7412090a05554e534554" .
-    "1000120b0a0753554343455353100112190a154552524f525f494e56414c" .
-    "49445f504f4b454d4f4e1002620670726f746f33"
-));
 

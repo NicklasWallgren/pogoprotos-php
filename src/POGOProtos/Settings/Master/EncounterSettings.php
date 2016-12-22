@@ -4,68 +4,120 @@
 
 namespace POGOProtos\Settings\Master;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.EncounterSettings</code>
+ */
 class EncounterSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>float spin_bonus_threshold = 1;</code>
+     */
     private $spin_bonus_threshold = 0.0;
+    /**
+     * <code>float excellent_throw_threshold = 2;</code>
+     */
     private $excellent_throw_threshold = 0.0;
+    /**
+     * <code>float great_throw_threshold = 3;</code>
+     */
     private $great_throw_threshold = 0.0;
+    /**
+     * <code>float nice_throw_threshold = 4;</code>
+     */
     private $nice_throw_threshold = 0.0;
+    /**
+     * <code>int32 milestone_threshold = 5;</code>
+     */
     private $milestone_threshold = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\EncounterSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>float spin_bonus_threshold = 1;</code>
+     */
     public function getSpinBonusThreshold()
     {
         return $this->spin_bonus_threshold;
     }
 
+    /**
+     * <code>float spin_bonus_threshold = 1;</code>
+     */
     public function setSpinBonusThreshold($var)
     {
         GPBUtil::checkFloat($var);
         $this->spin_bonus_threshold = $var;
     }
 
+    /**
+     * <code>float excellent_throw_threshold = 2;</code>
+     */
     public function getExcellentThrowThreshold()
     {
         return $this->excellent_throw_threshold;
     }
 
+    /**
+     * <code>float excellent_throw_threshold = 2;</code>
+     */
     public function setExcellentThrowThreshold($var)
     {
         GPBUtil::checkFloat($var);
         $this->excellent_throw_threshold = $var;
     }
 
+    /**
+     * <code>float great_throw_threshold = 3;</code>
+     */
     public function getGreatThrowThreshold()
     {
         return $this->great_throw_threshold;
     }
 
+    /**
+     * <code>float great_throw_threshold = 3;</code>
+     */
     public function setGreatThrowThreshold($var)
     {
         GPBUtil::checkFloat($var);
         $this->great_throw_threshold = $var;
     }
 
+    /**
+     * <code>float nice_throw_threshold = 4;</code>
+     */
     public function getNiceThrowThreshold()
     {
         return $this->nice_throw_threshold;
     }
 
+    /**
+     * <code>float nice_throw_threshold = 4;</code>
+     */
     public function setNiceThrowThreshold($var)
     {
         GPBUtil::checkFloat($var);
         $this->nice_throw_threshold = $var;
     }
 
+    /**
+     * <code>int32 milestone_threshold = 5;</code>
+     */
     public function getMilestoneThreshold()
     {
         return $this->milestone_threshold;
     }
 
+    /**
+     * <code>int32 milestone_threshold = 5;</code>
+     */
     public function setMilestoneThreshold($var)
     {
         GPBUtil::checkInt32($var);
@@ -73,18 +125,4 @@ class EncounterSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a89020a32504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f456e636f756e74657253657474696e67732e70726f746f121a504f47" .
-    "4f50726f746f732e53657474696e67732e4d617374657222ae010a11456e" .
-    "636f756e74657253657474696e6773121c0a147370696e5f626f6e75735f" .
-    "7468726573686f6c6418012001280212210a19657863656c6c656e745f74" .
-    "68726f775f7468726573686f6c64180220012802121d0a1567726561745f" .
-    "7468726f775f7468726573686f6c64180320012802121c0a146e6963655f" .
-    "7468726f775f7468726573686f6c64180420012802121b0a136d696c6573" .
-    "746f6e655f7468726573686f6c64180520012805620670726f746f33"
-));
 

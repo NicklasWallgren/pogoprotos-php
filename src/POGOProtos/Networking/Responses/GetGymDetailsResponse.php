@@ -4,100 +4,146 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.GetGymDetailsResponse</code>
+ */
 class GetGymDetailsResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Gym.GymState gym_state = 1;</code>
+     */
     private $gym_state = null;
+    /**
+     * <code>string name = 2;</code>
+     */
     private $name = '';
+    /**
+     * <code>repeated string urls = 3;</code>
+     */
     private $urls;
+    /**
+     * <code>.POGOProtos.Networking.Responses.GetGymDetailsResponse.Result result = 4;</code>
+     */
     private $result = 0;
+    /**
+     * <code>string description = 5;</code>
+     */
     private $description = '';
+    /**
+     * <code>repeated string secondary_url = 6;</code>
+     */
+    private $secondary_url;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\GetGymDetailsResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Gym.GymState gym_state = 1;</code>
+     */
     public function getGymState()
     {
         return $this->gym_state;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Gym.GymState gym_state = 1;</code>
+     */
     public function setGymState(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Gym\GymState::class);
         $this->gym_state = $var;
     }
 
+    /**
+     * <code>string name = 2;</code>
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * <code>string name = 2;</code>
+     */
     public function setName($var)
     {
         GPBUtil::checkString($var, True);
         $this->name = $var;
     }
 
+    /**
+     * <code>repeated string urls = 3;</code>
+     */
     public function getUrls()
     {
         return $this->urls;
     }
 
+    /**
+     * <code>repeated string urls = 3;</code>
+     */
     public function setUrls(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::STRING);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->urls = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.GetGymDetailsResponse.Result result = 4;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.GetGymDetailsResponse.Result result = 4;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\GetGymDetailsResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>string description = 5;</code>
+     */
     public function getDescription()
     {
         return $this->description;
     }
 
+    /**
+     * <code>string description = 5;</code>
+     */
     public function setDescription($var)
     {
         GPBUtil::checkString($var, True);
         $this->description = $var;
     }
 
+    /**
+     * <code>repeated string secondary_url = 6;</code>
+     */
+    public function getSecondaryUrl()
+    {
+        return $this->secondary_url;
+    }
+
+    /**
+     * <code>repeated string secondary_url = 6;</code>
+     */
+    public function setSecondaryUrl(&$var)
+    {
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->secondary_url = $var;
+    }
+
 }
-
-class GetGymDetailsResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const ERROR_NOT_IN_RANGE = 2;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a90030a3b504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f47657447796d44657461696c73526573706f6e73652e70" .
-    "726f746f121f504f474f50726f746f732e4e6574776f726b696e672e5265" .
-    "73706f6e7365731a22504f474f50726f746f732f446174612f47796d2f47" .
-    "796d53746174652e70726f746f2283020a1547657447796d44657461696c" .
-    "73526573706f6e736512300a0967796d5f737461746518012001280b321d" .
-    "2e504f474f50726f746f732e446174612e47796d2e47796d537461746512" .
-    "0c0a046e616d65180220012809120c0a0475726c73180320032809124d0a" .
-    "06726573756c7418042001280e323d2e504f474f50726f746f732e4e6574" .
-    "776f726b696e672e526573706f6e7365732e47657447796d44657461696c" .
-    "73526573706f6e73652e526573756c7412130a0b6465736372697074696f" .
-    "6e18052001280922380a06526573756c7412090a05554e5345541000120b" .
-    "0a0753554343455353100112160a124552524f525f4e4f545f494e5f5241" .
-    "4e47451002620670726f746f33"
-));
 

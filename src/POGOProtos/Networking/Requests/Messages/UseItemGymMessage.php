@@ -4,57 +4,99 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.UseItemGymMessage</code>
+ */
 class UseItemGymMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>string gym_id = 2;</code>
+     */
     private $gym_id = '';
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     private $player_latitude = 0.0;
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     private $player_longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\UseItemGymMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>string gym_id = 2;</code>
+     */
     public function getGymId()
     {
         return $this->gym_id;
     }
 
+    /**
+     * <code>string gym_id = 2;</code>
+     */
     public function setGymId($var)
     {
         GPBUtil::checkString($var, True);
         $this->gym_id = $var;
     }
 
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     public function getPlayerLatitude()
     {
         return $this->player_latitude;
     }
 
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     public function setPlayerLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_latitude = $var;
     }
 
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     public function getPlayerLongitude()
     {
         return $this->player_longitude;
     }
 
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     public function setPlayerLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -62,19 +104,4 @@ class UseItemGymMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa7020a3f504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f5573654974656d47796d4d65737361" .
-    "67652e70726f746f1227504f474f50726f746f732e4e6574776f726b696e" .
-    "672e52657175657374732e4d657373616765731a26504f474f50726f746f" .
-    "732f496e76656e746f72792f4974656d2f4974656d49642e70726f746f22" .
-    "8a010a115573654974656d47796d4d65737361676512320a076974656d5f" .
-    "696418012001280e32212e504f474f50726f746f732e496e76656e746f72" .
-    "792e4974656d2e4974656d4964120e0a0667796d5f696418022001280912" .
-    "170a0f706c617965725f6c6174697475646518032001280112180a10706c" .
-    "617965725f6c6f6e676974756465180420012801620670726f746f33"
-));
 

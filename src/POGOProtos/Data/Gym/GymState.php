@@ -4,46 +4,78 @@
 
 namespace POGOProtos\Data\Gym;
 
-require_once('POGOProtos/Map/Fort/FortData.pb.php');
-require_once('POGOProtos/Data/Gym/GymMembership.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Gym.GymState</code>
+ */
 class GymState extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Map.Fort.FortData fort_data = 1;</code>
+     */
     private $fort_data = null;
+    /**
+     * <code>repeated .POGOProtos.Data.Gym.GymMembership memberships = 2;</code>
+     */
     private $memberships;
+    /**
+     * <code>bool deploy_lockout = 3;</code>
+     */
     private $deploy_lockout = false;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Gym\GymState::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Map.Fort.FortData fort_data = 1;</code>
+     */
     public function getFortData()
     {
         return $this->fort_data;
     }
 
+    /**
+     * <code>.POGOProtos.Map.Fort.FortData fort_data = 1;</code>
+     */
     public function setFortData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Map\Fort\FortData::class);
         $this->fort_data = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Gym.GymMembership memberships = 2;</code>
+     */
     public function getMemberships()
     {
         return $this->memberships;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Gym.GymMembership memberships = 2;</code>
+     */
     public function setMemberships(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Gym\GymMembership::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Gym\GymMembership::class);
         $this->memberships = $var;
     }
 
+    /**
+     * <code>bool deploy_lockout = 3;</code>
+     */
     public function getDeployLockout()
     {
         return $this->deploy_lockout;
     }
 
+    /**
+     * <code>bool deploy_lockout = 3;</code>
+     */
     public function setDeployLockout($var)
     {
         GPBUtil::checkBool($var);
@@ -51,19 +83,4 @@ class GymState extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a9e020a22504f474f50726f746f732f446174612f47796d2f47796d5374" .
-    "6174652e70726f746f1213504f474f50726f746f732e446174612e47796d" .
-    "1a22504f474f50726f746f732f4d61702f466f72742f466f727444617461" .
-    "2e70726f746f1a27504f474f50726f746f732f446174612f47796d2f4779" .
-    "6d4d656d626572736869702e70726f746f228d010a0847796d5374617465" .
-    "12300a09666f72745f6461746118012001280b321d2e504f474f50726f74" .
-    "6f732e4d61702e466f72742e466f72744461746112370a0b6d656d626572" .
-    "736869707318022003280b32222e504f474f50726f746f732e446174612e" .
-    "47796d2e47796d4d656d6265727368697012160a0e6465706c6f795f6c6f" .
-    "636b6f7574180320012808620670726f746f33"
-));
 

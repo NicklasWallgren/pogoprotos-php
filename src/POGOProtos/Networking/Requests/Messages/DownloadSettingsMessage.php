@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.DownloadSettingsMessage</code>
+ */
 class DownloadSettingsMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string hash = 1;</code>
+     */
     private $hash = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\DownloadSettingsMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string hash = 1;</code>
+     */
     public function getHash()
     {
         return $this->hash;
     }
 
+    /**
+     * <code>string hash = 1;</code>
+     */
     public function setHash($var)
     {
         GPBUtil::checkString($var, True);
@@ -25,15 +41,4 @@ class DownloadSettingsMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa1010a45504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f446f776e6c6f616453657474696e67" .
-    "734d6573736167652e70726f746f1227504f474f50726f746f732e4e6574" .
-    "776f726b696e672e52657175657374732e4d6573736167657322270a1744" .
-    "6f776e6c6f616453657474696e67734d657373616765120c0a0468617368" .
-    "180120012809620670726f746f33"
-));
 

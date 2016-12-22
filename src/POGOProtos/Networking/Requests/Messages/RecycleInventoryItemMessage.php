@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.RecycleInventoryItemMessage</code>
+ */
 class RecycleInventoryItemMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>int32 count = 2;</code>
+     */
     private $count = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\RecycleInventoryItemMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>int32 count = 2;</code>
+     */
     public function getCount()
     {
         return $this->count;
     }
 
+    /**
+     * <code>int32 count = 2;</code>
+     */
     public function setCount($var)
     {
         GPBUtil::checkInt32($var);
@@ -38,18 +62,4 @@ class RecycleInventoryItemMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a86020a49504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f52656379636c65496e76656e746f72" .
-    "794974656d4d6573736167652e70726f746f1227504f474f50726f746f73" .
-    "2e4e6574776f726b696e672e52657175657374732e4d657373616765731a" .
-    "26504f474f50726f746f732f496e76656e746f72792f4974656d2f497465" .
-    "6d49642e70726f746f22600a1b52656379636c65496e76656e746f727949" .
-    "74656d4d65737361676512320a076974656d5f696418012001280e32212e" .
-    "504f474f50726f746f732e496e76656e746f72792e4974656d2e4974656d" .
-    "4964120d0a05636f756e74180220012805620670726f746f33"
-));
 

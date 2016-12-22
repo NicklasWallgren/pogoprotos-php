@@ -4,34 +4,57 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.GetMapObjectsResponse</code>
+ */
 class GetMapObjectsResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Map.MapCell map_cells = 1;</code>
+     */
     private $map_cells;
+    /**
+     * <code>.POGOProtos.Map.MapObjectsStatus status = 2;</code>
+     */
     private $status = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\GetMapObjectsResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Map.MapCell map_cells = 1;</code>
+     */
     public function getMapCells()
     {
         return $this->map_cells;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Map.MapCell map_cells = 1;</code>
+     */
     public function setMapCells(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Map\MapCell::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Map\MapCell::class);
         $this->map_cells = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Map.MapObjectsStatus status = 2;</code>
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * <code>.POGOProtos.Map.MapObjectsStatus status = 2;</code>
+     */
     public function setStatus($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Map\MapObjectsStatus::class);
@@ -39,19 +62,4 @@ class GetMapObjectsResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa2020a3b504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f4765744d61704f626a65637473526573706f6e73652e70" .
-    "726f746f121f504f474f50726f746f732e4e6574776f726b696e672e5265" .
-    "73706f6e7365731a1c504f474f50726f746f732f4d61702f4d617043656c" .
-    "6c2e70726f746f1a25504f474f50726f746f732f4d61702f4d61704f626a" .
-    "656374735374617475732e70726f746f22750a154765744d61704f626a65" .
-    "637473526573706f6e7365122a0a096d61705f63656c6c7318012003280b" .
-    "32172e504f474f50726f746f732e4d61702e4d617043656c6c12300a0673" .
-    "746174757318022001280e32202e504f474f50726f746f732e4d61702e4d" .
-    "61704f626a65637473537461747573620670726f746f33"
-));
 

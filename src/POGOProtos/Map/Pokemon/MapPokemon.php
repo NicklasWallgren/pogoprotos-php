@@ -4,101 +4,179 @@
 
 namespace POGOProtos\Map\Pokemon;
 
-require_once('POGOProtos/Enums/PokemonId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Map.Pokemon.MapPokemon</code>
+ */
 class MapPokemon extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string spawn_point_id = 1;</code>
+     */
     private $spawn_point_id = '';
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     private $encounter_id = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 3;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <pre>
+     * After this timestamp, the pokemon will be gone.
+     * </pre>
+     *
+     * <code>int64 expiration_timestamp_ms = 4;</code>
+     */
     private $expiration_timestamp_ms = 0;
+    /**
+     * <code>double latitude = 5;</code>
+     */
     private $latitude = 0.0;
+    /**
+     * <code>double longitude = 6;</code>
+     */
     private $longitude = 0.0;
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 7;</code>
+     */
+    private $pokemon_display = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Map\Pokemon\MapPokemon::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string spawn_point_id = 1;</code>
+     */
     public function getSpawnPointId()
     {
         return $this->spawn_point_id;
     }
 
+    /**
+     * <code>string spawn_point_id = 1;</code>
+     */
     public function setSpawnPointId($var)
     {
         GPBUtil::checkString($var, True);
         $this->spawn_point_id = $var;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     public function getEncounterId()
     {
         return $this->encounter_id;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     public function setEncounterId($var)
     {
         GPBUtil::checkUint64($var);
         $this->encounter_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 3;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 3;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <pre>
+     * After this timestamp, the pokemon will be gone.
+     * </pre>
+     *
+     * <code>int64 expiration_timestamp_ms = 4;</code>
+     */
     public function getExpirationTimestampMs()
     {
         return $this->expiration_timestamp_ms;
     }
 
+    /**
+     * <pre>
+     * After this timestamp, the pokemon will be gone.
+     * </pre>
+     *
+     * <code>int64 expiration_timestamp_ms = 4;</code>
+     */
     public function setExpirationTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->expiration_timestamp_ms = $var;
     }
 
+    /**
+     * <code>double latitude = 5;</code>
+     */
     public function getLatitude()
     {
         return $this->latitude;
     }
 
+    /**
+     * <code>double latitude = 5;</code>
+     */
     public function setLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->latitude = $var;
     }
 
+    /**
+     * <code>double longitude = 6;</code>
+     */
     public function getLongitude()
     {
         return $this->longitude;
     }
 
+    /**
+     * <code>double longitude = 6;</code>
+     */
     public function setLongitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->longitude = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 7;</code>
+     */
+    public function getPokemonDisplay()
+    {
+        return $this->pokemon_display;
+    }
+
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 7;</code>
+     */
+    public function setPokemonDisplay(&$var)
+    {
+        GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonDisplay::class);
+        $this->pokemon_display = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a9f020a27504f474f50726f746f732f4d61702f506f6b656d6f6e2f4d61" .
-    "70506f6b656d6f6e2e70726f746f1216504f474f50726f746f732e4d6170" .
-    "2e506f6b656d6f6e1a20504f474f50726f746f732f456e756d732f506f6b" .
-    "656d6f6e49642e70726f746f22b1010a0a4d6170506f6b656d6f6e12160a" .
-    "0e737061776e5f706f696e745f696418012001280912140a0c656e636f75" .
-    "6e7465725f6964180220012806122f0a0a706f6b656d6f6e5f6964180320" .
-    "01280e321b2e504f474f50726f746f732e456e756d732e506f6b656d6f6e" .
-    "4964121f0a1765787069726174696f6e5f74696d657374616d705f6d7318" .
-    "042001280312100a086c6174697475646518052001280112110a096c6f6e" .
-    "676974756465180620012801620670726f746f33"
-));
 

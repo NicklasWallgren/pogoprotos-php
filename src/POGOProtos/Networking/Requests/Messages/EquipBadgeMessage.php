@@ -4,21 +4,36 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Enums/BadgeType.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.EquipBadgeMessage</code>
+ */
 class EquipBadgeMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     private $badge_type = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\EquipBadgeMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     public function getBadgeType()
     {
         return $this->badge_type;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     public function setBadgeType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\BadgeType::class);
@@ -26,17 +41,4 @@ class EquipBadgeMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ada010a3f504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f457175697042616467654d65737361" .
-    "67652e70726f746f1227504f474f50726f746f732e4e6574776f726b696e" .
-    "672e52657175657374732e4d657373616765731a20504f474f50726f746f" .
-    "732f456e756d732f4261646765547970652e70726f746f22440a11457175" .
-    "697042616467654d657373616765122f0a0a62616467655f747970651801" .
-    "2001280e321b2e504f474f50726f746f732e456e756d732e426164676554" .
-    "797065620670726f746f33"
-));
 

@@ -4,69 +4,120 @@
 
 namespace POGOProtos\Data;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.PlayerBadge</code>
+ */
 class PlayerBadge extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     private $badge_type = 0;
+    /**
+     * <code>int32 rank = 2;</code>
+     */
     private $rank = 0;
+    /**
+     * <code>int32 start_value = 3;</code>
+     */
     private $start_value = 0;
+    /**
+     * <code>int32 end_value = 4;</code>
+     */
     private $end_value = 0;
+    /**
+     * <code>double current_value = 5;</code>
+     */
     private $current_value = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\PlayerBadge::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     public function getBadgeType()
     {
         return $this->badge_type;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.BadgeType badge_type = 1;</code>
+     */
     public function setBadgeType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\BadgeType::class);
         $this->badge_type = $var;
     }
 
+    /**
+     * <code>int32 rank = 2;</code>
+     */
     public function getRank()
     {
         return $this->rank;
     }
 
+    /**
+     * <code>int32 rank = 2;</code>
+     */
     public function setRank($var)
     {
         GPBUtil::checkInt32($var);
         $this->rank = $var;
     }
 
+    /**
+     * <code>int32 start_value = 3;</code>
+     */
     public function getStartValue()
     {
         return $this->start_value;
     }
 
+    /**
+     * <code>int32 start_value = 3;</code>
+     */
     public function setStartValue($var)
     {
         GPBUtil::checkInt32($var);
         $this->start_value = $var;
     }
 
+    /**
+     * <code>int32 end_value = 4;</code>
+     */
     public function getEndValue()
     {
         return $this->end_value;
     }
 
+    /**
+     * <code>int32 end_value = 4;</code>
+     */
     public function setEndValue($var)
     {
         GPBUtil::checkInt32($var);
         $this->end_value = $var;
     }
 
+    /**
+     * <code>double current_value = 5;</code>
+     */
     public function getCurrentValue()
     {
         return $this->current_value;
     }
 
+    /**
+     * <code>double current_value = 5;</code>
+     */
     public function setCurrentValue($var)
     {
         GPBUtil::checkDouble($var);
@@ -74,17 +125,4 @@ class PlayerBadge extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aec010a21504f474f50726f746f732f446174612f506c61796572426164" .
-    "67652e70726f746f120f504f474f50726f746f732e446174611a20504f47" .
-    "4f50726f746f732f456e756d732f4261646765547970652e70726f746f22" .
-    "8b010a0b506c617965724261646765122f0a0a62616467655f7479706518" .
-    "012001280e321b2e504f474f50726f746f732e456e756d732e4261646765" .
-    "54797065120c0a0472616e6b18022001280512130a0b73746172745f7661" .
-    "6c756518032001280512110a09656e645f76616c75651804200128051215" .
-    "0a0d63757272656e745f76616c7565180520012801620670726f746f33"
-));
 

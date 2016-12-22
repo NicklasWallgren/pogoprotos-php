@@ -4,62 +4,83 @@
 
 namespace POGOProtos\Settings\Master;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.EquippedBadgeSettings</code>
+ */
 class EquippedBadgeSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int64 equip_badge_cooldown_ms = 1;</code>
+     */
     private $equip_badge_cooldown_ms = 0;
+    /**
+     * <code>repeated float catch_probability_bonus = 2;</code>
+     */
     private $catch_probability_bonus;
+    /**
+     * <code>repeated float flee_probability_bonus = 3;</code>
+     */
     private $flee_probability_bonus;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\EquippedBadgeSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int64 equip_badge_cooldown_ms = 1;</code>
+     */
     public function getEquipBadgeCooldownMs()
     {
         return $this->equip_badge_cooldown_ms;
     }
 
+    /**
+     * <code>int64 equip_badge_cooldown_ms = 1;</code>
+     */
     public function setEquipBadgeCooldownMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->equip_badge_cooldown_ms = $var;
     }
 
+    /**
+     * <code>repeated float catch_probability_bonus = 2;</code>
+     */
     public function getCatchProbabilityBonus()
     {
         return $this->catch_probability_bonus;
     }
 
+    /**
+     * <code>repeated float catch_probability_bonus = 2;</code>
+     */
     public function setCatchProbabilityBonus(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->catch_probability_bonus = $var;
     }
 
+    /**
+     * <code>repeated float flee_probability_bonus = 3;</code>
+     */
     public function getFleeProbabilityBonus()
     {
         return $this->flee_probability_bonus;
     }
 
+    /**
+     * <code>repeated float flee_probability_bonus = 3;</code>
+     */
     public function setFleeProbabilityBonus(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->flee_probability_bonus = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ad7010a36504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4571756970706564426164676553657474696e67732e70726f746f12" .
-    "1a504f474f50726f746f732e53657474696e67732e4d617374657222790a" .
-    "154571756970706564426164676553657474696e6773121f0a1765717569" .
-    "705f62616467655f636f6f6c646f776e5f6d73180120012803121f0a1763" .
-    "617463685f70726f626162696c6974795f626f6e7573180220032802121e" .
-    "0a16666c65655f70726f626162696c6974795f626f6e7573180320032802" .
-    "620670726f746f33"
-));
 

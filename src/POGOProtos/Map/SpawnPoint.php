@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Map;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Map.SpawnPoint</code>
+ */
 class SpawnPoint extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>double latitude = 2;</code>
+     */
     private $latitude = 0.0;
+    /**
+     * <code>double longitude = 3;</code>
+     */
     private $longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Map\SpawnPoint::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>double latitude = 2;</code>
+     */
     public function getLatitude()
     {
         return $this->latitude;
     }
 
+    /**
+     * <code>double latitude = 2;</code>
+     */
     public function setLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->latitude = $var;
     }
 
+    /**
+     * <code>double longitude = 3;</code>
+     */
     public function getLongitude()
     {
         return $this->longitude;
     }
 
+    /**
+     * <code>double longitude = 3;</code>
+     */
     public function setLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -37,13 +62,4 @@ class SpawnPoint extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a6c0a1f504f474f50726f746f732f4d61702f537061776e506f696e742e" .
-    "70726f746f120e504f474f50726f746f732e4d617022310a0a537061776e" .
-    "506f696e7412100a086c6174697475646518022001280112110a096c6f6e" .
-    "676974756465180320012801620670726f746f33"
-));
 

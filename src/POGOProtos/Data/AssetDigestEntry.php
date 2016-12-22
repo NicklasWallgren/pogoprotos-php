@@ -4,80 +4,141 @@
 
 namespace POGOProtos\Data;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.AssetDigestEntry</code>
+ */
 class AssetDigestEntry extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string asset_id = 1;</code>
+     */
     private $asset_id = '';
+    /**
+     * <code>string bundle_name = 2;</code>
+     */
     private $bundle_name = '';
+    /**
+     * <code>int64 version = 3;</code>
+     */
     private $version = 0;
+    /**
+     * <code>fixed32 checksum = 4;</code>
+     */
     private $checksum = 0;
+    /**
+     * <code>int32 size = 5;</code>
+     */
     private $size = 0;
+    /**
+     * <code>bytes key = 6;</code>
+     */
     private $key = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\AssetDigestEntry::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string asset_id = 1;</code>
+     */
     public function getAssetId()
     {
         return $this->asset_id;
     }
 
+    /**
+     * <code>string asset_id = 1;</code>
+     */
     public function setAssetId($var)
     {
         GPBUtil::checkString($var, True);
         $this->asset_id = $var;
     }
 
+    /**
+     * <code>string bundle_name = 2;</code>
+     */
     public function getBundleName()
     {
         return $this->bundle_name;
     }
 
+    /**
+     * <code>string bundle_name = 2;</code>
+     */
     public function setBundleName($var)
     {
         GPBUtil::checkString($var, True);
         $this->bundle_name = $var;
     }
 
+    /**
+     * <code>int64 version = 3;</code>
+     */
     public function getVersion()
     {
         return $this->version;
     }
 
+    /**
+     * <code>int64 version = 3;</code>
+     */
     public function setVersion($var)
     {
         GPBUtil::checkInt64($var);
         $this->version = $var;
     }
 
+    /**
+     * <code>fixed32 checksum = 4;</code>
+     */
     public function getChecksum()
     {
         return $this->checksum;
     }
 
+    /**
+     * <code>fixed32 checksum = 4;</code>
+     */
     public function setChecksum($var)
     {
         GPBUtil::checkUint32($var);
         $this->checksum = $var;
     }
 
+    /**
+     * <code>int32 size = 5;</code>
+     */
     public function getSize()
     {
         return $this->size;
     }
 
+    /**
+     * <code>int32 size = 5;</code>
+     */
     public function setSize($var)
     {
         GPBUtil::checkInt32($var);
         $this->size = $var;
     }
 
+    /**
+     * <code>bytes key = 6;</code>
+     */
     public function getKey()
     {
         return $this->key;
     }
 
+    /**
+     * <code>bytes key = 6;</code>
+     */
     public function setKey($var)
     {
         GPBUtil::checkString($var, False);
@@ -85,16 +146,4 @@ class AssetDigestEntry extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aba010a26504f474f50726f746f732f446174612f417373657444696765" .
-    "7374456e7472792e70726f746f120f504f474f50726f746f732e44617461" .
-    "22770a104173736574446967657374456e74727912100a0861737365745f" .
-    "696418012001280912130a0b62756e646c655f6e616d6518022001280912" .
-    "0f0a0776657273696f6e18032001280312100a08636865636b73756d1804" .
-    "20012807120c0a0473697a65180520012805120b0a036b65791806200128" .
-    "0c620670726f746f33"
-));
 

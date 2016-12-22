@@ -4,68 +4,120 @@
 
 namespace POGOProtos\Settings\Master\Pokemon;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.Pokemon.CameraAttributes</code>
+ */
 class CameraAttributes extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>float disk_radius_m = 1;</code>
+     */
     private $disk_radius_m = 0.0;
+    /**
+     * <code>float cylinder_radius_m = 2;</code>
+     */
     private $cylinder_radius_m = 0.0;
+    /**
+     * <code>float cylinder_height_m = 3;</code>
+     */
     private $cylinder_height_m = 0.0;
+    /**
+     * <code>float cylinder_ground_m = 4;</code>
+     */
     private $cylinder_ground_m = 0.0;
+    /**
+     * <code>float shoulder_mode_scale = 5;</code>
+     */
     private $shoulder_mode_scale = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\Pokemon\CameraAttributes::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>float disk_radius_m = 1;</code>
+     */
     public function getDiskRadiusM()
     {
         return $this->disk_radius_m;
     }
 
+    /**
+     * <code>float disk_radius_m = 1;</code>
+     */
     public function setDiskRadiusM($var)
     {
         GPBUtil::checkFloat($var);
         $this->disk_radius_m = $var;
     }
 
+    /**
+     * <code>float cylinder_radius_m = 2;</code>
+     */
     public function getCylinderRadiusM()
     {
         return $this->cylinder_radius_m;
     }
 
+    /**
+     * <code>float cylinder_radius_m = 2;</code>
+     */
     public function setCylinderRadiusM($var)
     {
         GPBUtil::checkFloat($var);
         $this->cylinder_radius_m = $var;
     }
 
+    /**
+     * <code>float cylinder_height_m = 3;</code>
+     */
     public function getCylinderHeightM()
     {
         return $this->cylinder_height_m;
     }
 
+    /**
+     * <code>float cylinder_height_m = 3;</code>
+     */
     public function setCylinderHeightM($var)
     {
         GPBUtil::checkFloat($var);
         $this->cylinder_height_m = $var;
     }
 
+    /**
+     * <code>float cylinder_ground_m = 4;</code>
+     */
     public function getCylinderGroundM()
     {
         return $this->cylinder_ground_m;
     }
 
+    /**
+     * <code>float cylinder_ground_m = 4;</code>
+     */
     public function setCylinderGroundM($var)
     {
         GPBUtil::checkFloat($var);
         $this->cylinder_ground_m = $var;
     }
 
+    /**
+     * <code>float shoulder_mode_scale = 5;</code>
+     */
     public function getShoulderModeScale()
     {
         return $this->shoulder_mode_scale;
     }
 
+    /**
+     * <code>float shoulder_mode_scale = 5;</code>
+     */
     public function setShoulderModeScale($var)
     {
         GPBUtil::checkFloat($var);
@@ -73,18 +125,4 @@ class CameraAttributes extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a81020a39504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f506f6b656d6f6e2f43616d657261417474726962757465732e70726f" .
-    "746f1222504f474f50726f746f732e53657474696e67732e4d6173746572" .
-    "2e506f6b656d6f6e2297010a1043616d6572614174747269627574657312" .
-    "150a0d6469736b5f7261646975735f6d18012001280212190a1163796c69" .
-    "6e6465725f7261646975735f6d18022001280212190a1163796c696e6465" .
-    "725f6865696768745f6d18032001280212190a1163796c696e6465725f67" .
-    "726f756e645f6d180420012802121b0a1373686f756c6465725f6d6f6465" .
-    "5f7363616c65180520012802620670726f746f33"
-));
 

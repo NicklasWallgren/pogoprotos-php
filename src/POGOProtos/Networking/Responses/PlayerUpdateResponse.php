@@ -4,46 +4,78 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.PlayerUpdateResponse</code>
+ */
 class PlayerUpdateResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Map.Pokemon.WildPokemon wild_pokemons = 1;</code>
+     */
     private $wild_pokemons;
+    /**
+     * <code>repeated .POGOProtos.Map.Fort.FortData forts = 2;</code>
+     */
     private $forts;
+    /**
+     * <code>int32 forts_nearby = 3;</code>
+     */
     private $forts_nearby = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\PlayerUpdateResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Map.Pokemon.WildPokemon wild_pokemons = 1;</code>
+     */
     public function getWildPokemons()
     {
         return $this->wild_pokemons;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Map.Pokemon.WildPokemon wild_pokemons = 1;</code>
+     */
     public function setWildPokemons(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Map\Pokemon\WildPokemon::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Map\Pokemon\WildPokemon::class);
         $this->wild_pokemons = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Map.Fort.FortData forts = 2;</code>
+     */
     public function getForts()
     {
         return $this->forts;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Map.Fort.FortData forts = 2;</code>
+     */
     public function setForts(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Map\Fort\FortData::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Map\Fort\FortData::class);
         $this->forts = $var;
     }
 
+    /**
+     * <code>int32 forts_nearby = 3;</code>
+     */
     public function getFortsNearby()
     {
         return $this->forts_nearby;
     }
 
+    /**
+     * <code>int32 forts_nearby = 3;</code>
+     */
     public function setFortsNearby($var)
     {
         GPBUtil::checkInt32($var);
@@ -51,21 +83,4 @@ class PlayerUpdateResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0acc020a3a504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f506c61796572557064617465526573706f6e73652e7072" .
-    "6f746f121f504f474f50726f746f732e4e6574776f726b696e672e526573" .
-    "706f6e7365731a22504f474f50726f746f732f4d61702f466f72742f466f" .
-    "7274446174612e70726f746f1a28504f474f50726f746f732f4d61702f50" .
-    "6f6b656d6f6e2f57696c64506f6b656d6f6e2e70726f746f2296010a1450" .
-    "6c61796572557064617465526573706f6e7365123a0a0d77696c645f706f" .
-    "6b656d6f6e7318012003280b32232e504f474f50726f746f732e4d61702e" .
-    "506f6b656d6f6e2e57696c64506f6b656d6f6e122c0a05666f7274731802" .
-    "2003280b321d2e504f474f50726f746f732e4d61702e466f72742e466f72" .
-    "744461746112140a0c666f7274735f6e6561726279180320012805620670" .
-    "726f746f33"
-));
 

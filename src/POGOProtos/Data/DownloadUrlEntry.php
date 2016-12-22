@@ -4,56 +4,99 @@
 
 namespace POGOProtos\Data;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.DownloadUrlEntry</code>
+ */
 class DownloadUrlEntry extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string asset_id = 1;</code>
+     */
     private $asset_id = '';
+    /**
+     * <code>string url = 2;</code>
+     */
     private $url = '';
+    /**
+     * <code>int32 size = 3;</code>
+     */
     private $size = 0;
+    /**
+     * <code>fixed32 checksum = 4;</code>
+     */
     private $checksum = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\DownloadUrlEntry::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string asset_id = 1;</code>
+     */
     public function getAssetId()
     {
         return $this->asset_id;
     }
 
+    /**
+     * <code>string asset_id = 1;</code>
+     */
     public function setAssetId($var)
     {
         GPBUtil::checkString($var, True);
         $this->asset_id = $var;
     }
 
+    /**
+     * <code>string url = 2;</code>
+     */
     public function getUrl()
     {
         return $this->url;
     }
 
+    /**
+     * <code>string url = 2;</code>
+     */
     public function setUrl($var)
     {
         GPBUtil::checkString($var, True);
         $this->url = $var;
     }
 
+    /**
+     * <code>int32 size = 3;</code>
+     */
     public function getSize()
     {
         return $this->size;
     }
 
+    /**
+     * <code>int32 size = 3;</code>
+     */
     public function setSize($var)
     {
         GPBUtil::checkInt32($var);
         $this->size = $var;
     }
 
+    /**
+     * <code>fixed32 checksum = 4;</code>
+     */
     public function getChecksum()
     {
         return $this->checksum;
     }
 
+    /**
+     * <code>fixed32 checksum = 4;</code>
+     */
     public function setChecksum($var)
     {
         GPBUtil::checkUint32($var);
@@ -61,15 +104,4 @@ class DownloadUrlEntry extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a94010a26504f474f50726f746f732f446174612f446f776e6c6f616455" .
-    "726c456e7472792e70726f746f120f504f474f50726f746f732e44617461" .
-    "22510a10446f776e6c6f616455726c456e74727912100a0861737365745f" .
-    "6964180120012809120b0a0375726c180220012809120c0a0473697a6518" .
-    "032001280512100a08636865636b73756d180420012807620670726f746f" .
-    "33"
-));
 

@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Data\Battle;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Battle.BattlePokemonInfo</code>
+ */
 class BattlePokemonInfo extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     private $pokemon_data = null;
+    /**
+     * <code>int32 current_health = 2;</code>
+     */
     private $current_health = 0;
+    /**
+     * <code>int32 current_energy = 3;</code>
+     */
     private $current_energy = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Battle\BattlePokemonInfo::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     public function getPokemonData()
     {
         return $this->pokemon_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     public function setPokemonData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->pokemon_data = $var;
     }
 
+    /**
+     * <code>int32 current_health = 2;</code>
+     */
     public function getCurrentHealth()
     {
         return $this->current_health;
     }
 
+    /**
+     * <code>int32 current_health = 2;</code>
+     */
     public function setCurrentHealth($var)
     {
         GPBUtil::checkInt32($var);
         $this->current_health = $var;
     }
 
+    /**
+     * <code>int32 current_energy = 3;</code>
+     */
     public function getCurrentEnergy()
     {
         return $this->current_energy;
     }
 
+    /**
+     * <code>int32 current_energy = 3;</code>
+     */
     public function setCurrentEnergy($var)
     {
         GPBUtil::checkInt32($var);
@@ -50,17 +83,4 @@ class BattlePokemonInfo extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aec010a2e504f474f50726f746f732f446174612f426174746c652f4261" .
-    "74746c65506f6b656d6f6e496e666f2e70726f746f1216504f474f50726f" .
-    "746f732e446174612e426174746c651a21504f474f50726f746f732f4461" .
-    "74612f506f6b656d6f6e446174612e70726f746f22770a11426174746c65" .
-    "506f6b656d6f6e496e666f12320a0c706f6b656d6f6e5f64617461180120" .
-    "01280b321c2e504f474f50726f746f732e446174612e506f6b656d6f6e44" .
-    "61746112160a0e63757272656e745f6865616c746818022001280512160a" .
-    "0e63757272656e745f656e65726779180320012805620670726f746f33"
-));
 

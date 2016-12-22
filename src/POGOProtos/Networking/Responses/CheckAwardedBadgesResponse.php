@@ -4,65 +4,104 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.CheckAwardedBadgesResponse</code>
+ */
 class CheckAwardedBadgesResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bool success = 1;</code>
+     */
     private $success = false;
+    /**
+     * <code>repeated .POGOProtos.Enums.BadgeType awarded_badges = 2;</code>
+     */
     private $awarded_badges;
+    /**
+     * <code>repeated int32 awarded_badge_levels = 3;</code>
+     */
     private $awarded_badge_levels;
+    /**
+     * <code>repeated string avatar_template_ids = 4;</code>
+     */
+    private $avatar_template_ids;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\CheckAwardedBadgesResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function getSuccess()
     {
         return $this->success;
     }
 
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function setSuccess($var)
     {
         GPBUtil::checkBool($var);
         $this->success = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.BadgeType awarded_badges = 2;</code>
+     */
     public function getAwardedBadges()
     {
         return $this->awarded_badges;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.BadgeType awarded_badges = 2;</code>
+     */
     public function setAwardedBadges(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\BadgeType::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\BadgeType::class);
         $this->awarded_badges = $var;
     }
 
+    /**
+     * <code>repeated int32 awarded_badge_levels = 3;</code>
+     */
     public function getAwardedBadgeLevels()
     {
         return $this->awarded_badge_levels;
     }
 
+    /**
+     * <code>repeated int32 awarded_badge_levels = 3;</code>
+     */
     public function setAwardedBadgeLevels(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->awarded_badge_levels = $var;
     }
 
+    /**
+     * <code>repeated string avatar_template_ids = 4;</code>
+     */
+    public function getAvatarTemplateIds()
+    {
+        return $this->avatar_template_ids;
+    }
+
+    /**
+     * <code>repeated string avatar_template_ids = 4;</code>
+     */
+    public function setAvatarTemplateIds(&$var)
+    {
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->avatar_template_ids = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a90020a40504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f436865636b41776172646564426164676573526573706f" .
-    "6e73652e70726f746f121f504f474f50726f746f732e4e6574776f726b69" .
-    "6e672e526573706f6e7365731a20504f474f50726f746f732f456e756d73" .
-    "2f4261646765547970652e70726f746f2280010a1a436865636b41776172" .
-    "646564426164676573526573706f6e7365120f0a07737563636573731801" .
-    "2001280812330a0e617761726465645f62616467657318022003280e321b" .
-    "2e504f474f50726f746f732e456e756d732e426164676554797065121c0a" .
-    "14617761726465645f62616467655f6c6576656c73180320032805620670" .
-    "726f746f33"
-));
 

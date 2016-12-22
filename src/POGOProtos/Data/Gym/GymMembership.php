@@ -4,46 +4,78 @@
 
 namespace POGOProtos\Data\Gym;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Gym.GymMembership</code>
+ */
 class GymMembership extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     private $pokemon_data = null;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerPublicProfile trainer_public_profile = 2;</code>
+     */
     private $trainer_public_profile = null;
+    /**
+     * <code>.POGOProtos.Data.PokemonData training_pokemon = 3;</code>
+     */
     private $training_pokemon = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Gym\GymMembership::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     public function getPokemonData()
     {
         return $this->pokemon_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     public function setPokemonData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->pokemon_data = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerPublicProfile trainer_public_profile = 2;</code>
+     */
     public function getTrainerPublicProfile()
     {
         return $this->trainer_public_profile;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerPublicProfile trainer_public_profile = 2;</code>
+     */
     public function setTrainerPublicProfile(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerPublicProfile::class);
         $this->trainer_public_profile = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData training_pokemon = 3;</code>
+     */
     public function getTrainingPokemon()
     {
         return $this->training_pokemon;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData training_pokemon = 3;</code>
+     */
     public function setTrainingPokemon(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
@@ -51,22 +83,4 @@ class GymMembership extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae6020a27504f474f50726f746f732f446174612f47796d2f47796d4d65" .
-    "6d626572736869702e70726f746f1213504f474f50726f746f732e446174" .
-    "612e47796d1a21504f474f50726f746f732f446174612f506f6b656d6f6e" .
-    "446174612e70726f746f1a30504f474f50726f746f732f446174612f506c" .
-    "617965722f506c617965725075626c696350726f66696c652e70726f746f" .
-    "22c8010a0d47796d4d656d6265727368697012320a0c706f6b656d6f6e5f" .
-    "6461746118012001280b321c2e504f474f50726f746f732e446174612e50" .
-    "6f6b656d6f6e44617461124b0a16747261696e65725f7075626c69635f70" .
-    "726f66696c6518022001280b322b2e504f474f50726f746f732e44617461" .
-    "2e506c617965722e506c617965725075626c696350726f66696c6512360a" .
-    "10747261696e696e675f706f6b656d6f6e18032001280b321c2e504f474f" .
-    "50726f746f732e446174612e506f6b656d6f6e44617461620670726f746f" .
-    "33"
-));
 

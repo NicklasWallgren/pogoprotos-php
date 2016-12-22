@@ -4,304 +4,519 @@
 
 namespace POGOProtos\Settings\Master;
 
-require_once('POGOProtos/Enums/PokemonId.pb.php');
-require_once('POGOProtos/Enums/PokemonRarity.pb.php');
-require_once('POGOProtos/Enums/PokemonType.pb.php');
-require_once('POGOProtos/Enums/PokemonMove.pb.php');
-require_once('POGOProtos/Enums/PokemonFamilyId.pb.php');
-require_once('POGOProtos/Settings/Master/Pokemon/StatsAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Pokemon/CameraAttributes.pb.php');
-require_once('POGOProtos/Settings/Master/Pokemon/EncounterAttributes.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.PokemonSettings</code>
+ */
 class PokemonSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 1;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>float model_scale = 3;</code>
+     */
     private $model_scale = 0.0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonType type = 4;</code>
+     */
     private $type = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonType type_2 = 5;</code>
+     */
     private $type_2 = 0;
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.CameraAttributes camera = 6;</code>
+     */
     private $camera = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.EncounterAttributes encounter = 7;</code>
+     */
     private $encounter = null;
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.StatsAttributes stats = 8;</code>
+     */
     private $stats = null;
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonMove quick_moves = 9;</code>
+     */
     private $quick_moves;
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonMove cinematic_moves = 10;</code>
+     */
     private $cinematic_moves;
+    /**
+     * <code>repeated float animation_time = 11;</code>
+     */
     private $animation_time;
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonId evolution_ids = 12;</code>
+     */
     private $evolution_ids;
+    /**
+     * <code>int32 evolution_pips = 13;</code>
+     */
     private $evolution_pips = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonRarity rarity = 14;</code>
+     */
     private $rarity = 0;
+    /**
+     * <code>float pokedex_height_m = 15;</code>
+     */
     private $pokedex_height_m = 0.0;
+    /**
+     * <code>float pokedex_weight_kg = 16;</code>
+     */
     private $pokedex_weight_kg = 0.0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonId parent_pokemon_id = 17;</code>
+     */
     private $parent_pokemon_id = 0;
+    /**
+     * <code>float height_std_dev = 18;</code>
+     */
     private $height_std_dev = 0.0;
+    /**
+     * <code>float weight_std_dev = 19;</code>
+     */
     private $weight_std_dev = 0.0;
+    /**
+     * <code>float km_distance_to_hatch = 20;</code>
+     */
     private $km_distance_to_hatch = 0.0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonFamilyId family_id = 21;</code>
+     */
     private $family_id = 0;
+    /**
+     * <code>int32 candy_to_evolve = 22;</code>
+     */
     private $candy_to_evolve = 0;
+    /**
+     * <code>float km_buddy_distance = 23;</code>
+     */
     private $km_buddy_distance = 0.0;
+    /**
+     * <code>.POGOProtos.Settings.Master.PokemonSettings.BuddySize buddy_size = 24;</code>
+     */
     private $buddy_size = 0;
+    /**
+     * <code>float model_height = 25;</code>
+     */
     private $model_height = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\PokemonSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 1;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 1;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>float model_scale = 3;</code>
+     */
     public function getModelScale()
     {
         return $this->model_scale;
     }
 
+    /**
+     * <code>float model_scale = 3;</code>
+     */
     public function setModelScale($var)
     {
         GPBUtil::checkFloat($var);
         $this->model_scale = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType type = 4;</code>
+     */
     public function getType()
     {
         return $this->type;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType type = 4;</code>
+     */
     public function setType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonType::class);
         $this->type = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType type_2 = 5;</code>
+     */
     public function getType2()
     {
         return $this->type_2;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType type_2 = 5;</code>
+     */
     public function setType2($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonType::class);
         $this->type_2 = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.CameraAttributes camera = 6;</code>
+     */
     public function getCamera()
     {
         return $this->camera;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.CameraAttributes camera = 6;</code>
+     */
     public function setCamera(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Pokemon\CameraAttributes::class);
         $this->camera = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.EncounterAttributes encounter = 7;</code>
+     */
     public function getEncounter()
     {
         return $this->encounter;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.EncounterAttributes encounter = 7;</code>
+     */
     public function setEncounter(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Pokemon\EncounterAttributes::class);
         $this->encounter = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.StatsAttributes stats = 8;</code>
+     */
     public function getStats()
     {
         return $this->stats;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.Pokemon.StatsAttributes stats = 8;</code>
+     */
     public function setStats(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\Master\Pokemon\StatsAttributes::class);
         $this->stats = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonMove quick_moves = 9;</code>
+     */
     public function getQuickMoves()
     {
         return $this->quick_moves;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonMove quick_moves = 9;</code>
+     */
     public function setQuickMoves(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\PokemonMove::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\PokemonMove::class);
         $this->quick_moves = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonMove cinematic_moves = 10;</code>
+     */
     public function getCinematicMoves()
     {
         return $this->cinematic_moves;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonMove cinematic_moves = 10;</code>
+     */
     public function setCinematicMoves(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\PokemonMove::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\PokemonMove::class);
         $this->cinematic_moves = $var;
     }
 
+    /**
+     * <code>repeated float animation_time = 11;</code>
+     */
     public function getAnimationTime()
     {
         return $this->animation_time;
     }
 
+    /**
+     * <code>repeated float animation_time = 11;</code>
+     */
     public function setAnimationTime(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->animation_time = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonId evolution_ids = 12;</code>
+     */
     public function getEvolutionIds()
     {
         return $this->evolution_ids;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonId evolution_ids = 12;</code>
+     */
     public function setEvolutionIds(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\PokemonId::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\PokemonId::class);
         $this->evolution_ids = $var;
     }
 
+    /**
+     * <code>int32 evolution_pips = 13;</code>
+     */
     public function getEvolutionPips()
     {
         return $this->evolution_pips;
     }
 
+    /**
+     * <code>int32 evolution_pips = 13;</code>
+     */
     public function setEvolutionPips($var)
     {
         GPBUtil::checkInt32($var);
         $this->evolution_pips = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonRarity rarity = 14;</code>
+     */
     public function getRarity()
     {
         return $this->rarity;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonRarity rarity = 14;</code>
+     */
     public function setRarity($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonRarity::class);
         $this->rarity = $var;
     }
 
+    /**
+     * <code>float pokedex_height_m = 15;</code>
+     */
     public function getPokedexHeightM()
     {
         return $this->pokedex_height_m;
     }
 
+    /**
+     * <code>float pokedex_height_m = 15;</code>
+     */
     public function setPokedexHeightM($var)
     {
         GPBUtil::checkFloat($var);
         $this->pokedex_height_m = $var;
     }
 
+    /**
+     * <code>float pokedex_weight_kg = 16;</code>
+     */
     public function getPokedexWeightKg()
     {
         return $this->pokedex_weight_kg;
     }
 
+    /**
+     * <code>float pokedex_weight_kg = 16;</code>
+     */
     public function setPokedexWeightKg($var)
     {
         GPBUtil::checkFloat($var);
         $this->pokedex_weight_kg = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId parent_pokemon_id = 17;</code>
+     */
     public function getParentPokemonId()
     {
         return $this->parent_pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId parent_pokemon_id = 17;</code>
+     */
     public function setParentPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->parent_pokemon_id = $var;
     }
 
+    /**
+     * <code>float height_std_dev = 18;</code>
+     */
     public function getHeightStdDev()
     {
         return $this->height_std_dev;
     }
 
+    /**
+     * <code>float height_std_dev = 18;</code>
+     */
     public function setHeightStdDev($var)
     {
         GPBUtil::checkFloat($var);
         $this->height_std_dev = $var;
     }
 
+    /**
+     * <code>float weight_std_dev = 19;</code>
+     */
     public function getWeightStdDev()
     {
         return $this->weight_std_dev;
     }
 
+    /**
+     * <code>float weight_std_dev = 19;</code>
+     */
     public function setWeightStdDev($var)
     {
         GPBUtil::checkFloat($var);
         $this->weight_std_dev = $var;
     }
 
+    /**
+     * <code>float km_distance_to_hatch = 20;</code>
+     */
     public function getKmDistanceToHatch()
     {
         return $this->km_distance_to_hatch;
     }
 
+    /**
+     * <code>float km_distance_to_hatch = 20;</code>
+     */
     public function setKmDistanceToHatch($var)
     {
         GPBUtil::checkFloat($var);
         $this->km_distance_to_hatch = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonFamilyId family_id = 21;</code>
+     */
     public function getFamilyId()
     {
         return $this->family_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonFamilyId family_id = 21;</code>
+     */
     public function setFamilyId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonFamilyId::class);
         $this->family_id = $var;
     }
 
+    /**
+     * <code>int32 candy_to_evolve = 22;</code>
+     */
     public function getCandyToEvolve()
     {
         return $this->candy_to_evolve;
     }
 
+    /**
+     * <code>int32 candy_to_evolve = 22;</code>
+     */
     public function setCandyToEvolve($var)
     {
         GPBUtil::checkInt32($var);
         $this->candy_to_evolve = $var;
     }
 
+    /**
+     * <code>float km_buddy_distance = 23;</code>
+     */
     public function getKmBuddyDistance()
     {
         return $this->km_buddy_distance;
     }
 
+    /**
+     * <code>float km_buddy_distance = 23;</code>
+     */
     public function setKmBuddyDistance($var)
     {
         GPBUtil::checkFloat($var);
         $this->km_buddy_distance = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.PokemonSettings.BuddySize buddy_size = 24;</code>
+     */
     public function getBuddySize()
     {
         return $this->buddy_size;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.Master.PokemonSettings.BuddySize buddy_size = 24;</code>
+     */
     public function setBuddySize($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Settings\Master\PokemonSettings_BuddySize::class);
         $this->buddy_size = $var;
     }
 
+    /**
+     * <code>float model_height = 25;</code>
+     */
     public function getModelHeight()
     {
         return $this->model_height;
     }
 
+    /**
+     * <code>float model_height = 25;</code>
+     */
     public function setModelHeight($var)
     {
         GPBUtil::checkFloat($var);
@@ -309,70 +524,4 @@ class PokemonSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class PokemonSettings_BuddySize
-{
-    const BUDDY_MEDIUM = 0;
-    const BUDDY_SHOULDER = 1;
-    const BUDDY_BIG = 2;
-    const BUDDY_FLYING = 3;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa80c0a30504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f506f6b656d6f6e53657474696e67732e70726f746f121a504f474f50" .
-    "726f746f732e53657474696e67732e4d61737465721a20504f474f50726f" .
-    "746f732f456e756d732f506f6b656d6f6e49642e70726f746f1a24504f47" .
-    "4f50726f746f732f456e756d732f506f6b656d6f6e5261726974792e7072" .
-    "6f746f1a22504f474f50726f746f732f456e756d732f506f6b656d6f6e54" .
-    "7970652e70726f746f1a22504f474f50726f746f732f456e756d732f506f" .
-    "6b656d6f6e4d6f76652e70726f746f1a26504f474f50726f746f732f456e" .
-    "756d732f506f6b656d6f6e46616d696c7949642e70726f746f1a38504f47" .
-    "4f50726f746f732f53657474696e67732f4d61737465722f506f6b656d6f" .
-    "6e2f5374617473417474726962757465732e70726f746f1a39504f474f50" .
-    "726f746f732f53657474696e67732f4d61737465722f506f6b656d6f6e2f" .
-    "43616d657261417474726962757465732e70726f746f1a3c504f474f5072" .
-    "6f746f732f53657474696e67732f4d61737465722f506f6b656d6f6e2f45" .
-    "6e636f756e746572417474726962757465732e70726f746f22e4080a0f50" .
-    "6f6b656d6f6e53657474696e6773122f0a0a706f6b656d6f6e5f69641801" .
-    "2001280e321b2e504f474f50726f746f732e456e756d732e506f6b656d6f" .
-    "6e496412130a0b6d6f64656c5f7363616c65180320012802122b0a047479" .
-    "706518042001280e321d2e504f474f50726f746f732e456e756d732e506f" .
-    "6b656d6f6e54797065122d0a06747970655f3218052001280e321d2e504f" .
-    "474f50726f746f732e456e756d732e506f6b656d6f6e5479706512440a06" .
-    "63616d65726118062001280b32342e504f474f50726f746f732e53657474" .
-    "696e67732e4d61737465722e506f6b656d6f6e2e43616d65726141747472" .
-    "696275746573124a0a09656e636f756e74657218072001280b32372e504f" .
-    "474f50726f746f732e53657474696e67732e4d61737465722e506f6b656d" .
-    "6f6e2e456e636f756e7465724174747269627574657312420a0573746174" .
-    "7318082001280b32332e504f474f50726f746f732e53657474696e67732e" .
-    "4d61737465722e506f6b656d6f6e2e537461747341747472696275746573" .
-    "12320a0b717569636b5f6d6f76657318092003280e321d2e504f474f5072" .
-    "6f746f732e456e756d732e506f6b656d6f6e4d6f766512360a0f63696e65" .
-    "6d617469635f6d6f766573180a2003280e321d2e504f474f50726f746f73" .
-    "2e456e756d732e506f6b656d6f6e4d6f766512160a0e616e696d6174696f" .
-    "6e5f74696d65180b2003280212320a0d65766f6c7574696f6e5f69647318" .
-    "0c2003280e321b2e504f474f50726f746f732e456e756d732e506f6b656d" .
-    "6f6e496412160a0e65766f6c7574696f6e5f70697073180d20012805122f" .
-    "0a06726172697479180e2001280e321f2e504f474f50726f746f732e456e" .
-    "756d732e506f6b656d6f6e52617269747912180a10706f6b656465785f68" .
-    "65696768745f6d180f2001280212190a11706f6b656465785f7765696768" .
-    "745f6b6718102001280212360a11706172656e745f706f6b656d6f6e5f69" .
-    "6418112001280e321b2e504f474f50726f746f732e456e756d732e506f6b" .
-    "656d6f6e496412160a0e6865696768745f7374645f646576181220012802" .
-    "12160a0e7765696768745f7374645f646576181320012802121c0a146b6d" .
-    "5f64697374616e63655f746f5f686174636818142001280212340a096661" .
-    "6d696c795f696418152001280e32212e504f474f50726f746f732e456e75" .
-    "6d732e506f6b656d6f6e46616d696c79496412170a0f63616e64795f746f" .
-    "5f65766f6c766518162001280512190a116b6d5f62756464795f64697374" .
-    "616e636518172001280212490a0a62756464795f73697a6518182001280e" .
-    "32352e504f474f50726f746f732e53657474696e67732e4d61737465722e" .
-    "506f6b656d6f6e53657474696e67732e427564647953697a6512140a0c6d" .
-    "6f64656c5f68656967687418192001280222520a09427564647953697a65" .
-    "12100a0c42554444595f4d454449554d100012120a0e42554444595f5348" .
-    "4f554c4445521001120d0a0942554444595f424947100212100a0c425544" .
-    "44595f464c59494e471003620670726f746f33"
-));
 

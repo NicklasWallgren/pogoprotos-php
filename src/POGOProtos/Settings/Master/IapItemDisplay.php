@@ -4,92 +4,125 @@
 
 namespace POGOProtos\Settings\Master;
 
-require_once('POGOProtos/Enums/IapItemCategory.pb.php');
-require_once('POGOProtos/Inventory/Item/ItemId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.IapItemDisplay</code>
+ */
 class IapItemDisplay extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string sku = 1;</code>
+     */
     private $sku = '';
+    /**
+     * <code>.POGOProtos.Enums.HoloIapItemCategory category = 2;</code>
+     */
     private $category = 0;
+    /**
+     * <code>int32 sort_order = 3;</code>
+     */
     private $sort_order = 0;
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId item_ids = 4;</code>
+     */
     private $item_ids;
+    /**
+     * <code>repeated int32 counts = 5;</code>
+     */
     private $counts;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\IapItemDisplay::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string sku = 1;</code>
+     */
     public function getSku()
     {
         return $this->sku;
     }
 
+    /**
+     * <code>string sku = 1;</code>
+     */
     public function setSku($var)
     {
         GPBUtil::checkString($var, True);
         $this->sku = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.HoloIapItemCategory category = 2;</code>
+     */
     public function getCategory()
     {
         return $this->category;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.HoloIapItemCategory category = 2;</code>
+     */
     public function setCategory($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\HoloIapItemCategory::class);
         $this->category = $var;
     }
 
+    /**
+     * <code>int32 sort_order = 3;</code>
+     */
     public function getSortOrder()
     {
         return $this->sort_order;
     }
 
+    /**
+     * <code>int32 sort_order = 3;</code>
+     */
     public function setSortOrder($var)
     {
         GPBUtil::checkInt32($var);
         $this->sort_order = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId item_ids = 4;</code>
+     */
     public function getItemIds()
     {
         return $this->item_ids;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId item_ids = 4;</code>
+     */
     public function setItemIds(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
         $this->item_ids = $var;
     }
 
+    /**
+     * <code>repeated int32 counts = 5;</code>
+     */
     public function getCounts()
     {
         return $this->counts;
     }
 
+    /**
+     * <code>repeated int32 counts = 5;</code>
+     */
     public function setCounts(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->counts = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ad7020a2f504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4961704974656d446973706c61792e70726f746f121a504f474f5072" .
-    "6f746f732e53657474696e67732e4d61737465721a26504f474f50726f74" .
-    "6f732f456e756d732f4961704974656d43617465676f72792e70726f746f" .
-    "1a26504f474f50726f746f732f496e76656e746f72792f4974656d2f4974" .
-    "656d49642e70726f746f22af010a0e4961704974656d446973706c617912" .
-    "0b0a03736b7518012001280912370a0863617465676f727918022001280e" .
-    "32252e504f474f50726f746f732e456e756d732e486f6c6f496170497465" .
-    "6d43617465676f727912120a0a736f72745f6f7264657218032001280512" .
-    "330a086974656d5f69647318042003280e32212e504f474f50726f746f73" .
-    "2e496e76656e746f72792e4974656d2e4974656d4964120e0a06636f756e" .
-    "7473180520032805620670726f746f33"
-));
 

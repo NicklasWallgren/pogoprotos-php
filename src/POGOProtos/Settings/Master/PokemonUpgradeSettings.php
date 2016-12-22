@@ -4,74 +4,104 @@
 
 namespace POGOProtos\Settings\Master;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.PokemonUpgradeSettings</code>
+ */
 class PokemonUpgradeSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int32 upgrades_per_level = 1;</code>
+     */
     private $upgrades_per_level = 0;
+    /**
+     * <code>int32 allowed_levels_above_player = 2;</code>
+     */
     private $allowed_levels_above_player = 0;
+    /**
+     * <code>repeated int32 candy_cost = 3;</code>
+     */
     private $candy_cost;
+    /**
+     * <code>repeated int32 stardust_cost = 4;</code>
+     */
     private $stardust_cost;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\PokemonUpgradeSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int32 upgrades_per_level = 1;</code>
+     */
     public function getUpgradesPerLevel()
     {
         return $this->upgrades_per_level;
     }
 
+    /**
+     * <code>int32 upgrades_per_level = 1;</code>
+     */
     public function setUpgradesPerLevel($var)
     {
         GPBUtil::checkInt32($var);
         $this->upgrades_per_level = $var;
     }
 
+    /**
+     * <code>int32 allowed_levels_above_player = 2;</code>
+     */
     public function getAllowedLevelsAbovePlayer()
     {
         return $this->allowed_levels_above_player;
     }
 
+    /**
+     * <code>int32 allowed_levels_above_player = 2;</code>
+     */
     public function setAllowedLevelsAbovePlayer($var)
     {
         GPBUtil::checkInt32($var);
         $this->allowed_levels_above_player = $var;
     }
 
+    /**
+     * <code>repeated int32 candy_cost = 3;</code>
+     */
     public function getCandyCost()
     {
         return $this->candy_cost;
     }
 
+    /**
+     * <code>repeated int32 candy_cost = 3;</code>
+     */
     public function setCandyCost(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->candy_cost = $var;
     }
 
+    /**
+     * <code>repeated int32 stardust_cost = 4;</code>
+     */
     public function getStardustCost()
     {
         return $this->stardust_cost;
     }
 
+    /**
+     * <code>repeated int32 stardust_cost = 4;</code>
+     */
     public function setStardustCost(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->stardust_cost = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae4010a37504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f506f6b656d6f6e5570677261646553657474696e67732e70726f746f" .
-    "121a504f474f50726f746f732e53657474696e67732e4d61737465722284" .
-    "010a16506f6b656d6f6e5570677261646553657474696e6773121a0a1275" .
-    "706772616465735f7065725f6c6576656c18012001280512230a1b616c6c" .
-    "6f7765645f6c6576656c735f61626f76655f706c61796572180220012805" .
-    "12120a0a63616e64795f636f737418032003280512150a0d737461726475" .
-    "73745f636f7374180420032805620670726f746f33"
-));
 

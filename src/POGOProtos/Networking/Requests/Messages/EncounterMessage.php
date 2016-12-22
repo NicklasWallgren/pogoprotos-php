@@ -4,56 +4,99 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.EncounterMessage</code>
+ */
 class EncounterMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>fixed64 encounter_id = 1;</code>
+     */
     private $encounter_id = 0;
+    /**
+     * <code>string spawn_point_id = 2;</code>
+     */
     private $spawn_point_id = '';
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     private $player_latitude = 0.0;
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     private $player_longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\EncounterMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>fixed64 encounter_id = 1;</code>
+     */
     public function getEncounterId()
     {
         return $this->encounter_id;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 1;</code>
+     */
     public function setEncounterId($var)
     {
         GPBUtil::checkUint64($var);
         $this->encounter_id = $var;
     }
 
+    /**
+     * <code>string spawn_point_id = 2;</code>
+     */
     public function getSpawnPointId()
     {
         return $this->spawn_point_id;
     }
 
+    /**
+     * <code>string spawn_point_id = 2;</code>
+     */
     public function setSpawnPointId($var)
     {
         GPBUtil::checkString($var, True);
         $this->spawn_point_id = $var;
     }
 
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     public function getPlayerLatitude()
     {
         return $this->player_latitude;
     }
 
+    /**
+     * <code>double player_latitude = 3;</code>
+     */
     public function setPlayerLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_latitude = $var;
     }
 
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     public function getPlayerLongitude()
     {
         return $this->player_longitude;
     }
 
+    /**
+     * <code>double player_longitude = 4;</code>
+     */
     public function setPlayerLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -61,17 +104,4 @@ class EncounterMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae6010a3e504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f456e636f756e7465724d6573736167" .
-    "652e70726f746f1227504f474f50726f746f732e4e6574776f726b696e67" .
-    "2e52657175657374732e4d6573736167657322730a10456e636f756e7465" .
-    "724d65737361676512140a0c656e636f756e7465725f6964180120012806" .
-    "12160a0e737061776e5f706f696e745f696418022001280912170a0f706c" .
-    "617965725f6c6174697475646518032001280112180a10706c617965725f" .
-    "6c6f6e676974756465180420012801620670726f746f33"
-));
 

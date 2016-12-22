@@ -4,61 +4,62 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.SfidaActionLogResponse</code>
+ */
 class SfidaActionLogResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.SfidaActionLogResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>repeated .POGOProtos.Data.Logs.ActionLogEntry log_entries = 2;</code>
+     */
     private $log_entries;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\SfidaActionLogResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.SfidaActionLogResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.SfidaActionLogResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\SfidaActionLogResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Logs.ActionLogEntry log_entries = 2;</code>
+     */
     public function getLogEntries()
     {
         return $this->log_entries;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Data.Logs.ActionLogEntry log_entries = 2;</code>
+     */
     public function setLogEntries(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Data\Logs\ActionLogEntry::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Data\Logs\ActionLogEntry::class);
         $this->log_entries = $var;
     }
 
 }
-
-class SfidaActionLogResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ada020a3c504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f5366696461416374696f6e4c6f67526573706f6e73652e" .
-    "70726f746f121f504f474f50726f746f732e4e6574776f726b696e672e52" .
-    "6573706f6e7365731a29504f474f50726f746f732f446174612f4c6f6773" .
-    "2f416374696f6e4c6f67456e7472792e70726f746f22c5010a1653666964" .
-    "61416374696f6e4c6f67526573706f6e7365124e0a06726573756c741801" .
-    "2001280e323e2e504f474f50726f746f732e4e6574776f726b696e672e52" .
-    "6573706f6e7365732e5366696461416374696f6e4c6f67526573706f6e73" .
-    "652e526573756c7412390a0b6c6f675f656e747269657318022003280b32" .
-    "242e504f474f50726f746f732e446174612e4c6f67732e416374696f6e4c" .
-    "6f67456e74727922200a06526573756c7412090a05554e5345541000120b" .
-    "0a07535543434553531001620670726f746f33"
-));
 

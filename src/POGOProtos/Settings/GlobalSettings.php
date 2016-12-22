@@ -4,136 +4,225 @@
 
 namespace POGOProtos\Settings;
 
-
-
-
-
-
-
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.GlobalSettings</code>
+ */
 class GlobalSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Settings.FortSettings fort_settings = 2;</code>
+     */
     private $fort_settings = null;
+    /**
+     * <code>.POGOProtos.Settings.MapSettings map_settings = 3;</code>
+     */
     private $map_settings = null;
+    /**
+     * <code>.POGOProtos.Settings.LevelSettings level_settings = 4;</code>
+     */
     private $level_settings = null;
+    /**
+     * <code>.POGOProtos.Settings.InventorySettings inventory_settings = 5;</code>
+     */
     private $inventory_settings = null;
+    /**
+     * <code>string minimum_client_version = 6;</code>
+     */
     private $minimum_client_version = '';
+    /**
+     * <code>.POGOProtos.Settings.GpsSettings gps_settings = 7;</code>
+     */
     private $gps_settings = null;
+    /**
+     * <code>.POGOProtos.Settings.FestivalSettings festival_settings = 8;</code>
+     */
     private $festival_settings = null;
+    /**
+     * <code>.POGOProtos.Settings.EventSettings event_settings = 9;</code>
+     */
     private $event_settings = null;
+    /**
+     * <code>int32 max_pokemon_types = 10;</code>
+     */
     private $max_pokemon_types = 0;
+    /**
+     * <code>.POGOProtos.Settings.SfidaSettings sfida_settings = 11;</code>
+     */
     private $sfida_settings = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\GlobalSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Settings.FortSettings fort_settings = 2;</code>
+     */
     public function getFortSettings()
     {
         return $this->fort_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.FortSettings fort_settings = 2;</code>
+     */
     public function setFortSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\FortSettings::class);
         $this->fort_settings = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.MapSettings map_settings = 3;</code>
+     */
     public function getMapSettings()
     {
         return $this->map_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.MapSettings map_settings = 3;</code>
+     */
     public function setMapSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\MapSettings::class);
         $this->map_settings = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.LevelSettings level_settings = 4;</code>
+     */
     public function getLevelSettings()
     {
         return $this->level_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.LevelSettings level_settings = 4;</code>
+     */
     public function setLevelSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\LevelSettings::class);
         $this->level_settings = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.InventorySettings inventory_settings = 5;</code>
+     */
     public function getInventorySettings()
     {
         return $this->inventory_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.InventorySettings inventory_settings = 5;</code>
+     */
     public function setInventorySettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\InventorySettings::class);
         $this->inventory_settings = $var;
     }
 
+    /**
+     * <code>string minimum_client_version = 6;</code>
+     */
     public function getMinimumClientVersion()
     {
         return $this->minimum_client_version;
     }
 
+    /**
+     * <code>string minimum_client_version = 6;</code>
+     */
     public function setMinimumClientVersion($var)
     {
         GPBUtil::checkString($var, True);
         $this->minimum_client_version = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.GpsSettings gps_settings = 7;</code>
+     */
     public function getGpsSettings()
     {
         return $this->gps_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.GpsSettings gps_settings = 7;</code>
+     */
     public function setGpsSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\GpsSettings::class);
         $this->gps_settings = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.FestivalSettings festival_settings = 8;</code>
+     */
     public function getFestivalSettings()
     {
         return $this->festival_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.FestivalSettings festival_settings = 8;</code>
+     */
     public function setFestivalSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\FestivalSettings::class);
         $this->festival_settings = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.EventSettings event_settings = 9;</code>
+     */
     public function getEventSettings()
     {
         return $this->event_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.EventSettings event_settings = 9;</code>
+     */
     public function setEventSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\EventSettings::class);
         $this->event_settings = $var;
     }
 
+    /**
+     * <code>int32 max_pokemon_types = 10;</code>
+     */
     public function getMaxPokemonTypes()
     {
         return $this->max_pokemon_types;
     }
 
+    /**
+     * <code>int32 max_pokemon_types = 10;</code>
+     */
     public function setMaxPokemonTypes($var)
     {
         GPBUtil::checkInt32($var);
         $this->max_pokemon_types = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.SfidaSettings sfida_settings = 11;</code>
+     */
     public function getSfidaSettings()
     {
         return $this->sfida_settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.SfidaSettings sfida_settings = 11;</code>
+     */
     public function setSfidaSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\SfidaSettings::class);
@@ -141,42 +230,4 @@ class GlobalSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac3070a28504f474f50726f746f732f53657474696e67732f476c6f6261" .
-    "6c53657474696e67732e70726f746f1213504f474f50726f746f732e5365" .
-    "7474696e67731a26504f474f50726f746f732f53657474696e67732f466f" .
-    "727453657474696e67732e70726f746f1a25504f474f50726f746f732f53" .
-    "657474696e67732f4d617053657474696e67732e70726f746f1a27504f47" .
-    "4f50726f746f732f53657474696e67732f4c6576656c53657474696e6773" .
-    "2e70726f746f1a2b504f474f50726f746f732f53657474696e67732f496e" .
-    "76656e746f727953657474696e67732e70726f746f1a25504f474f50726f" .
-    "746f732f53657474696e67732f47707353657474696e67732e70726f746f" .
-    "1a2a504f474f50726f746f732f53657474696e67732f466573746976616c" .
-    "53657474696e67732e70726f746f1a27504f474f50726f746f732f536574" .
-    "74696e67732f4576656e7453657474696e67732e70726f746f1a27504f47" .
-    "4f50726f746f732f53657474696e67732f536669646153657474696e6773" .
-    "2e70726f746f22af040a0e476c6f62616c53657474696e677312380a0d66" .
-    "6f72745f73657474696e677318022001280b32212e504f474f50726f746f" .
-    "732e53657474696e67732e466f727453657474696e677312360a0c6d6170" .
-    "5f73657474696e677318032001280b32202e504f474f50726f746f732e53" .
-    "657474696e67732e4d617053657474696e6773123a0a0e6c6576656c5f73" .
-    "657474696e677318042001280b32222e504f474f50726f746f732e536574" .
-    "74696e67732e4c6576656c53657474696e677312420a12696e76656e746f" .
-    "72795f73657474696e677318052001280b32262e504f474f50726f746f73" .
-    "2e53657474696e67732e496e76656e746f727953657474696e6773121e0a" .
-    "166d696e696d756d5f636c69656e745f76657273696f6e18062001280912" .
-    "360a0c6770735f73657474696e677318072001280b32202e504f474f5072" .
-    "6f746f732e53657474696e67732e47707353657474696e677312400a1166" .
-    "6573746976616c5f73657474696e677318082001280b32252e504f474f50" .
-    "726f746f732e53657474696e67732e466573746976616c53657474696e67" .
-    "73123a0a0e6576656e745f73657474696e677318092001280b32222e504f" .
-    "474f50726f746f732e53657474696e67732e4576656e7453657474696e67" .
-    "7312190a116d61785f706f6b656d6f6e5f7479706573180a20012805123a" .
-    "0a0e73666964615f73657474696e6773180b2001280b32222e504f474f50" .
-    "726f746f732e53657474696e67732e536669646153657474696e67736206" .
-    "70726f746f33"
-));
 

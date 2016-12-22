@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.PlayerUpdateMessage</code>
+ */
 class PlayerUpdateMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>double latitude = 1;</code>
+     */
     private $latitude = 0.0;
+    /**
+     * <code>double longitude = 2;</code>
+     */
     private $longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\PlayerUpdateMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>double latitude = 1;</code>
+     */
     public function getLatitude()
     {
         return $this->latitude;
     }
 
+    /**
+     * <code>double latitude = 1;</code>
+     */
     public function setLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->latitude = $var;
     }
 
+    /**
+     * <code>double longitude = 2;</code>
+     */
     public function getLongitude()
     {
         return $this->longitude;
     }
 
+    /**
+     * <code>double longitude = 2;</code>
+     */
     public function setLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -37,15 +62,4 @@ class PlayerUpdateMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ab0010a41504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f506c617965725570646174654d6573" .
-    "736167652e70726f746f1227504f474f50726f746f732e4e6574776f726b" .
-    "696e672e52657175657374732e4d65737361676573223a0a13506c617965" .
-    "725570646174654d65737361676512100a086c6174697475646518012001" .
-    "280112110a096c6f6e676974756465180220012801620670726f746f33"
-));
 

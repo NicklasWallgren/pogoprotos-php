@@ -4,46 +4,78 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.DiskEncounterResponse</code>
+ */
 class DiskEncounterResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.DiskEncounterResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 2;</code>
+     */
     private $pokemon_data = null;
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureProbability capture_probability = 3;</code>
+     */
     private $capture_probability = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\DiskEncounterResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.DiskEncounterResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.DiskEncounterResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\DiskEncounterResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 2;</code>
+     */
     public function getPokemonData()
     {
         return $this->pokemon_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 2;</code>
+     */
     public function setPokemonData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->pokemon_data = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureProbability capture_probability = 3;</code>
+     */
     public function getCaptureProbability()
     {
         return $this->capture_probability;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureProbability capture_probability = 3;</code>
+     */
     public function setCaptureProbability(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Capture\CaptureProbability::class);
@@ -51,38 +83,4 @@ class DiskEncounterResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class DiskEncounterResponse_Result
-{
-    const UNKNOWN = 0;
-    const SUCCESS = 1;
-    const NOT_AVAILABLE = 2;
-    const NOT_IN_RANGE = 3;
-    const ENCOUNTER_ALREADY_FINISHED = 4;
-    const POKEMON_INVENTORY_FULL = 5;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa8040a3b504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f4469736b456e636f756e746572526573706f6e73652e70" .
-    "726f746f121f504f474f50726f746f732e4e6574776f726b696e672e5265" .
-    "73706f6e7365731a21504f474f50726f746f732f446174612f506f6b656d" .
-    "6f6e446174612e70726f746f1a30504f474f50726f746f732f446174612f" .
-    "436170747572652f4361707475726550726f626162696c6974792e70726f" .
-    "746f22ea020a154469736b456e636f756e746572526573706f6e7365124d" .
-    "0a06726573756c7418012001280e323d2e504f474f50726f746f732e4e65" .
-    "74776f726b696e672e526573706f6e7365732e4469736b456e636f756e74" .
-    "6572526573706f6e73652e526573756c7412320a0c706f6b656d6f6e5f64" .
-    "61746118022001280b321c2e504f474f50726f746f732e446174612e506f" .
-    "6b656d6f6e4461746112480a13636170747572655f70726f626162696c69" .
-    "747918032001280b322b2e504f474f50726f746f732e446174612e436170" .
-    "747572652e4361707475726550726f626162696c6974792283010a065265" .
-    "73756c74120b0a07554e4b4e4f574e1000120b0a07535543434553531001" .
-    "12110a0d4e4f545f415641494c41424c45100212100a0c4e4f545f494e5f" .
-    "52414e47451003121e0a1a454e434f554e5445525f414c52454144595f46" .
-    "494e49534845441004121a0a16504f4b454d4f4e5f494e56454e544f5259" .
-    "5f46554c4c1005620670726f746f33"
-));
 

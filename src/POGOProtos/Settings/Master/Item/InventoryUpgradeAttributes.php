@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Settings\Master\Item;
 
-require_once('POGOProtos/Inventory/InventoryUpgradeType.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.Item.InventoryUpgradeAttributes</code>
+ */
 class InventoryUpgradeAttributes extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int32 additional_storage = 1;</code>
+     */
     private $additional_storage = 0;
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgradeType upgrade_type = 2;</code>
+     */
     private $upgrade_type = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\Item\InventoryUpgradeAttributes::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int32 additional_storage = 1;</code>
+     */
     public function getAdditionalStorage()
     {
         return $this->additional_storage;
     }
 
+    /**
+     * <code>int32 additional_storage = 1;</code>
+     */
     public function setAdditionalStorage($var)
     {
         GPBUtil::checkInt32($var);
         $this->additional_storage = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgradeType upgrade_type = 2;</code>
+     */
     public function getUpgradeType()
     {
         return $this->upgrade_type;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgradeType upgrade_type = 2;</code>
+     */
     public function setUpgradeType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\InventoryUpgradeType::class);
@@ -38,19 +62,4 @@ class InventoryUpgradeAttributes extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a98020a40504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4974656d2f496e76656e746f72795570677261646541747472696275" .
-    "7465732e70726f746f121f504f474f50726f746f732e53657474696e6773" .
-    "2e4d61737465722e4974656d1a2f504f474f50726f746f732f496e76656e" .
-    "746f72792f496e76656e746f727955706772616465547970652e70726f74" .
-    "6f227a0a1a496e76656e746f727955706772616465417474726962757465" .
-    "73121a0a126164646974696f6e616c5f73746f7261676518012001280512" .
-    "400a0c757067726164655f7479706518022001280e322a2e504f474f5072" .
-    "6f746f732e496e76656e746f72792e496e76656e746f7279557067726164" .
-    "6554797065620670726f746f33"
-));
 

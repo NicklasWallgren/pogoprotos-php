@@ -4,200 +4,272 @@
 
 namespace POGOProtos\Inventory;
 
-
-
-
-
-
-
-
-
-
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.InventoryItemData</code>
+ */
 class InventoryItemData extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     private $pokemon_data = null;
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemData item = 2;</code>
+     */
     private $item = null;
+    /**
+     * <code>.POGOProtos.Data.PokedexEntry pokedex_entry = 3;</code>
+     */
     private $pokedex_entry = null;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerStats player_stats = 4;</code>
+     */
     private $player_stats = null;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerCurrency player_currency = 5;</code>
+     */
     private $player_currency = null;
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerCamera player_camera = 6;</code>
+     */
     private $player_camera = null;
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgrades inventory_upgrades = 7;</code>
+     */
     private $inventory_upgrades = null;
+    /**
+     * <code>.POGOProtos.Inventory.AppliedItems applied_items = 8;</code>
+     */
     private $applied_items = null;
+    /**
+     * <code>.POGOProtos.Inventory.EggIncubators egg_incubators = 9;</code>
+     */
     private $egg_incubators = null;
+    /**
+     * <code>.POGOProtos.Inventory.Candy candy = 10;</code>
+     */
     private $candy = null;
+    /**
+     * <code>.POGOProtos.Data.Quests.Quest quest = 11;</code>
+     */
     private $quest = null;
+    /**
+     * <code>.POGOProtos.Data.Avatar.AvatarItem avatar_item = 12;</code>
+     */
+    private $avatar_item = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\InventoryItemData::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     public function getPokemonData()
     {
         return $this->pokemon_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 1;</code>
+     */
     public function setPokemonData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->pokemon_data = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemData item = 2;</code>
+     */
     public function getItem()
     {
         return $this->item;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemData item = 2;</code>
+     */
     public function setItem(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Inventory\Item\ItemData::class);
         $this->item = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokedexEntry pokedex_entry = 3;</code>
+     */
     public function getPokedexEntry()
     {
         return $this->pokedex_entry;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokedexEntry pokedex_entry = 3;</code>
+     */
     public function setPokedexEntry(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokedexEntry::class);
         $this->pokedex_entry = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerStats player_stats = 4;</code>
+     */
     public function getPlayerStats()
     {
         return $this->player_stats;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerStats player_stats = 4;</code>
+     */
     public function setPlayerStats(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerStats::class);
         $this->player_stats = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerCurrency player_currency = 5;</code>
+     */
     public function getPlayerCurrency()
     {
         return $this->player_currency;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerCurrency player_currency = 5;</code>
+     */
     public function setPlayerCurrency(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerCurrency::class);
         $this->player_currency = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerCamera player_camera = 6;</code>
+     */
     public function getPlayerCamera()
     {
         return $this->player_camera;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerCamera player_camera = 6;</code>
+     */
     public function setPlayerCamera(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerCamera::class);
         $this->player_camera = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgrades inventory_upgrades = 7;</code>
+     */
     public function getInventoryUpgrades()
     {
         return $this->inventory_upgrades;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgrades inventory_upgrades = 7;</code>
+     */
     public function setInventoryUpgrades(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Inventory\InventoryUpgrades::class);
         $this->inventory_upgrades = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.AppliedItems applied_items = 8;</code>
+     */
     public function getAppliedItems()
     {
         return $this->applied_items;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.AppliedItems applied_items = 8;</code>
+     */
     public function setAppliedItems(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Inventory\AppliedItems::class);
         $this->applied_items = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.EggIncubators egg_incubators = 9;</code>
+     */
     public function getEggIncubators()
     {
         return $this->egg_incubators;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.EggIncubators egg_incubators = 9;</code>
+     */
     public function setEggIncubators(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Inventory\EggIncubators::class);
         $this->egg_incubators = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Candy candy = 10;</code>
+     */
     public function getCandy()
     {
         return $this->candy;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Candy candy = 10;</code>
+     */
     public function setCandy(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Inventory\Candy::class);
         $this->candy = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Quests.Quest quest = 11;</code>
+     */
     public function getQuest()
     {
         return $this->quest;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Quests.Quest quest = 11;</code>
+     */
     public function setQuest(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Quests\Quest::class);
         $this->quest = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Avatar.AvatarItem avatar_item = 12;</code>
+     */
+    public function getAvatarItem()
+    {
+        return $this->avatar_item;
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Avatar.AvatarItem avatar_item = 12;</code>
+     */
+    public function setAvatarItem(&$var)
+    {
+        GPBUtil::checkMessage($var, \POGOProtos\Data\Avatar\AvatarItem::class);
+        $this->avatar_item = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a89090a2c504f474f50726f746f732f496e76656e746f72792f496e7665" .
-    "6e746f72794974656d446174612e70726f746f1214504f474f50726f746f" .
-    "732e496e76656e746f72791a28504f474f50726f746f732f496e76656e74" .
-    "6f72792f4974656d2f4974656d446174612e70726f746f1a27504f474f50" .
-    "726f746f732f496e76656e746f72792f4170706c6965644974656d732e70" .
-    "726f746f1a28504f474f50726f746f732f496e76656e746f72792f456767" .
-    "496e63756261746f72732e70726f746f1a20504f474f50726f746f732f49" .
-    "6e76656e746f72792f43616e64792e70726f746f1a2c504f474f50726f74" .
-    "6f732f496e76656e746f72792f496e76656e746f72795570677261646573" .
-    "2e70726f746f1a21504f474f50726f746f732f446174612f506f6b656d6f" .
-    "6e446174612e70726f746f1a22504f474f50726f746f732f446174612f50" .
-    "6f6b65646578456e7472792e70726f746f1a28504f474f50726f746f732f" .
-    "446174612f506c617965722f506c6179657253746174732e70726f746f1a" .
-    "2b504f474f50726f746f732f446174612f506c617965722f506c61796572" .
-    "43757272656e63792e70726f746f1a29504f474f50726f746f732f446174" .
-    "612f506c617965722f506c6179657243616d6572612e70726f746f1a2250" .
-    "4f474f50726f746f732f446174612f5175657374732f51756573742e7072" .
-    "6f746f2280050a11496e76656e746f72794974656d4461746112320a0c70" .
-    "6f6b656d6f6e5f6461746118012001280b321c2e504f474f50726f746f73" .
-    "2e446174612e506f6b656d6f6e4461746112310a046974656d1802200128" .
-    "0b32232e504f474f50726f746f732e496e76656e746f72792e4974656d2e" .
-    "4974656d4461746112340a0d706f6b656465785f656e7472791803200128" .
-    "0b321d2e504f474f50726f746f732e446174612e506f6b65646578456e74" .
-    "727912390a0c706c617965725f737461747318042001280b32232e504f47" .
-    "4f50726f746f732e446174612e506c617965722e506c6179657253746174" .
-    "73123f0a0f706c617965725f63757272656e637918052001280b32262e50" .
-    "4f474f50726f746f732e446174612e506c617965722e506c617965724375" .
-    "7272656e6379123b0a0d706c617965725f63616d65726118062001280b32" .
-    "242e504f474f50726f746f732e446174612e506c617965722e506c617965" .
-    "7243616d65726112430a12696e76656e746f72795f757067726164657318" .
-    "072001280b32272e504f474f50726f746f732e496e76656e746f72792e49" .
-    "6e76656e746f7279557067726164657312390a0d6170706c6965645f6974" .
-    "656d7318082001280b32222e504f474f50726f746f732e496e76656e746f" .
-    "72792e4170706c6965644974656d73123b0a0e6567675f696e6375626174" .
-    "6f727318092001280b32232e504f474f50726f746f732e496e76656e746f" .
-    "72792e456767496e63756261746f7273122a0a0563616e6479180a200128" .
-    "0b321b2e504f474f50726f746f732e496e76656e746f72792e43616e6479" .
-    "122c0a057175657374180b2001280b321d2e504f474f50726f746f732e44" .
-    "6174612e5175657374732e5175657374620670726f746f33"
-));
 

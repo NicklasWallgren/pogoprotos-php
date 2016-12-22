@@ -4,57 +4,99 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.GetPlayerResponse</code>
+ */
 class GetPlayerResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bool success = 1;</code>
+     */
     private $success = false;
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     private $player_data = null;
+    /**
+     * <code>bool banned = 3;</code>
+     */
     private $banned = false;
+    /**
+     * <code>bool warn = 4;</code>
+     */
     private $warn = false;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\GetPlayerResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function getSuccess()
     {
         return $this->success;
     }
 
+    /**
+     * <code>bool success = 1;</code>
+     */
     public function setSuccess($var)
     {
         GPBUtil::checkBool($var);
         $this->success = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     public function getPlayerData()
     {
         return $this->player_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     public function setPlayerData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PlayerData::class);
         $this->player_data = $var;
     }
 
+    /**
+     * <code>bool banned = 3;</code>
+     */
     public function getBanned()
     {
         return $this->banned;
     }
 
+    /**
+     * <code>bool banned = 3;</code>
+     */
     public function setBanned($var)
     {
         GPBUtil::checkBool($var);
         $this->banned = $var;
     }
 
+    /**
+     * <code>bool warn = 4;</code>
+     */
     public function getWarn()
     {
         return $this->warn;
     }
 
+    /**
+     * <code>bool warn = 4;</code>
+     */
     public function setWarn($var)
     {
         GPBUtil::checkBool($var);
@@ -62,18 +104,4 @@ class GetPlayerResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0afa010a37504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f476574506c61796572526573706f6e73652e70726f746f" .
-    "121f504f474f50726f746f732e4e6574776f726b696e672e526573706f6e" .
-    "7365731a20504f474f50726f746f732f446174612f506c61796572446174" .
-    "612e70726f746f22740a11476574506c61796572526573706f6e7365120f" .
-    "0a077375636365737318012001280812300a0b706c617965725f64617461" .
-    "18022001280b321b2e504f474f50726f746f732e446174612e506c617965" .
-    "7244617461120e0a0662616e6e6564180320012808120c0a047761726e18" .
-    "0420012808620670726f746f33"
-));
 

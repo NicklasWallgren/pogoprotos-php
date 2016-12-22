@@ -4,81 +4,141 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.CatchPokemonResponse</code>
+ */
 class CatchPokemonResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.CatchPokemonResponse.CatchStatus status = 1;</code>
+     */
     private $status = 0;
+    /**
+     * <code>double miss_percent = 2;</code>
+     */
     private $miss_percent = 0.0;
+    /**
+     * <code>fixed64 captured_pokemon_id = 3;</code>
+     */
     private $captured_pokemon_id = 0;
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureAward capture_award = 4;</code>
+     */
     private $capture_award = null;
+    /**
+     * <code>.POGOProtos.Networking.Responses.CatchPokemonResponse.CaptureReason capture_reason = 5;</code>
+     */
     private $capture_reason = 0;
+    /**
+     * <code>int32 display_pokedex_id = 6;</code>
+     */
     private $display_pokedex_id = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\CatchPokemonResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.CatchPokemonResponse.CatchStatus status = 1;</code>
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.CatchPokemonResponse.CatchStatus status = 1;</code>
+     */
     public function setStatus($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\CatchPokemonResponse_CatchStatus::class);
         $this->status = $var;
     }
 
+    /**
+     * <code>double miss_percent = 2;</code>
+     */
     public function getMissPercent()
     {
         return $this->miss_percent;
     }
 
+    /**
+     * <code>double miss_percent = 2;</code>
+     */
     public function setMissPercent($var)
     {
         GPBUtil::checkDouble($var);
         $this->miss_percent = $var;
     }
 
+    /**
+     * <code>fixed64 captured_pokemon_id = 3;</code>
+     */
     public function getCapturedPokemonId()
     {
         return $this->captured_pokemon_id;
     }
 
+    /**
+     * <code>fixed64 captured_pokemon_id = 3;</code>
+     */
     public function setCapturedPokemonId($var)
     {
         GPBUtil::checkUint64($var);
         $this->captured_pokemon_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureAward capture_award = 4;</code>
+     */
     public function getCaptureAward()
     {
         return $this->capture_award;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Capture.CaptureAward capture_award = 4;</code>
+     */
     public function setCaptureAward(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Capture\CaptureAward::class);
         $this->capture_award = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.CatchPokemonResponse.CaptureReason capture_reason = 5;</code>
+     */
     public function getCaptureReason()
     {
         return $this->capture_reason;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.CatchPokemonResponse.CaptureReason capture_reason = 5;</code>
+     */
     public function setCaptureReason($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\CatchPokemonResponse_CaptureReason::class);
         $this->capture_reason = $var;
     }
 
+    /**
+     * <code>int32 display_pokedex_id = 6;</code>
+     */
     public function getDisplayPokedexId()
     {
         return $this->display_pokedex_id;
     }
 
+    /**
+     * <code>int32 display_pokedex_id = 6;</code>
+     */
     public function setDisplayPokedexId($var)
     {
         GPBUtil::checkInt32($var);
@@ -86,47 +146,4 @@ class CatchPokemonResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class CatchPokemonResponse_CatchStatus
-{
-    const CATCH_ERROR = 0;
-    const CATCH_SUCCESS = 1;
-    const CATCH_ESCAPE = 2;
-    const CATCH_FLEE = 3;
-    const CATCH_MISSED = 4;
-}
-
-class CatchPokemonResponse_CaptureReason
-{
-    const UNSET = 0;
-    const DEFAULT = 1;
-    const ELEMENTAL_BADGE = 2;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8c050a3a504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f4361746368506f6b656d6f6e526573706f6e73652e7072" .
-    "6f746f121f504f474f50726f746f732e4e6574776f726b696e672e526573" .
-    "706f6e7365731a2a504f474f50726f746f732f446174612f436170747572" .
-    "652f4361707475726541776172642e70726f746f22f8030a144361746368" .
-    "506f6b656d6f6e526573706f6e736512510a067374617475731801200128" .
-    "0e32412e504f474f50726f746f732e4e6574776f726b696e672e52657370" .
-    "6f6e7365732e4361746368506f6b656d6f6e526573706f6e73652e436174" .
-    "636853746174757312140a0c6d6973735f70657263656e74180220012801" .
-    "121b0a1363617074757265645f706f6b656d6f6e5f696418032001280612" .
-    "3c0a0d636170747572655f617761726418042001280b32252e504f474f50" .
-    "726f746f732e446174612e436170747572652e4361707475726541776172" .
-    "64125b0a0e636170747572655f726561736f6e18052001280e32432e504f" .
-    "474f50726f746f732e4e6574776f726b696e672e526573706f6e7365732e" .
-    "4361746368506f6b656d6f6e526573706f6e73652e436170747572655265" .
-    "61736f6e121a0a12646973706c61795f706f6b656465785f696418062001" .
-    "280522650a0b4361746368537461747573120f0a0b43415443485f455252" .
-    "4f52100012110a0d43415443485f53554343455353100112100a0c434154" .
-    "43485f4553434150451002120e0a0a43415443485f464c4545100312100a" .
-    "0c43415443485f4d49535345441004223c0a0d4361707475726552656173" .
-    "6f6e12090a05554e5345541000120b0a0744454641554c54100112130a0f" .
-    "454c454d454e54414c5f42414447451002620670726f746f33"
-));
 

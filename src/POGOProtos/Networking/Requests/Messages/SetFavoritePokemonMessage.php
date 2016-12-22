@@ -4,32 +4,69 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.SetFavoritePokemonMessage</code>
+ */
 class SetFavoritePokemonMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <pre>
+     * Do not change https://github.com/AeonLucid/POGOProtos.pull/126
+     * </pre>
+     *
+     * <code>int64 pokemon_id = 1;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>bool is_favorite = 2;</code>
+     */
     private $is_favorite = false;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\SetFavoritePokemonMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <pre>
+     * Do not change https://github.com/AeonLucid/POGOProtos.pull/126
+     * </pre>
+     *
+     * <code>int64 pokemon_id = 1;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <pre>
+     * Do not change https://github.com/AeonLucid/POGOProtos.pull/126
+     * </pre>
+     *
+     * <code>int64 pokemon_id = 1;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkInt64($var);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>bool is_favorite = 2;</code>
+     */
     public function getIsFavorite()
     {
         return $this->is_favorite;
     }
 
+    /**
+     * <code>bool is_favorite = 2;</code>
+     */
     public function setIsFavorite($var)
     {
         GPBUtil::checkBool($var);
@@ -37,16 +74,4 @@ class SetFavoritePokemonMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac0010a47504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f5365744661766f72697465506f6b65" .
-    "6d6f6e4d6573736167652e70726f746f1227504f474f50726f746f732e4e" .
-    "6574776f726b696e672e52657175657374732e4d6573736167657322440a" .
-    "195365744661766f72697465506f6b656d6f6e4d65737361676512120a0a" .
-    "706f6b656d6f6e5f696418012001280312130a0b69735f6661766f726974" .
-    "65180220012808620670726f746f33"
-));
 

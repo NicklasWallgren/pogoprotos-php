@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.SetAvatarResponse</code>
+ */
 class SetAvatarResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.SetAvatarResponse.Status status = 1;</code>
+     */
     private $status = 0;
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     private $player_data = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\SetAvatarResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.SetAvatarResponse.Status status = 1;</code>
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.SetAvatarResponse.Status status = 1;</code>
+     */
     public function setStatus($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\SetAvatarResponse_Status::class);
         $this->status = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     public function getPlayerData()
     {
         return $this->player_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData player_data = 2;</code>
+     */
     public function setPlayerData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PlayerData::class);
@@ -38,29 +62,4 @@ class SetAvatarResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class SetAvatarResponse_Status
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const AVATAR_ALREADY_SET = 2;
-    const FAILURE = 3;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ade020a37504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f536574417661746172526573706f6e73652e70726f746f" .
-    "121f504f474f50726f746f732e4e6574776f726b696e672e526573706f6e" .
-    "7365731a20504f474f50726f746f732f446174612f506c61796572446174" .
-    "612e70726f746f22d7010a11536574417661746172526573706f6e736512" .
-    "490a0673746174757318012001280e32392e504f474f50726f746f732e4e" .
-    "6574776f726b696e672e526573706f6e7365732e53657441766174617252" .
-    "6573706f6e73652e53746174757312300a0b706c617965725f6461746118" .
-    "022001280b321b2e504f474f50726f746f732e446174612e506c61796572" .
-    "4461746122450a0653746174757312090a05554e5345541000120b0a0753" .
-    "554343455353100112160a124156415441525f414c52454144595f534554" .
-    "1002120b0a074641494c5552451003620670726f746f33"
-));
 

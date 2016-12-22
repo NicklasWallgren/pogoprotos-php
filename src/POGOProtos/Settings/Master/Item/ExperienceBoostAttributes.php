@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Settings\Master\Item;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.Item.ExperienceBoostAttributes</code>
+ */
 class ExperienceBoostAttributes extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>float xp_multiplier = 1;</code>
+     */
     private $xp_multiplier = 0.0;
+    /**
+     * <code>int32 boost_duration_ms = 2;</code>
+     */
     private $boost_duration_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\Item\ExperienceBoostAttributes::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>float xp_multiplier = 1;</code>
+     */
     public function getXpMultiplier()
     {
         return $this->xp_multiplier;
     }
 
+    /**
+     * <code>float xp_multiplier = 1;</code>
+     */
     public function setXpMultiplier($var)
     {
         GPBUtil::checkFloat($var);
         $this->xp_multiplier = $var;
     }
 
+    /**
+     * <code>int32 boost_duration_ms = 2;</code>
+     */
     public function getBoostDurationMs()
     {
         return $this->boost_duration_ms;
     }
 
+    /**
+     * <code>int32 boost_duration_ms = 2;</code>
+     */
     public function setBoostDurationMs($var)
     {
         GPBUtil::checkInt32($var);
@@ -37,16 +62,4 @@ class ExperienceBoostAttributes extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ab9010a3f504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4974656d2f457870657269656e6365426f6f73744174747269627574" .
-    "65732e70726f746f121f504f474f50726f746f732e53657474696e67732e" .
-    "4d61737465722e4974656d224d0a19457870657269656e6365426f6f7374" .
-    "4174747269627574657312150a0d78705f6d756c7469706c696572180120" .
-    "01280212190a11626f6f73745f6475726174696f6e5f6d73180220012805" .
-    "620670726f746f33"
-));
 

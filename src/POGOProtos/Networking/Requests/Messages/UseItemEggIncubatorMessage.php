@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.UseItemEggIncubatorMessage</code>
+ */
 class UseItemEggIncubatorMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string item_id = 1;</code>
+     */
     private $item_id = '';
+    /**
+     * <code>uint64 pokemon_id = 2;</code>
+     */
     private $pokemon_id = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\UseItemEggIncubatorMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>string item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkString($var, True);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>uint64 pokemon_id = 2;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>uint64 pokemon_id = 2;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkUint64($var);
@@ -37,16 +62,4 @@ class UseItemEggIncubatorMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0abe010a48504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f5573654974656d456767496e637562" .
-    "61746f724d6573736167652e70726f746f1227504f474f50726f746f732e" .
-    "4e6574776f726b696e672e52657175657374732e4d657373616765732241" .
-    "0a1a5573654974656d456767496e63756261746f724d657373616765120f" .
-    "0a076974656d5f696418012001280912120a0a706f6b656d6f6e5f696418" .
-    "0220012804620670726f746f33"
-));
 

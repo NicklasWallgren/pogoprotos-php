@@ -4,20 +4,36 @@
 
 namespace POGOProtos\Data;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.ClientVersion</code>
+ */
 class ClientVersion extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string min_version = 1;</code>
+     */
     private $min_version = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\ClientVersion::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string min_version = 1;</code>
+     */
     public function getMinVersion()
     {
         return $this->min_version;
     }
 
+    /**
+     * <code>string min_version = 1;</code>
+     */
     public function setMinVersion($var)
     {
         GPBUtil::checkString($var, True);
@@ -25,13 +41,4 @@ class ClientVersion extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a640a23504f474f50726f746f732f446174612f436c69656e7456657273" .
-    "696f6e2e70726f746f120f504f474f50726f746f732e4461746122240a0d" .
-    "436c69656e7456657273696f6e12130a0b6d696e5f76657273696f6e1801" .
-    "20012809620670726f746f33"
-));
 

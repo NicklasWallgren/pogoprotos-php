@@ -4,36 +4,41 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.GetDownloadUrlsMessage</code>
+ */
 class GetDownloadUrlsMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated string asset_id = 1;</code>
+     */
     private $asset_id;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\GetDownloadUrlsMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated string asset_id = 1;</code>
+     */
     public function getAssetId()
     {
         return $this->asset_id;
     }
 
+    /**
+     * <code>repeated string asset_id = 1;</code>
+     */
     public function setAssetId(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::STRING);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->asset_id = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa3010a44504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f476574446f776e6c6f616455726c73" .
-    "4d6573736167652e70726f746f1227504f474f50726f746f732e4e657477" .
-    "6f726b696e672e52657175657374732e4d65737361676573222a0a164765" .
-    "74446f776e6c6f616455726c734d65737361676512100a0861737365745f" .
-    "6964180120032809620670726f746f33"
-));
 

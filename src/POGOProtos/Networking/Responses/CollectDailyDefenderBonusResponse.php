@@ -4,56 +4,99 @@
 
 namespace POGOProtos\Networking\Responses;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.CollectDailyDefenderBonusResponse</code>
+ */
 class CollectDailyDefenderBonusResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.CollectDailyDefenderBonusResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>repeated string currency_type = 2;</code>
+     */
     private $currency_type;
+    /**
+     * <code>repeated int32 currency_awarded = 3;</code>
+     */
     private $currency_awarded;
+    /**
+     * <code>int32 defenders_count = 4;</code>
+     */
     private $defenders_count = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\CollectDailyDefenderBonusResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.CollectDailyDefenderBonusResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.CollectDailyDefenderBonusResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\CollectDailyDefenderBonusResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>repeated string currency_type = 2;</code>
+     */
     public function getCurrencyType()
     {
         return $this->currency_type;
     }
 
+    /**
+     * <code>repeated string currency_type = 2;</code>
+     */
     public function setCurrencyType(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::STRING);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->currency_type = $var;
     }
 
+    /**
+     * <code>repeated int32 currency_awarded = 3;</code>
+     */
     public function getCurrencyAwarded()
     {
         return $this->currency_awarded;
     }
 
+    /**
+     * <code>repeated int32 currency_awarded = 3;</code>
+     */
     public function setCurrencyAwarded(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::INT32);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->currency_awarded = $var;
     }
 
+    /**
+     * <code>int32 defenders_count = 4;</code>
+     */
     public function getDefendersCount()
     {
         return $this->defenders_count;
     }
 
+    /**
+     * <code>int32 defenders_count = 4;</code>
+     */
     public function setDefendersCount($var)
     {
         GPBUtil::checkInt32($var);
@@ -61,32 +104,4 @@ class CollectDailyDefenderBonusResponse extends \Google\Protobuf\Internal\Messag
     }
 
 }
-
-class CollectDailyDefenderBonusResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const FAILURE = 2;
-    const TOO_SOON = 3;
-    const NO_DEFENDERS = 4;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8c030a47504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f436f6c6c6563744461696c79446566656e646572426f6e" .
-    "7573526573706f6e73652e70726f746f121f504f474f50726f746f732e4e" .
-    "6574776f726b696e672e526573706f6e7365732297020a21436f6c6c6563" .
-    "744461696c79446566656e646572426f6e7573526573706f6e736512590a" .
-    "06726573756c7418012001280e32492e504f474f50726f746f732e4e6574" .
-    "776f726b696e672e526573706f6e7365732e436f6c6c6563744461696c79" .
-    "446566656e646572426f6e7573526573706f6e73652e526573756c741215" .
-    "0a0d63757272656e63795f7479706518022003280912180a106375727265" .
-    "6e63795f6177617264656418032003280512170a0f646566656e64657273" .
-    "5f636f756e74180420012805224d0a06526573756c7412090a05554e5345" .
-    "541000120b0a07535543434553531001120b0a074641494c555245100212" .
-    "0c0a08544f4f5f534f4f4e100312100a0c4e4f5f444546454e4445525310" .
-    "04620670726f746f33"
-));
 

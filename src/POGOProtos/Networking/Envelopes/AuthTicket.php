@@ -4,44 +4,78 @@
 
 namespace POGOProtos\Networking\Envelopes;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Envelopes.AuthTicket</code>
+ */
 class AuthTicket extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bytes start = 1;</code>
+     */
     private $start = '';
+    /**
+     * <code>uint64 expire_timestamp_ms = 2;</code>
+     */
     private $expire_timestamp_ms = 0;
+    /**
+     * <code>bytes end = 3;</code>
+     */
     private $end = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Envelopes\AuthTicket::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bytes start = 1;</code>
+     */
     public function getStart()
     {
         return $this->start;
     }
 
+    /**
+     * <code>bytes start = 1;</code>
+     */
     public function setStart($var)
     {
         GPBUtil::checkString($var, False);
         $this->start = $var;
     }
 
+    /**
+     * <code>uint64 expire_timestamp_ms = 2;</code>
+     */
     public function getExpireTimestampMs()
     {
         return $this->expire_timestamp_ms;
     }
 
+    /**
+     * <code>uint64 expire_timestamp_ms = 2;</code>
+     */
     public function setExpireTimestampMs($var)
     {
         GPBUtil::checkUint64($var);
         $this->expire_timestamp_ms = $var;
     }
 
+    /**
+     * <code>bytes end = 3;</code>
+     */
     public function getEnd()
     {
         return $this->end;
     }
 
+    /**
+     * <code>bytes end = 3;</code>
+     */
     public function setEnd($var)
     {
         GPBUtil::checkString($var, False);
@@ -49,15 +83,4 @@ class AuthTicket extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa2010a30504f474f50726f746f732f4e6574776f726b696e672f456e76" .
-    "656c6f7065732f417574685469636b65742e70726f746f121f504f474f50" .
-    "726f746f732e4e6574776f726b696e672e456e76656c6f70657322450a0a" .
-    "417574685469636b6574120d0a05737461727418012001280c121b0a1365" .
-    "78706972655f74696d657374616d705f6d73180220012804120b0a03656e" .
-    "6418032001280c620670726f746f33"
-));
 

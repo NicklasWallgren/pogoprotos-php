@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.RegisterBackgroundDeviceResponse</code>
+ */
 class RegisterBackgroundDeviceResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.RegisterBackgroundDeviceResponse.Status status = 1;</code>
+     */
     private $status = 0;
+    /**
+     * <code>.POGOProtos.Data.BackgroundToken token = 2;</code>
+     */
     private $token = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\RegisterBackgroundDeviceResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.RegisterBackgroundDeviceResponse.Status status = 1;</code>
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.RegisterBackgroundDeviceResponse.Status status = 1;</code>
+     */
     public function setStatus($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\RegisterBackgroundDeviceResponse_Status::class);
         $this->status = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.BackgroundToken token = 2;</code>
+     */
     public function getToken()
     {
         return $this->token;
     }
 
+    /**
+     * <code>.POGOProtos.Data.BackgroundToken token = 2;</code>
+     */
     public function setToken(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\BackgroundToken::class);
@@ -38,29 +62,4 @@ class RegisterBackgroundDeviceResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class RegisterBackgroundDeviceResponse_Status
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const ERROR = 2;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0af5020a46504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f52656769737465724261636b67726f756e644465766963" .
-    "65526573706f6e73652e70726f746f121f504f474f50726f746f732e4e65" .
-    "74776f726b696e672e526573706f6e7365731a25504f474f50726f746f73" .
-    "2f446174612f4261636b67726f756e64546f6b656e2e70726f746f22da01" .
-    "0a2052656769737465724261636b67726f756e6444657669636552657370" .
-    "6f6e736512580a0673746174757318012001280e32482e504f474f50726f" .
-    "746f732e4e6574776f726b696e672e526573706f6e7365732e5265676973" .
-    "7465724261636b67726f756e64446576696365526573706f6e73652e5374" .
-    "61747573122f0a05746f6b656e18022001280b32202e504f474f50726f74" .
-    "6f732e446174612e4261636b67726f756e64546f6b656e222b0a06537461" .
-    "74757312090a05554e5345541000120b0a0753554343455353100112090a" .
-    "054552524f521002620670726f746f33"
-));
 

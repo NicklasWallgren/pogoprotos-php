@@ -4,79 +4,83 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.LevelUpRewardsResponse</code>
+ */
 class LevelUpRewardsResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Networking.Responses.LevelUpRewardsResponse.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemAward items_awarded = 2;</code>
+     */
     private $items_awarded;
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId items_unlocked = 4;</code>
+     */
     private $items_unlocked;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\LevelUpRewardsResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Networking.Responses.LevelUpRewardsResponse.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.LevelUpRewardsResponse.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\LevelUpRewardsResponse_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemAward items_awarded = 2;</code>
+     */
     public function getItemsAwarded()
     {
         return $this->items_awarded;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemAward items_awarded = 2;</code>
+     */
     public function setItemsAwarded(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Inventory\Item\ItemAward::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Inventory\Item\ItemAward::class);
         $this->items_awarded = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId items_unlocked = 4;</code>
+     */
     public function getItemsUnlocked()
     {
         return $this->items_unlocked;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.Item.ItemId items_unlocked = 4;</code>
+     */
     public function setItemsUnlocked(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Inventory\Item\ItemId::class);
         $this->items_unlocked = $var;
     }
 
 }
-
-class LevelUpRewardsResponse_Result
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const AWARDED_ALREADY = 2;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ad4030a3c504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f4c6576656c557052657761726473526573706f6e73652e" .
-    "70726f746f121f504f474f50726f746f732e4e6574776f726b696e672e52" .
-    "6573706f6e7365731a26504f474f50726f746f732f496e76656e746f7279" .
-    "2f4974656d2f4974656d49642e70726f746f1a29504f474f50726f746f73" .
-    "2f496e76656e746f72792f4974656d2f4974656d41776172642e70726f74" .
-    "6f2297020a164c6576656c557052657761726473526573706f6e7365124e" .
-    "0a06726573756c7418012001280e323e2e504f474f50726f746f732e4e65" .
-    "74776f726b696e672e526573706f6e7365732e4c6576656c557052657761" .
-    "726473526573706f6e73652e526573756c74123b0a0d6974656d735f6177" .
-    "617264656418022003280b32242e504f474f50726f746f732e496e76656e" .
-    "746f72792e4974656d2e4974656d417761726412390a0e6974656d735f75" .
-    "6e6c6f636b656418042003280e32212e504f474f50726f746f732e496e76" .
-    "656e746f72792e4974656d2e4974656d496422350a06526573756c741209" .
-    "0a05554e5345541000120b0a0753554343455353100112130a0f41574152" .
-    "4445445f414c52454144591002620670726f746f33"
-));
 

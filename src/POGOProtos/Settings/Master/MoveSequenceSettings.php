@@ -4,35 +4,41 @@
 
 namespace POGOProtos\Settings\Master;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.MoveSequenceSettings</code>
+ */
 class MoveSequenceSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated string sequence = 1;</code>
+     */
     private $sequence;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\MoveSequenceSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated string sequence = 1;</code>
+     */
     public function getSequence()
     {
         return $this->sequence;
     }
 
+    /**
+     * <code>repeated string sequence = 1;</code>
+     */
     public function setSequence(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::STRING);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->sequence = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a85010a35504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4d6f766553657175656e636553657474696e67732e70726f746f121a" .
-    "504f474f50726f746f732e53657474696e67732e4d617374657222280a14" .
-    "4d6f766553657175656e636553657474696e677312100a0873657175656e" .
-    "6365180120032809620670726f746f33"
-));
 

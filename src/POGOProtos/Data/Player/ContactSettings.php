@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Data\Player;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Player.ContactSettings</code>
+ */
 class ContactSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>bool send_marketing_emails = 1;</code>
+     */
     private $send_marketing_emails = false;
+    /**
+     * <code>bool send_push_notifications = 2;</code>
+     */
     private $send_push_notifications = false;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Player\ContactSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>bool send_marketing_emails = 1;</code>
+     */
     public function getSendMarketingEmails()
     {
         return $this->send_marketing_emails;
     }
 
+    /**
+     * <code>bool send_marketing_emails = 1;</code>
+     */
     public function setSendMarketingEmails($var)
     {
         GPBUtil::checkBool($var);
         $this->send_marketing_emails = $var;
     }
 
+    /**
+     * <code>bool send_push_notifications = 2;</code>
+     */
     public function getSendPushNotifications()
     {
         return $this->send_push_notifications;
     }
 
+    /**
+     * <code>bool send_push_notifications = 2;</code>
+     */
     public function setSendPushNotifications($var)
     {
         GPBUtil::checkBool($var);
@@ -37,15 +62,4 @@ class ContactSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aa1010a2c504f474f50726f746f732f446174612f506c617965722f436f" .
-    "6e7461637453657474696e67732e70726f746f1216504f474f50726f746f" .
-    "732e446174612e506c6179657222510a0f436f6e7461637453657474696e" .
-    "6773121d0a1573656e645f6d61726b6574696e675f656d61696c73180120" .
-    "012808121f0a1773656e645f707573685f6e6f74696669636174696f6e73" .
-    "180220012808620670726f746f33"
-));
 

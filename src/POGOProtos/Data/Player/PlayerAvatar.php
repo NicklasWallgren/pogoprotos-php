@@ -4,137 +4,356 @@
 
 namespace POGOProtos\Data\Player;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Player.PlayerAvatar</code>
+ */
 class PlayerAvatar extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int32 skin = 2;</code>
+     */
     private $skin = 0;
+    /**
+     * <code>int32 hair = 3;</code>
+     */
     private $hair = 0;
+    /**
+     * <code>int32 shirt = 4;</code>
+     */
     private $shirt = 0;
+    /**
+     * <code>int32 pants = 5;</code>
+     */
     private $pants = 0;
+    /**
+     * <code>int32 hat = 6;</code>
+     */
     private $hat = 0;
+    /**
+     * <code>int32 shoes = 7;</code>
+     */
     private $shoes = 0;
+    /**
+     * <code>.POGOProtos.Enums.Gender gender = 8;</code>
+     */
     private $gender = 0;
+    /**
+     * <code>int32 eyes = 9;</code>
+     */
     private $eyes = 0;
+    /**
+     * <code>int32 backpack = 10;</code>
+     */
     private $backpack = 0;
+    /**
+     * <code>string avatar_hair = 11;</code>
+     */
+    private $avatar_hair = '';
+    /**
+     * <code>string avatar_shirt = 12;</code>
+     */
+    private $avatar_shirt = '';
+    /**
+     * <code>string avatar_pants = 13;</code>
+     */
+    private $avatar_pants = '';
+    /**
+     * <code>string avatar_hat = 14;</code>
+     */
+    private $avatar_hat = '';
+    /**
+     * <code>string avatar_shoes = 15;</code>
+     */
+    private $avatar_shoes = '';
+    /**
+     * <code>string avatar_eyes = 16;</code>
+     */
+    private $avatar_eyes = '';
+    /**
+     * <code>string avatar_backpack = 17;</code>
+     */
+    private $avatar_backpack = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Player\PlayerAvatar::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int32 skin = 2;</code>
+     */
     public function getSkin()
     {
         return $this->skin;
     }
 
+    /**
+     * <code>int32 skin = 2;</code>
+     */
     public function setSkin($var)
     {
         GPBUtil::checkInt32($var);
         $this->skin = $var;
     }
 
+    /**
+     * <code>int32 hair = 3;</code>
+     */
     public function getHair()
     {
         return $this->hair;
     }
 
+    /**
+     * <code>int32 hair = 3;</code>
+     */
     public function setHair($var)
     {
         GPBUtil::checkInt32($var);
         $this->hair = $var;
     }
 
+    /**
+     * <code>int32 shirt = 4;</code>
+     */
     public function getShirt()
     {
         return $this->shirt;
     }
 
+    /**
+     * <code>int32 shirt = 4;</code>
+     */
     public function setShirt($var)
     {
         GPBUtil::checkInt32($var);
         $this->shirt = $var;
     }
 
+    /**
+     * <code>int32 pants = 5;</code>
+     */
     public function getPants()
     {
         return $this->pants;
     }
 
+    /**
+     * <code>int32 pants = 5;</code>
+     */
     public function setPants($var)
     {
         GPBUtil::checkInt32($var);
         $this->pants = $var;
     }
 
+    /**
+     * <code>int32 hat = 6;</code>
+     */
     public function getHat()
     {
         return $this->hat;
     }
 
+    /**
+     * <code>int32 hat = 6;</code>
+     */
     public function setHat($var)
     {
         GPBUtil::checkInt32($var);
         $this->hat = $var;
     }
 
+    /**
+     * <code>int32 shoes = 7;</code>
+     */
     public function getShoes()
     {
         return $this->shoes;
     }
 
+    /**
+     * <code>int32 shoes = 7;</code>
+     */
     public function setShoes($var)
     {
         GPBUtil::checkInt32($var);
         $this->shoes = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.Gender gender = 8;</code>
+     */
     public function getGender()
     {
         return $this->gender;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.Gender gender = 8;</code>
+     */
     public function setGender($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\Gender::class);
         $this->gender = $var;
     }
 
+    /**
+     * <code>int32 eyes = 9;</code>
+     */
     public function getEyes()
     {
         return $this->eyes;
     }
 
+    /**
+     * <code>int32 eyes = 9;</code>
+     */
     public function setEyes($var)
     {
         GPBUtil::checkInt32($var);
         $this->eyes = $var;
     }
 
+    /**
+     * <code>int32 backpack = 10;</code>
+     */
     public function getBackpack()
     {
         return $this->backpack;
     }
 
+    /**
+     * <code>int32 backpack = 10;</code>
+     */
     public function setBackpack($var)
     {
         GPBUtil::checkInt32($var);
         $this->backpack = $var;
     }
 
+    /**
+     * <code>string avatar_hair = 11;</code>
+     */
+    public function getAvatarHair()
+    {
+        return $this->avatar_hair;
+    }
+
+    /**
+     * <code>string avatar_hair = 11;</code>
+     */
+    public function setAvatarHair($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_hair = $var;
+    }
+
+    /**
+     * <code>string avatar_shirt = 12;</code>
+     */
+    public function getAvatarShirt()
+    {
+        return $this->avatar_shirt;
+    }
+
+    /**
+     * <code>string avatar_shirt = 12;</code>
+     */
+    public function setAvatarShirt($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_shirt = $var;
+    }
+
+    /**
+     * <code>string avatar_pants = 13;</code>
+     */
+    public function getAvatarPants()
+    {
+        return $this->avatar_pants;
+    }
+
+    /**
+     * <code>string avatar_pants = 13;</code>
+     */
+    public function setAvatarPants($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_pants = $var;
+    }
+
+    /**
+     * <code>string avatar_hat = 14;</code>
+     */
+    public function getAvatarHat()
+    {
+        return $this->avatar_hat;
+    }
+
+    /**
+     * <code>string avatar_hat = 14;</code>
+     */
+    public function setAvatarHat($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_hat = $var;
+    }
+
+    /**
+     * <code>string avatar_shoes = 15;</code>
+     */
+    public function getAvatarShoes()
+    {
+        return $this->avatar_shoes;
+    }
+
+    /**
+     * <code>string avatar_shoes = 15;</code>
+     */
+    public function setAvatarShoes($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_shoes = $var;
+    }
+
+    /**
+     * <code>string avatar_eyes = 16;</code>
+     */
+    public function getAvatarEyes()
+    {
+        return $this->avatar_eyes;
+    }
+
+    /**
+     * <code>string avatar_eyes = 16;</code>
+     */
+    public function setAvatarEyes($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_eyes = $var;
+    }
+
+    /**
+     * <code>string avatar_backpack = 17;</code>
+     */
+    public function getAvatarBackpack()
+    {
+        return $this->avatar_backpack;
+    }
+
+    /**
+     * <code>string avatar_backpack = 17;</code>
+     */
+    public function setAvatarBackpack($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->avatar_backpack = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a9b020a29504f474f50726f746f732f446174612f506c617965722f506c" .
-    "617965724176617461722e70726f746f1216504f474f50726f746f732e44" .
-    "6174612e506c617965721a1d504f474f50726f746f732f456e756d732f47" .
-    "656e6465722e70726f746f22ae010a0c506c61796572417661746172120c" .
-    "0a04736b696e180220012805120c0a0468616972180320012805120d0a05" .
-    "7368697274180420012805120d0a0570616e7473180520012805120b0a03" .
-    "686174180620012805120d0a0573686f657318072001280512280a066765" .
-    "6e64657218082001280e32182e504f474f50726f746f732e456e756d732e" .
-    "47656e646572120c0a046579657318092001280512100a086261636b7061" .
-    "636b180a20012805620670726f746f33"
-));
 

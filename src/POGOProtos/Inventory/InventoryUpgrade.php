@@ -4,46 +4,78 @@
 
 namespace POGOProtos\Inventory;
 
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.InventoryUpgrade</code>
+ */
 class InventoryUpgrade extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     private $item_id = 0;
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgradeType upgrade_type = 2;</code>
+     */
     private $upgrade_type = 0;
+    /**
+     * <code>int32 additional_storage = 3;</code>
+     */
     private $additional_storage = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\InventoryUpgrade::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function getItemId()
     {
         return $this->item_id;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId item_id = 1;</code>
+     */
     public function setItemId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->item_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgradeType upgrade_type = 2;</code>
+     */
     public function getUpgradeType()
     {
         return $this->upgrade_type;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.InventoryUpgradeType upgrade_type = 2;</code>
+     */
     public function setUpgradeType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\InventoryUpgradeType::class);
         $this->upgrade_type = $var;
     }
 
+    /**
+     * <code>int32 additional_storage = 3;</code>
+     */
     public function getAdditionalStorage()
     {
         return $this->additional_storage;
     }
 
+    /**
+     * <code>int32 additional_storage = 3;</code>
+     */
     public function setAdditionalStorage($var)
     {
         GPBUtil::checkInt32($var);
@@ -51,21 +83,4 @@ class InventoryUpgrade extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0acb020a2b504f474f50726f746f732f496e76656e746f72792f496e7665" .
-    "6e746f7279557067726164652e70726f746f1214504f474f50726f746f73" .
-    "2e496e76656e746f72791a26504f474f50726f746f732f496e76656e746f" .
-    "72792f4974656d2f4974656d49642e70726f746f1a2f504f474f50726f74" .
-    "6f732f496e76656e746f72792f496e76656e746f72795570677261646554" .
-    "7970652e70726f746f22a4010a10496e76656e746f727955706772616465" .
-    "12320a076974656d5f696418012001280e32212e504f474f50726f746f73" .
-    "2e496e76656e746f72792e4974656d2e4974656d496412400a0c75706772" .
-    "6164655f7479706518022001280e322a2e504f474f50726f746f732e496e" .
-    "76656e746f72792e496e76656e746f72795570677261646554797065121a" .
-    "0a126164646974696f6e616c5f73746f7261676518032001280562067072" .
-    "6f746f33"
-));
 

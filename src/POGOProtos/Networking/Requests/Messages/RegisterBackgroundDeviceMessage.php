@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.RegisterBackgroundDeviceMessage</code>
+ */
 class RegisterBackgroundDeviceMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string device_type = 1;</code>
+     */
     private $device_type = '';
+    /**
+     * <code>string device_id = 2;</code>
+     */
     private $device_id = '';
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\RegisterBackgroundDeviceMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string device_type = 1;</code>
+     */
     public function getDeviceType()
     {
         return $this->device_type;
     }
 
+    /**
+     * <code>string device_type = 1;</code>
+     */
     public function setDeviceType($var)
     {
         GPBUtil::checkString($var, True);
         $this->device_type = $var;
     }
 
+    /**
+     * <code>string device_id = 2;</code>
+     */
     public function getDeviceId()
     {
         return $this->device_id;
     }
 
+    /**
+     * <code>string device_id = 2;</code>
+     */
     public function setDeviceId($var)
     {
         GPBUtil::checkString($var, True);
@@ -37,16 +62,4 @@ class RegisterBackgroundDeviceMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0acb010a4d504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f52656769737465724261636b67726f" .
-    "756e644465766963654d6573736167652e70726f746f1227504f474f5072" .
-    "6f746f732e4e6574776f726b696e672e52657175657374732e4d65737361" .
-    "67657322490a1f52656769737465724261636b67726f756e644465766963" .
-    "654d65737361676512130a0b6465766963655f7479706518012001280912" .
-    "110a096465766963655f6964180220012809620670726f746f33"
-));
 

@@ -4,93 +4,162 @@
 
 namespace POGOProtos\Settings\Master\Item;
 
-require_once('POGOProtos/Enums/PokemonType.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.Item.IncenseAttributes</code>
+ */
 class IncenseAttributes extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int32 incense_lifetime_seconds = 1;</code>
+     */
     private $incense_lifetime_seconds = 0;
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonType pokemon_type = 2;</code>
+     */
     private $pokemon_type;
+    /**
+     * <code>float pokemon_incense_type_probability = 3;</code>
+     */
     private $pokemon_incense_type_probability = 0.0;
+    /**
+     * <code>int32 standing_time_between_encounters_seconds = 4;</code>
+     */
     private $standing_time_between_encounters_seconds = 0;
+    /**
+     * <code>int32 moving_time_between_encounter_seconds = 5;</code>
+     */
     private $moving_time_between_encounter_seconds = 0;
+    /**
+     * <code>int32 distance_required_for_shorter_interval_meters = 6;</code>
+     */
     private $distance_required_for_shorter_interval_meters = 0;
+    /**
+     * <code>int32 pokemon_attracted_length_sec = 7;</code>
+     */
     private $pokemon_attracted_length_sec = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\Item\IncenseAttributes::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int32 incense_lifetime_seconds = 1;</code>
+     */
     public function getIncenseLifetimeSeconds()
     {
         return $this->incense_lifetime_seconds;
     }
 
+    /**
+     * <code>int32 incense_lifetime_seconds = 1;</code>
+     */
     public function setIncenseLifetimeSeconds($var)
     {
         GPBUtil::checkInt32($var);
         $this->incense_lifetime_seconds = $var;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonType pokemon_type = 2;</code>
+     */
     public function getPokemonType()
     {
         return $this->pokemon_type;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Enums.PokemonType pokemon_type = 2;</code>
+     */
     public function setPokemonType(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::ENUM, POGOProtos\Enums\PokemonType::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, POGOProtos\Enums\PokemonType::class);
         $this->pokemon_type = $var;
     }
 
+    /**
+     * <code>float pokemon_incense_type_probability = 3;</code>
+     */
     public function getPokemonIncenseTypeProbability()
     {
         return $this->pokemon_incense_type_probability;
     }
 
+    /**
+     * <code>float pokemon_incense_type_probability = 3;</code>
+     */
     public function setPokemonIncenseTypeProbability($var)
     {
         GPBUtil::checkFloat($var);
         $this->pokemon_incense_type_probability = $var;
     }
 
+    /**
+     * <code>int32 standing_time_between_encounters_seconds = 4;</code>
+     */
     public function getStandingTimeBetweenEncountersSeconds()
     {
         return $this->standing_time_between_encounters_seconds;
     }
 
+    /**
+     * <code>int32 standing_time_between_encounters_seconds = 4;</code>
+     */
     public function setStandingTimeBetweenEncountersSeconds($var)
     {
         GPBUtil::checkInt32($var);
         $this->standing_time_between_encounters_seconds = $var;
     }
 
+    /**
+     * <code>int32 moving_time_between_encounter_seconds = 5;</code>
+     */
     public function getMovingTimeBetweenEncounterSeconds()
     {
         return $this->moving_time_between_encounter_seconds;
     }
 
+    /**
+     * <code>int32 moving_time_between_encounter_seconds = 5;</code>
+     */
     public function setMovingTimeBetweenEncounterSeconds($var)
     {
         GPBUtil::checkInt32($var);
         $this->moving_time_between_encounter_seconds = $var;
     }
 
+    /**
+     * <code>int32 distance_required_for_shorter_interval_meters = 6;</code>
+     */
     public function getDistanceRequiredForShorterIntervalMeters()
     {
         return $this->distance_required_for_shorter_interval_meters;
     }
 
+    /**
+     * <code>int32 distance_required_for_shorter_interval_meters = 6;</code>
+     */
     public function setDistanceRequiredForShorterIntervalMeters($var)
     {
         GPBUtil::checkInt32($var);
         $this->distance_required_for_shorter_interval_meters = $var;
     }
 
+    /**
+     * <code>int32 pokemon_attracted_length_sec = 7;</code>
+     */
     public function getPokemonAttractedLengthSec()
     {
         return $this->pokemon_attracted_length_sec;
     }
 
+    /**
+     * <code>int32 pokemon_attracted_length_sec = 7;</code>
+     */
     public function setPokemonAttractedLengthSec($var)
     {
         GPBUtil::checkInt32($var);
@@ -98,25 +167,4 @@ class IncenseAttributes extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0adb030a37504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4974656d2f496e63656e7365417474726962757465732e70726f746f" .
-    "121f504f474f50726f746f732e53657474696e67732e4d61737465722e49" .
-    "74656d1a22504f474f50726f746f732f456e756d732f506f6b656d6f6e54" .
-    "7970652e70726f746f22d2020a11496e63656e7365417474726962757465" .
-    "7312200a18696e63656e73655f6c69666574696d655f7365636f6e647318" .
-    "012001280512330a0c706f6b656d6f6e5f7479706518022003280e321d2e" .
-    "504f474f50726f746f732e456e756d732e506f6b656d6f6e547970651228" .
-    "0a20706f6b656d6f6e5f696e63656e73655f747970655f70726f62616269" .
-    "6c69747918032001280212300a287374616e64696e675f74696d655f6265" .
-    "747765656e5f656e636f756e746572735f7365636f6e6473180420012805" .
-    "122d0a256d6f76696e675f74696d655f6265747765656e5f656e636f756e" .
-    "7465725f7365636f6e647318052001280512350a2d64697374616e63655f" .
-    "72657175697265645f666f725f73686f727465725f696e74657276616c5f" .
-    "6d657465727318062001280512240a1c706f6b656d6f6e5f617474726163" .
-    "7465645f6c656e6774685f736563180720012805620670726f746f33"
-));
 

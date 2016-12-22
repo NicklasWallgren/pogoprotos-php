@@ -4,57 +4,99 @@
 
 namespace POGOProtos\Map\Fort;
 
-require_once('POGOProtos/Enums/PokemonId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Map.Fort.FortLureInfo</code>
+ */
 class FortLureInfo extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     private $fort_id = '';
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     private $encounter_id = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonId active_pokemon_id = 3;</code>
+     */
     private $active_pokemon_id = 0;
+    /**
+     * <code>int64 lure_expires_timestamp_ms = 4;</code>
+     */
     private $lure_expires_timestamp_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Map\Fort\FortLureInfo::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     public function getFortId()
     {
         return $this->fort_id;
     }
 
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     public function setFortId($var)
     {
         GPBUtil::checkString($var, True);
         $this->fort_id = $var;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     public function getEncounterId()
     {
         return $this->encounter_id;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 2;</code>
+     */
     public function setEncounterId($var)
     {
         GPBUtil::checkUint64($var);
         $this->encounter_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId active_pokemon_id = 3;</code>
+     */
     public function getActivePokemonId()
     {
         return $this->active_pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId active_pokemon_id = 3;</code>
+     */
     public function setActivePokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->active_pokemon_id = $var;
     }
 
+    /**
+     * <code>int64 lure_expires_timestamp_ms = 4;</code>
+     */
     public function getLureExpiresTimestampMs()
     {
         return $this->lure_expires_timestamp_ms;
     }
 
+    /**
+     * <code>int64 lure_expires_timestamp_ms = 4;</code>
+     */
     public function setLureExpiresTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
@@ -62,18 +104,4 @@ class FortLureInfo extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0afa010a26504f474f50726f746f732f4d61702f466f72742f466f72744c" .
-    "757265496e666f2e70726f746f1213504f474f50726f746f732e4d61702e" .
-    "466f72741a20504f474f50726f746f732f456e756d732f506f6b656d6f6e" .
-    "49642e70726f746f2290010a0c466f72744c757265496e666f120f0a0766" .
-    "6f72745f696418012001280912140a0c656e636f756e7465725f69641802" .
-    "2001280612360a116163746976655f706f6b656d6f6e5f69641803200128" .
-    "0e321b2e504f474f50726f746f732e456e756d732e506f6b656d6f6e4964" .
-    "12210a196c7572655f657870697265735f74696d657374616d705f6d7318" .
-    "0420012803620670726f746f33"
-));
 

@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Data\Logs;
 
-require_once('POGOProtos/Enums/PokemonId.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Logs.BuddyPokemonLogEntry</code>
+ */
 class BuddyPokemonLogEntry extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Logs.BuddyPokemonLogEntry.Result result = 1;</code>
+     */
     private $result = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>int32 amount = 3;</code>
+     */
     private $amount = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Logs\BuddyPokemonLogEntry::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Logs.BuddyPokemonLogEntry.Result result = 1;</code>
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Logs.BuddyPokemonLogEntry.Result result = 1;</code>
+     */
     public function setResult($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Data\Logs\BuddyPokemonLogEntry_Result::class);
         $this->result = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>int32 amount = 3;</code>
+     */
     public function getAmount()
     {
         return $this->amount;
     }
 
+    /**
+     * <code>int32 amount = 3;</code>
+     */
     public function setAmount($var)
     {
         GPBUtil::checkInt32($var);
@@ -50,26 +83,4 @@ class BuddyPokemonLogEntry extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class BuddyPokemonLogEntry_Result
-{
-    const UNSET = 0;
-    const CANDY_FOUND = 1;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ab4020a2f504f474f50726f746f732f446174612f4c6f67732f42756464" .
-    "79506f6b656d6f6e4c6f67456e7472792e70726f746f1214504f474f5072" .
-    "6f746f732e446174612e4c6f67731a20504f474f50726f746f732f456e75" .
-    "6d732f506f6b656d6f6e49642e70726f746f22c0010a144275646479506f" .
-    "6b656d6f6e4c6f67456e74727912410a06726573756c7418012001280e32" .
-    "312e504f474f50726f746f732e446174612e4c6f67732e4275646479506f" .
-    "6b656d6f6e4c6f67456e7472792e526573756c74122f0a0a706f6b656d6f" .
-    "6e5f696418022001280e321b2e504f474f50726f746f732e456e756d732e" .
-    "506f6b656d6f6e4964120e0a06616d6f756e7418032001280522240a0652" .
-    "6573756c7412090a05554e5345541000120f0a0b43414e44595f464f554e" .
-    "441001620670726f746f33"
-));
 

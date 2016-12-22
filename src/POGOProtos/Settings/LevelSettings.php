@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Settings;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.LevelSettings</code>
+ */
 class LevelSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>double trainer_cp_modifier = 2;</code>
+     */
     private $trainer_cp_modifier = 0.0;
+    /**
+     * <code>double trainer_difficulty_modifier = 3;</code>
+     */
     private $trainer_difficulty_modifier = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\LevelSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>double trainer_cp_modifier = 2;</code>
+     */
     public function getTrainerCpModifier()
     {
         return $this->trainer_cp_modifier;
     }
 
+    /**
+     * <code>double trainer_cp_modifier = 2;</code>
+     */
     public function setTrainerCpModifier($var)
     {
         GPBUtil::checkDouble($var);
         $this->trainer_cp_modifier = $var;
     }
 
+    /**
+     * <code>double trainer_difficulty_modifier = 3;</code>
+     */
     public function getTrainerDifficultyModifier()
     {
         return $this->trainer_difficulty_modifier;
     }
 
+    /**
+     * <code>double trainer_difficulty_modifier = 3;</code>
+     */
     public function setTrainerDifficultyModifier($var)
     {
         GPBUtil::checkDouble($var);
@@ -37,15 +62,4 @@ class LevelSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a99010a27504f474f50726f746f732f53657474696e67732f4c6576656c" .
-    "53657474696e67732e70726f746f1213504f474f50726f746f732e536574" .
-    "74696e677322510a0d4c6576656c53657474696e6773121b0a1374726169" .
-    "6e65725f63705f6d6f64696669657218022001280112230a1b747261696e" .
-    "65725f646966666963756c74795f6d6f6469666965721803200128016206" .
-    "70726f746f33"
-));
 

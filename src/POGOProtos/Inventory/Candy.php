@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Inventory;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.Candy</code>
+ */
 class Candy extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Enums.PokemonFamilyId family_id = 1;</code>
+     */
     private $family_id = 0;
+    /**
+     * <code>int32 candy = 2;</code>
+     */
     private $candy = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\Candy::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Enums.PokemonFamilyId family_id = 1;</code>
+     */
     public function getFamilyId()
     {
         return $this->family_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonFamilyId family_id = 1;</code>
+     */
     public function setFamilyId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonFamilyId::class);
         $this->family_id = $var;
     }
 
+    /**
+     * <code>int32 candy = 2;</code>
+     */
     public function getCandy()
     {
         return $this->candy;
     }
 
+    /**
+     * <code>int32 candy = 2;</code>
+     */
     public function setCandy($var)
     {
         GPBUtil::checkInt32($var);
@@ -38,16 +62,4 @@ class Candy extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ab6010a20504f474f50726f746f732f496e76656e746f72792f43616e64" .
-    "792e70726f746f1214504f474f50726f746f732e496e76656e746f72791a" .
-    "26504f474f50726f746f732f456e756d732f506f6b656d6f6e46616d696c" .
-    "7949642e70726f746f224c0a0543616e647912340a0966616d696c795f69" .
-    "6418012001280e32212e504f474f50726f746f732e456e756d732e506f6b" .
-    "656d6f6e46616d696c794964120d0a0563616e6479180220012805620670" .
-    "726f746f33"
-));
 

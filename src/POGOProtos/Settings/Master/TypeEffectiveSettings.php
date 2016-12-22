@@ -4,33 +4,57 @@
 
 namespace POGOProtos\Settings\Master;
 
-require_once('POGOProtos/Enums/PokemonType.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.TypeEffectiveSettings</code>
+ */
 class TypeEffectiveSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated float attack_scalar = 1;</code>
+     */
     private $attack_scalar;
+    /**
+     * <code>.POGOProtos.Enums.PokemonType attack_type = 2;</code>
+     */
     private $attack_type = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\TypeEffectiveSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated float attack_scalar = 1;</code>
+     */
     public function getAttackScalar()
     {
         return $this->attack_scalar;
     }
 
+    /**
+     * <code>repeated float attack_scalar = 1;</code>
+     */
     public function setAttackScalar(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::FLOAT);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::FLOAT);
         $this->attack_scalar = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType attack_type = 2;</code>
+     */
     public function getAttackType()
     {
         return $this->attack_type;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonType attack_type = 2;</code>
+     */
     public function setAttackType($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonType::class);
@@ -38,17 +62,4 @@ class TypeEffectiveSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ae4010a36504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f5479706545666665637469766553657474696e67732e70726f746f12" .
-    "1a504f474f50726f746f732e53657474696e67732e4d61737465721a2250" .
-    "4f474f50726f746f732f456e756d732f506f6b656d6f6e547970652e7072" .
-    "6f746f22620a155479706545666665637469766553657474696e67731215" .
-    "0a0d61747461636b5f7363616c617218012003280212320a0b6174746163" .
-    "6b5f7479706518022001280e321d2e504f474f50726f746f732e456e756d" .
-    "732e506f6b656d6f6e54797065620670726f746f33"
-));
 

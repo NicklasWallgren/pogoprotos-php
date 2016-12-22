@@ -4,465 +4,755 @@
 
 namespace POGOProtos\Data;
 
-
-
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.PokemonData</code>
+ */
 class PokemonData extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>fixed64 id = 1;</code>
+     */
     private $id = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     private $pokemon_id = 0;
+    /**
+     * <code>int32 cp = 3;</code>
+     */
     private $cp = 0;
+    /**
+     * <code>int32 stamina = 4;</code>
+     */
     private $stamina = 0;
+    /**
+     * <code>int32 stamina_max = 5;</code>
+     */
     private $stamina_max = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove move_1 = 6;</code>
+     */
     private $move_1 = 0;
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove move_2 = 7;</code>
+     */
     private $move_2 = 0;
+    /**
+     * <code>string deployed_fort_id = 8;</code>
+     */
     private $deployed_fort_id = '';
+    /**
+     * <code>string owner_name = 9;</code>
+     */
     private $owner_name = '';
+    /**
+     * <code>bool is_egg = 10;</code>
+     */
     private $is_egg = false;
+    /**
+     * <code>double egg_km_walked_target = 11;</code>
+     */
     private $egg_km_walked_target = 0.0;
+    /**
+     * <code>double egg_km_walked_start = 12;</code>
+     */
     private $egg_km_walked_start = 0.0;
+    /**
+     * <code>int32 origin = 14;</code>
+     */
     private $origin = 0;
+    /**
+     * <code>float height_m = 15;</code>
+     */
     private $height_m = 0.0;
+    /**
+     * <code>float weight_kg = 16;</code>
+     */
     private $weight_kg = 0.0;
+    /**
+     * <code>int32 individual_attack = 17;</code>
+     */
     private $individual_attack = 0;
+    /**
+     * <code>int32 individual_defense = 18;</code>
+     */
     private $individual_defense = 0;
+    /**
+     * <code>int32 individual_stamina = 19;</code>
+     */
     private $individual_stamina = 0;
+    /**
+     * <code>float cp_multiplier = 20;</code>
+     */
     private $cp_multiplier = 0.0;
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId pokeball = 21;</code>
+     */
     private $pokeball = 0;
+    /**
+     * <code>uint64 captured_cell_id = 22;</code>
+     */
     private $captured_cell_id = 0;
+    /**
+     * <code>int32 battles_attacked = 23;</code>
+     */
     private $battles_attacked = 0;
+    /**
+     * <code>int32 battles_defended = 24;</code>
+     */
     private $battles_defended = 0;
+    /**
+     * <code>string egg_incubator_id = 25;</code>
+     */
     private $egg_incubator_id = '';
+    /**
+     * <code>uint64 creation_time_ms = 26;</code>
+     */
     private $creation_time_ms = 0;
+    /**
+     * <code>int32 num_upgrades = 27;</code>
+     */
     private $num_upgrades = 0;
+    /**
+     * <code>float additional_cp_multiplier = 28;</code>
+     */
     private $additional_cp_multiplier = 0.0;
+    /**
+     * <code>int32 favorite = 29;</code>
+     */
     private $favorite = 0;
+    /**
+     * <code>string nickname = 30;</code>
+     */
     private $nickname = '';
+    /**
+     * <code>int32 from_fort = 31;</code>
+     */
     private $from_fort = 0;
+    /**
+     * <code>int32 buddy_candy_awarded = 32;</code>
+     */
     private $buddy_candy_awarded = 0;
+    /**
+     * <code>float buddy_total_km_walked = 33;</code>
+     */
     private $buddy_total_km_walked = 0.0;
+    /**
+     * <code>int32 display_pokemon_id = 34;</code>
+     */
     private $display_pokemon_id = 0;
+    /**
+     * <code>int32 display_cp = 35;</code>
+     */
     private $display_cp = 0;
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 36;</code>
+     */
+    private $pokemon_display = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\PokemonData::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>fixed64 id = 1;</code>
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * <code>fixed64 id = 1;</code>
+     */
     public function setId($var)
     {
         GPBUtil::checkUint64($var);
         $this->id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     public function getPokemonId()
     {
         return $this->pokemon_id;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonId pokemon_id = 2;</code>
+     */
     public function setPokemonId($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonId::class);
         $this->pokemon_id = $var;
     }
 
+    /**
+     * <code>int32 cp = 3;</code>
+     */
     public function getCp()
     {
         return $this->cp;
     }
 
+    /**
+     * <code>int32 cp = 3;</code>
+     */
     public function setCp($var)
     {
         GPBUtil::checkInt32($var);
         $this->cp = $var;
     }
 
+    /**
+     * <code>int32 stamina = 4;</code>
+     */
     public function getStamina()
     {
         return $this->stamina;
     }
 
+    /**
+     * <code>int32 stamina = 4;</code>
+     */
     public function setStamina($var)
     {
         GPBUtil::checkInt32($var);
         $this->stamina = $var;
     }
 
+    /**
+     * <code>int32 stamina_max = 5;</code>
+     */
     public function getStaminaMax()
     {
         return $this->stamina_max;
     }
 
+    /**
+     * <code>int32 stamina_max = 5;</code>
+     */
     public function setStaminaMax($var)
     {
         GPBUtil::checkInt32($var);
         $this->stamina_max = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove move_1 = 6;</code>
+     */
     public function getMove1()
     {
         return $this->move_1;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove move_1 = 6;</code>
+     */
     public function setMove1($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonMove::class);
         $this->move_1 = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove move_2 = 7;</code>
+     */
     public function getMove2()
     {
         return $this->move_2;
     }
 
+    /**
+     * <code>.POGOProtos.Enums.PokemonMove move_2 = 7;</code>
+     */
     public function setMove2($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Enums\PokemonMove::class);
         $this->move_2 = $var;
     }
 
+    /**
+     * <code>string deployed_fort_id = 8;</code>
+     */
     public function getDeployedFortId()
     {
         return $this->deployed_fort_id;
     }
 
+    /**
+     * <code>string deployed_fort_id = 8;</code>
+     */
     public function setDeployedFortId($var)
     {
         GPBUtil::checkString($var, True);
         $this->deployed_fort_id = $var;
     }
 
+    /**
+     * <code>string owner_name = 9;</code>
+     */
     public function getOwnerName()
     {
         return $this->owner_name;
     }
 
+    /**
+     * <code>string owner_name = 9;</code>
+     */
     public function setOwnerName($var)
     {
         GPBUtil::checkString($var, True);
         $this->owner_name = $var;
     }
 
+    /**
+     * <code>bool is_egg = 10;</code>
+     */
     public function getIsEgg()
     {
         return $this->is_egg;
     }
 
+    /**
+     * <code>bool is_egg = 10;</code>
+     */
     public function setIsEgg($var)
     {
         GPBUtil::checkBool($var);
         $this->is_egg = $var;
     }
 
+    /**
+     * <code>double egg_km_walked_target = 11;</code>
+     */
     public function getEggKmWalkedTarget()
     {
         return $this->egg_km_walked_target;
     }
 
+    /**
+     * <code>double egg_km_walked_target = 11;</code>
+     */
     public function setEggKmWalkedTarget($var)
     {
         GPBUtil::checkDouble($var);
         $this->egg_km_walked_target = $var;
     }
 
+    /**
+     * <code>double egg_km_walked_start = 12;</code>
+     */
     public function getEggKmWalkedStart()
     {
         return $this->egg_km_walked_start;
     }
 
+    /**
+     * <code>double egg_km_walked_start = 12;</code>
+     */
     public function setEggKmWalkedStart($var)
     {
         GPBUtil::checkDouble($var);
         $this->egg_km_walked_start = $var;
     }
 
+    /**
+     * <code>int32 origin = 14;</code>
+     */
     public function getOrigin()
     {
         return $this->origin;
     }
 
+    /**
+     * <code>int32 origin = 14;</code>
+     */
     public function setOrigin($var)
     {
         GPBUtil::checkInt32($var);
         $this->origin = $var;
     }
 
+    /**
+     * <code>float height_m = 15;</code>
+     */
     public function getHeightM()
     {
         return $this->height_m;
     }
 
+    /**
+     * <code>float height_m = 15;</code>
+     */
     public function setHeightM($var)
     {
         GPBUtil::checkFloat($var);
         $this->height_m = $var;
     }
 
+    /**
+     * <code>float weight_kg = 16;</code>
+     */
     public function getWeightKg()
     {
         return $this->weight_kg;
     }
 
+    /**
+     * <code>float weight_kg = 16;</code>
+     */
     public function setWeightKg($var)
     {
         GPBUtil::checkFloat($var);
         $this->weight_kg = $var;
     }
 
+    /**
+     * <code>int32 individual_attack = 17;</code>
+     */
     public function getIndividualAttack()
     {
         return $this->individual_attack;
     }
 
+    /**
+     * <code>int32 individual_attack = 17;</code>
+     */
     public function setIndividualAttack($var)
     {
         GPBUtil::checkInt32($var);
         $this->individual_attack = $var;
     }
 
+    /**
+     * <code>int32 individual_defense = 18;</code>
+     */
     public function getIndividualDefense()
     {
         return $this->individual_defense;
     }
 
+    /**
+     * <code>int32 individual_defense = 18;</code>
+     */
     public function setIndividualDefense($var)
     {
         GPBUtil::checkInt32($var);
         $this->individual_defense = $var;
     }
 
+    /**
+     * <code>int32 individual_stamina = 19;</code>
+     */
     public function getIndividualStamina()
     {
         return $this->individual_stamina;
     }
 
+    /**
+     * <code>int32 individual_stamina = 19;</code>
+     */
     public function setIndividualStamina($var)
     {
         GPBUtil::checkInt32($var);
         $this->individual_stamina = $var;
     }
 
+    /**
+     * <code>float cp_multiplier = 20;</code>
+     */
     public function getCpMultiplier()
     {
         return $this->cp_multiplier;
     }
 
+    /**
+     * <code>float cp_multiplier = 20;</code>
+     */
     public function setCpMultiplier($var)
     {
         GPBUtil::checkFloat($var);
         $this->cp_multiplier = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId pokeball = 21;</code>
+     */
     public function getPokeball()
     {
         return $this->pokeball;
     }
 
+    /**
+     * <code>.POGOProtos.Inventory.Item.ItemId pokeball = 21;</code>
+     */
     public function setPokeball($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Inventory\Item\ItemId::class);
         $this->pokeball = $var;
     }
 
+    /**
+     * <code>uint64 captured_cell_id = 22;</code>
+     */
     public function getCapturedCellId()
     {
         return $this->captured_cell_id;
     }
 
+    /**
+     * <code>uint64 captured_cell_id = 22;</code>
+     */
     public function setCapturedCellId($var)
     {
         GPBUtil::checkUint64($var);
         $this->captured_cell_id = $var;
     }
 
+    /**
+     * <code>int32 battles_attacked = 23;</code>
+     */
     public function getBattlesAttacked()
     {
         return $this->battles_attacked;
     }
 
+    /**
+     * <code>int32 battles_attacked = 23;</code>
+     */
     public function setBattlesAttacked($var)
     {
         GPBUtil::checkInt32($var);
         $this->battles_attacked = $var;
     }
 
+    /**
+     * <code>int32 battles_defended = 24;</code>
+     */
     public function getBattlesDefended()
     {
         return $this->battles_defended;
     }
 
+    /**
+     * <code>int32 battles_defended = 24;</code>
+     */
     public function setBattlesDefended($var)
     {
         GPBUtil::checkInt32($var);
         $this->battles_defended = $var;
     }
 
+    /**
+     * <code>string egg_incubator_id = 25;</code>
+     */
     public function getEggIncubatorId()
     {
         return $this->egg_incubator_id;
     }
 
+    /**
+     * <code>string egg_incubator_id = 25;</code>
+     */
     public function setEggIncubatorId($var)
     {
         GPBUtil::checkString($var, True);
         $this->egg_incubator_id = $var;
     }
 
+    /**
+     * <code>uint64 creation_time_ms = 26;</code>
+     */
     public function getCreationTimeMs()
     {
         return $this->creation_time_ms;
     }
 
+    /**
+     * <code>uint64 creation_time_ms = 26;</code>
+     */
     public function setCreationTimeMs($var)
     {
         GPBUtil::checkUint64($var);
         $this->creation_time_ms = $var;
     }
 
+    /**
+     * <code>int32 num_upgrades = 27;</code>
+     */
     public function getNumUpgrades()
     {
         return $this->num_upgrades;
     }
 
+    /**
+     * <code>int32 num_upgrades = 27;</code>
+     */
     public function setNumUpgrades($var)
     {
         GPBUtil::checkInt32($var);
         $this->num_upgrades = $var;
     }
 
+    /**
+     * <code>float additional_cp_multiplier = 28;</code>
+     */
     public function getAdditionalCpMultiplier()
     {
         return $this->additional_cp_multiplier;
     }
 
+    /**
+     * <code>float additional_cp_multiplier = 28;</code>
+     */
     public function setAdditionalCpMultiplier($var)
     {
         GPBUtil::checkFloat($var);
         $this->additional_cp_multiplier = $var;
     }
 
+    /**
+     * <code>int32 favorite = 29;</code>
+     */
     public function getFavorite()
     {
         return $this->favorite;
     }
 
+    /**
+     * <code>int32 favorite = 29;</code>
+     */
     public function setFavorite($var)
     {
         GPBUtil::checkInt32($var);
         $this->favorite = $var;
     }
 
+    /**
+     * <code>string nickname = 30;</code>
+     */
     public function getNickname()
     {
         return $this->nickname;
     }
 
+    /**
+     * <code>string nickname = 30;</code>
+     */
     public function setNickname($var)
     {
         GPBUtil::checkString($var, True);
         $this->nickname = $var;
     }
 
+    /**
+     * <code>int32 from_fort = 31;</code>
+     */
     public function getFromFort()
     {
         return $this->from_fort;
     }
 
+    /**
+     * <code>int32 from_fort = 31;</code>
+     */
     public function setFromFort($var)
     {
         GPBUtil::checkInt32($var);
         $this->from_fort = $var;
     }
 
+    /**
+     * <code>int32 buddy_candy_awarded = 32;</code>
+     */
     public function getBuddyCandyAwarded()
     {
         return $this->buddy_candy_awarded;
     }
 
+    /**
+     * <code>int32 buddy_candy_awarded = 32;</code>
+     */
     public function setBuddyCandyAwarded($var)
     {
         GPBUtil::checkInt32($var);
         $this->buddy_candy_awarded = $var;
     }
 
+    /**
+     * <code>float buddy_total_km_walked = 33;</code>
+     */
     public function getBuddyTotalKmWalked()
     {
         return $this->buddy_total_km_walked;
     }
 
+    /**
+     * <code>float buddy_total_km_walked = 33;</code>
+     */
     public function setBuddyTotalKmWalked($var)
     {
         GPBUtil::checkFloat($var);
         $this->buddy_total_km_walked = $var;
     }
 
+    /**
+     * <code>int32 display_pokemon_id = 34;</code>
+     */
     public function getDisplayPokemonId()
     {
         return $this->display_pokemon_id;
     }
 
+    /**
+     * <code>int32 display_pokemon_id = 34;</code>
+     */
     public function setDisplayPokemonId($var)
     {
         GPBUtil::checkInt32($var);
         $this->display_pokemon_id = $var;
     }
 
+    /**
+     * <code>int32 display_cp = 35;</code>
+     */
     public function getDisplayCp()
     {
         return $this->display_cp;
     }
 
+    /**
+     * <code>int32 display_cp = 35;</code>
+     */
     public function setDisplayCp($var)
     {
         GPBUtil::checkInt32($var);
         $this->display_cp = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 36;</code>
+     */
+    public function getPokemonDisplay()
+    {
+        return $this->pokemon_display;
+    }
+
+    /**
+     * <code>.POGOProtos.Data.PokemonDisplay pokemon_display = 36;</code>
+     */
+    public function setPokemonDisplay(&$var)
+    {
+        GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonDisplay::class);
+        $this->pokemon_display = $var;
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ab1080a21504f474f50726f746f732f446174612f506f6b656d6f6e4461" .
-    "74612e70726f746f120f504f474f50726f746f732e446174611a20504f47" .
-    "4f50726f746f732f456e756d732f506f6b656d6f6e49642e70726f746f1a" .
-    "22504f474f50726f746f732f456e756d732f506f6b656d6f6e4d6f76652e" .
-    "70726f746f1a26504f474f50726f746f732f496e76656e746f72792f4974" .
-    "656d2f4974656d49642e70726f746f2284070a0b506f6b656d6f6e446174" .
-    "61120a0a026964180120012806122f0a0a706f6b656d6f6e5f6964180220" .
-    "01280e321b2e504f474f50726f746f732e456e756d732e506f6b656d6f6e" .
-    "4964120a0a026370180320012805120f0a077374616d696e611804200128" .
-    "0512130a0b7374616d696e615f6d6178180520012805122d0a066d6f7665" .
-    "5f3118062001280e321d2e504f474f50726f746f732e456e756d732e506f" .
-    "6b656d6f6e4d6f7665122d0a066d6f76655f3218072001280e321d2e504f" .
-    "474f50726f746f732e456e756d732e506f6b656d6f6e4d6f766512180a10" .
-    "6465706c6f7965645f666f72745f696418082001280912120a0a6f776e65" .
-    "725f6e616d65180920012809120e0a0669735f656767180a20012808121c" .
-    "0a146567675f6b6d5f77616c6b65645f746172676574180b20012801121b" .
-    "0a136567675f6b6d5f77616c6b65645f7374617274180c20012801120e0a" .
-    "066f726967696e180e2001280512100a086865696768745f6d180f200128" .
-    "0212110a097765696768745f6b6718102001280212190a11696e64697669" .
-    "6475616c5f61747461636b181120012805121a0a12696e64697669647561" .
-    "6c5f646566656e7365181220012805121a0a12696e646976696475616c5f" .
-    "7374616d696e6118132001280512150a0d63705f6d756c7469706c696572" .
-    "18142001280212330a08706f6b6562616c6c18152001280e32212e504f47" .
-    "4f50726f746f732e496e76656e746f72792e4974656d2e4974656d496412" .
-    "180a1063617074757265645f63656c6c5f696418162001280412180a1062" .
-    "6174746c65735f61747461636b656418172001280512180a10626174746c" .
-    "65735f646566656e64656418182001280512180a106567675f696e637562" .
-    "61746f725f696418192001280912180a106372656174696f6e5f74696d65" .
-    "5f6d73181a2001280412140a0c6e756d5f7570677261646573181b200128" .
-    "0512200a186164646974696f6e616c5f63705f6d756c7469706c69657218" .
-    "1c2001280212100a086661766f72697465181d2001280512100a086e6963" .
-    "6b6e616d65181e2001280912110a0966726f6d5f666f7274181f20012805" .
-    "121b0a1362756464795f63616e64795f6177617264656418202001280512" .
-    "1d0a1562756464795f746f74616c5f6b6d5f77616c6b6564182120012802" .
-    "121a0a12646973706c61795f706f6b656d6f6e5f69641822200128051212" .
-    "0a0a646973706c61795f6370182320012805620670726f746f33"
-));
 

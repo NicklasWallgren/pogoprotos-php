@@ -4,69 +4,120 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.ClaimCodenameResponse</code>
+ */
 class ClaimCodenameResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string codename = 1;</code>
+     */
     private $codename = '';
+    /**
+     * <code>string user_message = 2;</code>
+     */
     private $user_message = '';
+    /**
+     * <code>bool is_assignable = 3;</code>
+     */
     private $is_assignable = false;
+    /**
+     * <code>.POGOProtos.Networking.Responses.ClaimCodenameResponse.Status status = 4;</code>
+     */
     private $status = 0;
+    /**
+     * <code>.POGOProtos.Data.PlayerData updated_player = 5;</code>
+     */
     private $updated_player = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\ClaimCodenameResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string codename = 1;</code>
+     */
     public function getCodename()
     {
         return $this->codename;
     }
 
+    /**
+     * <code>string codename = 1;</code>
+     */
     public function setCodename($var)
     {
         GPBUtil::checkString($var, True);
         $this->codename = $var;
     }
 
+    /**
+     * <code>string user_message = 2;</code>
+     */
     public function getUserMessage()
     {
         return $this->user_message;
     }
 
+    /**
+     * <code>string user_message = 2;</code>
+     */
     public function setUserMessage($var)
     {
         GPBUtil::checkString($var, True);
         $this->user_message = $var;
     }
 
+    /**
+     * <code>bool is_assignable = 3;</code>
+     */
     public function getIsAssignable()
     {
         return $this->is_assignable;
     }
 
+    /**
+     * <code>bool is_assignable = 3;</code>
+     */
     public function setIsAssignable($var)
     {
         GPBUtil::checkBool($var);
         $this->is_assignable = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.ClaimCodenameResponse.Status status = 4;</code>
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * <code>.POGOProtos.Networking.Responses.ClaimCodenameResponse.Status status = 4;</code>
+     */
     public function setStatus($var)
     {
         GPBUtil::checkEnum($var, \POGOProtos\Networking\Responses\ClaimCodenameResponse_Status::class);
         $this->status = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData updated_player = 5;</code>
+     */
     public function getUpdatedPlayer()
     {
         return $this->updated_player;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PlayerData updated_player = 5;</code>
+     */
     public function setUpdatedPlayer(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PlayerData::class);
@@ -74,36 +125,4 @@ class ClaimCodenameResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-class ClaimCodenameResponse_Status
-{
-    const UNSET = 0;
-    const SUCCESS = 1;
-    const CODENAME_NOT_AVAILABLE = 2;
-    const CODENAME_NOT_VALID = 3;
-    const CURRENT_OWNER = 4;
-    const CODENAME_CHANGE_NOT_ALLOWED = 5;
-}
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0af0030a3b504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f436c61696d436f64656e616d65526573706f6e73652e70" .
-    "726f746f121f504f474f50726f746f732e4e6574776f726b696e672e5265" .
-    "73706f6e7365731a20504f474f50726f746f732f446174612f506c617965" .
-    "72446174612e70726f746f22e5020a15436c61696d436f64656e616d6552" .
-    "6573706f6e736512100a08636f64656e616d6518012001280912140a0c75" .
-    "7365725f6d65737361676518022001280912150a0d69735f61737369676e" .
-    "61626c65180320012808124d0a0673746174757318042001280e323d2e50" .
-    "4f474f50726f746f732e4e6574776f726b696e672e526573706f6e736573" .
-    "2e436c61696d436f64656e616d65526573706f6e73652e53746174757312" .
-    "330a0e757064617465645f706c6179657218052001280b321b2e504f474f" .
-    "50726f746f732e446174612e506c61796572446174612288010a06537461" .
-    "74757312090a05554e5345541000120b0a07535543434553531001121a0a" .
-    "16434f44454e414d455f4e4f545f415641494c41424c45100212160a1243" .
-    "4f44454e414d455f4e4f545f56414c4944100312110a0d43555252454e54" .
-    "5f4f574e45521004121f0a1b434f44454e414d455f4348414e47455f4e4f" .
-    "545f414c4c4f5745441005620670726f746f33"
-));
 

@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Data\Player;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Data.Player.DailyBonus</code>
+ */
 class DailyBonus extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>int64 next_collected_timestamp_ms = 1;</code>
+     */
     private $next_collected_timestamp_ms = 0;
+    /**
+     * <code>int64 next_defender_bonus_collect_timestamp_ms = 2;</code>
+     */
     private $next_defender_bonus_collect_timestamp_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Data\Player\DailyBonus::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>int64 next_collected_timestamp_ms = 1;</code>
+     */
     public function getNextCollectedTimestampMs()
     {
         return $this->next_collected_timestamp_ms;
     }
 
+    /**
+     * <code>int64 next_collected_timestamp_ms = 1;</code>
+     */
     public function setNextCollectedTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->next_collected_timestamp_ms = $var;
     }
 
+    /**
+     * <code>int64 next_defender_bonus_collect_timestamp_ms = 2;</code>
+     */
     public function getNextDefenderBonusCollectTimestampMs()
     {
         return $this->next_defender_bonus_collect_timestamp_ms;
     }
 
+    /**
+     * <code>int64 next_defender_bonus_collect_timestamp_ms = 2;</code>
+     */
     public function setNextDefenderBonusCollectTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
@@ -37,15 +62,4 @@ class DailyBonus extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aae010a27504f474f50726f746f732f446174612f506c617965722f4461" .
-    "696c79426f6e75732e70726f746f1216504f474f50726f746f732e446174" .
-    "612e506c6179657222630a0a4461696c79426f6e757312230a1b6e657874" .
-    "5f636f6c6c65637465645f74696d657374616d705f6d7318012001280312" .
-    "300a286e6578745f646566656e6465725f626f6e75735f636f6c6c656374" .
-    "5f74696d657374616d705f6d73180220012803620670726f746f33"
-));
 

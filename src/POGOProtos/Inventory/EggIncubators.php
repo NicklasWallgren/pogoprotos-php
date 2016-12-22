@@ -4,38 +4,41 @@
 
 namespace POGOProtos\Inventory;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Inventory.EggIncubators</code>
+ */
 class EggIncubators extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>repeated .POGOProtos.Inventory.EggIncubator egg_incubator = 1;</code>
+     */
     private $egg_incubator;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Inventory\EggIncubators::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>repeated .POGOProtos.Inventory.EggIncubator egg_incubator = 1;</code>
+     */
     public function getEggIncubator()
     {
         return $this->egg_incubator;
     }
 
+    /**
+     * <code>repeated .POGOProtos.Inventory.EggIncubator egg_incubator = 1;</code>
+     */
     public function setEggIncubator(&$var)
     {
-        GPBUtil::checkRepeatedField($var, GPBType::MESSAGE, \POGOProtos\Inventory\EggIncubator::class);
+        GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \POGOProtos\Inventory\EggIncubator::class);
         $this->egg_incubator = $var;
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0abd010a28504f474f50726f746f732f496e76656e746f72792f45676749" .
-    "6e63756261746f72732e70726f746f1214504f474f50726f746f732e496e" .
-    "76656e746f72791a27504f474f50726f746f732f496e76656e746f72792f" .
-    "456767496e63756261746f722e70726f746f224a0a0d456767496e637562" .
-    "61746f727312390a0d6567675f696e63756261746f7218012003280b3222" .
-    "2e504f474f50726f746f732e496e76656e746f72792e456767496e637562" .
-    "61746f72620670726f746f33"
-));
 

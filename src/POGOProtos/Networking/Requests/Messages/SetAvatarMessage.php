@@ -4,21 +4,36 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-require_once('POGOProtos/Data/Player/PlayerAvatar.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.SetAvatarMessage</code>
+ */
 class SetAvatarMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar player_avatar = 2;</code>
+     */
     private $player_avatar = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\SetAvatarMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar player_avatar = 2;</code>
+     */
     public function getPlayerAvatar()
     {
         return $this->player_avatar;
     }
 
+    /**
+     * <code>.POGOProtos.Data.Player.PlayerAvatar player_avatar = 2;</code>
+     */
     public function setPlayerAvatar(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\Player\PlayerAvatar::class);
@@ -26,17 +41,4 @@ class SetAvatarMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0aed010a3e504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f5365744176617461724d6573736167" .
-    "652e70726f746f1227504f474f50726f746f732e4e6574776f726b696e67" .
-    "2e52657175657374732e4d657373616765731a29504f474f50726f746f73" .
-    "2f446174612f506c617965722f506c617965724176617461722e70726f74" .
-    "6f224f0a105365744176617461724d657373616765123b0a0d706c617965" .
-    "725f61766174617218022001280b32242e504f474f50726f746f732e4461" .
-    "74612e506c617965722e506c61796572417661746172620670726f746f33"
-));
 

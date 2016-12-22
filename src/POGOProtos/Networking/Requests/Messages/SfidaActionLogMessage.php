@@ -4,23 +4,24 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * <pre>
+ * No message needed.
+ * </pre>
+ *
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.SfidaActionLogMessage</code>
+ */
 class SfidaActionLogMessage extends \Google\Protobuf\Internal\Message
 {
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\SfidaActionLogMessage::initOnce();
+        parent::__construct();
+    }
+
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a8f010a43504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f5366696461416374696f6e4c6f674d" .
-    "6573736167652e70726f746f1227504f474f50726f746f732e4e6574776f" .
-    "726b696e672e52657175657374732e4d6573736167657322170a15536669" .
-    "6461416374696f6e4c6f674d657373616765620670726f746f33"
-));
 

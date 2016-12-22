@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Settings\Master\Item;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.Master.Item.PotionAttributes</code>
+ */
 class PotionAttributes extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>float sta_percent = 1;</code>
+     */
     private $sta_percent = 0.0;
+    /**
+     * <code>int32 sta_amount = 2;</code>
+     */
     private $sta_amount = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\Master\Item\PotionAttributes::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>float sta_percent = 1;</code>
+     */
     public function getStaPercent()
     {
         return $this->sta_percent;
     }
 
+    /**
+     * <code>float sta_percent = 1;</code>
+     */
     public function setStaPercent($var)
     {
         GPBUtil::checkFloat($var);
         $this->sta_percent = $var;
     }
 
+    /**
+     * <code>int32 sta_amount = 2;</code>
+     */
     public function getStaAmount()
     {
         return $this->sta_amount;
     }
 
+    /**
+     * <code>int32 sta_amount = 2;</code>
+     */
     public function setStaAmount($var)
     {
         GPBUtil::checkInt32($var);
@@ -37,15 +62,4 @@ class PotionAttributes extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a9e010a36504f474f50726f746f732f53657474696e67732f4d61737465" .
-    "722f4974656d2f506f74696f6e417474726962757465732e70726f746f12" .
-    "1f504f474f50726f746f732e53657474696e67732e4d61737465722e4974" .
-    "656d223b0a10506f74696f6e4174747269627574657312130a0b7374615f" .
-    "70657263656e7418012001280212120a0a7374615f616d6f756e74180220" .
-    "012805620670726f746f33"
-));
 

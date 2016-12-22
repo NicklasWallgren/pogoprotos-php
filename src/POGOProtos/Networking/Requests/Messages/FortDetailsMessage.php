@@ -4,44 +4,78 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.FortDetailsMessage</code>
+ */
 class FortDetailsMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     private $fort_id = '';
+    /**
+     * <code>double latitude = 2;</code>
+     */
     private $latitude = 0.0;
+    /**
+     * <code>double longitude = 3;</code>
+     */
     private $longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\FortDetailsMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     public function getFortId()
     {
         return $this->fort_id;
     }
 
+    /**
+     * <code>string fort_id = 1;</code>
+     */
     public function setFortId($var)
     {
         GPBUtil::checkString($var, True);
         $this->fort_id = $var;
     }
 
+    /**
+     * <code>double latitude = 2;</code>
+     */
     public function getLatitude()
     {
         return $this->latitude;
     }
 
+    /**
+     * <code>double latitude = 2;</code>
+     */
     public function setLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->latitude = $var;
     }
 
+    /**
+     * <code>double longitude = 3;</code>
+     */
     public function getLongitude()
     {
         return $this->longitude;
     }
 
+    /**
+     * <code>double longitude = 3;</code>
+     */
     public function setLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -49,16 +83,4 @@ class FortDetailsMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0abf010a40504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f466f727444657461696c734d657373" .
-    "6167652e70726f746f1227504f474f50726f746f732e4e6574776f726b69" .
-    "6e672e52657175657374732e4d65737361676573224a0a12466f72744465" .
-    "7461696c734d657373616765120f0a07666f72745f696418012001280912" .
-    "100a086c6174697475646518022001280112110a096c6f6e676974756465" .
-    "180320012801620670726f746f33"
-));
 

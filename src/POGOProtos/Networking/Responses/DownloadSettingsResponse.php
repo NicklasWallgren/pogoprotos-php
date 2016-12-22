@@ -4,45 +4,78 @@
 
 namespace POGOProtos\Networking\Responses;
 
-
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Responses.DownloadSettingsResponse</code>
+ */
 class DownloadSettingsResponse extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>string error = 1;</code>
+     */
     private $error = '';
+    /**
+     * <code>string hash = 2;</code>
+     */
     private $hash = '';
+    /**
+     * <code>.POGOProtos.Settings.GlobalSettings settings = 3;</code>
+     */
     private $settings = null;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Responses\DownloadSettingsResponse::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>string error = 1;</code>
+     */
     public function getError()
     {
         return $this->error;
     }
 
+    /**
+     * <code>string error = 1;</code>
+     */
     public function setError($var)
     {
         GPBUtil::checkString($var, True);
         $this->error = $var;
     }
 
+    /**
+     * <code>string hash = 2;</code>
+     */
     public function getHash()
     {
         return $this->hash;
     }
 
+    /**
+     * <code>string hash = 2;</code>
+     */
     public function setHash($var)
     {
         GPBUtil::checkString($var, True);
         $this->hash = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.GlobalSettings settings = 3;</code>
+     */
     public function getSettings()
     {
         return $this->settings;
     }
 
+    /**
+     * <code>.POGOProtos.Settings.GlobalSettings settings = 3;</code>
+     */
     public function setSettings(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Settings\GlobalSettings::class);
@@ -50,18 +83,4 @@ class DownloadSettingsResponse extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0a83020a3e504f474f50726f746f732f4e6574776f726b696e672f526573" .
-    "706f6e7365732f446f776e6c6f616453657474696e6773526573706f6e73" .
-    "652e70726f746f121f504f474f50726f746f732e4e6574776f726b696e67" .
-    "2e526573706f6e7365731a28504f474f50726f746f732f53657474696e67" .
-    "732f476c6f62616c53657474696e67732e70726f746f226e0a18446f776e" .
-    "6c6f616453657474696e6773526573706f6e7365120d0a056572726f7218" .
-    "0120012809120c0a046861736818022001280912350a0873657474696e67" .
-    "7318032001280b32232e504f474f50726f746f732e53657474696e67732e" .
-    "476c6f62616c53657474696e6773620670726f746f33"
-));
 

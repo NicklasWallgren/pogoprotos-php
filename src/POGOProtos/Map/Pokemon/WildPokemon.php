@@ -4,93 +4,162 @@
 
 namespace POGOProtos\Map\Pokemon;
 
-require_once('POGOProtos/Data/PokemonData.pb.php');
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Map.Pokemon.WildPokemon</code>
+ */
 class WildPokemon extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>fixed64 encounter_id = 1;</code>
+     */
     private $encounter_id = 0;
+    /**
+     * <code>int64 last_modified_timestamp_ms = 2;</code>
+     */
     private $last_modified_timestamp_ms = 0;
+    /**
+     * <code>double latitude = 3;</code>
+     */
     private $latitude = 0.0;
+    /**
+     * <code>double longitude = 4;</code>
+     */
     private $longitude = 0.0;
+    /**
+     * <code>string spawn_point_id = 5;</code>
+     */
     private $spawn_point_id = '';
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 7;</code>
+     */
     private $pokemon_data = null;
+    /**
+     * <code>int32 time_till_hidden_ms = 11;</code>
+     */
     private $time_till_hidden_ms = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Map\Pokemon\WildPokemon::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>fixed64 encounter_id = 1;</code>
+     */
     public function getEncounterId()
     {
         return $this->encounter_id;
     }
 
+    /**
+     * <code>fixed64 encounter_id = 1;</code>
+     */
     public function setEncounterId($var)
     {
         GPBUtil::checkUint64($var);
         $this->encounter_id = $var;
     }
 
+    /**
+     * <code>int64 last_modified_timestamp_ms = 2;</code>
+     */
     public function getLastModifiedTimestampMs()
     {
         return $this->last_modified_timestamp_ms;
     }
 
+    /**
+     * <code>int64 last_modified_timestamp_ms = 2;</code>
+     */
     public function setLastModifiedTimestampMs($var)
     {
         GPBUtil::checkInt64($var);
         $this->last_modified_timestamp_ms = $var;
     }
 
+    /**
+     * <code>double latitude = 3;</code>
+     */
     public function getLatitude()
     {
         return $this->latitude;
     }
 
+    /**
+     * <code>double latitude = 3;</code>
+     */
     public function setLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->latitude = $var;
     }
 
+    /**
+     * <code>double longitude = 4;</code>
+     */
     public function getLongitude()
     {
         return $this->longitude;
     }
 
+    /**
+     * <code>double longitude = 4;</code>
+     */
     public function setLongitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->longitude = $var;
     }
 
+    /**
+     * <code>string spawn_point_id = 5;</code>
+     */
     public function getSpawnPointId()
     {
         return $this->spawn_point_id;
     }
 
+    /**
+     * <code>string spawn_point_id = 5;</code>
+     */
     public function setSpawnPointId($var)
     {
         GPBUtil::checkString($var, True);
         $this->spawn_point_id = $var;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 7;</code>
+     */
     public function getPokemonData()
     {
         return $this->pokemon_data;
     }
 
+    /**
+     * <code>.POGOProtos.Data.PokemonData pokemon_data = 7;</code>
+     */
     public function setPokemonData(&$var)
     {
         GPBUtil::checkMessage($var, \POGOProtos\Data\PokemonData::class);
         $this->pokemon_data = $var;
     }
 
+    /**
+     * <code>int32 time_till_hidden_ms = 11;</code>
+     */
     public function getTimeTillHiddenMs()
     {
         return $this->time_till_hidden_ms;
     }
 
+    /**
+     * <code>int32 time_till_hidden_ms = 11;</code>
+     */
     public function setTimeTillHiddenMs($var)
     {
         GPBUtil::checkInt32($var);
@@ -98,20 +167,4 @@ class WildPokemon extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac5020a28504f474f50726f746f732f4d61702f506f6b656d6f6e2f5769" .
-    "6c64506f6b656d6f6e2e70726f746f1216504f474f50726f746f732e4d61" .
-    "702e506f6b656d6f6e1a21504f474f50726f746f732f446174612f506f6b" .
-    "656d6f6e446174612e70726f746f22d5010a0b57696c64506f6b656d6f6e" .
-    "12140a0c656e636f756e7465725f696418012001280612220a1a6c617374" .
-    "5f6d6f6469666965645f74696d657374616d705f6d731802200128031210" .
-    "0a086c6174697475646518032001280112110a096c6f6e67697475646518" .
-    "042001280112160a0e737061776e5f706f696e745f696418052001280912" .
-    "320a0c706f6b656d6f6e5f6461746118072001280b321c2e504f474f5072" .
-    "6f746f732e446174612e506f6b656d6f6e44617461121b0a1374696d655f" .
-    "74696c6c5f68696464656e5f6d73180b20012805620670726f746f33"
-));
 

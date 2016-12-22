@@ -4,104 +4,183 @@
 
 namespace POGOProtos\Settings;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Settings.MapSettings</code>
+ */
 class MapSettings extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>double pokemon_visible_range = 1;</code>
+     */
     private $pokemon_visible_range = 0.0;
+    /**
+     * <code>double poke_nav_range_meters = 2;</code>
+     */
     private $poke_nav_range_meters = 0.0;
+    /**
+     * <code>double encounter_range_meters = 3;</code>
+     */
     private $encounter_range_meters = 0.0;
+    /**
+     * <code>float get_map_objects_min_refresh_seconds = 4;</code>
+     */
     private $get_map_objects_min_refresh_seconds = 0.0;
+    /**
+     * <code>float get_map_objects_max_refresh_seconds = 5;</code>
+     */
     private $get_map_objects_max_refresh_seconds = 0.0;
+    /**
+     * <code>float get_map_objects_min_distance_meters = 6;</code>
+     */
     private $get_map_objects_min_distance_meters = 0.0;
+    /**
+     * <code>string google_maps_api_key = 7;</code>
+     */
     private $google_maps_api_key = '';
+    /**
+     * <code>int32 min_nearby_hide_sightings = 8;</code>
+     */
     private $min_nearby_hide_sightings = 0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Settings\MapSettings::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>double pokemon_visible_range = 1;</code>
+     */
     public function getPokemonVisibleRange()
     {
         return $this->pokemon_visible_range;
     }
 
+    /**
+     * <code>double pokemon_visible_range = 1;</code>
+     */
     public function setPokemonVisibleRange($var)
     {
         GPBUtil::checkDouble($var);
         $this->pokemon_visible_range = $var;
     }
 
+    /**
+     * <code>double poke_nav_range_meters = 2;</code>
+     */
     public function getPokeNavRangeMeters()
     {
         return $this->poke_nav_range_meters;
     }
 
+    /**
+     * <code>double poke_nav_range_meters = 2;</code>
+     */
     public function setPokeNavRangeMeters($var)
     {
         GPBUtil::checkDouble($var);
         $this->poke_nav_range_meters = $var;
     }
 
+    /**
+     * <code>double encounter_range_meters = 3;</code>
+     */
     public function getEncounterRangeMeters()
     {
         return $this->encounter_range_meters;
     }
 
+    /**
+     * <code>double encounter_range_meters = 3;</code>
+     */
     public function setEncounterRangeMeters($var)
     {
         GPBUtil::checkDouble($var);
         $this->encounter_range_meters = $var;
     }
 
+    /**
+     * <code>float get_map_objects_min_refresh_seconds = 4;</code>
+     */
     public function getGetMapObjectsMinRefreshSeconds()
     {
         return $this->get_map_objects_min_refresh_seconds;
     }
 
+    /**
+     * <code>float get_map_objects_min_refresh_seconds = 4;</code>
+     */
     public function setGetMapObjectsMinRefreshSeconds($var)
     {
         GPBUtil::checkFloat($var);
         $this->get_map_objects_min_refresh_seconds = $var;
     }
 
+    /**
+     * <code>float get_map_objects_max_refresh_seconds = 5;</code>
+     */
     public function getGetMapObjectsMaxRefreshSeconds()
     {
         return $this->get_map_objects_max_refresh_seconds;
     }
 
+    /**
+     * <code>float get_map_objects_max_refresh_seconds = 5;</code>
+     */
     public function setGetMapObjectsMaxRefreshSeconds($var)
     {
         GPBUtil::checkFloat($var);
         $this->get_map_objects_max_refresh_seconds = $var;
     }
 
+    /**
+     * <code>float get_map_objects_min_distance_meters = 6;</code>
+     */
     public function getGetMapObjectsMinDistanceMeters()
     {
         return $this->get_map_objects_min_distance_meters;
     }
 
+    /**
+     * <code>float get_map_objects_min_distance_meters = 6;</code>
+     */
     public function setGetMapObjectsMinDistanceMeters($var)
     {
         GPBUtil::checkFloat($var);
         $this->get_map_objects_min_distance_meters = $var;
     }
 
+    /**
+     * <code>string google_maps_api_key = 7;</code>
+     */
     public function getGoogleMapsApiKey()
     {
         return $this->google_maps_api_key;
     }
 
+    /**
+     * <code>string google_maps_api_key = 7;</code>
+     */
     public function setGoogleMapsApiKey($var)
     {
         GPBUtil::checkString($var, True);
         $this->google_maps_api_key = $var;
     }
 
+    /**
+     * <code>int32 min_nearby_hide_sightings = 8;</code>
+     */
     public function getMinNearbyHideSightings()
     {
         return $this->min_nearby_hide_sightings;
     }
 
+    /**
+     * <code>int32 min_nearby_hide_sightings = 8;</code>
+     */
     public function setMinNearbyHideSightings($var)
     {
         GPBUtil::checkInt32($var);
@@ -109,22 +188,4 @@ class MapSettings extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0af9020a25504f474f50726f746f732f53657474696e67732f4d61705365" .
-    "7474696e67732e70726f746f1213504f474f50726f746f732e5365747469" .
-    "6e677322b2020a0b4d617053657474696e6773121d0a15706f6b656d6f6e" .
-    "5f76697369626c655f72616e6765180120012801121d0a15706f6b655f6e" .
-    "61765f72616e67655f6d6574657273180220012801121e0a16656e636f75" .
-    "6e7465725f72616e67655f6d6574657273180320012801122b0a23676574" .
-    "5f6d61705f6f626a656374735f6d696e5f726566726573685f7365636f6e" .
-    "6473180420012802122b0a236765745f6d61705f6f626a656374735f6d61" .
-    "785f726566726573685f7365636f6e6473180520012802122b0a23676574" .
-    "5f6d61705f6f626a656374735f6d696e5f64697374616e63655f6d657465" .
-    "7273180620012802121b0a13676f6f676c655f6d6170735f6170695f6b65" .
-    "7918072001280912210a196d696e5f6e65617262795f686964655f736967" .
-    "6874696e6773180820012805620670726f746f33"
-));
 

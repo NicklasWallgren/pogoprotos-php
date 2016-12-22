@@ -4,32 +4,57 @@
 
 namespace POGOProtos\Networking\Requests\Messages;
 
-use Google\Protobuf\Internal\DescriptorPool;
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
+/**
+ * Protobuf type <code>POGOProtos.Networking.Requests.Messages.GetIncensePokemonMessage</code>
+ */
 class GetIncensePokemonMessage extends \Google\Protobuf\Internal\Message
 {
+    /**
+     * <code>double player_latitude = 1;</code>
+     */
     private $player_latitude = 0.0;
+    /**
+     * <code>double player_longitude = 2;</code>
+     */
     private $player_longitude = 0.0;
 
+    public function __construct() {
+        \GPBMetadata\POGOProtos\Networking\Requests\Messages\GetIncensePokemonMessage::initOnce();
+        parent::__construct();
+    }
+
+    /**
+     * <code>double player_latitude = 1;</code>
+     */
     public function getPlayerLatitude()
     {
         return $this->player_latitude;
     }
 
+    /**
+     * <code>double player_latitude = 1;</code>
+     */
     public function setPlayerLatitude($var)
     {
         GPBUtil::checkDouble($var);
         $this->player_latitude = $var;
     }
 
+    /**
+     * <code>double player_longitude = 2;</code>
+     */
     public function getPlayerLongitude()
     {
         return $this->player_longitude;
     }
 
+    /**
+     * <code>double player_longitude = 2;</code>
+     */
     public function setPlayerLongitude($var)
     {
         GPBUtil::checkDouble($var);
@@ -37,16 +62,4 @@ class GetIncensePokemonMessage extends \Google\Protobuf\Internal\Message
     }
 
 }
-
-$pool = DescriptorPool::getGeneratedPool();
-
-$pool->internalAddGeneratedFile(hex2bin(
-    "0ac8010a46504f474f50726f746f732f4e6574776f726b696e672f526571" .
-    "75657374732f4d657373616765732f476574496e63656e7365506f6b656d" .
-    "6f6e4d6573736167652e70726f746f1227504f474f50726f746f732e4e65" .
-    "74776f726b696e672e52657175657374732e4d65737361676573224d0a18" .
-    "476574496e63656e7365506f6b656d6f6e4d65737361676512170a0f706c" .
-    "617965725f6c6174697475646518012001280112180a10706c617965725f" .
-    "6c6f6e676974756465180220012801620670726f746f33"
-));
 
