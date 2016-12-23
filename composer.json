@@ -9,7 +9,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/google/protobuf"
+      "url": "https://github.com/NicklasWallgren/protobuf"
     }
   ],
   "require": {
@@ -20,10 +20,7 @@
     "psr-4": {
       "POGOProtos\\": "src/POGOProtos/",
       "GPBMetadata\\": "src/GPBMetadata/"
-    },
-    "files": [
-
-    ]
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true
