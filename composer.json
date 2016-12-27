@@ -9,12 +9,12 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/NicklasWallgren/protobuf"
+      "url": "https://github.com/NicklasWallgren/protobuf.git"
     }
   ],
   "require": {
     "php": ">=5.6",
-    "google/protobuf": "dev-master"
+    "google/protobuf": "dev-master@dev"
   },
   "autoload": {
     "psr-4": {
