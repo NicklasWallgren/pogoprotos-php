@@ -21,7 +21,5 @@
       "POGOProtos\\": "src/POGOProtos/",
       "GPBMetadata\\": "src/GPBMetadata/"
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  }
 }
