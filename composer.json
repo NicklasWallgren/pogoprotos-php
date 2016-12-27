@@ -8,13 +8,21 @@
   ],
   "repositories": [
     {
-      "type": "git",
-      "url": "https://github.com/NicklasWallgren/protobuf"
+      "type": "package",
+      "package": {
+        "name": "google/protobuf",
+        "version": "3.1",
+        "source": {
+          "url": "https://github.com/NicklasWallgren/protobuf",
+          "type": "git",
+          "reference": "master"
+        }
+      }
     }
   ],
   "require": {
     "php": ">=5.6",
-    "google/protobuf": "dev-master@dev"
+    "google/protobuf": "^3.1"
   },
   "autoload": {
     "psr-4": {
