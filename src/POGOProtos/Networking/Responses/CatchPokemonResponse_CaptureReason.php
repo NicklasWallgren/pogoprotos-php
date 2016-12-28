@@ -12,7 +12,7 @@ class CatchPokemonResponse_CaptureReason
     /**
      * <code>UNSET = 0;</code>
      */
-    const UNSET = 0;
+    const UNSET_VALUE = 0;
     /**
      * <code>DEFAULT = 1;</code>
      */

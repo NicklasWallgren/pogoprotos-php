@@ -12,7 +12,7 @@ class PokemonDisplay_Costume
     /**
      * <code>UNSET = 0;</code>
      */
-    const UNSET = 0;
+    const UNSET_VALUE = 0;
     /**
      * <code>HOLIDAY_2016 = 1;</code>
      */

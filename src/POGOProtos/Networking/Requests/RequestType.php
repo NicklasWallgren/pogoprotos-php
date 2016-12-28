@@ -526,9 +526,9 @@ class RequestType
      * Implemented [R &amp; M]
      * </pre>
      *
-     * <code>ECHO = 666;</code>
+     * <code>PING = 666;</code>
      */
-    const ECHO = 666;
+    const PING = 666;
     /**
      * <code>DEBUG_UPDATE_INVENTORY = 700;</code>
      */

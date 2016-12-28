@@ -12,7 +12,7 @@ class CatchPokemonLogEntry_Result
     /**
      * <code>UNSET = 0;</code>
      */
-    const UNSET = 0;
+    const UNSET_VALUE = 0;
     /**
      * <code>POKEMON_CAPTURED = 1;</code>
      */
